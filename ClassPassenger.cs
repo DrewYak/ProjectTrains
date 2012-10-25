@@ -1,40 +1,97 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
-//
 
-//DrewYak7
-[TestFixture]
-class DemoPassengers
-{        
-    [Test]
-    public static UInt32 Summa(UInt32 a, UInt32 b)
+class Passenger
+{
+    int    _id;
+    string _firstName;
+    string _lastName;
+    string _typeOfTicket;
+
+    /// <summary>
+    /// Инициализирует пассажира по номеру паспорта, имени, фамилии и типу билета.
+    /// </summary>
+    /// <param name="ID">Номер паспорта.</param>
+    /// <param name="FirstName">Имя.</param>
+    /// <param name="LastName">Фамилия.</param>
+    /// <param name="TypeOfTicket">Тип билета.</param>
+    public Passenger(int ID, string FirstName, string LastName,  string TypeOfTicket)
     {
-        return a + b;
+        this.ID           = ID;
+        this.FirstName    = FirstName;
+        this.LastName     = LastName;
+        this.TypeOfTicket = TypeOfTicket;
+    }
+
+    /// <summary>
+    /// Возвращает номер паспорта
+    /// </summary>
+    public int ID
+    {
+        get { return _id; }
+        set { if ((value >= 1000) && (value <= 9999)) _id = value; }
+    }
+
+    /// <summary>
+    /// Возвращает имя пассажира.
+    /// </summary>
+    public string FirstName
+    {  
+        get { return _firstName; }
+        set { if (value.Length != 0) _firstName = value; }
+    }
+
+    /// <summary>
+    /// Возвращает фамилию пассажира.
+    /// </summary>
+    public string LastName
+    {  
+        get { return _lastName; }
+        set { if (value.Length != 0) _lastName = value; }
+    }
+
+    /// <summary>
+    /// Возвращает тип билета.
+    /// </summary>
+    public string TypeOfTicket
+    {  
+        get { return _typeOfTicket; }
+        set { if (value.Length != 0) _typeOfTicket = value; }
     }
 }
 
-class DemoTest
-{    
+/// <summary>
+/// Класс с тестами для конструктора и свойств класса Passenger.
+/// </summary>
+class TestPassenger
+{
     [Test]
-    public static void MyTestFunction()
+    public static void TPassengerConstructor([Random(1000, 2000, 50)]                       int TNumber, 
+                                             [Values("Алёшина", "Румянцева", "Трофименко")] string TFirstName,
+                                             [Values("Анастасия", "Ксения", "Дарья")]       string TLastName,
+                                             [Values("Плацкарт", "Купе")]                   string TType)
     {
-        UInt32 a = 2;
-        UInt32 b = 5;
-
-        Assert.IsTrue(DemoPassengers.Summa(a, b) >= 0);
-        Assert.IsInstanceOf<String>(DemoPassengers.Summa(a, b));
-        Assert.AreEqual(a + b, DemoPassengers.Summa(a, b));
+        Passenger TPassenger = new Passenger(TNumber, TFirstName, TLastName, TType);
+        
+        Assert.IsInstanceOf<Passenger>(TPassenger);
+        Assert.AreEqual(TNumber, TPassenger.ID);
+        Assert.AreEqual(TFirstName, TPassenger.FirstName);
+        Assert.AreEqual(TLastName, TPassenger.LastName);
+        Assert.AreEqual(TType, TPassenger.TypeOfTicket);
     }
 
     [Test]
-    public static void MyTestFunction_2()
+    public static void TPassengerPropety([Random(-1000, 11000, 100)]                    int TNumber, 
+                                         [Values("Алёшина", "Румянцева", "Трофименко")] string TFirstName,
+                                         [Values("Анастасия", "Ксения", "Дарья")]       string TLastName,
+                                         [Values("Плацкарт", "Купе")]                   string TType)
     {
-        UInt32 a = 2;
-        UInt32 b = 5;
-
-        Assert.IsTrue(DemoPassengers.Summa(a, b) >= 0);
-        Assert.IsInstanceOf<UInt32>(DemoPassengers.Summa(a, b));
-        Assert.AreEqual(a + b, DemoPassengers.Summa(a, b));
+        Passenger TPassenger = new Passenger(TNumber, TFirstName, TLastName, TType);
+        
+        if ((TNumber >= 1000) && (TNumber <=9999))
+        { Assert.AreEqual(TNumber, TPassenger.ID); }
+        else
+        { Assert.AreEqual(0, TPassenger.ID); }
     }
-
 }
