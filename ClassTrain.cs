@@ -9,13 +9,13 @@ class Train
     public Route  _theRoute;
 
     /// <summary>
-    /// Создание объекта по номеру, кол-ву пассажиров, времени отправления и прибытия, маршруту
+    /// Создание объекта по номеру, кол-ву пассажиров, времени отправления и прибытия, маршруту.
     /// </summary>
-    /// <param name="Number">Номер поезда</param>
-    /// <param name="CountOfPas">Количество пассажиров</param>
-    /// <param name="TimeOfDeparture">Время отправления</param>
-    /// <param name="TimeOfArrival">Время прибытия</param>
-    /// <param name="TheRoute">Маршрут</param>
+    /// <param name="Number">Номер поезда.</param>
+    /// <param name="CountOfPas">Количество пассажиров.</param>
+    /// <param name="TimeOfDeparture">Время отправления.</param>
+    /// <param name="TimeOfArrival">Время прибытия.</param>
+    /// <param name="TheRoute">Маршрут.</param>
     public Train(int Number, int CountOfPas, string TimeOfDeparture, string TimeOfArrival, Route TheRoute)
     {
         this.Number             = Number;
@@ -26,7 +26,7 @@ class Train
     }
 
     /// <summary>
-    /// Возвращает номер поезда
+    /// Возвращает номер поезда.
     /// </summary>
     public int Number
     {
@@ -35,7 +35,7 @@ class Train
     }
 
     /// <summary>
-    /// Возвращает количество пассажиров
+    /// Возвращает количество пассажиров.
     /// </summary>
     public int CountOfPas
     {
@@ -44,7 +44,7 @@ class Train
     }
 
     /// <summary>
-    /// Возвраает время отправления
+    /// Возвраает время отправления.
     /// </summary>
     public string TimeOfDeparture
     {
@@ -53,7 +53,7 @@ class Train
     }
 
     /// <summary>
-    /// Возврашает время прибытия
+    /// Возврашает время прибытия.
     /// </summary>
     public string TimeOfArrival
     {
@@ -62,7 +62,7 @@ class Train
     }
 
     /// <summary>
-    /// Возвращает маршрут
+    /// Возвращает маршрут.
     /// </summary>
     public Route TheRoute
     {
