@@ -1,4 +1,5 @@
 ﻿using System;
+using NUnit.Framework;
 
 class Train
 { 
@@ -23,6 +24,14 @@ class Train
         this.TimeOfDeparture    = TimeOfDeparture;
         this.TimeOfArrival      = TimeOfArrival;
         this.TheRoute           = TheRoute;
+    }
+
+    public Train(int Number, int CountOfPas, string TimeOfDeparture, string TimeOfArrival)
+    {
+        this.Number             = Number;
+        this.CountOfPas         = CountOfPas;
+        this.TimeOfDeparture    = TimeOfDeparture;
+        this.TimeOfArrival      = TimeOfArrival;
     }
 
     /// <summary>
@@ -69,4 +78,19 @@ class Train
         get { return _theRoute; }
         set { if (value != null) _theRoute = value; }
     }
+}
+
+[TestFixture]
+class TestTrain
+{
+    [Test]
+    public static void FirstMethod()
+    {
+        Train T = new Train(12, 20, "12:30", "15:50");
+        Assert.AreEqual(12, T.Number);
+        Assert.AreEqual(20, T.CountOfPas);
+        Assert.AreEqual("12:30", T.TimeOfDeparture);
+        Assert.AreEqual("15:50", T.TimeOfArrival);
+    }
+
 }

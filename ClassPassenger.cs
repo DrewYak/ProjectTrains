@@ -18,14 +18,14 @@ class Passenger
     /// <param name="TypeOfTicket">Тип билета.</param>
     public Passenger(int ID, string FirstName, string LastName,  string TypeOfTicket)
     {
-        this.ID           = ID;
-        this.FirstName    = FirstName;
-        this.LastName     = LastName;
-        this.TypeOfTicket = TypeOfTicket;
+        this.ID             = ID;
+        this.FirstName      = FirstName;
+        this.LastName       = LastName;
+        this.TypeOfTicket   = TypeOfTicket;
     }
 
     /// <summary>
-    /// Возвращает номер паспорта
+    /// Возвращает номер паспорта.
     /// </summary>
     public int ID
     {
@@ -64,6 +64,7 @@ class Passenger
 /// <summary>
 /// Класс с тестами для конструктора и свойств класса Passenger.
 /// </summary>
+[TestFixture]
 class TestPassenger
 {
     [Test]

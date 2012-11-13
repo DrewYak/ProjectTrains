@@ -59,5 +59,12 @@ namespace Trains.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Bitmap _3416_devushka_ili_starukha {
+            get {
+                object obj = ResourceManager.GetObject("3416_devushka-ili-starukha", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

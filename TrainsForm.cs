@@ -15,5 +15,29 @@ namespace Trains
         {
             InitializeComponent();
         }
+
+        private void ButSearchTrain_Click(object sender, EventArgs e)
+        {
+            SearchTrains STForm = new SearchTrains();
+            STForm.PreviousForm = this;
+            STForm.ShowDialog();
+        }
+
+        private void butData_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void butGraphic_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButSearchPas_Click(object sender, EventArgs e)
+        {
+            SearchPassengers SPForm = new SearchPassengers();
+            SPForm.PreviousForm     = this;
+            SPForm.ShowDialog();
+        }
     }
 }
