@@ -22,5 +22,29 @@ namespace Trains
         }
 
         public Form PreviousForm { get; set;}
+
+        private void byNumber_CheckedChanged(object sender, EventArgs e)
+        {
+            gBByNumber.Enabled  = byNumber.Checked;
+            gBByParams.Enabled  = byParams.Checked;
+        }
+
+        private void byParams_CheckedChanged(object sender, EventArgs e)
+        {
+            gBByNumber.Enabled  = byNumber.Checked;
+            gBByParams.Enabled  = byParams.Checked;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (byNumber.Checked)
+            {
+                ResultSearchTrainByNumber FormResultTrainByNumber = new ResultSearchTrainByNumber();
+                FormResultTrainByNumber.PreviousForm    = this;
+                this.Visible                            = false;
+                FormResultTrainByNumber.ShowDialog();
+            }
+        }
+
     }
 }

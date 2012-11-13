@@ -52,6 +52,18 @@
     <Compile Include="ClassRoute.cs" />
     <Compile Include="ClassTest.cs" />
     <Compile Include="ClassTrain.cs" />
+    <Compile Include="ResultSearchPasByID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResultSearchPasByID.Designer.cs">
+      <DependentUpon>ResultSearchPasByID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResultSearchTrainByNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResultSearchTrainByNumber.Designer.cs">
+      <DependentUpon>ResultSearchTrainByNumber.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchPassengers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +95,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ResultSearchPasByID.resx">
+      <DependentUpon>ResultSearchPasByID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResultSearchTrainByNumber.resx">
+      <DependentUpon>ResultSearchTrainByNumber.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SearchPassengers.resx">
       <DependentUpon>SearchPassengers.cs</DependentUpon>
     </EmbeddedResource>
