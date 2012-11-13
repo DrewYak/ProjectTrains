@@ -25,7 +25,7 @@ namespace Trains
 
         private void butData_Click(object sender, EventArgs e)
         {
-
+            Passenger.AddDataFromFile("TrainsAndAnotherStuff.xml");
         }
 
         private void butGraphic_Click(object sender, EventArgs e)

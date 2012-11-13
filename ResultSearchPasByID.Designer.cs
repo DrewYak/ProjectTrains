@@ -33,10 +33,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.ResultID = new System.Windows.Forms.Label();
+            this.ResultLName = new System.Windows.Forms.Label();
+            this.ResultFName = new System.Windows.Forms.Label();
+            this.ResultTicketType = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -89,55 +89,55 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Тип билета";
             // 
-            // label5
+            // ResultID
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(152, 59);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 20);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "label5";
+            this.ResultID.AutoSize = true;
+            this.ResultID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ResultID.Location = new System.Drawing.Point(152, 59);
+            this.ResultID.Name = "ResultID";
+            this.ResultID.Size = new System.Drawing.Size(51, 20);
+            this.ResultID.TabIndex = 5;
+            this.ResultID.Text = "label5";
             // 
-            // label6
+            // ResultLName
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(152, 79);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 20);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "label6";
+            this.ResultLName.AutoSize = true;
+            this.ResultLName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ResultLName.Location = new System.Drawing.Point(152, 79);
+            this.ResultLName.Name = "ResultLName";
+            this.ResultLName.Size = new System.Drawing.Size(51, 20);
+            this.ResultLName.TabIndex = 6;
+            this.ResultLName.Text = "label6";
             // 
-            // label7
+            // ResultFName
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(152, 99);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 20);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "label7";
+            this.ResultFName.AutoSize = true;
+            this.ResultFName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ResultFName.Location = new System.Drawing.Point(152, 99);
+            this.ResultFName.Name = "ResultFName";
+            this.ResultFName.Size = new System.Drawing.Size(51, 20);
+            this.ResultFName.TabIndex = 7;
+            this.ResultFName.Text = "label7";
             // 
-            // label8
+            // ResultTicketType
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(152, 119);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 20);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "label8";
+            this.ResultTicketType.AutoSize = true;
+            this.ResultTicketType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ResultTicketType.Location = new System.Drawing.Point(152, 119);
+            this.ResultTicketType.Name = "ResultTicketType";
+            this.ResultTicketType.Size = new System.Drawing.Size(51, 20);
+            this.ResultTicketType.TabIndex = 8;
+            this.ResultTicketType.Text = "label8";
             // 
             // ResultSearchPasByID
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(359, 152);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.ResultTicketType);
+            this.Controls.Add(this.ResultFName);
+            this.Controls.Add(this.ResultLName);
+            this.Controls.Add(this.ResultID);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -146,6 +146,7 @@
             this.Name = "ResultSearchPasByID";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ResultSearchPasByID";
+            this.Load += new System.EventHandler(this.ResultSearchPasByID_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,9 +159,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label ResultID;
+        private System.Windows.Forms.Label ResultLName;
+        private System.Windows.Forms.Label ResultFName;
+        private System.Windows.Forms.Label ResultTicketType;
     }
 }

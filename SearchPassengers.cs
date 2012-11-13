@@ -29,14 +29,16 @@ namespace Trains
 
         public Form PreviousForm { get; set;}
 
+
         private void button2_Click(object sender, EventArgs e)
         {
             if (byID.Checked)
             {
                 ResultSearchPasByID FormResultPasByID = new ResultSearchPasByID();
                 FormResultPasByID.PreviousForm  = this;
+                FormResultPasByID.Owner         = this;
                 this.Visible                    = false;
-                FormResultPasByID.ShowDialog();
+                FormResultPasByID.ShowDialog(); 
             }
         }
     }

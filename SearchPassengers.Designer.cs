@@ -33,7 +33,7 @@
             this.byParams = new System.Windows.Forms.RadioButton();
             this.button2 = new System.Windows.Forms.Button();
             this.gBByID = new System.Windows.Forms.GroupBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.SearchID = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gBByParams = new System.Windows.Forms.GroupBox();
             this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
@@ -95,7 +95,7 @@
             // 
             // gBByID
             // 
-            this.gBByID.Controls.Add(this.maskedTextBox1);
+            this.gBByID.Controls.Add(this.SearchID);
             this.gBByID.Controls.Add(this.label1);
             this.gBByID.Enabled = this.byID.Checked;
             this.gBByID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -105,14 +105,14 @@
             this.gBByID.TabIndex = 4;
             this.gBByID.TabStop = false;
             // 
-            // maskedTextBox1
+            // SearchID
             // 
-            this.maskedTextBox1.BeepOnError = true;
-            this.maskedTextBox1.Location = new System.Drawing.Point(146, 20);
-            this.maskedTextBox1.Mask = "0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(151, 26);
-            this.maskedTextBox1.TabIndex = 1;
+            this.SearchID.BeepOnError = true;
+            this.SearchID.Location = new System.Drawing.Point(146, 20);
+            this.SearchID.Mask = "0000";
+            this.SearchID.Name = "SearchID";
+            this.SearchID.Size = new System.Drawing.Size(151, 26);
+            this.SearchID.TabIndex = 1;
             // 
             // label1
             // 
@@ -218,7 +218,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox gBByID;
         private System.Windows.Forms.GroupBox gBByParams;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -226,5 +225,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox3;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox4;
+        public System.Windows.Forms.MaskedTextBox SearchID;
     }
 }
