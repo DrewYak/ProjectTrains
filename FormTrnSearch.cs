@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Trains
 {
-    public partial class SearchTrains : Form
+    public partial class TrnSearch : Form
     {
-        public SearchTrains()
+        public TrnSearch()
         {
             InitializeComponent();
         }
@@ -39,7 +39,7 @@ namespace Trains
         {
             if (byNumber.Checked)
             {
-                ResultSearchTrainByNumber FormResultTrainByNumber = new ResultSearchTrainByNumber();
+                TrnResultByNumber FormResultTrainByNumber = new TrnResultByNumber();
                 FormResultTrainByNumber.PreviousForm    = this;
                 this.Visible                            = false;
                 FormResultTrainByNumber.ShowDialog();

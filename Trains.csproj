@@ -52,29 +52,29 @@
     <Compile Include="ClassRoute.cs" />
     <Compile Include="ClassTest.cs" />
     <Compile Include="ClassTrain.cs" />
-    <Compile Include="ResultSearchPasByID.cs">
+    <Compile Include="FormPsgResultByID.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ResultSearchPasByID.Designer.cs">
-      <DependentUpon>ResultSearchPasByID.cs</DependentUpon>
+    <Compile Include="FormPsgResultByID.Designer.cs">
+      <DependentUpon>FormPsgResultByID.cs</DependentUpon>
     </Compile>
-    <Compile Include="ResultSearchTrainByNumber.cs">
+    <Compile Include="FormTrnResulByNumber.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ResultSearchTrainByNumber.Designer.cs">
-      <DependentUpon>ResultSearchTrainByNumber.cs</DependentUpon>
+    <Compile Include="FormTrnResulByNumber.Designer.cs">
+      <DependentUpon>FormTrnResulByNumber.cs</DependentUpon>
     </Compile>
-    <Compile Include="SearchPassengers.cs">
+    <Compile Include="FormPsgSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SearchPassengers.Designer.cs">
-      <DependentUpon>SearchPassengers.cs</DependentUpon>
+    <Compile Include="FormPsgSearch.Designer.cs">
+      <DependentUpon>FormPsgSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="SearchTrains.cs">
+    <Compile Include="FormTrnSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SearchTrains.Designer.cs">
-      <DependentUpon>SearchTrains.cs</DependentUpon>
+    <Compile Include="FormTrnSearch.Designer.cs">
+      <DependentUpon>FormTrnSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="TrainsForm.cs">
       <SubType>Form</SubType>
@@ -95,17 +95,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ResultSearchPasByID.resx">
-      <DependentUpon>ResultSearchPasByID.cs</DependentUpon>
+    <EmbeddedResource Include="FormPsgResultByID.resx">
+      <DependentUpon>FormPsgResultByID.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ResultSearchTrainByNumber.resx">
-      <DependentUpon>ResultSearchTrainByNumber.cs</DependentUpon>
+    <EmbeddedResource Include="FormTrnResulByNumber.resx">
+      <DependentUpon>FormTrnResulByNumber.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SearchPassengers.resx">
-      <DependentUpon>SearchPassengers.cs</DependentUpon>
+    <EmbeddedResource Include="FormPsgSearch.resx">
+      <DependentUpon>FormPsgSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SearchTrains.resx">
-      <DependentUpon>SearchTrains.cs</DependentUpon>
+    <EmbeddedResource Include="FormTrnSearch.resx">
+      <DependentUpon>FormTrnSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TrainsForm.resx">
       <DependentUpon>TrainsForm.cs</DependentUpon>

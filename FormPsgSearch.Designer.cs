@@ -1,6 +1,6 @@
 ﻿namespace Trains
 {
-    partial class SearchPassengers
+    partial class PsgSearch
     {
         /// <summary>
         /// Требуется переменная конструктора.
@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.byID = new System.Windows.Forms.RadioButton();
             this.byParams = new System.Windows.Forms.RadioButton();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.gBByID = new System.Windows.Forms.GroupBox();
             this.SearchID = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,15 +46,15 @@
             this.gBByParams.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonBack
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Назад";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonBack.Location = new System.Drawing.Point(12, 12);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(75, 23);
+            this.buttonBack.TabIndex = 0;
+            this.buttonBack.Text = "Назад";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // byID
             // 
@@ -83,15 +83,16 @@
             this.byParams.UseVisualStyleBackColor = true;
             this.byParams.CheckedChanged += new System.EventHandler(this.byID_CheckedChanged);
             // 
-            // button2
+            // buttonSearch
             // 
-            this.button2.Location = new System.Drawing.Point(234, 234);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Поиск";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonSearch.Enabled = false;
+            this.buttonSearch.Location = new System.Drawing.Point(234, 234);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.TabIndex = 3;
+            this.buttonSearch.Text = "Поиск";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.button2_Click);
             // 
             // gBByID
             // 
@@ -113,6 +114,7 @@
             this.SearchID.Name = "SearchID";
             this.SearchID.Size = new System.Drawing.Size(151, 26);
             this.SearchID.TabIndex = 1;
+            this.SearchID.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchID_KeyUp);
             // 
             // label1
             // 
@@ -187,7 +189,7 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Фамилия";
             // 
-            // SearchPassengers
+            // PsgSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -196,11 +198,11 @@
             this.Controls.Add(this.byID);
             this.Controls.Add(this.gBByParams);
             this.Controls.Add(this.gBByID);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Name = "SearchPassengers";
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.buttonBack);
+            this.Name = "PsgSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SearchPassengers";
+            this.Text = "Поиск пассажира (-ов)";
             this.gBByID.ResumeLayout(false);
             this.gBByID.PerformLayout();
             this.gBByParams.ResumeLayout(false);
@@ -212,10 +214,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.RadioButton byID;
         private System.Windows.Forms.RadioButton byParams;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.GroupBox gBByID;
         private System.Windows.Forms.GroupBox gBByParams;
         private System.Windows.Forms.Label label1;

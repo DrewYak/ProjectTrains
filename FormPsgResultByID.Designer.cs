@@ -1,6 +1,6 @@
 ﻿namespace Trains
 {
-    partial class ResultSearchPasByID
+    partial class PsgResultByID
     {
         /// <summary>
         /// Требуется переменная конструктора.
@@ -129,7 +129,7 @@
             this.ResultTicketType.TabIndex = 8;
             this.ResultTicketType.Text = "label8";
             // 
-            // ResultSearchPasByID
+            // PsgResultByID
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -143,9 +143,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.Name = "ResultSearchPasByID";
+            this.Name = "PsgResultByID";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ResultSearchPasByID";
+            this.Text = "Результаты поиска пассажира по номеру паспорта";
             this.Load += new System.EventHandler(this.ResultSearchPasByID_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

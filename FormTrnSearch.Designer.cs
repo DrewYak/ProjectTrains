@@ -1,6 +1,6 @@
 ﻿namespace Trains
 {
-    partial class SearchTrains
+    partial class TrnSearch
     {
         /// <summary>
         /// Требуется переменная конструктора.
@@ -169,7 +169,7 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // SearchTrains
+            // TrnSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -180,9 +180,9 @@
             this.Controls.Add(this.byNumber);
             this.Controls.Add(this.gBByNumber);
             this.Controls.Add(this.button1);
-            this.Name = "SearchTrains";
+            this.Name = "TrnSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SearchTrains";
+            this.Text = "Поиск поезда (-ов)";
             this.gBByNumber.ResumeLayout(false);
             this.gBByNumber.PerformLayout();
             this.gBByParams.ResumeLayout(false);

@@ -18,7 +18,7 @@ namespace Trains
 
         private void ButSearchTrain_Click(object sender, EventArgs e)
         {
-            SearchTrains STForm = new SearchTrains();
+            TrnSearch STForm    = new TrnSearch();
             STForm.PreviousForm = this;
             STForm.ShowDialog();
         }
@@ -35,9 +35,9 @@ namespace Trains
 
         private void ButSearchPas_Click(object sender, EventArgs e)
         {
-            SearchPassengers SPForm = new SearchPassengers();
-            SPForm.PreviousForm     = this;
-            SPForm.ShowDialog();
+            PsgSearch PsgSearchForm         = new PsgSearch();
+            PsgSearchForm.Owner             = this;
+            PsgSearchForm.ShowDialog();
         }
     }
 }

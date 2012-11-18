@@ -148,7 +148,7 @@
             this.MaximumSize = new System.Drawing.Size(837, 473);
             this.Name = "TrainsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Программная система \"Поезда и пассажиры\"";
             this.tablePanelWithButtons.ResumeLayout(false);
             this.ResumeLayout(false);
 

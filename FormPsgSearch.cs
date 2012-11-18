@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace Trains
 {
-    public partial class SearchPassengers : Form
+    public partial class PsgSearch : Form
     {
-        public SearchPassengers()
+        public PsgSearch()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -27,19 +27,21 @@ namespace Trains
             gBByParams.Enabled  = byParams.Checked;
         }
 
-        public Form PreviousForm { get; set;}
-
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (byID.Checked)
             {
-                ResultSearchPasByID FormResultPasByID = new ResultSearchPasByID();
+                PsgResultByID FormResultPasByID = new PsgResultByID();
                 FormResultPasByID.PreviousForm  = this;
                 FormResultPasByID.Owner         = this;
                 this.Visible                    = false;
                 FormResultPasByID.ShowDialog(); 
             }
+        }
+
+        private void SearchID_KeyUp(object sender, KeyEventArgs e)
+        {
+            buttonSearch.Enabled    = SearchID.MaskCompleted;
         }
     }
 }

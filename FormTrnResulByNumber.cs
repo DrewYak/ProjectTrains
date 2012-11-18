@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace Trains
 {
-    public partial class ResultSearchTrainByNumber : Form
+    public partial class TrnResultByNumber : Form
     {
 
         public Form PreviousForm { get; set;}
 
-        public ResultSearchTrainByNumber()
+        public TrnResultByNumber()
         {
             InitializeComponent();
         }

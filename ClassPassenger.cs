@@ -82,7 +82,7 @@ class Passenger
 
         XmlNodeList Pass = doc.GetElementsByTagName("Passenger");
 
-        for (int i = 0; i < Pass.Count; i++)
+        for (int i = 0, n=Pass.Count; i < n; i++)
         {
             Passenger ThePassenger = new Passenger();
 
