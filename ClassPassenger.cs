@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
+using System.Xml;
+
+
+namespace Trains
+{
 
 class Passenger
 {
@@ -8,6 +13,8 @@ class Passenger
     string _firstName;
     string _lastName;
     string _typeOfTicket;
+    
+    static Dictionary<int, Passenger> AllPassengers = new Dictionary<int, Passenger>();
 
     /// <summary>
     /// Инициализирует пассажира по номеру паспорта, имени, фамилии и типу билета.
@@ -18,14 +25,79 @@ class Passenger
     /// <param name="TypeOfTicket">Тип билета.</param>
     public Passenger(int ID, string FirstName, string LastName,  string TypeOfTicket)
     {
-        this.ID           = ID;
-        this.FirstName    = FirstName;
-        this.LastName     = LastName;
-        this.TypeOfTicket = TypeOfTicket;
+        this.ID             = ID;
+        this.FirstName      = FirstName;
+        this.LastName       = LastName;
+        this.TypeOfTicket   = TypeOfTicket;
     }
 
     /// <summary>
-    /// Возвращает номер паспорта
+    /// Инициализирует пассажира Иван Иванов
+    /// </summary>
+    public Passenger()
+    {
+        this.ID             = 9999;
+        this.FirstName      = "Иван" ;
+        this.LastName       = "Иванов";
+        this.TypeOfTicket   = "Плацкарт";
+    }
+
+    /// <summary>
+    /// Добавляет пассажиров в статический словарь AllPassengers.
+    /// </summary>
+    public void Add()
+    {
+        AllPassengers.Add(this.ID, this);
+    }
+
+    /// <summary>
+    /// Удаляет пассажира по номеру паспорта.
+    /// </summary>
+    /// <param name="ID">Номер паспорта</param>
+    public void Remove(int ID)
+    {
+        AllPassengers.Remove(this.ID);
+    }
+
+    /// <summary>
+    /// Возвращает пассажира из словаря по номеру паспорта.
+    /// </summary>
+    /// <param name="ID">Номер паспорта</param>
+    /// <returns></returns>
+    public static Passenger Search(int ID)
+    {
+        return AllPassengers[ID];
+    }
+
+    /// <summary>
+    /// Загружает данные из xml файла
+    /// </summary>
+    /// <param name="FileName"></param>
+   
+
+    public static void AddDataFromFile(string FileName)
+    {
+        XmlDocument doc = new XmlDocument();
+        doc.Load(FileName);//
+
+        XmlNodeList Pass = doc.GetElementsByTagName("Passenger");
+
+        for (int i = 0, n=Pass.Count; i < n; i++)
+        {
+            Passenger ThePassenger = new Passenger();
+
+            ThePassenger.ID             = Convert.ToInt32(Pass[i].FirstChild.InnerText);
+            ThePassenger.LastName       = Pass[i].FirstChild.NextSibling.InnerText;
+            ThePassenger.FirstName      = Pass[i].FirstChild.NextSibling.NextSibling.InnerText;
+            ThePassenger.TypeOfTicket   = Pass[i].FirstChild.NextSibling.NextSibling.NextSibling.InnerText;
+
+            ThePassenger.Add();
+        }
+    }
+
+
+    /// <summary>
+    /// Возвращает номер паспорта.
     /// </summary>
     public int ID
     {
@@ -95,4 +167,6 @@ class TestPassenger
         else
         { Assert.AreEqual(0, TPassenger.ID); }
     }
+}
+
 }
