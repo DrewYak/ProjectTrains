@@ -78,7 +78,7 @@ class Passenger
     public static void AddDataFromFile(string FileName)
     {
         XmlDocument doc = new XmlDocument();
-        doc.Load(FileName);
+        doc.Load(FileName);//
 
         XmlNodeList Pass = doc.GetElementsByTagName("Passenger");
 

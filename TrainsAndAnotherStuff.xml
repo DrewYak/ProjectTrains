@@ -15,7 +15,7 @@
   </Locations>
   <Trains>
     <Train>
-      <Number>1</Number> 
+      <Number>10</Number> 
       <TimeOfDeparuture>06:00</TimeOfDeparuture> 
       <TimeOfArrival>16:00</TimeOfArrival> 
       <Routes>

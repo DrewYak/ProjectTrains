@@ -53,9 +53,9 @@
             this.label2.Location = new System.Drawing.Point(13, 70);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 20);
+            this.label2.Size = new System.Drawing.Size(158, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Пункт отпраления";
+            this.label2.Text = "Пункт отправления";
             // 
             // label3
             // 
@@ -125,6 +125,7 @@
             this.Name = "TrnResultByNumber";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Результаты поиска поезда по его номеру";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TrnResultByNumber_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,9 +136,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label ResultNumber;
-        private System.Windows.Forms.Label ResultPlaceDepart;
-        private System.Windows.Forms.Label ResultPlaceArrive;
         private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Label ResultNumber;
+        public System.Windows.Forms.Label ResultPlaceDepart;
+        public System.Windows.Forms.Label ResultPlaceArrive;
     }
 }

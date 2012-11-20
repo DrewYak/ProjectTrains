@@ -32,7 +32,6 @@ namespace Trains
             if (byID.Checked)
             {
                 PsgResultByID FormResultPasByID = new PsgResultByID();
-                FormResultPasByID.PreviousForm  = this;
                 FormResultPasByID.Owner         = this;
                 this.Visible                    = false;
                 FormResultPasByID.ShowDialog(); 

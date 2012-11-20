@@ -39,10 +39,16 @@ namespace Trains
         {
             if (byNumber.Checked)
             {
-                TrnResultByNumber FormResultTrainByNumber = new TrnResultByNumber();
-                FormResultTrainByNumber.PreviousForm    = this;
-                this.Visible                            = false;
+                TrnResultByNumber FormResultTrainByNumber   = new TrnResultByNumber();
+                FormResultTrainByNumber.Owner               = this;
+                this.Visible                                = false;
+
+                Train Trn = Train.Search(Convert.ToInt32(MTBID.Text));
+                FormResultTrainByNumber.ResultNumber.Text       = Trn.Number.ToString();
+                FormResultTrainByNumber.ResultPlaceDepart.Text  = Trn.TimeOfDeparture;
+                FormResultTrainByNumber.ResultPlaceArrive.Text  = Trn.TimeOfArrival;
                 FormResultTrainByNumber.ShowDialog();
+
             }
         }
 

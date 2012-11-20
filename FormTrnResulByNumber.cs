@@ -21,8 +21,13 @@ namespace Trains
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.PreviousForm.Visible   = true;
+            this.Owner.Visible   = true;
             this.Close();
+        }
+
+        private void TrnResultByNumber_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Visible = true;
         }
     }
 }

@@ -30,7 +30,7 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.gBByNumber = new System.Windows.Forms.GroupBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.MTBID = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.byNumber = new System.Windows.Forms.RadioButton();
             this.gBByParams = new System.Windows.Forms.GroupBox();
@@ -56,7 +56,7 @@
             // 
             // gBByNumber
             // 
-            this.gBByNumber.Controls.Add(this.maskedTextBox1);
+            this.gBByNumber.Controls.Add(this.MTBID);
             this.gBByNumber.Controls.Add(this.label1);
             this.gBByNumber.Enabled = this.byNumber.Checked;
             this.gBByNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -66,14 +66,14 @@
             this.gBByNumber.TabIndex = 4;
             this.gBByNumber.TabStop = false;
             // 
-            // maskedTextBox1
+            // MTBID
             // 
-            this.maskedTextBox1.BeepOnError = true;
-            this.maskedTextBox1.Location = new System.Drawing.Point(181, 23);
-            this.maskedTextBox1.Mask = "00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(244, 26);
-            this.maskedTextBox1.TabIndex = 1;
+            this.MTBID.BeepOnError = true;
+            this.MTBID.Location = new System.Drawing.Point(181, 23);
+            this.MTBID.Mask = "00";
+            this.MTBID.Name = "MTBID";
+            this.MTBID.Size = new System.Drawing.Size(244, 26);
+            this.MTBID.TabIndex = 1;
             // 
             // label1
             // 
@@ -200,7 +200,7 @@
         private System.Windows.Forms.RadioButton byNumber;
         private System.Windows.Forms.RadioButton byParams;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox MTBID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox maskedTextBox3;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
