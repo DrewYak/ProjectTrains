@@ -64,6 +64,7 @@ class Passenger
 /// <summary>
 /// Класс с тестами для конструктора и свойств класса Passenger.
 /// </summary>
+[TestFixture]
 class TestPassenger
 {
     [Test]
