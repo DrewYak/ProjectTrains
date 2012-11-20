@@ -58,6 +58,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormErrorLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormErrorLoad.Designer.cs">
+      <DependentUpon>FormErrorLoad.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPsgResultByID.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormErrorLoad.resx">
+      <DependentUpon>FormErrorLoad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -131,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\3416_devushka-ili-starukha.jpg" />
+    <Content Include="MainData.xml" />
     <Content Include="TrainsAndAnotherStuff.xml">
       <SubType>Designer</SubType>
     </Content>

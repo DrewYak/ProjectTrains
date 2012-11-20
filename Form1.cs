@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Trains
 {
@@ -18,10 +19,25 @@ namespace Trains
 
         private void button1_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
-            string FileName = openFileDialog1.FileName;
-            Passenger.AddDataFromFile(FileName);
-            Train.AddDataFromFile(FileName);
+            try
+            {
+                openFileDialog1.ShowDialog();
+                string FileName = openFileDialog1.FileName;
+            
+                Passenger.AddDataFromFile(FileName);
+                Train.AddDataFromFile(FileName);
+
+                FormErrorLoad FormErr   = new FormErrorLoad();
+                FormErr.label1.Text     = "Загрузка данных из файла успешно завершена.";
+                FormErr.label2.Text     = "";
+                FormErr.ShowDialog();
+            }
+            catch (XmlException)
+            {
+                FormErrorLoad FormErr = new FormErrorLoad();
+                FormErr.ShowDialog();
+            }
+
         }
     }
 }
