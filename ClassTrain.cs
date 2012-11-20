@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Xml;
 
 class Train
 { 
@@ -7,6 +9,8 @@ class Train
     public string _timeOfDeparture;
     public string _timeOfArrival;
     public Route  _theRoute;
+
+    static Dictionary<int, Train> AllTrains = new Dictionary<int, Train>();
 
     /// <summary>
     /// Создание объекта по номеру, кол-ву пассажиров, времени отправления и прибытия, маршруту.
@@ -23,6 +27,83 @@ class Train
         this.TimeOfDeparture    = TimeOfDeparture;
         this.TimeOfArrival      = TimeOfArrival;
         this.TheRoute           = TheRoute;
+    }
+
+    /// <summary>
+    /// Создание объекта номер 9999
+    /// </summary>
+    public Train()
+    {
+        this.Number = 9999;
+        this.CountOfPas = 0;
+        this.TimeOfDeparture = "06:00";
+        this.TimeOfArrival = "13:00";
+    }
+
+    /// <summary>
+    ///  Добавляет поезда в статический словарь AllTrains.
+    /// </summary>
+    public void Add()
+    {
+        try
+        {
+            AllTrains.Add(this.Number, this);
+        }
+        catch (ArgumentException)
+        {
+            Console.WriteLine("Поезд номер", Number, "уже существует");
+        }
+    }
+
+    /// <summary>
+    /// Удаляет поезд по его номеру.
+    /// </summary>
+    /// <param name="Number">Номер поезда</param>
+    public void Remove(int Number)
+    {
+        AllTrains.Remove(this.Number);
+    }
+
+    /// <summary>
+    /// Возвращает поезд из словаря по его номеру.
+    /// </summary>
+    /// <param name="Number">Номер поезда</param>
+    /// <returns></returns>
+    public static Train Search(int Number)
+    {
+        try
+        {
+            return AllTrains[Number];
+        }
+        catch (KeyNotFoundException)
+        {
+            Console.WriteLine("Поезд номер", Number, "не найден");
+            return (new Train(0, 0, "b", "c", new Route("Москва", "Сочи")));
+        }
+        
+    }
+
+    /// <summary>
+    /// Добавляет данные из XML-файла в статический словарь AllTrains класса Train.
+    /// </summary>
+    /// <param name="FileName">Путь к XML-файлу</param>
+    public static void AddDataFromFile(string FileName)
+    {
+        XmlDocument doc = new XmlDocument();
+        doc.Load(FileName);
+
+        XmlNodeList Trns = doc.GetElementsByTagName("Train");
+
+        for (int i = 0; i < Trns.Count; i++)
+        {
+            Train TheTrain = new Train();
+
+            TheTrain.Number = Convert.ToInt32(Trns[i].FirstChild.InnerText);
+            TheTrain.TimeOfDeparture = Trns[i].FirstChild.NextSibling.InnerText;
+            TheTrain.TimeOfArrival = Trns[i].FirstChild.NextSibling.NextSibling.InnerText;
+
+            TheTrain.Add();
+        }
     }
 
     /// <summary>

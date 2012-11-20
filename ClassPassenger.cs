@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
+using System.Xml;
 
 class Passenger
 {
@@ -9,6 +10,8 @@ class Passenger
     string _lastName;
     string _typeOfTicket;
 
+    static Dictionary<int, Passenger> AllPassengers = new Dictionary<int, Passenger>();
+
     /// <summary>
     /// Инициализирует пассажира по номеру паспорта, имени, фамилии и типу билета.
     /// </summary>
@@ -16,12 +19,91 @@ class Passenger
     /// <param name="FirstName">Имя.</param>
     /// <param name="LastName">Фамилия.</param>
     /// <param name="TypeOfTicket">Тип билета.</param>
-    public Passenger(int ID, string FirstName, string LastName,  string TypeOfTicket)
+    public Passenger(int ID, string FirstName, string LastName, string TypeOfTicket)
     {
-        this.ID           = ID;
-        this.FirstName    = FirstName;
-        this.LastName     = LastName;
-        this.TypeOfTicket = TypeOfTicket;
+        this.ID             = ID;
+        this.FirstName      = FirstName;
+        this.LastName       = LastName;
+        this.TypeOfTicket   = TypeOfTicket;
+    }
+    /// <summary>
+    /// Инициализирует пассажира Иван Иванов
+    /// </summary>
+    public Passenger()
+    {
+        this.ID             = 9999;
+        this.FirstName      = "Иван" ;
+        this.LastName       = "Иванов";
+        this.TypeOfTicket   = "Плацкарт";
+    }
+
+    /// <summary>
+    /// Добавляет пассажиров в статический словарь AllPassengers.
+    /// </summary>
+    public void Add()
+    {
+        try
+        {
+            AllPassengers.Add(this.ID, this);
+        }
+        catch (ArgumentException)
+        {
+            Console.WriteLine("Пассажир с номером паспорта", ID, "уже существует");
+        }
+    }
+
+    /// <summary>
+    /// Удаляет пассажира по номеру паспорта.
+    /// </summary>
+    /// <param name="ID">Номер паспорта</param>
+    public void Remove(int ID)
+    {
+        AllPassengers.Remove(this.ID);
+    }
+
+    /// <summary>
+    /// Возвращает пассажира из словаря по номеру паспорта.
+    /// </summary>
+    /// <param name="ID">Номер паспорта</param>
+    /// <returns></returns>
+    public static Passenger Search(int ID)
+    {
+        try
+        {
+            return AllPassengers[ID];
+        }
+        catch (KeyNotFoundException)
+        {
+            Console.WriteLine("Пассажир с номером паспорта", ID, "не найден");
+            return (new Passenger(0,"a","b","c"));
+        }
+
+    }
+
+    /// <summary>
+    /// Загружает данные из xml файла
+    /// </summary>
+    /// <param name="FileName"></param>
+   
+
+    public static void AddDataFromFile(string FileName)
+    {
+        XmlDocument doc = new XmlDocument();
+        doc.Load(FileName);
+
+        XmlNodeList Pass = doc.GetElementsByTagName("Passenger");
+
+        for (int i = 0; i < Pass.Count; i++)
+        {
+            Passenger ThePassenger = new Passenger();
+
+            ThePassenger.ID             = Convert.ToInt32(Pass[i].FirstChild.InnerText);
+            ThePassenger.LastName       = Pass[i].FirstChild.NextSibling.InnerText;
+            ThePassenger.FirstName      = Pass[i].FirstChild.NextSibling.NextSibling.InnerText;
+            ThePassenger.TypeOfTicket   = Pass[i].FirstChild.NextSibling.NextSibling.NextSibling.InnerText;
+
+            ThePassenger.Add();
+        }
     }
 
     /// <summary>
