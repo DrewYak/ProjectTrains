@@ -28,16 +28,16 @@ namespace Trains
                 Passenger.AddDataFromFile(FileName);
                 Train.AddDataFromFile(FileName);
 
-                FormErrorLoad FormErr   = new FormErrorLoad();
-                FormErr.label1.Text     = "Загрузка данных из файла успешно завершена.";
-                FormErr.label2.Text     = "";
-                FormErr.ShowDialog();
+                FormMessage Message         = new FormMessage();
+                Message.messageLabel.Text   = "Загрузка данных из файла успешно завершена." + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+                Message.ShowDialog();
             }
             
             catch (XmlException)
             {
-                FormErrorLoad FormErr = new FormErrorLoad();
-                FormErr.ShowDialog();
+                FormMessage Message         = new FormMessage();
+                Message.messageLabel.Text   = "Формат выбранного файла неверный!";
+                Message.ShowDialog();
             }
 
             catch (FileNotFoundException)
@@ -46,8 +46,6 @@ namespace Trains
                 Message.messageLabel.Text   = "Файлы не были загружены.";
                 Message.ShowDialog();
             }
-
-
         }
     }
 }
