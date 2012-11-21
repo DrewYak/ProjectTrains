@@ -1,6 +1,6 @@
 namespace Trains
 {
-    partial class TrainsForm
+    partial class FormTrains
     {
         /// <summary>
         /// Требуется переменная конструктора.

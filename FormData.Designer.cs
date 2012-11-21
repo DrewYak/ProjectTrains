@@ -54,6 +54,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "MainData.xml";
+            this.openFileDialog1.Filter = "Файлы данных (*.xml)|*.xml";
             // 
             // tableLayoutPanel1
             // 

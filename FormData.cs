@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
+using System.IO;
 
 namespace Trains
 {
@@ -32,11 +33,20 @@ namespace Trains
                 FormErr.label2.Text     = "";
                 FormErr.ShowDialog();
             }
+            
             catch (XmlException)
             {
                 FormErrorLoad FormErr = new FormErrorLoad();
                 FormErr.ShowDialog();
             }
+
+            catch (FileNotFoundException)
+            {
+                FormMessage Message         = new FormMessage();
+                Message.messageLabel.Text   = "Файлы не были загружены.";
+                Message.ShowDialog();
+            }
+
 
         }
     }
