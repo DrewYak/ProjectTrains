@@ -31,10 +31,20 @@ namespace Trains
         {
             if (byID.Checked)
             {
-                PsgResultByID FormResultPasByID = new PsgResultByID();
-                FormResultPasByID.Owner         = this;
-                this.Visible                    = false;
-                FormResultPasByID.ShowDialog(); 
+                try 
+                {
+                    PsgResultByID FormResultPasByID = new PsgResultByID();
+                    FormResultPasByID.Owner         = this;
+                    this.Visible                    = false;
+                    FormResultPasByID.ShowDialog(); 
+                }
+                catch (KeyNotFoundException)
+                {
+                    FormErrorLoad FormErr   = new FormErrorLoad();
+                    FormErr.label1.Text     = "Поиск не дал результатов.";
+                    FormErr.label2.Text     = "Пассажир с номером паспорта " + this.SearchID.Text + " не найден.";
+                    FormErr.ShowDialog();
+                }
             }
         }
 

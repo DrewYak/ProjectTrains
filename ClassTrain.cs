@@ -181,19 +181,3 @@ namespace Trains
         }
     }
 }
-/*
-[TestFixture]
-
-class TrainTest 
-{
-    [Test]
-    public static void firstmethod()
-    {
-        Train T = new Train(12, 20, "12:30", "15:50");
-        Assert.AreEqual(12, T.Number) ;// утверждение
-        Assert.AreEqual(20, T.CountOfPas);
-        Assert.AreEqual("12:30", T.TimeOfDeparture);
-        Assert.AreEqual("15:50", T.TimeOfArrival);
-    }
-}
-*/

@@ -25,8 +25,9 @@ namespace Trains
 
         private void butData_Click(object sender, EventArgs e)
         {
-           // Passenger.AddDataFromFile("TrainsAndAnotherStuff.xml");
-            Train.AddDataFromFile("TrainsAndAnotherStuff.xml");
+            FormLoad FLoad  = new FormLoad();
+            FLoad.Owner     = this;
+            FLoad.ShowDialog();
         }
 
         private void butGraphic_Click(object sender, EventArgs e)
