@@ -3,177 +3,169 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using System.Xml;
 
-class Passenger
+
+namespace Trains
 {
-    int    _id;
-    string _firstName;
-    string _lastName;
-    string _typeOfTicket;
-
-    static Dictionary<int, Passenger> AllPassengers = new Dictionary<int, Passenger>();
-
-    /// <summary>
-    /// Инициализирует пассажира по номеру паспорта, имени, фамилии и типу билета.
-    /// </summary>
-    /// <param name="ID">Номер паспорта.</param>
-    /// <param name="FirstName">Имя.</param>
-    /// <param name="LastName">Фамилия.</param>
-    /// <param name="TypeOfTicket">Тип билета.</param>
-    public Passenger(int ID, string FirstName, string LastName, string TypeOfTicket)
+    class Passenger
     {
-        this.ID             = ID;
-        this.FirstName      = FirstName;
-        this.LastName       = LastName;
-        this.TypeOfTicket   = TypeOfTicket;
-    }
-    /// <summary>
-    /// Инициализирует пассажира Иван Иванов
-    /// </summary>
-    public Passenger()
-    {
-        this.ID             = 9999;
-        this.FirstName      = "Иван" ;
-        this.LastName       = "Иванов";
-        this.TypeOfTicket   = "Плацкарт";
-    }
+        int    _id;
+        string _firstName;
+        string _lastName;
+        string _typeOfTicket;
+    
+        static Dictionary<int, Passenger> AllPassengers = new Dictionary<int, Passenger>();
 
-    /// <summary>
-    /// Добавляет пассажиров в статический словарь AllPassengers.
-    /// </summary>
-    public void Add()
-    {
-        try
+        /// <summary>
+        /// Инициализирует пассажира по номеру паспорта, имени, фамилии и типу билета.
+        /// </summary>
+        /// <param name="ID">Номер паспорта.</param>
+        /// <param name="FirstName">Имя.</param>
+        /// <param name="LastName">Фамилия.</param>
+        /// <param name="TypeOfTicket">Тип билета.</param>
+        public Passenger(int ID, string FirstName, string LastName,  string TypeOfTicket)
+        {
+            this.ID             = ID;
+            this.FirstName      = FirstName;
+            this.LastName       = LastName;
+            this.TypeOfTicket   = TypeOfTicket;
+        }
+
+        /// <summary>
+        /// Инициализирует пассажира Иван Иванов
+        /// </summary>
+        public Passenger()
+        {
+            this.ID             = 9999;
+            this.FirstName      = "Иван" ;
+            this.LastName       = "Иванов";
+            this.TypeOfTicket   = "Плацкарт";
+        }
+
+        /// <summary>
+        /// Добавляет пассажиров в статический словарь AllPassengers.
+        /// </summary>
+        public void Add()
         {
             AllPassengers.Add(this.ID, this);
         }
-        catch (ArgumentException)
+
+        /// <summary>
+        /// Удаляет пассажира по номеру паспорта.
+        /// </summary>
+        /// <param name="ID">Номер паспорта</param>
+        public void Remove(int ID)
         {
-            Console.WriteLine("Пассажир с номером паспорта", ID, "уже существует");
+            AllPassengers.Remove(this.ID);
         }
-    }
 
-    /// <summary>
-    /// Удаляет пассажира по номеру паспорта.
-    /// </summary>
-    /// <param name="ID">Номер паспорта</param>
-    public void Remove(int ID)
-    {
-        AllPassengers.Remove(this.ID);
-    }
-
-    /// <summary>
-    /// Возвращает пассажира из словаря по номеру паспорта.
-    /// </summary>
-    /// <param name="ID">Номер паспорта</param>
-    /// <returns></returns>
-    public static Passenger Search(int ID)
-    {
-        try
+        /// <summary>
+        /// Возвращает пассажира из словаря по номеру паспорта.
+        /// </summary>
+        /// <param name="ID">Номер паспорта</param>
+        /// <returns></returns>
+        public static Passenger Search(int ID)
         {
             return AllPassengers[ID];
         }
-        catch (KeyNotFoundException)
-        {
-            Console.WriteLine("Пассажир с номером паспорта", ID, "не найден");
-            return (new Passenger(0,"a","b","c"));
-        }
 
-    }
-
-    /// <summary>
-    /// Загружает данные из xml файла
-    /// </summary>
-    /// <param name="FileName"></param>
+        /// <summary>
+        /// Загружает данные из xml файла
+        /// </summary>
+        /// <param name="FileName"></param>
    
 
-    public static void AddDataFromFile(string FileName)
-    {
-        XmlDocument doc = new XmlDocument();
-        doc.Load(FileName);
-
-        XmlNodeList Pass = doc.GetElementsByTagName("Passenger");
-
-        for (int i = 0; i < Pass.Count; i++)
+        public static void AddDataFromFile(string FileName)
         {
-            Passenger ThePassenger = new Passenger();
+            XmlDocument doc = new XmlDocument();
+            doc.Load(FileName);//
 
-            ThePassenger.ID             = Convert.ToInt32(Pass[i].FirstChild.InnerText);
-            ThePassenger.LastName       = Pass[i].FirstChild.NextSibling.InnerText;
-            ThePassenger.FirstName      = Pass[i].FirstChild.NextSibling.NextSibling.InnerText;
-            ThePassenger.TypeOfTicket   = Pass[i].FirstChild.NextSibling.NextSibling.NextSibling.InnerText;
+            XmlNodeList Pass = doc.GetElementsByTagName("Passenger");
 
-            ThePassenger.Add();
+            for (int i = 0, n=Pass.Count; i < n; i++)
+            {
+                Passenger ThePassenger = new Passenger();
+
+                ThePassenger.ID             = Convert.ToInt32(Pass[i].FirstChild.InnerText);
+                ThePassenger.LastName       = Pass[i].FirstChild.NextSibling.InnerText;
+                ThePassenger.FirstName      = Pass[i].FirstChild.NextSibling.NextSibling.InnerText;
+                ThePassenger.TypeOfTicket   = Pass[i].FirstChild.NextSibling.NextSibling.NextSibling.InnerText;
+
+                ThePassenger.Add();
+            }
+        }
+
+
+        /// <summary>
+        /// Возвращает номер паспорта.
+        /// </summary>
+        public int ID
+        {
+            get { return _id; }
+            set { if ((value >= 1000) && (value <= 9999)) _id = value; }
+        }
+
+        /// <summary>
+        /// Возвращает имя пассажира.
+        /// </summary>
+        public string FirstName
+        {  
+            get { return _firstName; }
+            set { if (value.Length != 0) _firstName = value; }
+        }
+
+        /// <summary>
+        /// Возвращает фамилию пассажира.
+        /// </summary>
+        public string LastName
+        {  
+            get { return _lastName; }
+            set { if (value.Length != 0) _lastName = value; }
+        }
+
+        /// <summary>
+        /// Возвращает тип билета.
+        /// </summary>
+        public string TypeOfTicket
+        {  
+            get { return _typeOfTicket; }
+            set { if (value.Length != 0) _typeOfTicket = value; }
         }
     }
 
     /// <summary>
-    /// Возвращает номер паспорта
+    /// Класс с тестами для конструктора и свойств класса Passenger.
     /// </summary>
-    public int ID
+    [TestFixture]
+    class TestPassenger
     {
-        get { return _id; }
-        set { if ((value >= 1000) && (value <= 9999)) _id = value; }
-    }
+        [Test]
+        public static void TPassengerConstructor([Random(1000, 2000, 50)]                       int TNumber, 
+                                                 [Values("Алёшина", "Румянцева", "Трофименко")] string TFirstName,
+                                                 [Values("Анастасия", "Ксения", "Дарья")]       string TLastName,
+                                                 [Values("Плацкарт", "Купе")]                   string TType)
+        {
+            Passenger TPassenger = new Passenger(TNumber, TFirstName, TLastName, TType);
+        
+            Assert.IsInstanceOf<Passenger>(TPassenger);
+            Assert.AreEqual(TNumber, TPassenger.ID);
+            Assert.AreEqual(TFirstName, TPassenger.FirstName);
+            Assert.AreEqual(TLastName, TPassenger.LastName);
+            Assert.AreEqual(TType, TPassenger.TypeOfTicket);
+        }
 
-    /// <summary>
-    /// Возвращает имя пассажира.
-    /// </summary>
-    public string FirstName
-    {  
-        get { return _firstName; }
-        set { if (value.Length != 0) _firstName = value; }
-    }
-
-    /// <summary>
-    /// Возвращает фамилию пассажира.
-    /// </summary>
-    public string LastName
-    {  
-        get { return _lastName; }
-        set { if (value.Length != 0) _lastName = value; }
-    }
-
-    /// <summary>
-    /// Возвращает тип билета.
-    /// </summary>
-    public string TypeOfTicket
-    {  
-        get { return _typeOfTicket; }
-        set { if (value.Length != 0) _typeOfTicket = value; }
-    }
-}
-
-/// <summary>
-/// Класс с тестами для конструктора и свойств класса Passenger.
-/// </summary>
-class TestPassenger
-{
-    [Test]
-    public static void TPassengerConstructor([Random(1000, 2000, 50)]                       int TNumber, 
+        [Test]
+        public static void TPassengerPropety([Random(-1000, 11000, 100)]                    int TNumber, 
                                              [Values("Алёшина", "Румянцева", "Трофименко")] string TFirstName,
                                              [Values("Анастасия", "Ксения", "Дарья")]       string TLastName,
                                              [Values("Плацкарт", "Купе")]                   string TType)
-    {
-        Passenger TPassenger = new Passenger(TNumber, TFirstName, TLastName, TType);
+        {
+            Passenger TPassenger = new Passenger(TNumber, TFirstName, TLastName, TType);
         
-        Assert.IsInstanceOf<Passenger>(TPassenger);
-        Assert.AreEqual(TNumber, TPassenger.ID);
-        Assert.AreEqual(TFirstName, TPassenger.FirstName);
-        Assert.AreEqual(TLastName, TPassenger.LastName);
-        Assert.AreEqual(TType, TPassenger.TypeOfTicket);
+            if ((TNumber >= 1000) && (TNumber <=9999))
+            { Assert.AreEqual(TNumber, TPassenger.ID); }
+            else
+            { Assert.AreEqual(0, TPassenger.ID); }
+        }
     }
 
-    [Test]
-    public static void TPassengerPropety([Random(-1000, 11000, 100)]                    int TNumber, 
-                                         [Values("Алёшина", "Румянцева", "Трофименко")] string TFirstName,
-                                         [Values("Анастасия", "Ксения", "Дарья")]       string TLastName,
-                                         [Values("Плацкарт", "Купе")]                   string TType)
-    {
-        Passenger TPassenger = new Passenger(TNumber, TFirstName, TLastName, TType);
-        
-        if ((TNumber >= 1000) && (TNumber <=9999))
-        { Assert.AreEqual(TNumber, TPassenger.ID); }
-        else
-        { Assert.AreEqual(0, TPassenger.ID); }
-    }
 }

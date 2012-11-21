@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -32,9 +33,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
+    <Reference Include="nunit.framework, Version=2.6.1.12217, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,6 +52,30 @@
     <Compile Include="ClassRoute.cs" />
     <Compile Include="ClassTest.cs" />
     <Compile Include="ClassTrain.cs" />
+    <Compile Include="FormPsgResultByID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPsgResultByID.Designer.cs">
+      <DependentUpon>FormPsgResultByID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTrnResulByNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTrnResulByNumber.Designer.cs">
+      <DependentUpon>FormTrnResulByNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPsgSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPsgSearch.Designer.cs">
+      <DependentUpon>FormPsgSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTrnSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTrnSearch.Designer.cs">
+      <DependentUpon>FormTrnSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrainsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +95,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="FormPsgResultByID.resx">
+      <DependentUpon>FormPsgResultByID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTrnResulByNumber.resx">
+      <DependentUpon>FormTrnResulByNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPsgSearch.resx">
+      <DependentUpon>FormPsgSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTrnSearch.resx">
+      <DependentUpon>FormTrnSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainsForm.resx">
+      <DependentUpon>TrainsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,6 +119,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3416_devushka-ili-starukha.jpg" />
+    <Content Include="TrainsAndAnotherStuff.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
