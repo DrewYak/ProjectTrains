@@ -44,7 +44,7 @@ namespace Trains
                     FormErr.label1.Text     = "Поиск не дал результатов.";
                     FormErr.label2.Text     = "Пассажир с номером паспорта " + this.SearchID.Text + " не найден.";
                     FormErr.ShowDialog();
-                }
+                                    }
             }
         }
 
