@@ -1,6 +1,6 @@
 ﻿namespace Trains
 {
-    partial class FormLoad
+    partial class FormData
     {
         /// <summary>
         /// Required designer variable.

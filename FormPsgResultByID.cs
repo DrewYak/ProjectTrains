@@ -33,7 +33,7 @@ namespace Trains
             ResultID        .Text   = Pas.ID.ToString();
             ResultLName     .Text   = Pas.LastName;
             ResultFName     .Text   = Pas.FirstName;
-            ResultTicketType.Text   = Pas.TypeOfTicket;
+            ResultTicketType.Text   = Pas.Tickets[0].Type;
         }
 
         private void ResultSearchPasByID_Load(object sender, EventArgs e)

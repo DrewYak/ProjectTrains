@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using System.Xml;
 
-
 namespace Trains
 {
     class Ticket
     {
         /// <summary>
-        /// Инициализирует билет по номеру поезда и типа билета
+        /// Инициализирует билет по номеру поезда и типу билета.
         /// </summary>
-        /// <param name="Number"> Номер поезда.</param>
+        /// <param name="Number">Номер поезда.</param>
         /// <param name="Type">Тип билета.</param>
         public Ticket(int Number, string Type)
         {
@@ -19,10 +18,8 @@ namespace Trains
             this.Type   = Type;
         }
 
-
-
         /// <summary>
-        ///Возвращает номер поезда.
+        ///Возвращает номер поезда, указанного в билете.
         /// </summary>
         public int      Number  { get; set; }
 
@@ -37,11 +34,8 @@ namespace Trains
         int    _id;
         string _firstName;
         string _lastName;
-        List Ticket;
     
         static Dictionary<int, Passenger> AllPassengers = new Dictionary<int, Passenger>();
-
-        List<Ticket> Tickets = new List<Ticket>;
 
         /// <summary>
         /// Инициализирует пассажира по номеру паспорта, имени, фамилии и типу билета.
@@ -49,7 +43,6 @@ namespace Trains
         /// <param name="ID">Номер паспорта.</param>
         /// <param name="FirstName">Имя.</param>
         /// <param name="LastName">Фамилия.</param>
-        /// <param name="TypeOfTicket">Тип билета.</param>
         public Passenger(int ID, string FirstName, string LastName)
         {
             this.ID             = ID;
@@ -58,14 +51,21 @@ namespace Trains
         }
 
         /// <summary>
-        /// Инициализирует пассажира Иван Иванов
+        /// Инициализирует пассажира по номеру паспорта, имени, фамилии и билету.
         /// </summary>
-        public Passenger()
+        /// <param name="ID">Номер паспорта.</param>
+        /// <param name="FirstName">Имя.</param>
+        /// <param name="LastName">Фамилия.</param>
+        /// <param name="TheTicket">Билет.</param>
+        public Passenger(int ID, string FirstName, string LastName, Ticket TheTicket)
         {
-            this.ID             = 9999;
-            this.FirstName      = "Иван" ;
-            this.LastName       = "Иванов";
+            this.ID             = ID;
+            this.FirstName      = FirstName;
+            this.LastName       = LastName;
+            this.Tickets        = new List<Ticket>();
+            this.Tickets.Add(TheTicket);
         }
+
 
         /// <summary>
         /// Добавляет пассажиров в статический словарь AllPassengers.
@@ -97,25 +97,22 @@ namespace Trains
         /// <summary>
         /// Загружает данные из xml файла
         /// </summary>
-        /// <param name="FileName"></param>
-   
-
+        /// <param name="FileName">Имя XML-файла.</param>
         public static void AddDataFromFile(string FileName)
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load(FileName);//
+            doc.Load(FileName);
 
             XmlNodeList Pass = doc.GetElementsByTagName("Passenger");
 
             for (int i = 0, n=Pass.Count; i < n; i++)
             {
-                Passenger ThePassenger = new Passenger();
-
-                ThePassenger.ID             = Convert.ToInt32(Pass[i].FirstChild.InnerText);
-                ThePassenger.LastName       = Pass[i].FirstChild.NextSibling.InnerText;
-                ThePassenger.FirstName      = Pass[i].FirstChild.NextSibling.NextSibling.InnerText;
-                
-
+                int     ID             = Convert.ToInt32(Pass[i].SelectSingleNode("ID").InnerText);
+                string  LastName       = Pass[i].SelectSingleNode("LName").InnerText;
+                string  FirstName      = Pass[i].SelectSingleNode("FName").InnerText;
+                string  Type           = Pass[i].SelectSingleNode("TypeOfTicket").InnerText;
+                Ticket  TheTicket      = new Ticket(6666, Type);        
+                Passenger ThePassenger = new Passenger(ID, FirstName, LastName, TheTicket);
                 ThePassenger.Add();
             }
         }
@@ -148,9 +145,13 @@ namespace Trains
             set { if (value.Length != 0) _lastName = value; }
         }
 
-        
-    }
+        /// <summary>
+        /// Возвращает список билетов, имеющихся у пассажиров.
+        /// </summary>
+        public List<Ticket> Tickets { get; set; }
 
+    }
+    /*
     /// <summary>
     /// Класс с тестами для конструктора и свойств класса Passenger.
     /// </summary>
@@ -186,5 +187,6 @@ namespace Trains
             { Assert.AreEqual(0, TPassenger.ID); }
         }
     }
-
+    */
 }
+    

@@ -11,9 +11,9 @@ using System.IO;
 
 namespace Trains
 {
-    public partial class FormLoad : Form
+    public partial class FormData : Form
     {
-        public FormLoad()
+        public FormData()
         {
             InitializeComponent();
         }
@@ -25,11 +25,11 @@ namespace Trains
                 openFileDialog1.ShowDialog();
                 string FileName = openFileDialog1.FileName;
             
-                Passenger.AddDataFromFile(FileName);
-                Train.AddDataFromFile(FileName);
+                Passenger.  AddDataFromFile(FileName);
+                Train.      AddDataFromFile(FileName);
 
                 FormMessage Message         = new FormMessage();
-                Message.messageLabel.Text   = "Загрузка данных из файла успешно завершена." + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+                Message.messageLabel.Text   = "Загрузка данных из файла успешно завершена.";
                 Message.ShowDialog();
             }
             

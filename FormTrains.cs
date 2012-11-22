@@ -25,7 +25,7 @@ namespace Trains
 
         private void butData_Click(object sender, EventArgs e)
         {
-            FormLoad FLoad  = new FormLoad();
+            FormData FLoad  = new FormData();
             FLoad.Owner     = this;
             FLoad.ShowDialog();
         }
