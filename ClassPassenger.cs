@@ -6,14 +6,33 @@ using System.Xml;
 
 namespace Trains
 {
+    class Ticket
+    {
+        /// <summary>
+        /// Инициализирует билет по номеру поезда и типа билета
+        /// </summary>
+        /// <param name="Number"> </param>
+        /// <param name="Type"></param>
+        public Ticket(int Number, string Type)
+        {
+            this.Number = Number;
+            this.Type   = Type;
+        }
+
+        public int      Number  { get; set; }
+        public string   Type    { get; set; }
+    }
+
     class Passenger
     {
         int    _id;
         string _firstName;
         string _lastName;
-        string _typeOfTicket;
+        List Ticket;
     
         static Dictionary<int, Passenger> AllPassengers = new Dictionary<int, Passenger>();
+
+        List<Ticket> Tickets = new List<Ticket>;
 
         /// <summary>
         /// Инициализирует пассажира по номеру паспорта, имени, фамилии и типу билета.
@@ -22,12 +41,11 @@ namespace Trains
         /// <param name="FirstName">Имя.</param>
         /// <param name="LastName">Фамилия.</param>
         /// <param name="TypeOfTicket">Тип билета.</param>
-        public Passenger(int ID, string FirstName, string LastName,  string TypeOfTicket)
+        public Passenger(int ID, string FirstName, string LastName)
         {
             this.ID             = ID;
             this.FirstName      = FirstName;
             this.LastName       = LastName;
-            this.TypeOfTicket   = TypeOfTicket;
         }
 
         /// <summary>
@@ -38,7 +56,6 @@ namespace Trains
             this.ID             = 9999;
             this.FirstName      = "Иван" ;
             this.LastName       = "Иванов";
-            this.TypeOfTicket   = "Плацкарт";
         }
 
         /// <summary>
@@ -88,7 +105,7 @@ namespace Trains
                 ThePassenger.ID             = Convert.ToInt32(Pass[i].FirstChild.InnerText);
                 ThePassenger.LastName       = Pass[i].FirstChild.NextSibling.InnerText;
                 ThePassenger.FirstName      = Pass[i].FirstChild.NextSibling.NextSibling.InnerText;
-                ThePassenger.TypeOfTicket   = Pass[i].FirstChild.NextSibling.NextSibling.NextSibling.InnerText;
+                
 
                 ThePassenger.Add();
             }
@@ -122,14 +139,7 @@ namespace Trains
             set { if (value.Length != 0) _lastName = value; }
         }
 
-        /// <summary>
-        /// Возвращает тип билета.
-        /// </summary>
-        public string TypeOfTicket
-        {  
-            get { return _typeOfTicket; }
-            set { if (value.Length != 0) _typeOfTicket = value; }
-        }
+        
     }
 
     /// <summary>
