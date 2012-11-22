@@ -11,15 +11,24 @@ namespace Trains
         /// <summary>
         /// Инициализирует билет по номеру поезда и типа билета
         /// </summary>
-        /// <param name="Number"> </param>
-        /// <param name="Type"></param>
+        /// <param name="Number"> Номер поезда.</param>
+        /// <param name="Type">Тип билета.</param>
         public Ticket(int Number, string Type)
         {
             this.Number = Number;
             this.Type   = Type;
         }
 
+
+
+        /// <summary>
+        ///Возвращает номер поезда.
+        /// </summary>
         public int      Number  { get; set; }
+
+        /// <summary>
+        /// Возвращает тип билета.
+        /// </summary>
         public string   Type    { get; set; }
     }
 
@@ -94,7 +103,7 @@ namespace Trains
         public static void AddDataFromFile(string FileName)
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load(FileName);
+            doc.Load(FileName);//
 
             XmlNodeList Pass = doc.GetElementsByTagName("Passenger");
 
