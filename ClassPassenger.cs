@@ -5,28 +5,28 @@ using System.Xml;
 
 namespace Trains
 {
-    class Ticket
+    struct Ticket
     {
+        /// <summary>
+        /// Номер поезда, указанный в билете.
+        /// </summary>
+        public int      Number;
+     
+        /// <summary>
+        /// Тип билета.
+        /// </summary>
+        public string   Type;
+
         /// <summary>
         /// Инициализирует билет по номеру поезда и типу билета.
         /// </summary>
         /// <param name="Number">Номер поезда.</param>
         /// <param name="Type">Тип билета.</param>
-        public Ticket(int Number, string Type)
+        public Ticket(int N, string T)
         {
-            this.Number = Number;
-            this.Type   = Type;
+            Number = N;
+            Type   = T;
         }
-
-        /// <summary>
-        ///Возвращает номер поезда, указанного в билете.
-        /// </summary>
-        public int      Number  { get; set; }
-
-        /// <summary>
-        /// Возвращает тип билета.
-        /// </summary>
-        public string   Type    { get; set; }
     }
 
     class Passenger
@@ -97,28 +97,75 @@ namespace Trains
         {
             return AllPassengers[ID];
         }
+        
+        /// <summary>
+        /// Добавляет данные о пассажире из узла XML-документа (предполагается, что из узла Passenger) в статический словарь AllPassengers. 
+        /// </summary>
+        /// <param name="Psg">Узел Passenger.</param>
+        /// <param name="NumberOfTrain">Номер поезда.</param>
+        private static void AddToDictFromNodePas(XmlNode Psg, int NumberOfTrain)
+        {
+            int         ID              = Convert.ToInt32(Psg.SelectSingleNode("ID").InnerText);
+            string      LastName        = Psg.SelectSingleNode("LName").InnerText;
+            string      FirstName       = Psg.SelectSingleNode("FName").InnerText;
+            string      Type            = Psg.SelectSingleNode("TypeOfTicket").InnerText;
+            Ticket      TheTicket       = new Ticket(NumberOfTrain, Type);        
+            Passenger   ThePassenger    = new Passenger(ID, FirstName, LastName, TheTicket);
+            ThePassenger.Add();
+        }
 
         /// <summary>
-        /// Загружает данные из XML-файла.
+        /// Извлекает номер поезда из узла XML-документа (предполагается, что из узла Train) и возвращает его.
         /// </summary>
-        /// <param name="FileName">Имя XML-файла.</param>
+        /// <param name="Trn">Узел XML-документа.</param>
+        /// <returns></returns>
+        private static int GetNumberOfTrainFromNodeTrain(XmlNode Trn)
+        {
+            return Convert.ToInt32(Trn.SelectSingleNode("Number").InnerText);
+        }
+
+        /// <summary>
+        /// Возвращает список узлов типа Passenger из узла типа Train.
+        /// </summary>
+        /// <param name="Trn">Узел XML-документа (Узел типа Train).</param>
+        private static XmlNodeList GetXmlNodeListOfPassengerFromNodeTrain(XmlNode Trn)
+        {
+            // Создаём временный узел TempNode. Все его дочерние узлы - это узлы типа Passenger 
+            XmlNode TempNode = Trn.SelectSingleNode("Passengers");
+
+            // Выбираем из временного узла TempNode все узлы типа Passenger и делаем из них
+            // XmlNodeList, после чего возвращаем этот список XML-узлов.
+            return  TempNode.SelectNodes("Passenger");
+        }
+
+        /// <summary>
+        /// Добавляет данные к статическим словарям AllTrains и AllPassengers из списка узлов типа Train.
+        /// </summary>
+        /// <param name="Trains">Список узлов типа Train.</param>
+        private static void AddDataFromXmlNodeListTrains(XmlNodeList Trains)
+        {
+            for (int j = 0, m = Trains.Count; j < m; j++)
+            {
+                int         NumberOfTrain   = GetNumberOfTrainFromNodeTrain(Trains[j]);            
+                XmlNodeList Pass            = GetXmlNodeListOfPassengerFromNodeTrain(Trains[j]);
+          
+                for (int i = 0, n = Pass.Count; i < n; i++)
+                {
+                    AddToDictFromNodePas(Pass[i], NumberOfTrain);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Загружает данные из XML-документа.
+        /// </summary>
+        /// <param name="FileName">Имя XML-документа.</param>
         public static void AddDataFromFile(string FileName)
         {
-            XmlDocument doc = new XmlDocument();
+            XmlDocument doc     = new XmlDocument();
             doc.Load(FileName);
-
-            XmlNodeList Pass = doc.GetElementsByTagName("Passenger");
-
-            for (int i = 0, n=Pass.Count; i < n; i++)
-            {
-                int     ID             = Convert.ToInt32(Pass[i].SelectSingleNode("ID").InnerText);
-                string  LastName       = Pass[i].SelectSingleNode("LName").InnerText;
-                string  FirstName      = Pass[i].SelectSingleNode("FName").InnerText;
-                string  Type           = Pass[i].SelectSingleNode("TypeOfTicket").InnerText;
-                Ticket  TheTicket      = new Ticket(6666, Type);        
-                Passenger ThePassenger = new Passenger(ID, FirstName, LastName, TheTicket);
-                ThePassenger.Add();
-            }
+            XmlNodeList Trains  = doc.GetElementsByTagName("Train");
+            AddDataFromXmlNodeListTrains(Trains);
         }
 
         /// <summary>
@@ -192,4 +239,3 @@ namespace Trains
     }
     */
 }
-    
