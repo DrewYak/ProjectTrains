@@ -81,16 +81,7 @@ namespace Trains
         /// <returns></returns>
         public static Train Search(int Number)
         {
-            try
-            {
-                return AllTrains[Number];
-            }
-            catch (KeyNotFoundException)
-            {
-                Console.WriteLine("Поезд номер", Number, "не найден");
-                return (new Train(0, 0, "b", "c", new Route("Москва", "Сочи")));
-            }
-
+            return AllTrains[Number];
         }
 
         /// <summary>

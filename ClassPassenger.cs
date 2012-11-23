@@ -34,9 +34,13 @@ namespace Trains
         int    _id;
         string _firstName;
         string _lastName;
-    
+
+        /// <summary>
+        /// Статический словарь, содержащий информацию обо всех пассажирах. Ключ - номер паспорта пассажира. Значение - ссылка на объект класса Passenger.
+        /// </summary>
         static Dictionary<int, Passenger> AllPassengers = new Dictionary<int, Passenger>();
 
+        
         /// <summary>
         /// Инициализирует пассажира по номеру паспорта, имени, фамилии и типу билета.
         /// </summary>
@@ -68,7 +72,7 @@ namespace Trains
 
 
         /// <summary>
-        /// Добавляет пассажиров в статический словарь AllPassengers.
+        /// Добавляет пассажира в статический словарь AllPassengers.
         /// </summary>
         public void Add()
         {
@@ -78,7 +82,7 @@ namespace Trains
         /// <summary>
         /// Удаляет пассажира по номеру паспорта.
         /// </summary>
-        /// <param name="ID">Номер паспорта</param>
+        /// <param name="ID">Номер паспорта.</param>
         public void Remove(int ID)
         {
             AllPassengers.Remove(this.ID);
@@ -87,15 +91,15 @@ namespace Trains
         /// <summary>
         /// Возвращает пассажира из словаря по номеру паспорта.
         /// </summary>
-        /// <param name="ID">Номер паспорта</param>
-        /// <returns></returns>
+        /// <param name="ID">Номер паспорта.</param>
+        /// <exception cref="KeyNotFoundException"></exception>
         public static Passenger Search(int ID)
         {
             return AllPassengers[ID];
         }
 
         /// <summary>
-        /// Загружает данные из xml файла
+        /// Загружает данные из XML-файла.
         /// </summary>
         /// <param name="FileName">Имя XML-файла.</param>
         public static void AddDataFromFile(string FileName)
@@ -116,7 +120,6 @@ namespace Trains
                 ThePassenger.Add();
             }
         }
-
 
         /// <summary>
         /// Возвращает номер паспорта.
@@ -146,7 +149,7 @@ namespace Trains
         }
 
         /// <summary>
-        /// Возвращает список билетов, имеющихся у пассажиров.
+        /// Возвращает список билетов, имеющихся у пассажира.
         /// </summary>
         public List<Ticket> Tickets { get; set; }
 

@@ -96,7 +96,7 @@
             this.byNumber.TabStop = true;
             this.byNumber.Text = "Поиск поезда по номеру";
             this.byNumber.UseVisualStyleBackColor = true;
-            this.byNumber.CheckedChanged += new System.EventHandler(this.byNumber_CheckedChanged);
+            this.byNumber.CheckedChanged += new System.EventHandler(this.CheckChange);
             // 
             // gBByParams
             // 
@@ -157,7 +157,7 @@
             this.byParams.TabStop = true;
             this.byParams.Text = "Поиск поезда по параметрам";
             this.byParams.UseVisualStyleBackColor = true;
-            this.byParams.CheckedChanged += new System.EventHandler(this.byNumber_CheckedChanged);
+            this.byParams.CheckedChanged += new System.EventHandler(this.CheckChange);
             // 
             // button2
             // 

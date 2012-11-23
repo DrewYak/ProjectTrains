@@ -19,7 +19,6 @@ namespace Trains
         private void ButSearchTrain_Click(object sender, EventArgs e)
         {
             TrnSearch STForm    = new TrnSearch();
-            STForm.PreviousForm = this;
             STForm.ShowDialog();
         }
 

@@ -125,7 +125,6 @@
             this.Name = "TrnResultByNumber";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Результаты поиска поезда по его номеру";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TrnResultByNumber_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

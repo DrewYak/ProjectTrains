@@ -24,10 +24,5 @@ namespace Trains
             this.Owner.Visible   = true;
             this.Close();
         }
-
-        private void TrnResultByNumber_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Owner.Visible = true;
-        }
     }
 }

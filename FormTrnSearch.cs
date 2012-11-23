@@ -21,36 +21,41 @@ namespace Trains
             this.Close();      
         }
 
-        public Form PreviousForm { get; set;}
-
-        private void byNumber_CheckedChanged(object sender, EventArgs e)
+        private void CheckChange(object sender, EventArgs e)
         {
             gBByNumber.Enabled  = byNumber.Checked;
             gBByParams.Enabled  = byParams.Checked;
         }
 
-        private void byParams_CheckedChanged(object sender, EventArgs e)
+        private void FillResultForm(TrnResultByNumber ResultForm, Train Trn)
         {
-            gBByNumber.Enabled  = byNumber.Checked;
-            gBByParams.Enabled  = byParams.Checked;
+            ResultForm.Owner                      = this;
+            ResultForm.ResultNumber        .Text  = Trn.Number.ToString();
+            ResultForm.ResultPlaceDepart   .Text  = Trn.TimeOfDeparture;
+            ResultForm.ResultPlaceArrive   .Text  = Trn.TimeOfArrival;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             if (byNumber.Checked)
             {
-                TrnResultByNumber FormResultTrainByNumber   = new TrnResultByNumber();
-                FormResultTrainByNumber.Owner               = this;
-                this.Visible                                = false;
+                try
+                {
+                    int     Number  = Convert.ToInt32(MTBID.Text);
+                    Train   Trn     = Train.Search(Number);
 
-                Train Trn = Train.Search(Convert.ToInt32(MTBID.Text));
-                FormResultTrainByNumber.ResultNumber.Text       = Trn.Number.ToString();
-                FormResultTrainByNumber.ResultPlaceDepart.Text  = Trn.TimeOfDeparture;
-                FormResultTrainByNumber.ResultPlaceArrive.Text  = Trn.TimeOfArrival;
-                FormResultTrainByNumber.ShowDialog();
+                    TrnResultByNumber ResultForm   = new TrnResultByNumber();
+                    FillResultForm(ResultForm, Trn);
+                    ResultForm.ShowDialog();
+                }
 
+                catch (KeyNotFoundException)
+                {
+                    FormMessage Message         = new FormMessage();
+                    Message.messageLabel.Text   = "Поиск не дал результатов.";
+                    Message.ShowDialog();
+                }
             }
         }
-
     }
 }

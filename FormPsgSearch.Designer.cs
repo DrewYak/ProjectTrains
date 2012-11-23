@@ -33,7 +33,7 @@
             this.byParams = new System.Windows.Forms.RadioButton();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.gBByID = new System.Windows.Forms.GroupBox();
-            this.SearchID = new System.Windows.Forms.MaskedTextBox();
+            this.MTextBoxID = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gBByParams = new System.Windows.Forms.GroupBox();
             this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
@@ -51,7 +51,7 @@
             this.buttonBack.Location = new System.Drawing.Point(12, 12);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
-            this.buttonBack.TabIndex = 0;
+            this.buttonBack.TabIndex = 6;
             this.buttonBack.Text = "Назад";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
@@ -65,7 +65,6 @@
             this.byID.Name = "byID";
             this.byID.Size = new System.Drawing.Size(228, 24);
             this.byID.TabIndex = 1;
-            this.byID.TabStop = true;
             this.byID.Text = "Поиск по номеру паспорта";
             this.byID.UseVisualStyleBackColor = true;
             this.byID.CheckedChanged += new System.EventHandler(this.byID_CheckedChanged);
@@ -77,8 +76,7 @@
             this.byParams.Location = new System.Drawing.Point(15, 105);
             this.byParams.Name = "byParams";
             this.byParams.Size = new System.Drawing.Size(251, 24);
-            this.byParams.TabIndex = 2;
-            this.byParams.TabStop = true;
+            this.byParams.TabIndex = 0;
             this.byParams.Text = "Поиск по другим параметрам";
             this.byParams.UseVisualStyleBackColor = true;
             this.byParams.CheckedChanged += new System.EventHandler(this.byID_CheckedChanged);
@@ -89,14 +87,14 @@
             this.buttonSearch.Location = new System.Drawing.Point(234, 234);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearch.TabIndex = 3;
+            this.buttonSearch.TabIndex = 5;
             this.buttonSearch.Text = "Поиск";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.button2_Click);
             // 
             // gBByID
             // 
-            this.gBByID.Controls.Add(this.SearchID);
+            this.gBByID.Controls.Add(this.MTextBoxID);
             this.gBByID.Controls.Add(this.label1);
             this.gBByID.Enabled = this.byID.Checked;
             this.gBByID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -106,15 +104,15 @@
             this.gBByID.TabIndex = 4;
             this.gBByID.TabStop = false;
             // 
-            // SearchID
+            // MTextBoxID
             // 
-            this.SearchID.BeepOnError = true;
-            this.SearchID.Location = new System.Drawing.Point(146, 20);
-            this.SearchID.Mask = "0000";
-            this.SearchID.Name = "SearchID";
-            this.SearchID.Size = new System.Drawing.Size(151, 26);
-            this.SearchID.TabIndex = 1;
-            this.SearchID.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchID_KeyUp);
+            this.MTextBoxID.BeepOnError = true;
+            this.MTextBoxID.Location = new System.Drawing.Point(146, 20);
+            this.MTextBoxID.Mask = "0000";
+            this.MTextBoxID.Name = "MTextBoxID";
+            this.MTextBoxID.Size = new System.Drawing.Size(151, 26);
+            this.MTextBoxID.TabIndex = 1;
+            this.MTextBoxID.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchID_KeyUp);
             // 
             // label1
             // 
@@ -153,14 +151,14 @@
             this.maskedTextBox2.Location = new System.Drawing.Point(146, 21);
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.Size = new System.Drawing.Size(151, 26);
-            this.maskedTextBox2.TabIndex = 3;
+            this.maskedTextBox2.TabIndex = 2;
             // 
             // maskedTextBox4
             // 
             this.maskedTextBox4.Location = new System.Drawing.Point(146, 53);
             this.maskedTextBox4.Name = "maskedTextBox4";
             this.maskedTextBox4.Size = new System.Drawing.Size(151, 26);
-            this.maskedTextBox4.TabIndex = 5;
+            this.maskedTextBox4.TabIndex = 3;
             // 
             // label4
             // 
@@ -227,6 +225,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox3;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox4;
-        public System.Windows.Forms.MaskedTextBox SearchID;
+        public System.Windows.Forms.MaskedTextBox MTextBoxID;
     }
 }

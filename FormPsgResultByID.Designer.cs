@@ -95,9 +95,9 @@
             this.ResultID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ResultID.Location = new System.Drawing.Point(152, 59);
             this.ResultID.Name = "ResultID";
-            this.ResultID.Size = new System.Drawing.Size(51, 20);
+            this.ResultID.Size = new System.Drawing.Size(72, 20);
             this.ResultID.TabIndex = 5;
-            this.ResultID.Text = "label5";
+            this.ResultID.Text = "ResultID";
             // 
             // ResultLName
             // 
@@ -105,9 +105,9 @@
             this.ResultLName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ResultLName.Location = new System.Drawing.Point(152, 79);
             this.ResultLName.Name = "ResultLName";
-            this.ResultLName.Size = new System.Drawing.Size(51, 20);
+            this.ResultLName.Size = new System.Drawing.Size(106, 20);
             this.ResultLName.TabIndex = 6;
-            this.ResultLName.Text = "label6";
+            this.ResultLName.Text = "ResultLName";
             // 
             // ResultFName
             // 
@@ -115,9 +115,9 @@
             this.ResultFName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ResultFName.Location = new System.Drawing.Point(152, 99);
             this.ResultFName.Name = "ResultFName";
-            this.ResultFName.Size = new System.Drawing.Size(51, 20);
+            this.ResultFName.Size = new System.Drawing.Size(107, 20);
             this.ResultFName.TabIndex = 7;
-            this.ResultFName.Text = "label7";
+            this.ResultFName.Text = "ResultFName";
             // 
             // ResultTicketType
             // 
@@ -125,9 +125,9 @@
             this.ResultTicketType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ResultTicketType.Location = new System.Drawing.Point(152, 119);
             this.ResultTicketType.Name = "ResultTicketType";
-            this.ResultTicketType.Size = new System.Drawing.Size(51, 20);
+            this.ResultTicketType.Size = new System.Drawing.Size(131, 20);
             this.ResultTicketType.TabIndex = 8;
-            this.ResultTicketType.Text = "label8";
+            this.ResultTicketType.Text = "ResultTicketType";
             // 
             // PsgResultByID
             // 
@@ -146,7 +146,6 @@
             this.Name = "PsgResultByID";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Результаты поиска пассажира по номеру паспорта";
-            this.Load += new System.EventHandler(this.ResultSearchPasByID_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,9 +158,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label ResultID;
-        private System.Windows.Forms.Label ResultLName;
-        private System.Windows.Forms.Label ResultFName;
-        private System.Windows.Forms.Label ResultTicketType;
+        public System.Windows.Forms.Label ResultID;
+        public System.Windows.Forms.Label ResultLName;
+        public System.Windows.Forms.Label ResultFName;
+        public System.Windows.Forms.Label ResultTicketType;
     }
 }

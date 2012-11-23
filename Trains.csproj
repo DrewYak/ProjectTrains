@@ -149,7 +149,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\3416_devushka-ili-starukha.jpg" />
-    <Content Include="MainData.xml" />
+    <Content Include="MainData.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="TrainsAndAnotherStuff.xml">
       <SubType>Designer</SubType>
     </Content>

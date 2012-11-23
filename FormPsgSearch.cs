@@ -27,30 +27,46 @@ namespace Trains
             gBByParams.Enabled  = byParams.Checked;
         }
 
+        /// <summary>
+        /// Метод, заполняющий форму данными о пассажире.
+        /// </summary>
+        /// <param name="Psg">Пассажир, данные о  котором вносятся в форму.</param>
+        /// <param name="ResultForm">Форма, в которую вносятся данные.</param>
+        private void FillResultForm(PsgResultByID ResultForm, Passenger Psg)
+        {
+            ResultForm.Owner                    = this;
+            ResultForm.ResultID        .Text    = Psg.ID.ToString();
+            ResultForm.ResultLName     .Text    = Psg.LastName;
+            ResultForm.ResultFName     .Text    = Psg.FirstName;
+            ResultForm.ResultTicketType.Text    = Psg.Tickets[0].Type;
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             if (byID.Checked)
             {
                 try 
                 {
-                    PsgResultByID FormResultPasByID = new PsgResultByID();
-                    FormResultPasByID.Owner         = this;
-                    this.Visible                    = false;
+                    int             ID                  = Convert.ToInt32(MTextBoxID.Text);
+                    Passenger       Psg                 = Passenger.Search(ID);
+
+                    PsgResultByID   FormResultPasByID   = new PsgResultByID();
+                    FillResultForm(FormResultPasByID, Psg);
                     FormResultPasByID.ShowDialog(); 
                 }
+
                 catch (KeyNotFoundException)
                 {
-                    FormErrorLoad FormErr   = new FormErrorLoad();
-                    FormErr.label1.Text     = "Поиск не дал результатов.";
-                    FormErr.label2.Text     = "Пассажир с номером паспорта " + this.SearchID.Text + " не найден.";
-                    FormErr.ShowDialog();
+                    FormMessage Message         = new FormMessage();
+                    Message.messageLabel.Text   = "Поиск не дал результатов.";
+                    Message.ShowDialog();
                 }
             }
         }
 
         private void SearchID_KeyUp(object sender, KeyEventArgs e)
         {
-            buttonSearch.Enabled    = SearchID.MaskCompleted;
+            buttonSearch.Enabled    = MTextBoxID.MaskCompleted;
         }
     }
 }

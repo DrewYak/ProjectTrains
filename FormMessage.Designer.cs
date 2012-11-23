@@ -106,7 +106,7 @@
             this.MinimumSize = new System.Drawing.Size(450, 150);
             this.Name = "FormMessage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormMessage";
+            this.Text = "Сообщение";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
