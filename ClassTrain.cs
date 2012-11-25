@@ -7,11 +7,11 @@ namespace Trains
 {
     class Train
     {
-        public int _number;
-        public int _countOfPas;
-        public string _timeOfDeparture;
-        public string _timeOfArrival;
-        public Route _theRoute;
+        int     _number;
+        int     _countOfPas;
+        string  _timeOfDeparture;
+        string  _timeOfArrival;
+        Route   _theRoute;
 
         public Train(int Number, int CountOfPas, string TimeOfDeparture, string TimeOfArrival)
         {
@@ -49,6 +49,16 @@ namespace Trains
             this.CountOfPas = 0;
             this.TimeOfDeparture = "06:00";
             this.TimeOfArrival = "13:00";
+        }
+
+        /// <summary>
+        /// Инициализирует поезд по его номеру и создаёт пустой список пассажров.
+        /// </summary>
+        /// <param name="NumberOfTrain"></param>
+        public Train(int NumberOfTrain)
+        {
+            this.Number     = NumberOfTrain;
+            this.ListOfPas = new List<int>();
         }
 
         /// <summary>
@@ -170,5 +180,11 @@ namespace Trains
             get { return _theRoute; }
             set { if (value != null) _theRoute = value; }
         }
+
+        /// <summary>
+        /// Возвращает и задаёт список номеров паспортов пассажиров в поезде.
+        /// </summary>
+        public List<int> ListOfPas{ get; set; } 
+
     }
 }

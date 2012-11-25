@@ -12,7 +12,7 @@
       <X>39</X>
       <Y>23</Y>
     </Location>
-
+    
     <Location>
       <Name>Нижний Новгород</Name>
       <X>55</X>
@@ -29,23 +29,19 @@
   <Trains>
     <Train>
       <Number>1</Number>
-      <TimeOfDeparuture>06:00</TimeOfDeparuture>
-      <TimeOfArrival>16:00</TimeOfArrival>
-
-      <Routes>
-        <Route>
+      <Stations>
+        <Station>
           <Location>Москва</Location>
           <Arrive>05:50</Arrive>
           <Depart>06:00</Depart>
-        </Route>
+        </Station>
 
-        <Route>
+        <Station>
           <Location>Санкт-Петербург</Location>
           <Arrive>16:00</Arrive>
           <Depart>16:10</Depart>
-        </Route>
-      </Routes>
-
+        </Station>
+      </Stations>
       <Passengers>
         <Passenger>
           <ID>1000</ID>
@@ -304,29 +300,26 @@
     
     <Train>
       <Number>2</Number>
-      <TimeOfDeparuture>22:45</TimeOfDeparuture>
-      <TimeOfArrival>12:00</TimeOfArrival>
-
-      <Routes>
-        <Route>
+      <Stations>
+        <Station>
           <Location>Нижний Новгород</Location>
           <Arrive>22:45</Arrive>
           <Depart>22:55</Depart>
-        </Route>
+        </Station>
 
-        <Route>
+        <Station>
           <Location>Казань</Location>
           <Arrive>12:00</Arrive>
           <Depart>12:10</Depart>
-        </Route>
-      </Routes>
+        </Station>
+      </Stations>
 
       <Passengers>
 
         <Passenger>
-          <ID>1046</ID>
-          <LName>Ботин</LName>
-          <FName>Василий</FName>
+          <ID>1000</ID>
+          <LName>Румянцева</LName>
+          <FName>Ксения</FName>
           <TypeOfTicket>Плацкарт</TypeOfTicket>
         </Passenger>
 

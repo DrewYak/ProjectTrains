@@ -22,37 +22,24 @@ namespace Trains
         /// </summary>
         /// <param name="Number">Номер поезда.</param>
         /// <param name="Type">Тип билета.</param>
-        public Ticket(int N, string T)
+        public Ticket(int NumberOfTrain, string TypeOfTicket)
         {
-            Number = N;
-            Type   = T;
+            Number = NumberOfTrain;
+            Type   = TypeOfTicket;
         }
     }
 
     class Passenger
     {
-        int    _id;
-        string _firstName;
-        string _lastName;
+        int             _id;
+        string          _firstName;
+        string          _lastName;
+        List<Ticket>    _tickets;
 
         /// <summary>
         /// Статический словарь, содержащий информацию обо всех пассажирах. Ключ - номер паспорта пассажира. Значение - ссылка на объект класса Passenger.
         /// </summary>
         static Dictionary<int, Passenger> AllPassengers = new Dictionary<int, Passenger>();
-
-        
-        /// <summary>
-        /// Инициализирует пассажира по номеру паспорта, имени, фамилии и типу билета.
-        /// </summary>
-        /// <param name="ID">Номер паспорта.</param>
-        /// <param name="FirstName">Имя.</param>
-        /// <param name="LastName">Фамилия.</param>
-        public Passenger(int ID, string FirstName, string LastName)
-        {
-            this.ID             = ID;
-            this.FirstName      = FirstName;
-            this.LastName       = LastName;
-        }
 
         /// <summary>
         /// Инициализирует пассажира по номеру паспорта, имени, фамилии и билету.
@@ -63,21 +50,22 @@ namespace Trains
         /// <param name="TheTicket">Билет.</param>
         public Passenger(int ID, string FirstName, string LastName, Ticket TheTicket)
         {
-            this.ID             = ID;
-            this.FirstName      = FirstName;
-            this.LastName       = LastName;
-            this.Tickets        = new List<Ticket>();
-            this.Tickets.Add(TheTicket);
+            this.ID         = ID;
+            this.FirstName  = FirstName;
+            this.LastName   = LastName;
+            this._tickets   = new List<Ticket>();
+            this._tickets.Add(TheTicket);
+            this.AddToAllPassengers();
         }
-
 
         /// <summary>
         /// Добавляет пассажира в статический словарь AllPassengers.
         /// </summary>
-        public void Add()
+        private void AddToAllPassengers()
         {
             AllPassengers.Add(this.ID, this);
         }
+
 
         /// <summary>
         /// Удаляет пассажира по номеру паспорта.
@@ -86,6 +74,11 @@ namespace Trains
         public void Remove(int ID)
         {
             AllPassengers.Remove(this.ID);
+        }
+
+        public static void AddTicket(int ID, Ticket TheTicket)
+        {
+            AllPassengers[ID]._tickets.Add(TheTicket);
         }
 
         /// <summary>
@@ -97,76 +90,118 @@ namespace Trains
         {
             return AllPassengers[ID];
         }
-        
+
+
+
+
+
+
+
+
+        private static void AddStations()
+        {
+        }
+
         /// <summary>
-        /// Добавляет данные о пассажире из узла XML-документа (предполагается, что из узла Passenger) в статический словарь AllPassengers. 
+        /// Добавляет данные о пассажирах в программу и устанавливает связь между поездами и пассажирами.
         /// </summary>
-        /// <param name="Psg">Узел Passenger.</param>
         /// <param name="NumberOfTrain">Номер поезда.</param>
-        private static void AddToDictFromNodePas(XmlNode Psg, int NumberOfTrain)
+        /// <param name="Passengers">Список узлов типа Passenger.</param>
+        private static void AddPassengers(int NumberOfTrain, XmlNodeList Passengers)
         {
-            int         ID              = Convert.ToInt32(Psg.SelectSingleNode("ID").InnerText);
-            string      LastName        = Psg.SelectSingleNode("LName").InnerText;
-            string      FirstName       = Psg.SelectSingleNode("FName").InnerText;
-            string      Type            = Psg.SelectSingleNode("TypeOfTicket").InnerText;
-            Ticket      TheTicket       = new Ticket(NumberOfTrain, Type);        
-            Passenger   ThePassenger    = new Passenger(ID, FirstName, LastName, TheTicket);
-            ThePassenger.Add();
-        }
-
-        /// <summary>
-        /// Извлекает номер поезда из узла XML-документа (предполагается, что из узла Train) и возвращает его.
-        /// </summary>
-        /// <param name="Trn">Узел XML-документа.</param>
-        /// <returns></returns>
-        private static int GetNumberOfTrainFromNodeTrain(XmlNode Trn)
-        {
-            return Convert.ToInt32(Trn.SelectSingleNode("Number").InnerText);
-        }
-
-        /// <summary>
-        /// Возвращает список узлов типа Passenger из узла типа Train.
-        /// </summary>
-        /// <param name="Trn">Узел XML-документа (Узел типа Train).</param>
-        private static XmlNodeList GetXmlNodeListOfPassengerFromNodeTrain(XmlNode Trn)
-        {
-            // Создаём временный узел TempNode. Все его дочерние узлы - это узлы типа Passenger 
-            XmlNode TempNode = Trn.SelectSingleNode("Passengers");
-
-            // Выбираем из временного узла TempNode все узлы типа Passenger и делаем из них
-            // XmlNodeList, после чего возвращаем этот список XML-узлов.
-            return  TempNode.SelectNodes("Passenger");
-        }
-
-        /// <summary>
-        /// Добавляет данные к статическим словарям AllTrains и AllPassengers из списка узлов типа Train.
-        /// </summary>
-        /// <param name="Trains">Список узлов типа Train.</param>
-        private static void AddDataFromXmlNodeListTrains(XmlNodeList Trains)
-        {
-            for (int j = 0, m = Trains.Count; j < m; j++)
+            foreach(XmlNode Psg in Passengers)
             {
-                int         NumberOfTrain   = GetNumberOfTrainFromNodeTrain(Trains[j]);            
-                XmlNodeList Pass            = GetXmlNodeListOfPassengerFromNodeTrain(Trains[j]);
-          
-                for (int i = 0, n = Pass.Count; i < n; i++)
+                int     ID              = Convert.ToInt32(Psg.ChildNodes[0].InnerText);
+                string  TypeOfTicket    = Psg.ChildNodes[3].InnerText;
+                Ticket  TheTicket       = new Ticket(NumberOfTrain, TypeOfTicket);
+
+                if (AllPassengers.ContainsKey(ID))
                 {
-                    AddToDictFromNodePas(Pass[i], NumberOfTrain);
+                    AddTicket(ID, TheTicket); 
                 }
+                else
+                {
+                    string  LName           = Psg.ChildNodes[1].InnerText;
+                    string  FName           = Psg.ChildNodes[2].InnerText;
+                    Passenger PAS           = new Passenger(ID, FName, LName, TheTicket);
+                }
+                Train.AllTrains[NumberOfTrain].ListOfPas.Add(ID);
             }
         }
 
         /// <summary>
-        /// Загружает данные из XML-документа.
+        /// Добавляет данные о поездах в программу.
         /// </summary>
-        /// <param name="FileName">Имя XML-документа.</param>
-        public static void AddDataFromFile(string FileName)
+        /// <param name="root">Список узлов типа Train.</param>
+        private static void AddTrains(XmlNodeList Trains)
         {
-            XmlDocument doc     = new XmlDocument();
-            doc.Load(FileName);
-            XmlNodeList Trains  = doc.GetElementsByTagName("Train");
-            AddDataFromXmlNodeListTrains(Trains);
+            foreach(XmlNode Trn in Trains)
+            {
+                int         Number      = Convert.ToInt32(Trn.ChildNodes[0].InnerText);
+                XmlNodeList Stations    = Trn.ChildNodes[1].ChildNodes;
+                XmlNodeList Passengers  = Trn.ChildNodes[2].ChildNodes;
+
+                Train TheTrain = new Train(Number);
+                TheTrain.Add();
+
+                AddStations();
+                AddPassengers(Number, Passengers);
+            }
         }
+
+        /// <summary>
+        /// Добавляет данные о местоположениях станций в программу.
+        /// </summary>
+        /// <param name="Locations">Список узлов типа Location.</param>
+        private static void AddLocations(XmlNodeList Locations)
+        {
+        }
+
+        /// <summary>
+        /// Загружает все данные из XML-документа с данными для программы.
+        /// </summary>
+        /// <param name="FileName">Путь к XML-документу с данными для программы.</param>
+        public static void LoadFromFile(string FileName)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(FileName);
+            XmlNode     root        = doc.DocumentElement;
+
+            XmlNodeList Locations   = root.ChildNodes[0].ChildNodes;
+            XmlNodeList Trains      = root.ChildNodes[1].ChildNodes;
+
+            AddLocations(Locations);
+            AddTrains(Trains);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /// <summary>
         /// Возвращает номер паспорта.
@@ -198,7 +233,7 @@ namespace Trains
         /// <summary>
         /// Возвращает список билетов, имеющихся у пассажира.
         /// </summary>
-        public List<Ticket> Tickets { get; set; }
+        public List<Ticket> Tickets { get {return _tickets;} }
 
     }
     /*

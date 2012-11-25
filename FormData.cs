@@ -25,7 +25,7 @@ namespace Trains
                 openFileDialog1.ShowDialog();
                 string FileName = openFileDialog1.FileName;
             
-                Passenger.  AddDataFromFile(FileName);
+                Passenger.  LoadFromFile(FileName);
                 Train.      AddDataFromFile(FileName);
 
                 FormMessage Message         = new FormMessage();
