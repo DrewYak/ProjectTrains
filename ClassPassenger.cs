@@ -98,6 +98,18 @@ namespace Trains
             return AllPassengers[ID];
         }
 
+        public static List<Passenger> SearchByLName(string LName)
+        {
+            List<Passenger> ResultPassengers = new List<Passenger>();
+            foreach(KeyValuePair<int, Passenger> Psg in AllPassengers)
+            {
+                if (Psg.Value.LastName == LName)
+                    ResultPassengers.Add(Psg.Value);
+            }
+            return ResultPassengers;
+        }
+
+
         #endregion
 
 
@@ -141,6 +153,8 @@ namespace Trains
     }
 
 #region Тесты
+
+
     /*
     /// <summary>
     /// Класс с тестами для конструктора и свойств класса Passenger.

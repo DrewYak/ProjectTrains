@@ -58,6 +58,11 @@ namespace Trains
                     Message.ShowDialog();
                 }
             }
+
+            if (byParams.Checked)
+            {
+
+            }
         }
     }
 }

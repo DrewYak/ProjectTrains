@@ -62,6 +62,13 @@ namespace Trains
                     Message.ShowDialog();
                 }
             }
+
+            if (byParams.Checked)
+            {
+                PsgResultByParams FormResultPasByParams = new PsgResultByParams();
+                FormResultPasByParams.Owner             = this;
+                FormResultPasByParams.ShowDialog();
+            }
         }
 
         private void SearchID_KeyUp(object sender, KeyEventArgs e)
