@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gBByParams = new System.Windows.Forms.GroupBox();
             this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.ParamLastName = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -65,6 +65,7 @@
             this.byID.Name = "byID";
             this.byID.Size = new System.Drawing.Size(228, 24);
             this.byID.TabIndex = 1;
+            this.byID.TabStop = true;
             this.byID.Text = "Поиск по номеру паспорта";
             this.byID.UseVisualStyleBackColor = true;
             this.byID.CheckedChanged += new System.EventHandler(this.byID_CheckedChanged);
@@ -126,7 +127,7 @@
             // gBByParams
             // 
             this.gBByParams.Controls.Add(this.maskedTextBox3);
-            this.gBByParams.Controls.Add(this.maskedTextBox2);
+            this.gBByParams.Controls.Add(this.ParamLastName);
             this.gBByParams.Controls.Add(this.maskedTextBox4);
             this.gBByParams.Controls.Add(this.label4);
             this.gBByParams.Controls.Add(this.label3);
@@ -146,12 +147,12 @@
             this.maskedTextBox3.Size = new System.Drawing.Size(151, 26);
             this.maskedTextBox3.TabIndex = 4;
             // 
-            // maskedTextBox2
+            // ParamLastName
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(146, 21);
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(151, 26);
-            this.maskedTextBox2.TabIndex = 2;
+            this.ParamLastName.Location = new System.Drawing.Point(146, 21);
+            this.ParamLastName.Name = "ParamLastName";
+            this.ParamLastName.Size = new System.Drawing.Size(151, 26);
+            this.ParamLastName.TabIndex = 2;
             // 
             // maskedTextBox4
             // 
@@ -223,7 +224,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.MaskedTextBox ParamLastName;
         private System.Windows.Forms.MaskedTextBox maskedTextBox4;
         public System.Windows.Forms.MaskedTextBox MTextBoxID;
     }

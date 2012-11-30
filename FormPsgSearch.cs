@@ -67,6 +67,13 @@ namespace Trains
             {
                 PsgResultByParams FormResultPasByParams = new PsgResultByParams();
                 FormResultPasByParams.Owner             = this;
+
+                string ParamLName                       = ParamLastName.Text;
+                List<Passenger> ResultPas               = Passenger.SearchByLName(ParamLName);
+                foreach (Passenger Psg in ResultPas)
+                {
+                    FormResultPasByParams.TablePas.Rows.Add(Psg.ID, Psg.LastName, Psg.FirstName, Psg.Tickets.Count);
+                }
                 FormResultPasByParams.ShowDialog();
             }
         }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.TablePas = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,7 +38,7 @@
             this.ShowAllPas = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablePas)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -46,7 +46,7 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.TablePas, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.Back, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.ShowAllPas, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 1);
@@ -59,19 +59,19 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(773, 401);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // dataGridView1
+            // TablePas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TablePas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TablePas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.LName,
             this.FName,
             this.Tickets});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(389, 43);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(381, 355);
-            this.dataGridView1.TabIndex = 0;
+            this.TablePas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TablePas.Location = new System.Drawing.Point(389, 43);
+            this.TablePas.Name = "TablePas";
+            this.TablePas.Size = new System.Drawing.Size(381, 355);
+            this.TablePas.TabIndex = 0;
             // 
             // ID
             // 
@@ -146,15 +146,13 @@
             this.Name = "PsgResultByParams";
             this.Text = "FormPsgResultByParams";
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablePas)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn LName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FName;
@@ -162,5 +160,7 @@
         private System.Windows.Forms.Button Back;
         private System.Windows.Forms.Button ShowAllPas;
         private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        public System.Windows.Forms.DataGridView TablePas;
     }
 }
