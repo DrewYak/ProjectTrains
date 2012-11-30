@@ -31,6 +31,8 @@ namespace Trains
 
     class Passenger
     {
+        #region Поля и методы
+
         int             _id;
         string          _firstName;
         string          _lastName;
@@ -66,6 +68,11 @@ namespace Trains
             AllPassengers.Add(this.ID, this);
         }
 
+        public static bool Contain(int ID)
+        {
+            return (AllPassengers.ContainsKey(ID));
+        }
+
 
         /// <summary>
         /// Удаляет пассажира по номеру паспорта.
@@ -91,117 +98,11 @@ namespace Trains
             return AllPassengers[ID];
         }
 
+        #endregion
 
 
 
-
-
-
-
-        private static void AddStations()
-        {
-        }
-
-        /// <summary>
-        /// Добавляет данные о пассажирах в программу и устанавливает связь между поездами и пассажирами.
-        /// </summary>
-        /// <param name="NumberOfTrain">Номер поезда.</param>
-        /// <param name="Passengers">Список узлов типа Passenger.</param>
-        private static void AddPassengers(int NumberOfTrain, XmlNodeList Passengers)
-        {
-            foreach(XmlNode Psg in Passengers)
-            {
-                int     ID              = Convert.ToInt32(Psg.ChildNodes[0].InnerText);
-                string  TypeOfTicket    = Psg.ChildNodes[3].InnerText;
-                Ticket  TheTicket       = new Ticket(NumberOfTrain, TypeOfTicket);
-
-                if (AllPassengers.ContainsKey(ID))
-                {
-                    AddTicket(ID, TheTicket); 
-                }
-                else
-                {
-                    string  LName           = Psg.ChildNodes[1].InnerText;
-                    string  FName           = Psg.ChildNodes[2].InnerText;
-                    Passenger PAS           = new Passenger(ID, FName, LName, TheTicket);
-                }
-                Train.AllTrains[NumberOfTrain].ListOfPas.Add(ID);
-            }
-        }
-
-        /// <summary>
-        /// Добавляет данные о поездах в программу.
-        /// </summary>
-        /// <param name="root">Список узлов типа Train.</param>
-        private static void AddTrains(XmlNodeList Trains)
-        {
-            foreach(XmlNode Trn in Trains)
-            {
-                int         Number      = Convert.ToInt32(Trn.ChildNodes[0].InnerText);
-                XmlNodeList Stations    = Trn.ChildNodes[1].ChildNodes;
-                XmlNodeList Passengers  = Trn.ChildNodes[2].ChildNodes;
-
-                Train TheTrain = new Train(Number);
-                TheTrain.Add();
-
-                AddStations();
-                AddPassengers(Number, Passengers);
-            }
-        }
-
-        /// <summary>
-        /// Добавляет данные о местоположениях станций в программу.
-        /// </summary>
-        /// <param name="Locations">Список узлов типа Location.</param>
-        private static void AddLocations(XmlNodeList Locations)
-        {
-        }
-
-        /// <summary>
-        /// Загружает все данные из XML-документа с данными для программы.
-        /// </summary>
-        /// <param name="FileName">Путь к XML-документу с данными для программы.</param>
-        public static void LoadFromFile(string FileName)
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(FileName);
-            XmlNode     root        = doc.DocumentElement;
-
-            XmlNodeList Locations   = root.ChildNodes[0].ChildNodes;
-            XmlNodeList Trains      = root.ChildNodes[1].ChildNodes;
-
-            AddLocations(Locations);
-            AddTrains(Trains);
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        #region Свойства
 
         /// <summary>
         /// Возвращает номер паспорта.
@@ -235,7 +136,11 @@ namespace Trains
         /// </summary>
         public List<Ticket> Tickets { get {return _tickets;} }
 
+        #endregion
+
     }
+
+#region Тесты
     /*
     /// <summary>
     /// Класс с тестами для конструктора и свойств класса Passenger.
@@ -273,4 +178,6 @@ namespace Trains
         }
     }
     */
+
+#endregion
 }

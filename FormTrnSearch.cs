@@ -29,10 +29,12 @@ namespace Trains
 
         private void FillResultForm(TrnResultByNumber ResultForm, Train Trn)
         {
-            ResultForm.Owner                      = this;
-            ResultForm.ResultNumber        .Text  = Trn.Number.ToString();
-            ResultForm.ResultPlaceDepart   .Text  = Trn.TimeOfDeparture;
-            ResultForm.ResultPlaceArrive   .Text  = Trn.TimeOfArrival;
+            ResultForm.Owner                    = this;
+            ResultForm.Number           .Text   = Trn.Number.ToString();
+            ResultForm.PointOfDeparture .Text   = Trn.Stations.First().Name;
+            ResultForm.TimeOfDeparture  .Text   = Trn.Stations.First().TimeOfDeparture;
+            ResultForm.PointOfArrival   .Text   = Trn.Stations.Last().Name;
+            ResultForm.TimeOfArrival    .Text   = Trn.Stations.Last().TimeOfArrival;
         }
 
         private void button2_Click(object sender, EventArgs e)

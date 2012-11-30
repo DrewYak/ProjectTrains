@@ -25,8 +25,7 @@ namespace Trains
                 openFileDialog1.ShowDialog();
                 string FileName = openFileDialog1.FileName;
             
-                Passenger.  LoadFromFile(FileName);
-                Train.      AddDataFromFile(FileName);
+                Data.LoadFromFile(FileName);
 
                 FormMessage Message         = new FormMessage();
                 Message.messageLabel.Text   = "Загрузка данных из файла успешно завершена.";

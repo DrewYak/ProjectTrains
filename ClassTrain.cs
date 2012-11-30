@@ -5,23 +5,29 @@ using System.Xml;
 
 namespace Trains
 {
+
+    struct Station
+    {
+        public string Name;              
+        public string TimeOfDeparture;   
+        public string TimeOfArrival;     
+
+        public Station(string name, string timeOfDeparture, string timeOfArrival)
+        {
+            Name            = name;
+            TimeOfDeparture = timeOfDeparture;
+            TimeOfArrival   = timeOfArrival;
+        }
+    }
+
     class Train
     {
         int     _number;
         int     _countOfPas;
         string  _timeOfDeparture;
         string  _timeOfArrival;
-        Route   _theRoute;
 
-        public Train(int Number, int CountOfPas, string TimeOfDeparture, string TimeOfArrival)
-        {
-            this.Number = Number;
-            this.CountOfPas = CountOfPas;
-            this.TimeOfDeparture = TimeOfDeparture;
-            this.TimeOfArrival = TimeOfArrival;
-        }
-
-        public static Dictionary<int, Train> AllTrains = new Dictionary<int, Train>();
+        static Dictionary<int, Train> AllTrains = new Dictionary<int, Train>();
 
         /// <summary>
         /// Создание объекта по номеру, кол-ву пассажиров, времени отправления и прибытия, маршруту.
@@ -31,13 +37,12 @@ namespace Trains
         /// <param name="TimeOfDeparture">Время отправления.</param>
         /// <param name="TimeOfArrival">Время прибытия.</param>
         /// <param name="TheRoute">Маршрут.</param>
-        public Train(int Number, int CountOfPas, string TimeOfDeparture, string TimeOfArrival, Route TheRoute)
+        public Train(int Number, int CountOfPas, string TimeOfDeparture, string TimeOfArrival)
         {
             this.Number = Number;
             this.CountOfPas = CountOfPas;
             this.TimeOfDeparture = TimeOfDeparture;
             this.TimeOfArrival = TimeOfArrival;
-            this.TheRoute = TheRoute;
         }
 
         /// <summary>
@@ -66,15 +71,9 @@ namespace Trains
         /// </summary>
         public void Add()
         {
-            try
-            {
                 AllTrains.Add(this.Number, this);
-            }
-            catch (ArgumentException)
-            {
-                Console.WriteLine("Поезд номер", Number, "уже существует");
-            }
         }
+
         /// <summary>
         /// Удаляет поезд по его номеру.
         /// </summary>
@@ -85,6 +84,25 @@ namespace Trains
         }
 
         /// <summary>
+        /// Добавляет пассажира к поезду.
+        /// </summary>
+        /// <param name="ID">Номер паспорта пассажира.</param>
+        /// <param name="NumberOfTrain">Номер поезда.</param>
+        public static void AddPassengerToTrain(int ID, int NumberOfTrain)
+        {
+            AllTrains[NumberOfTrain].ListOfPas.Add(ID);
+        }
+
+        public static void AddStationToTrain(Station station, int NumberOfTrain)
+        {
+            if (AllTrains[NumberOfTrain].Stations == null)
+            {
+                AllTrains[NumberOfTrain].Stations = new List<Station>();
+            }
+            AllTrains[NumberOfTrain].Stations.Add(station);
+        }
+
+        /// <summary>
         /// Возвращает поезд из словаря по его номеру.
         /// </summary>
         /// <param name="Number">Номер поезда</param>
@@ -92,25 +110,6 @@ namespace Trains
         public static Train Search(int Number)
         {
             return AllTrains[Number];
-        }
-
-        /// <summary>
-        /// Возвращает поезд из словаря по пункту отправления.
-        /// </summary>
-        /// <param name="PointsOfDeparture">Пункт отправления</param>
-        /// <returns></returns>
-        public static Dictionary<int, Train> SearchByPointsOfDeparture(string PointsOfDeparture)
-        {
-            Dictionary<int, Train> ResultDictionary = new Dictionary<int, Train>();
-            foreach (KeyValuePair<int, Train> kvp in AllTrains)
-            {
-                //Train Trn = kvp.Value as Train;
-                if (PointsOfDeparture == kvp.Value.TheRoute.PointsOfDeparture)
-                {
-                    ResultDictionary.Add(kvp.Key, kvp.Value);
-                }
-            }
-            return ResultDictionary;
         }
 
         /// <summary>
@@ -173,18 +172,11 @@ namespace Trains
         }
 
         /// <summary>
-        /// Возвращает маршрут.
-        /// </summary>
-        public Route TheRoute
-        {
-            get { return _theRoute; }
-            set { if (value != null) _theRoute = value; }
-        }
-
-        /// <summary>
         /// Возвращает и задаёт список номеров паспортов пассажиров в поезде.
         /// </summary>
-        public List<int> ListOfPas{ get; set; } 
+        public List<int>        ListOfPas   { get; set; } 
+
+        public List<Station>    Stations    { get; set; }
 
     }
 }

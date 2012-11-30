@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TrainsAndOtherStuff>
+  <Locations>
+    <Location>
+      <Name>Москва</Name>
+      <X>14</X>
+      <Y>12</Y>
+    </Location>
+
+    <Location>
+      <Name>Санкт-Петербург</Name>
+      <X>39</X>
+      <Y>23</Y>
+    </Location>
+
+    <Location>
+      <Name>Нижний Новгород</Name>
+      <X>55</X>
+      <Y>34</Y>
+    </Location>
+
+    <Location>
+      <Name>Казань</Name>
+      <X>49</X>
+      <Y>13</Y>
+    </Location>
+  </Locations>
+
+  <Trains>
+    <Train>
+      <Number>1</Number>
+      <TimeOfDeparuture>06:00</TimeOfDeparuture>
+      <TimeOfArrival>16:00</TimeOfArrival>
+
+      <Routes>
+        <Route>
+          <Location>Москва</Location>
+          <Arrive>05:50</Arrive>
+          <Depart>06:00</Depart>
+        </Route>
+
+        <Route>
+          <Location>Санкт-Петербург</Location>
+          <Arrive>16:00</Arrive>
+          <Depart>16:10</Depart>
+        </Route>
+      </Routes>
+
+      <Passengers>
+        <Passenger>
+          <ID>1000</ID>
+          <LName>Румянцева</LName>
+          <FName>Ксения</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1001</ID>
+          <LName>Трофименко</LName>
+          <FName>Дарья</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1002</ID>
+          <LName>Алёшина</LName>
+          <FName>Анастасия</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1003</ID>
+          <LName>Иванова</LName>
+          <FName>Анастасия</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1004</ID>
+          <LName>Котаева</LName>
+          <FName>Наталья</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1005</ID>
+          <LName>Сутулова</LName>
+          <FName>Маргарита</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1006</ID>
+          <LName>Пушкин</LName>
+          <FName>Виталий</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+        
+        <Passenger>
+          <ID>1007</ID>
+          <LName>Захаров</LName>
+          <FName>Пётр</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1008</ID>
+          <LName>Дорожкина</LName>
+          <FName>Виктория</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1009</ID>
+          <LName>Комоско</LName>
+          <FName>Лариса</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1010</ID>
+          <LName>Новиков</LName>
+          <FName>Александр</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1011</ID>
+          <LName>Рожкова</LName>
+          <FName>Алла</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1012</ID>
+          <LName>Леонов</LName>
+          <FName>Даниил</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1013</ID>
+          <LName>Светиков</LName>
+          <FName>Глеб</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1014</ID>
+          <LName>Тюрина</LName>
+          <FName>Мария</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1015</ID>
+          <LName>Парфенов</LName>
+          <FName>Кирилл</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1016</ID>
+          <LName>Каляпин</LName>
+          <FName>Денис</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1017</ID>
+          <LName>Дурманов</LName>
+          <FName>Сергей</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1018</ID>
+          <LName>Никулина</LName>
+          <FName>Маргарита</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1019</ID>
+          <LName>Плетнева</LName>
+          <FName>Валерия</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+
+        <Passenger>
+          <ID>1031</ID>
+          <LName>Сидорук</LName>
+          <FName>Михаил</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1032</ID>
+          <LName>Васильева</LName>
+          <FName>Полина</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1033</ID>
+          <LName>Найданова</LName>
+          <FName>Ирина</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1034</ID>
+          <LName>Горбунов</LName>
+          <FName>Валерий</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1035</ID>
+          <LName>Чусов</LName>
+          <FName>Максим</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1036</ID>
+          <LName>Курпатов</LName>
+          <FName>Игорь</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1037</ID>
+          <LName>Смирнова</LName>
+          <FName>Юлия</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1038</ID>
+          <LName>Еманова</LName>
+          <FName>Василиса</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1039</ID>
+          <LName>Федоров</LName>
+          <FName>Олег</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1040</ID>
+          <LName>Еремин</LName>
+          <FName>Игнат</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1040</ID>
+          <LName>Еремин</LName>
+          <FName>Игнат</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1041</ID>
+          <LName>Кувшиова</LName>
+          <FName>Алиса</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1042</ID>
+          <LName>Соломин</LName>
+          <FName>Альберт</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1043</ID>
+          <LName>Ступкова</LName>
+          <FName>Елена</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1044</ID>
+          <LName>Антонюк</LName>
+          <FName>Юлия</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1045</ID>
+          <LName>Ковшова</LName>
+          <FName>Наталья</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger> 
+      </Passengers>
+    </Train>
+    
+    <Train>
+      <Number>2</Number>
+      <TimeOfDeparuture>22:45</TimeOfDeparuture>
+      <TimeOfArrival>12:00</TimeOfArrival>
+
+      <Routes>
+        <Route>
+          <Location>Нижний Новгород</Location>
+          <Arrive>22:45</Arrive>
+          <Depart>22:55</Depart>
+        </Route>
+
+        <Route>
+          <Location>Казань</Location>
+          <Arrive>12:00</Arrive>
+          <Depart>12:10</Depart>
+        </Route>
+      </Routes>
+
+      <Passengers>
+
+        <Passenger>
+          <ID>1046</ID>
+          <LName>Ботин</LName>
+          <FName>Василий</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1047</ID>
+          <LName>Медунова</LName>
+          <FName>Евгения</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1048</ID>
+          <LName>Оленова</LName>
+          <FName>Владислава</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1049</ID>
+          <LName>Копулов</LName>
+          <FName>Роман</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1050</ID>
+          <LName>Яковличев</LName>
+          <FName>Андрей</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1051</ID>
+          <LName>Костюков</LName>
+          <FName>Антон</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1052</ID>
+          <LName>Карпова</LName>
+          <FName>Ирина</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1053</ID>
+          <LName>Кусков</LName>
+          <FName>Андрей</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1054</ID>
+          <LName>Лавкова</LName>
+          <FName>Ольга</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1055</ID>
+          <LName>Ляпин</LName>
+          <FName>Руслан</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1056</ID>
+          <LName>Бадыгеева</LName>
+          <FName>Анна</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1057</ID>
+          <LName>Цветкова</LName>
+          <FName>Юлия</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1058</ID>
+          <LName>Кипятков</LName>
+          <FName>Борис</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1059</ID>
+          <LName>Борисова</LName>
+          <FName>Дария</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1060</ID>
+          <LName>Артамонов</LName>
+          <FName>Дмитрий</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1061</ID>
+          <LName>Искуснова</LName>
+          <FName>Антонина</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1062</ID>
+          <LName>Шустова</LName>
+          <FName>Альбина</FName>
+          <TypeOfTicket>
+            <TypeOfTicket>Купе</TypeOfTicket>
+          </TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1063</ID>
+          <LName>Турков</LName>
+          <FName>Константин</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1064</ID>
+          <LName>Кипятков</LName>
+          <FName>Борис</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1065</ID>
+          <LName>Жук</LName>
+          <FName>Кристина</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1066</ID>
+          <LName>Клитина</LName>
+          <FName>Анна</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1067</ID>
+          <LName>Овсепян</LName>
+          <FName>Александр</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1068</ID>
+          <LName>Дурманов</LName>
+          <FName>Иван</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1069</ID>
+          <LName>Тарасюк</LName>
+          <FName>Алина</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>1070</ID>
+          <LName>Павловский</LName>
+          <FName>Виталий</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+      </Passengers>
+    </Train>
+  </Trains>
+</TrainsAndOtherStuff>

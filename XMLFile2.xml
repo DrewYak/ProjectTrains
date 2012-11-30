@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TrainsAndOtherStuff>
+  <Locations>
+   <Location>
+    <Name>Екатеринбург</Name>
+    <X>76</X>
+    <Y>43</Y>
+   </Location>
+  </Locations>
+
+  <Trains>
+    <Train>
+      <Number>3</Number>
+      <Stations>
+        <Station>
+          <Location>Москва</Location>
+          <Arrive>23:40</Arrive>
+          <Depart>23:50</Depart>
+        </Station>
+
+        <Station>
+          <Location>Нижний Новгород</Location>
+          <Arrive>10:00</Arrive>
+          <Depart>10:10</Depart>
+        </Station>
+      </Stations>
+
+      <Passengers>
+        <Passenger>
+          <ID>2000</ID>
+          <LName>Иванов</LName>
+          <FName>Петр</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2001</ID>
+          <LName>Сидорова</LName>
+          <FName>Татьяна</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2002</ID>
+          <LName>Кукушкина</LName>
+          <FName>Анастасия</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2003</ID>
+          <LName>Корпухин</LName>
+          <FName>Виктор</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2004</ID>
+          <LName>Липов</LName>
+          <FName>Анатолий</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+      </Passengers>
+    </Train>
+
+    <Train>
+      <Number>4</Number>
+      <Stations>
+        <Station>
+          <Location>Казань</Location>
+          <Arrive>22:20</Arrive>
+          <Depart>22:30</Depart>
+        </Station>
+
+        <Station>
+          <Location>Москва</Location>
+          <Arrive>16:00</Arrive>
+          <Depart>16:10</Depart>
+        </Station>
+      </Stations>
+      <Passengers>
+
+        <Passenger>
+          <ID>2005</ID>
+          <LName>Кирин</LName>
+          <FName>Филипп</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2006</ID>
+          <LName>Войкова</LName>
+          <FName>Вита</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2007</ID>
+          <LName>Иванов</LName>
+          <FName>Василий</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2008</ID>
+          <LName>Дрожжина</LName>
+          <FName>Мария</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2009</ID>
+          <LName>Соловьев</LName>
+          <FName>Артем</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+      </Passengers>
+    </Train>
+
+    <Train>
+      <Number>5</Number>
+      <Stations>
+        <Station>
+          <Location>Москва</Location>
+          <Arrive>07:15</Arrive>
+          <Depart>07:25</Depart>
+        </Station>
+
+        <Station>
+          <Location>Екатеринбург</Location>
+          <Arrive>09:40</Arrive>
+          <Depart>09:50</Depart>
+        </Station>
+      </Stations>
+      <Passengers>
+
+        <Passenger>
+          <ID>2001</ID>
+          <LName>Сидорова</LName>
+          <FName>Татьяна</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2011</ID>
+          <LName>Кирушкин</LName>
+          <FName>Павел</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2012</ID>
+          <LName>Иродова</LName>
+          <FName>Наталия</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2013</ID>
+          <LName>Сутулов</LName>
+          <FName>Глеб</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2014</ID>
+          <LName>Илюхина</LName>
+          <FName>Анастасия</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+      </Passengers>
+    </Train>
+
+    <Train>
+      <Number>6</Number>
+      <Stations>
+        <Station>
+          <Location>Санкт-Петербург</Location>
+          <Arrive>00:20</Arrive>
+          <Depart>00:30</Depart>
+        </Station>
+
+        <Station>
+          <Location>Екатеринбург</Location>
+          <Arrive>12:15</Arrive>
+          <Depart>12:25</Depart>
+        </Station>
+      </Stations>
+      <Passengers>
+        <Passenger>
+          <ID>2015</ID>
+          <LName>Парфирьева</LName>
+          <FName>Ольга</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2016</ID>
+          <LName>Каляпин</LName>
+          <FName>Георгий</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2017</ID>
+          <LName>Игрицкий</LName>
+          <FName>Михаил</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2018</ID>
+          <LName>Носков</LName>
+          <FName>Николай</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2019</ID>
+          <LName>Ляпин</LName>
+          <FName>Константин</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+      </Passengers>
+    </Train>
+
+
+    <Train>
+      <Number>7</Number>
+      <Stations>
+        <Station>
+          <Location>Санкт-Петербург</Location>
+          <Arrive>02:40</Arrive>
+          <Depart>02:50</Depart>
+        </Station>
+
+        <Station>
+          <Location>Екатеринбург</Location>
+          <Arrive>15:35</Arrive>
+          <Depart>13:45</Depart>
+        </Station>
+      </Stations>
+      <Passengers>
+        <Passenger>
+          <ID>2031</ID>
+          <LName>Чуманов</LName>
+          <FName>Дмитрий</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2032</ID>
+          <LName>Александров</LName>
+          <FName>Роман</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2033</ID>
+          <LName>Пупова</LName>
+          <FName>Викторния</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2034</ID>
+          <LName>Горбунова</LName>
+          <FName>Анна</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+
+        <Passenger>
+          <ID>2035</ID>
+          <LName>Шолохов</LName>
+          <FName>Борис</FName>
+          <TypeOfTicket>Купе</TypeOfTicket>
+        </Passenger>
+      </Passengers>
+    </Train>
+  </Trains>
+</TrainsAndOtherStuff>
