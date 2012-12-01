@@ -99,6 +99,30 @@ namespace Trains
             return AllPassengers[ID];
         }
 
+
+
+        public static List<Passenger> Search(string LName, string FName, string TypeOfTicket)
+        {
+            List <Passenger> Psgs   = Passenger.ConvertToListOfPas();
+            
+            if (LName != "")
+            {
+                Psgs    = Passenger.SearchByLName(LName, Psgs);
+            }
+
+            if (FName != "")
+            {
+                Psgs    = Passenger.SearchByFName(FName, Psgs);
+            }
+
+            if (TypeOfTicket != "")
+            {
+                Psgs    = Passenger.SearchByTypeOfTicket(TypeOfTicket, Psgs);
+            }
+
+            return Psgs;
+        }
+
         /// <summary>
         /// Возвращает список пассажиров с искомой фамилией.
         /// </summary>
@@ -127,7 +151,7 @@ namespace Trains
             List<Passenger> ResultPsgs  = new List<Passenger>();
             foreach(Passenger Psg in Psgs)
             {
-                if (Psg.LastName == FName)
+                if (Psg.FirstName == FName)
                     ResultPsgs.Add(Psg);
             }
             return ResultPsgs;

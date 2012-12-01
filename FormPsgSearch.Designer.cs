@@ -36,9 +36,9 @@
             this.MTextBoxID = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gBByParams = new System.Windows.Forms.GroupBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.ParamTypeOfTicket = new System.Windows.Forms.MaskedTextBox();
             this.ParamLastName = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
+            this.ParamFName = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -126,9 +126,9 @@
             // 
             // gBByParams
             // 
-            this.gBByParams.Controls.Add(this.maskedTextBox3);
+            this.gBByParams.Controls.Add(this.ParamTypeOfTicket);
             this.gBByParams.Controls.Add(this.ParamLastName);
-            this.gBByParams.Controls.Add(this.maskedTextBox4);
+            this.gBByParams.Controls.Add(this.ParamFName);
             this.gBByParams.Controls.Add(this.label4);
             this.gBByParams.Controls.Add(this.label3);
             this.gBByParams.Controls.Add(this.label2);
@@ -140,12 +140,12 @@
             this.gBByParams.TabIndex = 5;
             this.gBByParams.TabStop = false;
             // 
-            // maskedTextBox3
+            // ParamTypeOfTicket
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(146, 85);
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(151, 26);
-            this.maskedTextBox3.TabIndex = 4;
+            this.ParamTypeOfTicket.Location = new System.Drawing.Point(146, 85);
+            this.ParamTypeOfTicket.Name = "ParamTypeOfTicket";
+            this.ParamTypeOfTicket.Size = new System.Drawing.Size(151, 26);
+            this.ParamTypeOfTicket.TabIndex = 4;
             // 
             // ParamLastName
             // 
@@ -154,12 +154,12 @@
             this.ParamLastName.Size = new System.Drawing.Size(151, 26);
             this.ParamLastName.TabIndex = 2;
             // 
-            // maskedTextBox4
+            // ParamFName
             // 
-            this.maskedTextBox4.Location = new System.Drawing.Point(146, 53);
-            this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(151, 26);
-            this.maskedTextBox4.TabIndex = 3;
+            this.ParamFName.Location = new System.Drawing.Point(146, 53);
+            this.ParamFName.Name = "ParamFName";
+            this.ParamFName.Size = new System.Drawing.Size(151, 26);
+            this.ParamFName.TabIndex = 3;
             // 
             // label4
             // 
@@ -223,9 +223,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
+        private System.Windows.Forms.MaskedTextBox ParamTypeOfTicket;
         private System.Windows.Forms.MaskedTextBox ParamLastName;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox4;
+        private System.Windows.Forms.MaskedTextBox ParamFName;
         public System.Windows.Forms.MaskedTextBox MTextBoxID;
     }
 }
