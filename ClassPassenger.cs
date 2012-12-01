@@ -17,6 +17,7 @@ namespace Trains
         /// </summary>
         public string   Type;
 
+
         /// <summary>
         /// Инициализирует билет по номеру поезда и типу билета.
         /// </summary>
@@ -98,15 +99,93 @@ namespace Trains
             return AllPassengers[ID];
         }
 
-        public static List<Passenger> SearchByLName(string LName)
+        /// <summary>
+        /// Возвращает список пассажиров с искомой фамилией.
+        /// </summary>
+        /// <param name="LName">Фамилия искомого пассажира.</param>
+        /// <param name="Psgs">Список пассажиров, в котором проводится поиск.</param>
+        /// <returns></returns>
+        private static List<Passenger> SearchByLName(string LName, List<Passenger> Psgs)
         {
-            List<Passenger> ResultPassengers = new List<Passenger>();
-            foreach(KeyValuePair<int, Passenger> Psg in AllPassengers)
+            List<Passenger> ResultPsgs  = new List<Passenger>();
+            foreach(Passenger Psg in Psgs)
             {
-                if (Psg.Value.LastName == LName)
-                    ResultPassengers.Add(Psg.Value);
+                if (Psg.LastName == LName)
+                    ResultPsgs.Add(Psg);
             }
-            return ResultPassengers;
+            return ResultPsgs;
+        }
+
+        /// <summary>
+        /// Возвращает список пассажиров с искомым именем.
+        /// </summary>
+        /// <param name="FName">Имя искомого пассажира.</param>
+        /// <param name="Psgs">Список пассажиров, в котором проводится поиск.</param>
+        /// <returns></returns>
+        private static List<Passenger> SearchByFName(string FName, List<Passenger> Psgs)
+        {
+            List<Passenger> ResultPsgs  = new List<Passenger>();
+            foreach(Passenger Psg in Psgs)
+            {
+                if (Psg.LastName == FName)
+                    ResultPsgs.Add(Psg);
+            }
+            return ResultPsgs;
+        }
+
+
+        /// <summary>
+        /// Возвращает список пассажиров с искомым типом билета.
+        /// </summary>
+        /// <param name="TypeOfTicket">Тип билета искомого пассажира.</param>
+        /// <param name="Psgs">Список пассажиров, в котором проводится поиск.</param>
+        /// <returns></returns>
+        private static List<Passenger> SearchByTypeOfTicket(string TypeOfTicket, List<Passenger> Psgs)
+        {
+            List<Passenger> ResultPsgs  = new List<Passenger>();
+            foreach(Passenger Psg in Psgs)
+            {
+                if (Passenger.ContainTypeOfTicket(Psg, TypeOfTicket))
+                {
+                    ResultPsgs.Add(Psg);
+                }
+            }
+            return ResultPsgs;
+        }
+
+        /// <summary>
+        /// Возвращает истину, если у пассажира имеется хотя бы
+        /// один билет искомого типа.
+        /// </summary>
+        /// <param name="Psg">Пассажир.</param>
+        /// <param name="TypeOfTicket">Искомый тип билета.</param>
+        /// <returns></returns>
+        private static bool ContainTypeOfTicket(Passenger Psg, string TypeOfTicket)
+        {
+            List<Ticket> Tcks   = Psg.Tickets;
+            foreach (Ticket Tck in Tcks)
+            {
+                if (Tck.Type == TypeOfTicket)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        /// <summary>
+        /// Возвращает список всех пассажиров.
+        /// </summary>
+        /// <returns></returns>
+        private static List<Passenger> ConvertToListOfPas()
+        {
+            List<Passenger> Psgs    = new List<Passenger>();        
+            foreach (KeyValuePair<int, Passenger> kvp in AllPassengers)
+            {
+                Psgs.Add(kvp.Value);
+            }
+            return Psgs;
         }
 
 
