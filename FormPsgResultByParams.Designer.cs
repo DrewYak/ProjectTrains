@@ -61,6 +61,8 @@
             // 
             // TablePas
             // 
+            this.TablePas.AllowUserToAddRows = false;
+            this.TablePas.AllowUserToDeleteRows = false;
             this.TablePas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablePas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -70,6 +72,7 @@
             this.TablePas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TablePas.Location = new System.Drawing.Point(389, 43);
             this.TablePas.Name = "TablePas";
+            this.TablePas.ReadOnly = true;
             this.TablePas.Size = new System.Drawing.Size(381, 355);
             this.TablePas.TabIndex = 0;
             // 
@@ -78,6 +81,7 @@
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ID.HeaderText = "Номер паспорта";
             this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
             this.ID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
@@ -86,6 +90,7 @@
             this.LName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.LName.HeaderText = "Фамилия";
             this.LName.Name = "LName";
+            this.LName.ReadOnly = true;
             this.LName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.LName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.LName.Width = 62;
@@ -95,6 +100,7 @@
             this.FName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.FName.HeaderText = "Имя";
             this.FName.Name = "FName";
+            this.FName.ReadOnly = true;
             this.FName.Width = 54;
             // 
             // Tickets
@@ -102,6 +108,7 @@
             this.Tickets.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Tickets.HeaderText = "Билеты";
             this.Tickets.Name = "Tickets";
+            this.Tickets.ReadOnly = true;
             this.Tickets.Width = 70;
             // 
             // Back
@@ -130,6 +137,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 43);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(380, 355);
@@ -144,6 +152,7 @@
             this.ClientSize = new System.Drawing.Size(773, 401);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PsgResultByParams";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormPsgResultByParams";
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TablePas)).EndInit();

@@ -23,8 +23,13 @@ namespace Trains
 
         private void byID_CheckedChanged(object sender, EventArgs e)
         {
-            gBByID.Enabled      = byID.Checked;
-            gBByParams.Enabled  = byParams.Checked;
+            gBByID.Enabled          = byID.Checked;
+            gBByParams.Enabled      = byParams.Checked;
+            buttonSearch.Enabled    = byParams.Checked;
+            if (MTextBoxID.MaskCompleted)
+            {
+                buttonSearch.Enabled    = true;    
+            }
         }
 
         /// <summary>
@@ -65,20 +70,36 @@ namespace Trains
 
             if (byParams.Checked)
             {
-                PsgResultByParams FormResultPasByParams = new PsgResultByParams();
-                FormResultPasByParams.Owner             = this;
-
                 string LName                            = ParamLastName.Text;
                 string FName                            = ParamFName.Text;
                 string TypeOfTicket                     = ParamTypeOfTicket.Text;
 
                 List<Passenger> ResultPas               = Passenger.Search(LName, FName, TypeOfTicket);
-                foreach (Passenger Psg in ResultPas)
+
+                if (ResultPas.Count == 0)
                 {
-                    FormResultPasByParams.TablePas.Rows.Add(Psg.ID, Psg.LastName, Psg.FirstName, Psg.Tickets.Count);
+                    FormMessage Message         = new FormMessage();
+                    Message.messageLabel.Text   = "Поиск не дал результатов.";
+                    Message.ShowDialog();
                 }
-                FormResultPasByParams.ShowDialog();
+                else
+                {
+                    FillResultFormAndShowIt(ResultPas);
+                }
             }
+        }
+
+        private void FillResultFormAndShowIt(List<Passenger> Psgs)
+        {
+            PsgResultByParams FormResultPasByParams = new PsgResultByParams();
+            FormResultPasByParams.Owner             = this;
+
+            foreach (Passenger Psg in Psgs)
+            {
+                FormResultPasByParams.TablePas.Rows.Add(Psg.ID, Psg.LastName, Psg.FirstName, Psg.Tickets.Count);
+            }
+
+            FormResultPasByParams.ShowDialog();
         }
 
         private void SearchID_KeyUp(object sender, KeyEventArgs e)

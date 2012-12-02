@@ -32,8 +32,6 @@ namespace Trains
 
     class Passenger
     {
-        #region Поля и методы
-
         int             _id;
         string          _firstName;
         string          _lastName;
@@ -89,6 +87,8 @@ namespace Trains
             AllPassengers[ID]._tickets.Add(TheTicket);
         }
 
+        #region Поиск и связанные с ним методы
+
         /// <summary>
         /// Возвращает пассажира из словаря по номеру паспорта.
         /// </summary>
@@ -100,7 +100,14 @@ namespace Trains
         }
 
 
-
+        /// <summary>
+        /// Возвращает список пассажиров, удовлетворяющих
+        /// параметрам поискового запроса.
+        /// </summary>
+        /// <param name="LName">Фамилия пассажира.</param>
+        /// <param name="FName">Имя пассажира.</param>
+        /// <param name="TypeOfTicket">Тип билета пассажира.</param>
+        /// <returns>Список объектов класса Passenger.</returns>
         public static List<Passenger> Search(string LName, string FName, string TypeOfTicket)
         {
             List <Passenger> Psgs   = Passenger.ConvertToListOfPas();
@@ -197,6 +204,8 @@ namespace Trains
             return false;
         }
 
+#endregion
+
 
         /// <summary>
         /// Возвращает список всех пассажиров.
@@ -211,13 +220,6 @@ namespace Trains
             }
             return Psgs;
         }
-
-
-
-
-        #endregion
-
-
 
         #region Свойства
 
