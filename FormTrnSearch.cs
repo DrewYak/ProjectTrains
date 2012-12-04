@@ -61,7 +61,30 @@ namespace Trains
 
             if (byParams.Checked)
             {
+                string PointOfDep   = maskedTextBox2.Text;
+                string PointOfArr   = maskedTextBox3.Text;
+                List<Train> Trns    = Train.Search(PointOfDep, PointOfArr);
 
+                if (Trns.Count == 0)
+                {
+                    FormMessage Message         = new FormMessage();
+                    Message.messageLabel.Text   = "Поиск не дал результатов.";
+                    Message.ShowDialog();
+                }
+                else
+                {
+                    FormResultTrnByParams TrnByPar  = new FormResultTrnByParams();
+                    foreach(Train Trn in Trns)
+                    {
+                        int     Number      = Trn.Number;
+                        string  TimeDep     = Trn.Stations[0].TimeOfDeparture;
+                        string  PointDep    = Trn.Stations[0].Name;
+                        string  TimeArr     = Trn.Stations[1].TimeOfArrival;
+                        string  PointArr    = Trn.Stations[1].Name;
+                        TrnByPar.TableTrns.Rows.Add(Number, TimeDep, PointDep, TimeArr, PointArr);
+                    }
+                    TrnByPar.ShowDialog();
+                }
             }
         }
     }

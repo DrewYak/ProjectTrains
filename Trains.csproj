@@ -83,6 +83,12 @@
     <Compile Include="FormPsgResultByParams.Designer.cs">
       <DependentUpon>FormPsgResultByParams.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormResultTrnByParams.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormResultTrnByParams.Designer.cs">
+      <DependentUpon>FormResultTrnByParams.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTrnResulByNumber.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPsgResultByParams.resx">
       <DependentUpon>FormPsgResultByParams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormResultTrnByParams.resx">
+      <DependentUpon>FormResultTrnByParams.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

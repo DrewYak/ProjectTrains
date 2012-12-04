@@ -136,6 +136,81 @@ namespace Trains
         }
 
         /// <summary>
+        /// Возвращает список ревалентных поездов.
+        /// </summary>
+        /// <param name="PointOfDep">Искомый пункт отправления.</param>
+        /// <param name="PointOfArr">Искомый пункт прибытия.</param>
+        /// <returns></returns>
+        public static List<Train> Search(string PointOfDep, string PointOfArr)
+        {
+            List<Train> Trns    = Train.ConvertToListOfTrn();
+            if (PointOfDep.Length != 0)
+            {
+                Trns    = Train.SearchByDep(PointOfDep, Trns);
+            }
+            if (PointOfArr.Length != 0)
+            {
+                Trns    = Train.SearchByArr(PointOfArr, Trns);
+            }
+            return Trns;
+        }
+
+        /// <summary>
+        /// Возвращает список поездов, отправляющихся из указанного пункта.
+        /// </summary>
+        /// <param name="PointOfDep">Искомый пункт отправления.</param>
+        /// <param name="Trns">Список поездов, в котором проводится поиск.</param>
+        /// <returns></returns>
+        private static List<Train> SearchByDep(string PointOfDep, List<Train> Trns)
+        {
+            List<Train> Result  = new List<Train>();
+            foreach(Train Trn in Trns)
+            {
+                if (Trn.Stations[0].Name == PointOfDep)
+                {
+                    Result.Add(Trn);
+                }
+            }
+            return Result;
+        }
+
+        /// <summary>
+        /// Возвращает список поездов, прибывающих в указанный пункт.
+        /// </summary>
+        /// <param name="PointOfArr">Искомый пункт прибытия.</param>
+        /// <param name="Trns">Список поездов, в котором проводится поиск.</param>
+        /// <returns></returns>
+        private static List<Train> SearchByArr(string PointOfArr, List<Train> Trns)
+        {
+            List<Train> Result  = new List<Train>();
+            foreach(Train Trn in Trns)
+            {
+                // Тут, вообще говоря, неверно!
+                if (Trn.Stations[1].Name == PointOfArr)
+                {
+                    Result.Add(Trn);
+                }
+            }
+            return Result;
+        }
+
+        /// <summary>
+        /// Возвращает список всех поездов, имеющихся в программе.
+        /// </summary>
+        /// <returns></returns>
+        private static List<Train> ConvertToListOfTrn()
+        {
+            List<Train> Result  = new List<Train>();
+            foreach(KeyValuePair<int, Train> kvp in AllTrains)
+            {
+                Result.Add(kvp.Value);
+            }
+            return Result;
+        }
+
+
+
+        /// <summary>
         /// Возвращает номер поезда.
         /// </summary>
         public int Number
@@ -180,3 +255,11 @@ namespace Trains
 
     }
 }
+
+/*
+[TestFixture]
+class SearchByParams
+{
+    Data
+}
+*/
