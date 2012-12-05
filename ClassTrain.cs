@@ -6,55 +6,52 @@ using System.Xml;
 namespace Trains
 {
 
-    struct Station
+    struct RoteNode
     {
-        public string Name;              
-        public string TimeOfDeparture;   
-        public string TimeOfArrival;     
+        Station _theStation;
+        string  _timeOfArrival;     
+        string  _timeOfDeparture;   
 
-        public Station(string name, string timeOfDeparture, string timeOfArrival)
+        /// <summary>
+        /// Инициализирует узел маршрута по станции, времени прибытия
+        /// на эту станцию и времени отправления с этой станции.
+        /// </summary>
+        /// <param name="TheStation">Станция узла маршрута.</param>
+        /// <param name="TimeOfArrival">Время прибытия поезда на станцию.</param>
+        /// <param name="TimeOfDeparture">Время отправления поезда со станции.</param>
+        public RoteNode(Station TheStation, string TimeOfArrival, string TimeOfDeparture)
         {
-            Name            = name;
-            TimeOfDeparture = timeOfDeparture;
-            TimeOfArrival   = timeOfArrival;
+            _theStation         = TheStation;     
+            _timeOfArrival      = TimeOfArrival;
+            _timeOfDeparture    = TimeOfDeparture;
         }
+
+        /// <summary>
+        /// Возвращает станцию узла маршрута.
+        /// </summary>
+        public Station TheStation { get { return _theStation; } }
+
+        /// <summary>
+        /// Возвращает время прибытия поезда на станцию.
+        /// </summary>
+        public string TimeOfArrival { get { return _timeOfArrival; } }
+
+        /// <summary>
+        /// Возвращает время отпрвления поезда со станции.
+        /// </summary>
+        public string TimeOfDeparture { get { return _timeOfDeparture; } }
     }
 
     class Train
     {
-        int     _number;
-        int     _countOfPas;
-        string  _timeOfDeparture;
-        string  _timeOfArrival;
-
-        static Dictionary<int, Train> AllTrains = new Dictionary<int, Train>();
+        int             _number;
+        List<Passenger> _listOfPas;
+        List<RoteNode>   _stations;
 
         /// <summary>
-        /// Создание объекта по номеру, кол-ву пассажиров, времени отправления и прибытия, маршруту.
+        /// Статический список всех поездов.
         /// </summary>
-        /// <param name="Number">Номер поезда.</param>
-        /// <param name="CountOfPas">Количество пассажиров.</param>
-        /// <param name="TimeOfDeparture">Время отправления.</param>
-        /// <param name="TimeOfArrival">Время прибытия.</param>
-        /// <param name="TheRoute">Маршрут.</param>
-        public Train(int Number, int CountOfPas, string TimeOfDeparture, string TimeOfArrival)
-        {
-            this.Number = Number;
-            this.CountOfPas = CountOfPas;
-            this.TimeOfDeparture = TimeOfDeparture;
-            this.TimeOfArrival = TimeOfArrival;
-        }
-
-        /// <summary>
-        /// Создание объекта номер 9999
-        /// </summary>
-        public Train()
-        {
-            this.Number = 9999;
-            this.CountOfPas = 0;
-            this.TimeOfDeparture = "06:00";
-            this.TimeOfArrival = "13:00";
-        }
+        static List<Train> AllTrains = new List<Train>();
 
         /// <summary>
         /// Инициализирует поезд по его номеру и создаёт пустой список пассажров.
@@ -93,11 +90,11 @@ namespace Trains
             AllTrains[NumberOfTrain].ListOfPas.Add(ID);
         }
 
-        public static void AddStationToTrain(Station station, int NumberOfTrain)
+        public static void AddStationToTrain(RoteNode station, int NumberOfTrain)
         {
             if (AllTrains[NumberOfTrain].Stations == null)
             {
-                AllTrains[NumberOfTrain].Stations = new List<Station>();
+                AllTrains[NumberOfTrain].Stations = new List<RoteNode>();
             }
             AllTrains[NumberOfTrain].Stations.Add(station);
         }
@@ -166,7 +163,7 @@ namespace Trains
             List<Train> Result  = new List<Train>();
             foreach(Train Trn in Trns)
             {
-                if (Trn.Stations[0].Name == PointOfDep)
+                if (Trn.Stations[0]._name == PointOfDep)
                 {
                     Result.Add(Trn);
                 }
@@ -186,7 +183,7 @@ namespace Trains
             foreach(Train Trn in Trns)
             {
                 // Тут, вообще говоря, неверно!
-                if (Trn.Stations[1].Name == PointOfArr)
+                if (Trn.Stations[1]._name == PointOfArr)
                 {
                     Result.Add(Trn);
                 }
@@ -224,8 +221,7 @@ namespace Trains
         /// </summary>
         public int CountOfPas
         {
-            get { return _countOfPas; }
-            set { if (value >= 0) _countOfPas = value; }
+            get { return ListOfPas.Count; }
         }
 
         /// <summary>
@@ -233,8 +229,7 @@ namespace Trains
         /// </summary>
         public string TimeOfDeparture
         {
-            get { return _timeOfDeparture; }
-            set { if (value.Length >= 0) _timeOfDeparture = value; }
+            get { return Stations[0]._timeOfDeparture; }
         }
 
         /// <summary>
@@ -242,16 +237,22 @@ namespace Trains
         /// </summary>
         public string TimeOfArrival
         {
-            get { return _timeOfArrival; }
-            set { if (value.Length >= 0) _timeOfArrival = value; }
+            get 
+            { 
+                int lastIndex   = Stations.Count - 1;
+                return Stations[lastIndex]._timeOfArrival;
+            }
         }
 
         /// <summary>
-        /// Возвращает и задаёт список номеров паспортов пассажиров в поезде.
+        /// Возвращает список пассажиров в поезде.
         /// </summary>
-        public List<int>        ListOfPas   { get; set; } 
+        public List<Passenger>  ListOfPas   { get { return _listOfPas; } } 
 
-        public List<Station>    Stations    { get; set; }
+        /// <summary>
+        /// Возвращает и задаёт
+        /// </summary>
+        public List<RoteNode>    Stations    { get { return _stations; } }
 
     }
 }

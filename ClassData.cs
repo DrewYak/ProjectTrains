@@ -7,38 +7,59 @@ using System.Xml;
 namespace Trains
 {
 
-    struct Location
+    struct Station
     {
-        public string   Name;
-        public int      X;
-        public int      Y;
+        string   _name;
+        int      _x;
+        int      _y;
 
-        public Location(string NameLoc, int XLoc, int YLoc)
+        /// <summary>
+        /// инициализирует станцию по её названию и координатам на форме.
+        /// </summary>
+        /// <param name="Name">Название станции.</param>
+        /// <param name="X">Координата X на форме.</param>
+        /// <param name="Y">Координата Y на форме.</param>
+        public Station(string Name, int X, int Y)
         {
-            Name    = NameLoc;
-            X       = XLoc;
-            Y       = YLoc;
+            _name    = Name;
+            _x       = X;
+            _y       = Y;
         }
+
+        /// <summary>
+        /// Возвращает название станции.
+        /// </summary>
+        public string Name { get { return _name; } }
+
+        /// <summary>
+        /// Возвращает координату X станции на форме.
+        /// </summary>
+        public int X { get { return _x; } }
+
+        /// <summary>
+        /// Возвращает координату Y станции на форме.
+        /// </summary>
+        public int Y { get { return _y; } }
     }
 
     class Data
     {
 
-        public static Dictionary<int ,Location> Locations { get; set; }
+        public static Dictionary<int ,Station> Locations { get; set; }
 
         /// <summary>
         /// Добавляет местоположение станции в оперативную память
         /// для дальнейшей работы.
         /// </summary>
         /// <param name="location">Местоположение станции.</param>
-        private static void AddLocationToData(Location location)
+        private static void AddLocationToData(Station location)
         {
             if (Locations == null)
             {
-                Locations = new Dictionary<int,Location>();
+                Locations = new Dictionary<int,Station>();
             }
 
-            int HashCode    = location.Name.GetHashCode();
+            int HashCode    = location._name.GetHashCode();
             Locations.Add(HashCode, location);
         }
 
@@ -72,7 +93,7 @@ namespace Trains
                 int     x       = Convert.ToInt32(Loc.ChildNodes[1].InnerText);
                 int     y       = Convert.ToInt32(Loc.ChildNodes[2].InnerText);
 
-                Location Lctn   = new Location(name, x, y);
+                Station Lctn   = new Station(name, x, y);
                 AddLocationToData(Lctn);
             }
         }
@@ -111,7 +132,7 @@ namespace Trains
                 string  timeOfDeparture     = Stn.ChildNodes[1].InnerText;
                 string  timeOfArrival       = Stn.ChildNodes[2].InnerText;
 
-                Station station             = new Station(name, timeOfDeparture, timeOfArrival);
+                RoteNode station             = new RoteNode(name, timeOfDeparture, timeOfArrival);
                 Train.AddStationToTrain(station, NumberOfTrain);     
             }
         }

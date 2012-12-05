@@ -31,10 +31,10 @@ namespace Trains
         {
             ResultForm.Owner                    = this;
             ResultForm.Number           .Text   = Trn.Number.ToString();
-            ResultForm.PointOfDeparture .Text   = Trn.Stations.First().Name;
-            ResultForm.TimeOfDeparture  .Text   = Trn.Stations.First().TimeOfDeparture;
-            ResultForm.PointOfArrival   .Text   = Trn.Stations.Last().Name;
-            ResultForm.TimeOfArrival    .Text   = Trn.Stations.Last().TimeOfArrival;
+            ResultForm.PointOfDeparture .Text   = Trn.Stations.First()._name;
+            ResultForm.TimeOfDeparture  .Text   = Trn.Stations.First()._timeOfDeparture;
+            ResultForm.PointOfArrival   .Text   = Trn.Stations.Last()._name;
+            ResultForm.TimeOfArrival    .Text   = Trn.Stations.Last()._timeOfArrival;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -77,10 +77,10 @@ namespace Trains
                     foreach(Train Trn in Trns)
                     {
                         int     Number      = Trn.Number;
-                        string  TimeDep     = Trn.Stations[0].TimeOfDeparture;
-                        string  PointDep    = Trn.Stations[0].Name;
-                        string  TimeArr     = Trn.Stations[1].TimeOfArrival;
-                        string  PointArr    = Trn.Stations[1].Name;
+                        string  TimeDep     = Trn.Stations[0]._timeOfDeparture;
+                        string  PointDep    = Trn.Stations[0]._name;
+                        string  TimeArr     = Trn.Stations[1]._timeOfArrival;
+                        string  PointArr    = Trn.Stations[1]._name;
                         TrnByPar.TableTrns.Rows.Add(Number, TimeDep, PointDep, TimeArr, PointArr);
                     }
                     TrnByPar.ShowDialog();

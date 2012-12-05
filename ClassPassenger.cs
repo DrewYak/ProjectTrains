@@ -37,7 +37,7 @@ namespace Trains
         List<Ticket>    _tickets;
 
         /// <summary>
-        /// Статический список пассажиров.
+        /// Статический список всех пассажиров.
         /// </summary>
         static List<Passenger> AllPassengers = new List<Passenger>();
 
@@ -238,7 +238,7 @@ namespace Trains
         /// <summary>
         /// Возвращает номер паспорта.
         /// </summary>
-        public int ID
+        int ID
         {
             get { return _id; }
             set { if ((value >= 1000) && (value <= 9999)) _id = value; }
@@ -247,7 +247,7 @@ namespace Trains
         /// <summary>
         /// Возвращает имя пассажира.
         /// </summary>
-        public string FirstName
+        string FirstName
         {  
             get { return _firstName; }
             set { if (value.Length != 0) _firstName = value; }
@@ -256,7 +256,7 @@ namespace Trains
         /// <summary>
         /// Возвращает фамилию пассажира.
         /// </summary>
-        public string LastName
+        string LastName
         {  
             get { return _lastName; }
             set { if (value.Length != 0) _lastName = value; }
