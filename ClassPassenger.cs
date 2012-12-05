@@ -39,7 +39,7 @@ namespace Trains
         /// <summary>
         /// Статический список всех пассажиров.
         /// </summary>
-        static List<Passenger> AllPassengers = new List<Passenger>();
+        static List<Passenger> _allPassengers = new List<Passenger>();
 
         /// <summary>
         /// Инициализирует пассажира по номеру паспорта, имени, фамилии и билету.
@@ -64,7 +64,7 @@ namespace Trains
         /// </summary>
         private void AddToAllPassengers()
         {
-            AllPassengers.Add(this);
+            _allPassengers.Add(this);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Trains
         /// </summary>
         public void Remove()
         {
-            AllPassengers.Remove(this);
+            _allPassengers.Remove(this);
         }
 
         /// <summary>
@@ -105,6 +105,18 @@ namespace Trains
             Psg._tickets.Add(TheTicket);
         }
 
+        /// <summary>
+        /// Добавляем новый билет к билетам пассажира,
+        /// номер паспорта которого введён.
+        /// </summary>
+        /// <param name="ID">Номер паспорта пассажира.</param>
+        /// <param name="TheTicket">Новый добавляемый билет пассажира.</param>
+        public static void AddTicketToPassengerByID(int ID, Ticket TheTicket)
+        {
+            Passenger Psg = Search(ID);
+            AddTicketToPassenger(Psg, TheTicket);
+        }
+
         #region Поиск и связанные с ним методы
 
         /// <summary>
@@ -115,7 +127,7 @@ namespace Trains
         /// <exception cref="KeyNotFoundException"></exception>
         public static Passenger Search(int ID)
         {
-            foreach(Passenger Psg in AllPassengers)
+            foreach(Passenger Psg in _allPassengers)
             {
                 if (Psg.ID == ID)
                 {
@@ -238,7 +250,7 @@ namespace Trains
         /// <summary>
         /// Возвращает номер паспорта.
         /// </summary>
-        int ID
+        public int ID
         {
             get { return _id; }
             set { if ((value >= 1000) && (value <= 9999)) _id = value; }
@@ -247,7 +259,7 @@ namespace Trains
         /// <summary>
         /// Возвращает имя пассажира.
         /// </summary>
-        string FirstName
+        public string FirstName
         {  
             get { return _firstName; }
             set { if (value.Length != 0) _firstName = value; }
@@ -256,7 +268,7 @@ namespace Trains
         /// <summary>
         /// Возвращает фамилию пассажира.
         /// </summary>
-        string LastName
+        public string LastName
         {  
             get { return _lastName; }
             set { if (value.Length != 0) _lastName = value; }
@@ -267,9 +279,15 @@ namespace Trains
         /// </summary>
         public List<Ticket> Tickets { get {return _tickets;} }
 
+        /// <summary>
+        /// Возвращает список всех пассажиров.
+        /// </summary>
+        static List<Passenger> AllPassengers { get { return _allPassengers; } } 
+    }
+
         #endregion
 
-    }
+}
 
 #region Тесты
 

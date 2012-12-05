@@ -111,7 +111,7 @@ namespace Trains
                 XmlNodeList Passengers  = Trn.ChildNodes[2].ChildNodes;
 
                 Train TheTrain = new Train(Number);
-                TheTrain.Add();
+                TheTrain.AddToAllTrains();
 
                 AddStations     (Number, Stations);
                 AddPassengers   (Number, Passengers);
@@ -141,19 +141,19 @@ namespace Trains
         /// Добавляет данные о пассажирах в программу и устанавливает связь 
         /// между поездами и пассажирами.
         /// </summary>
-        /// <param name="NumberOfTrain">Номер поезда.</param>
+        /// <param name="TheTrain">Поезд, в который добавляюся пассажиры из списка узлов.</param>
         /// <param name="Passengers">Список узлов типа Passenger.</param>
-        private static void AddPassengers(int NumberOfTrain, XmlNodeList Passengers)
+        private static void AddPassengers(Train TheTrain, XmlNodeList Passengers)
         {
             foreach(XmlNode Psg in Passengers)
             {
                 int     ID              = Convert.ToInt32(Psg.ChildNodes[0].InnerText);
                 string  TypeOfTicket    = Psg.ChildNodes[3].InnerText;
-                Ticket  TheTicket       = new Ticket(NumberOfTrain, TypeOfTicket);
+                Ticket  TheTicket       = new Ticket(TheTrain, TypeOfTicket);
 
                 if (Passenger.Contain(ID))
                 {
-                    Passenger.AddTicket(ID, TheTicket); 
+                    Passenger.AddTicketToPassengerByID(ID, TheTicket); 
                 }
                 else
                 {

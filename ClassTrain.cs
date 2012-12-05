@@ -46,38 +46,39 @@ namespace Trains
     {
         int             _number;
         List<Passenger> _listOfPas;
-        List<RoteNode>   _stations;
+        List<RoteNode>  _route;
 
         /// <summary>
         /// Статический список всех поездов.
         /// </summary>
-        static List<Train> AllTrains = new List<Train>();
+        static List<Train> _allTrains = new List<Train>();
 
         /// <summary>
-        /// Инициализирует поезд по его номеру и создаёт пустой список пассажров.
+        /// Инициализирует поезд по его номеру, создаёт пустой список пассажиров
+        /// и добавляет поезд к списку всех поездов.
         /// </summary>
-        /// <param name="NumberOfTrain"></param>
+        /// <param name="NumberOfTrain">Номер поезда.</param>
         public Train(int NumberOfTrain)
         {
             this.Number     = NumberOfTrain;
-            this.ListOfPas = new List<int>();
+            this._listOfPas = new List<Passenger>();
+            AddToAllTrains();
         }
 
         /// <summary>
-        ///  Добавляет поезда в статический словарь AllTrains.
+        ///  Добавляет поезд в список всех поездов.
         /// </summary>
-        public void Add()
+        private void AddToAllTrains()
         {
-                AllTrains.Add(this.Number, this);
+                _allTrains.Add(this);
         }
 
         /// <summary>
-        /// Удаляет поезд по его номеру.
+        /// Удаляет поезд из списка всех поездов.
         /// </summary>
-        /// <param name="Number">Номер поезда</param>
-        public void Remove(int Number)
+        public void RemoveFromAllTrains()
         {
-            AllTrains.Remove(this.Number);
+            _allTrains.Remove(this);
         }
 
         /// <summary>
@@ -87,26 +88,16 @@ namespace Trains
         /// <param name="NumberOfTrain">Номер поезда.</param>
         public static void AddPassengerToTrain(int ID, int NumberOfTrain)
         {
-            AllTrains[NumberOfTrain].ListOfPas.Add(ID);
+            _allTrains[NumberOfTrain].ListOfPas.Add(ID);
         }
 
         public static void AddStationToTrain(RoteNode station, int NumberOfTrain)
         {
-            if (AllTrains[NumberOfTrain].Stations == null)
+            if (_allTrains[NumberOfTrain].Route == null)
             {
-                AllTrains[NumberOfTrain].Stations = new List<RoteNode>();
+                _allTrains[NumberOfTrain].Route = new List<RoteNode>();
             }
-            AllTrains[NumberOfTrain].Stations.Add(station);
-        }
-
-        /// <summary>
-        /// Возвращает поезд из словаря по его номеру.
-        /// </summary>
-        /// <param name="Number">Номер поезда</param>
-        /// <returns></returns>
-        public static Train Search(int Number)
-        {
-            return AllTrains[Number];
+            _allTrains[NumberOfTrain].Route.Add(station);
         }
 
         /// <summary>
@@ -128,34 +119,59 @@ namespace Trains
                 TheTrain.TimeOfDeparture = Trns[i].FirstChild.NextSibling.InnerText;
                 TheTrain.TimeOfArrival = Trns[i].FirstChild.NextSibling.NextSibling.InnerText;
 
-                TheTrain.Add();
+                TheTrain.AddToAllTrains();
             }
         }
 
+        #region Поиск и связанные с ним методы
+
         /// <summary>
-        /// Возвращает список ревалентных поездов.
+        /// Ищет поезд по его номеру. В случае успешного поиска возвращает
+        /// поезд. В случае провала возвращает null.
         /// </summary>
-        /// <param name="PointOfDep">Искомый пункт отправления.</param>
-        /// <param name="PointOfArr">Искомый пункт прибытия.</param>
+        /// <param name="Number">Номер поезда</param>
+        /// <returns></returns>
+        public static Train Search(int Number)
+        {
+            foreach (Train Trn in AllTrains)
+            {
+                if (Trn.Number == Number)
+                {
+                    return Trn;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Ищет поезда по начальной и конечной станциям. В случае успеха возвращает
+        /// список релевантных поездов. В случае провала возвращает null.
+        /// </summary>
+        /// <param name="PointOfDep">Искомая начальная станция.</param>
+        /// <param name="PointOfArr">Искомая конечная станция.</param>
         /// <returns></returns>
         public static List<Train> Search(string PointOfDep, string PointOfArr)
         {
-            List<Train> Trns    = Train.ConvertToListOfTrn();
-            if (PointOfDep.Length != 0)
+            List<Train> Result  = AllTrains;
+            
+            if (PointOfDep != "")
             {
-                Trns    = Train.SearchByDep(PointOfDep, Trns);
+                Result = SearchByDep(PointOfDep, Result);
             }
-            if (PointOfArr.Length != 0)
+            
+            if (PointOfArr != "")
             {
-                Trns    = Train.SearchByArr(PointOfArr, Trns);
+                Result = SearchByArr(PointOfArr, Result);
             }
-            return Trns;
+
+            return Result;
         }
 
         /// <summary>
-        /// Возвращает список поездов, отправляющихся из указанного пункта.
+        /// Ищет поезда по начальной станции. В случае успеха возвращает
+        /// список релевантных поездов. В случае провала возвращает null.
         /// </summary>
-        /// <param name="PointOfDep">Искомый пункт отправления.</param>
+        /// <param name="PointOfArr">Конечная станция.</param>
         /// <param name="Trns">Список поездов, в котором проводится поиск.</param>
         /// <returns></returns>
         private static List<Train> SearchByDep(string PointOfDep, List<Train> Trns)
@@ -163,7 +179,7 @@ namespace Trains
             List<Train> Result  = new List<Train>();
             foreach(Train Trn in Trns)
             {
-                if (Trn.Stations[0]._name == PointOfDep)
+                if (Trn.PointOfDeparture == PointOfDep)
                 {
                     Result.Add(Trn);
                 }
@@ -172,9 +188,10 @@ namespace Trains
         }
 
         /// <summary>
-        /// Возвращает список поездов, прибывающих в указанный пункт.
+        /// Ищет поезда по конечной станции. В случае успеха возвращает
+        /// список релевантных поездов. В случае провала возвращает null.
         /// </summary>
-        /// <param name="PointOfArr">Искомый пункт прибытия.</param>
+        /// <param name="PointOfArr">Конечная станция.</param>
         /// <param name="Trns">Список поездов, в котором проводится поиск.</param>
         /// <returns></returns>
         private static List<Train> SearchByArr(string PointOfArr, List<Train> Trns)
@@ -182,8 +199,7 @@ namespace Trains
             List<Train> Result  = new List<Train>();
             foreach(Train Trn in Trns)
             {
-                // Тут, вообще говоря, неверно!
-                if (Trn.Stations[1]._name == PointOfArr)
+                if (Trn.PointOfArrival == PointOfArr)
                 {
                     Result.Add(Trn);
                 }
@@ -191,21 +207,9 @@ namespace Trains
             return Result;
         }
 
-        /// <summary>
-        /// Возвращает список всех поездов, имеющихся в программе.
-        /// </summary>
-        /// <returns></returns>
-        private static List<Train> ConvertToListOfTrn()
-        {
-            List<Train> Result  = new List<Train>();
-            foreach(KeyValuePair<int, Train> kvp in AllTrains)
-            {
-                Result.Add(kvp.Value);
-            }
-            return Result;
-        }
+        #endregion
 
-
+        #region Свойства
 
         /// <summary>
         /// Возвращает номер поезда.
@@ -217,7 +221,7 @@ namespace Trains
         }
 
         /// <summary>
-        /// Возвращает количество пассажиров.
+        /// Возвращает фактическое количество пассажиров в поезде.
         /// </summary>
         public int CountOfPas
         {
@@ -225,22 +229,42 @@ namespace Trains
         }
 
         /// <summary>
-        /// Возвраает время отправления.
+        /// Возвращает название начальной станции.
         /// </summary>
-        public string TimeOfDeparture
+        public string PointOfDeparture
         {
-            get { return Stations[0]._timeOfDeparture; }
+            get { return Route[0].TheStation.Name; }
         }
 
         /// <summary>
-        /// Возврашает время прибытия.
+        /// Возвращает название конечной станции.
+        /// </summary>
+        public string PointOfArrival
+        {
+            get
+            {
+                int lastIndex = Route.Count - 1;
+                return Route[lastIndex].TheStation.Name; 
+            }
+        }
+
+        /// <summary>
+        /// Возвращает время отправления поезда с начальной станции.
+        /// </summary>
+        public string TimeOfDeparture
+        {
+            get { return Route[0].TimeOfDeparture; }
+        }
+
+        /// <summary>
+        /// Возврашает время прибытия поезда.
         /// </summary>
         public string TimeOfArrival
         {
             get 
             { 
-                int lastIndex   = Stations.Count - 1;
-                return Stations[lastIndex]._timeOfArrival;
+                int lastIndex   = Route.Count - 1;
+                return Route[lastIndex].TimeOfArrival;
             }
         }
 
@@ -250,9 +274,16 @@ namespace Trains
         public List<Passenger>  ListOfPas   { get { return _listOfPas; } } 
 
         /// <summary>
-        /// Возвращает и задаёт
+        /// Возвращает список узлов маршрута, через которые проходит поезд.
         /// </summary>
-        public List<RoteNode>    Stations    { get { return _stations; } }
+        public List<RoteNode>   Route    { get { return _route; } }
+
+        /// <summary>
+        /// Возвращает список всех поездов.
+        /// </summary>
+        static List<Train> AllTrains { get { return _allTrains; } }
+
+        #endregion
 
     }
 }
