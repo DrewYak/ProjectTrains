@@ -37,12 +37,13 @@ namespace Trains
         List<Ticket>    _tickets;
 
         /// <summary>
-        /// Статический словарь, содержащий информацию обо всех пассажирах. Ключ - номер паспорта пассажира. Значение - ссылка на объект класса Passenger.
+        /// Статический список пассажиров.
         /// </summary>
         static List<Passenger> AllPassengers = new List<Passenger>();
 
         /// <summary>
         /// Инициализирует пассажира по номеру паспорта, имени, фамилии и билету.
+        /// Добавляет пассажира в список всех пассажиров.
         /// </summary>
         /// <param name="ID">Номер паспорта.</param>
         /// <param name="FirstName">Имя.</param>
@@ -59,43 +60,69 @@ namespace Trains
         }
 
         /// <summary>
-        /// Добавляет пассажира в статический словарь AllPassengers.
+        /// Добавляет пассажира в список всех пассажиров.
         /// </summary>
         private void AddToAllPassengers()
         {
             AllPassengers.Add(this);
         }
 
+        /// <summary>
+        /// Возвращает истину, если пассажир с данным номером
+        /// паспорта уже содерижится в списке всех пассажиров
+        /// и ложь, если его там нет.
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public static bool Contain(int ID)
         {
-            return (AllPassengers.ContainsKey(ID));
+            if (Passenger.Search(ID) == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
 
         /// <summary>
-        /// Удаляет пассажира по номеру паспорта.
+        /// Удаляет пассажира из списка всех пассажиров.
         /// </summary>
-        /// <param name="ID">Номер паспорта.</param>
-        public void Remove(int ID)
+        public void Remove()
         {
-            AllPassengers.Remove(this.ID);
+            AllPassengers.Remove(this);
         }
 
-        public static void AddTicket(int ID, Ticket TheTicket)
+        /// <summary>
+        /// Добавляет новый билет к уже имеющимся билетам пассажира.
+        /// </summary>
+        /// <param name="Psg">Пассажир, к билетам которого добавляем ещё один новый билет.</param>
+        /// <param name="TheTicket">Новый добавляемый билет.</param>
+        public static void AddTicketToPassenger(Passenger Psg, Ticket TheTicket)
         {
-            AllPassengers[ID]._tickets.Add(TheTicket);
+            Psg._tickets.Add(TheTicket);
         }
 
         #region Поиск и связанные с ним методы
 
         /// <summary>
-        /// Возвращает пассажира из словаря по номеру паспорта.
+        /// Ищет пассажира по номеру паспорта. В случае успешного поиска возвращает
+        /// пассажира. В случае неуспешного поиска возвращает null.
         /// </summary>
         /// <param name="ID">Номер паспорта.</param>
         /// <exception cref="KeyNotFoundException"></exception>
         public static Passenger Search(int ID)
         {
-            return AllPassengers[ID];
+            foreach(Passenger Psg in AllPassengers)
+            {
+                if (Psg.ID == ID)
+                {
+                    return Psg;
+                }
+            }
+            return null;
         }
 
 
@@ -109,7 +136,7 @@ namespace Trains
         /// <returns>Список объектов класса Passenger.</returns>
         public static List<Passenger> Search(string LName, string FName, string TypeOfTicket)
         {
-            List <Passenger> Psgs   = Passenger.ConvertToListOfPas();
+            List <Passenger> Psgs   = AllPassengers;
             
             if (LName != "")
             {
@@ -205,20 +232,6 @@ namespace Trains
 
 #endregion
 
-
-        /// <summary>
-        /// Возвращает список всех пассажиров.
-        /// </summary>
-        /// <returns></returns>
-        private static List<Passenger> ConvertToListOfPas()
-        {
-            List<Passenger> Psgs    = new List<Passenger>();        
-            foreach (KeyValuePair<int, Passenger> kvp in AllPassengers)
-            {
-                Psgs.Add(kvp.Value);
-            }
-            return Psgs;
-        }
 
         #region Свойства
 
