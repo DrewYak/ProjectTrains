@@ -113,7 +113,10 @@
             // 
             // Back
             // 
+            this.Back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Back.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Back.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Aqua;
+            this.Back.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Back.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Back.Location = new System.Drawing.Point(3, 3);
@@ -121,11 +124,14 @@
             this.Back.Size = new System.Drawing.Size(380, 34);
             this.Back.TabIndex = 1;
             this.Back.Text = "Назад";
-            this.Back.UseVisualStyleBackColor = true;
+            this.Back.UseVisualStyleBackColor = false;
             // 
             // ShowAllPas
             // 
+            this.ShowAllPas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ShowAllPas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ShowAllPas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Aqua;
+            this.ShowAllPas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ShowAllPas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShowAllPas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ShowAllPas.Location = new System.Drawing.Point(389, 3);
@@ -133,17 +139,18 @@
             this.ShowAllPas.Size = new System.Drawing.Size(381, 34);
             this.ShowAllPas.TabIndex = 2;
             this.ShowAllPas.Text = "Показать всех пассажиров";
-            this.ShowAllPas.UseVisualStyleBackColor = true;
+            this.ShowAllPas.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(3, 43);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(380, 355);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Данные о пассажире";
             // 
             // PsgResultByParams
             // 
