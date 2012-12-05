@@ -8,25 +8,24 @@ namespace Trains
     struct Ticket
     {
         /// <summary>
-        /// Номер поезда, указанный в билете.
+        /// Поезд, в котором едет пассажир по данному билету.
         /// </summary>
-        public int      Number;
+        public Train    train;
      
         /// <summary>
-        /// Тип билета.
+        /// Тип вагона.
         /// </summary>
-        public string   Type;
-
+        public string   type;
 
         /// <summary>
-        /// Инициализирует билет по номеру поезда и типу билета.
+        /// Инициализирует билет по поезду, в котором едет пассажир и типу вагона.
         /// </summary>
-        /// <param name="Number">Номер поезда.</param>
-        /// <param name="Type">Тип билета.</param>
-        public Ticket(int NumberOfTrain, string TypeOfTicket)
+        /// <param name="TheTrain">Поезд, в котором едет пассажир.</param>
+        /// <param name="Type">Тип вагона.</param>
+        public Ticket(Train TheTrain, string TheType)
         {
-            Number = NumberOfTrain;
-            Type   = TypeOfTicket;
+            train   = TheTrain;
+            type    = TheType;
         }
     }
 
@@ -40,7 +39,7 @@ namespace Trains
         /// <summary>
         /// Статический словарь, содержащий информацию обо всех пассажирах. Ключ - номер паспорта пассажира. Значение - ссылка на объект класса Passenger.
         /// </summary>
-        static Dictionary<int, Passenger> AllPassengers = new Dictionary<int, Passenger>();
+        static List<Passenger> AllPassengers = new List<Passenger>();
 
         /// <summary>
         /// Инициализирует пассажира по номеру паспорта, имени, фамилии и билету.
@@ -64,7 +63,7 @@ namespace Trains
         /// </summary>
         private void AddToAllPassengers()
         {
-            AllPassengers.Add(this.ID, this);
+            AllPassengers.Add(this);
         }
 
         public static bool Contain(int ID)
@@ -196,7 +195,7 @@ namespace Trains
             List<Ticket> Tcks   = Psg.Tickets;
             foreach (Ticket Tck in Tcks)
             {
-                if (Tck.Type == TypeOfTicket)
+                if (Tck.type == TypeOfTicket)
                 {
                     return true;
                 }
