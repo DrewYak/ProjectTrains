@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace Trains
 {
-    struct Ticket
+    class Ticket
     {
         /// <summary>
         /// Поезд, в котором едет пассажир по данному билету.
@@ -18,18 +18,32 @@ namespace Trains
         string   _type;
 
         /// <summary>
+        /// Пассажир, владелец билета.
+        /// </summary>
+        Passenger _passenger;
+
+        /// <summary>
         /// Инициализирует билет по поезду, в котором едет пассажир и типу вагона.
         /// </summary>
-        /// <param name="TheTrain">Поезд, в котором едет пассажир.</param>
+        /// <param name="Train">Поезд, в котором едет пассажир.</param>
         /// <param name="Type">Тип вагона.</param>
-        public Ticket(Train TheTrain, string TheType)
+        public Ticket(Train Train, string Type, Passenger Passenger)
         {
-            _train   = TheTrain;
-            _type    = TheType;
+            _train      = Train;
+            _type       = Type;
+            _passenger  = Passenger;
         }
 
-        public Train    Train   { get { return _train; } }
-        public string   Type    { get { return _type ; } }
+        public void Associate(Train Train, Passenger Passenger)
+        {
+            Train.      AddTicket(this);
+            Passenger.  AddTicket(this);
+        }
+
+
+        public Train        Train       { get { return _train;      } }
+        public string       Type        { get { return _type ;      } }
+        public Passenger    Passenger   { get { return _passenger;  } }
     }
 
     class Passenger
@@ -63,6 +77,22 @@ namespace Trains
         }
 
         /// <summary>
+        /// Инициализирует пассажира по номеру паспорта, имени, фамилии.
+        /// Добавляет пассажира в список всех пассажиров.
+        /// </summary>
+        /// <param name="ID">Номер паспорта.</param>
+        /// <param name="FirstName">Имя.</param>
+        /// <param name="LastName">Фамилия.</param>
+        public Passenger(int ID, string FirstName, string LastName)
+        {
+            this.ID         = ID;
+            this.FirstName  = FirstName;
+            this.LastName   = LastName;
+            this._tickets   = new List<Ticket>();
+            this.AddToAllPassengers();
+        }
+
+        /// <summary>
         /// Добавляет пассажира в список всех пассажиров.
         /// </summary>
         private void AddToAllPassengers()
@@ -89,7 +119,6 @@ namespace Trains
             }
         }
 
-
         /// <summary>
         /// Удаляет пассажира из списка всех пассажиров.
         /// </summary>
@@ -101,11 +130,11 @@ namespace Trains
         /// <summary>
         /// Добавляет новый билет к уже имеющимся билетам пассажира.
         /// </summary>
-        /// <param name="Psg">Пассажир, к билетам которого добавляем ещё один новый билет.</param>
-        /// <param name="TheTicket">Новый добавляемый билет.</param>
-        public static void AddTicketToPassenger(Passenger Psg, Ticket TheTicket)
+        /// <param name="Passenger">Пассажир, к билетам которого добавляем ещё один новый билет.</param>
+        /// <param name="Ticket">Новый добавляемый билет.</param>
+        public void AddTicket(Ticket Ticket)
         {
-            Psg._tickets.Add(TheTicket);
+            this._tickets.Add(Ticket);
         }
 
         /// <summary>
@@ -113,11 +142,11 @@ namespace Trains
         /// номер паспорта которого введён.
         /// </summary>
         /// <param name="ID">Номер паспорта пассажира.</param>
-        /// <param name="TheTicket">Новый добавляемый билет пассажира.</param>
-        public static void AddTicketToPassengerByID(int ID, Ticket TheTicket)
+        /// <param name="Ticket">Новый добавляемый билет пассажира.</param>
+        public static void AddTicketToPassengerByID(int ID, Ticket Ticket)
         {
-            Passenger Psg = Search(ID);
-            AddTicketToPassenger(Psg, TheTicket);
+            Passenger Psg   = Search(ID);
+            Psg.AddTicket(Ticket);
         }
 
         #region Поиск и связанные с ним методы

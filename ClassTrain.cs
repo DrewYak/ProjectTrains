@@ -45,8 +45,8 @@ namespace Trains
     class Train
     {
         int             _number;
-        List<Passenger> _listOfPas;
-        List<RoteNode>  _route;
+        List<Ticket>    _tickets;
+        List<RoteNode>  _routenodes;
 
         /// <summary>
         /// Статический список всех поездов.
@@ -60,8 +60,9 @@ namespace Trains
         /// <param name="NumberOfTrain">Номер поезда.</param>
         public Train(int NumberOfTrain)
         {
-            this.Number     = NumberOfTrain;
-            this._listOfPas = new List<Passenger>();
+            this.Number         = NumberOfTrain;
+            this._tickets       = new List<Ticket>();
+            this._routenodes    = new List<RoteNode>();
             AddToAllTrains();
         }
 
@@ -86,14 +87,14 @@ namespace Trains
         /// </summary>
         /// <param name="ID">Номер паспорта пассажира.</param>
         /// <param name="NumberOfTrain">Номер поезда.</param>
-        public static void AddPassengerToTrain(Passenger Passenger, Train Train)
+        public void AddTicket(Ticket Ticket)
         {
-            Train._listOfPas.Add(Passenger);
+            this._tickets.Add(Ticket);
         }
 
         public void AddRouteNodeToTrain(RoteNode RouteNode)
         {
-            this._route.Add(RouteNode);
+            this._routenodes.Add(RouteNode);
         }
 
         #region Поиск и связанные с ним методы
@@ -198,7 +199,7 @@ namespace Trains
         /// </summary>
         public int CountOfPas
         {
-            get { return ListOfPas.Count; }
+            get { return Tickets.Count; }
         }
 
         /// <summary>
@@ -206,7 +207,7 @@ namespace Trains
         /// </summary>
         public string PointOfDeparture
         {
-            get { return Route[0].Station.Name; }
+            get { return RouteNodes[0].Station.Name; }
         }
 
         /// <summary>
@@ -216,8 +217,8 @@ namespace Trains
         {
             get
             {
-                int lastIndex = Route.Count - 1;
-                return Route[lastIndex].Station.Name; 
+                int lastIndex = RouteNodes.Count - 1;
+                return RouteNodes[lastIndex].Station.Name; 
             }
         }
 
@@ -226,7 +227,7 @@ namespace Trains
         /// </summary>
         public string TimeOfDeparture
         {
-            get { return Route[0].TimeOfDeparture; }
+            get { return RouteNodes[0].TimeOfDeparture; }
         }
 
         /// <summary>
@@ -236,20 +237,20 @@ namespace Trains
         {
             get 
             { 
-                int lastIndex   = Route.Count - 1;
-                return Route[lastIndex].TimeOfArrival;
+                int lastIndex   = RouteNodes.Count - 1;
+                return RouteNodes[lastIndex].TimeOfArrival;
             }
         }
 
         /// <summary>
         /// Возвращает список пассажиров в поезде.
         /// </summary>
-        public List<Passenger>  ListOfPas   { get { return _listOfPas; } } 
+        public List<Ticket>  Tickets   { get { return _tickets; } } 
 
         /// <summary>
         /// Возвращает список узлов маршрута, через которые проходит поезд.
         /// </summary>
-        public List<RoteNode>   Route    { get { return _route; } }
+        public List<RoteNode>   RouteNodes    { get { return _routenodes; } }
 
         /// <summary>
         /// Возвращает список всех поездов.

@@ -44,7 +44,7 @@ namespace Trains
 
     class Data
     {
-        static List<Station> _allStations;
+        static List<Station> _allStations = new List<Station>();
         static List<Station> AllStations { get { return _allStations; } }
 
         /// <summary>
@@ -152,23 +152,23 @@ namespace Trains
         {
             foreach(XmlNode Psg in Passengers)
             {
-                int     ID              = Convert.ToInt32(Psg.ChildNodes[0].InnerText);
-                string  TypeOfTicket    = Psg.ChildNodes[3].InnerText;
-                Ticket  Ticket          = new Ticket(Train, TypeOfTicket);
-                Passenger PAS           = Passenger.Search(ID);
+                int         ID              = Convert.ToInt32(Psg.ChildNodes[0].InnerText);
+                Passenger   PAS             = Passenger.Search(ID);
+                string      TypeOfTicket    = Psg.ChildNodes[3].InnerText;
 
                 if (PAS != null)
                 {
-                    Passenger.AddTicketToPassengerByID(ID, Ticket); 
+                    Ticket  Ticket  = new Ticket(Train, TypeOfTicket, PAS);
+                    Ticket.Associate(Train, PAS);
                 }
                 else
                 {
                     string  LName   = Psg.ChildNodes[1].InnerText;
                     string  FName   = Psg.ChildNodes[2].InnerText;
-                    PAS             = new Passenger(ID, FName, LName, Ticket);
+                    PAS             = new Passenger(ID, FName, LName);
+                    Ticket  Ticket  = new Ticket(Train, TypeOfTicket, PAS);
+                    Ticket.Associate(Train, PAS);
                 }
-
-                Train.AddPassengerToTrain(PAS, Train);
             }
         }
     }
