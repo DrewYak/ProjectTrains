@@ -8,10 +8,14 @@ namespace Trains
         string   _name;
         int      _x;
         int      _y;
+        /// <summary>
+        /// Список всех станций.
+        /// </summary>
         static List<Station> _allStations = new List<Station>();
 
         /// <summary>
-        /// инициализирует станцию по её названию и координатам на форме.
+        /// Инициализирует станцию по её названию и координатам на форме, 
+        /// добавляет (ссылку на) станцию к списку всех станций.
         /// </summary>
         /// <param name="Name">Название станции.</param>
         /// <param name="X">Координата X на форме.</param>
@@ -25,15 +29,20 @@ namespace Trains
         }
 
         /// <summary>
-        /// Добавляет местоположение станции в оперативную память
-        /// для дальнейшей работы.
+        /// Добавляет (ссылку на) станцию к списку всех станций.
         /// </summary>
-        /// <param name="Station">Местоположение станции.</param>
         private void AddToAllStations()
         {
             _allStations.Add(this);
         }
 
+        /// <summary>
+        /// Ищет станцию по её названию среди списка всех станций.
+        /// В случае успеха возвращает (ссылку на) станцию из списка
+        /// всех станций. В случае провала возвращает null.
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
         public static Station Search(string Name)
         {
             foreach (Station Stn in AllStations)
@@ -60,6 +69,10 @@ namespace Trains
         /// Возвращает координату Y станции на форме.
         /// </summary>
         public int Y { get { return _y; } }
+
+        /// <summary>
+        /// Возвращает список всех станций.
+        /// </summary>
         static List<Station> AllStations { get { return _allStations; } }
     }
 }

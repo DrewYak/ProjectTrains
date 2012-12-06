@@ -59,24 +59,6 @@ namespace Trains
         static List<Passenger> _allPassengers = new List<Passenger>();
 
         /// <summary>
-        /// Инициализирует пассажира по номеру паспорта, имени, фамилии и билету.
-        /// Добавляет пассажира в список всех пассажиров.
-        /// </summary>
-        /// <param name="ID">Номер паспорта.</param>
-        /// <param name="FirstName">Имя.</param>
-        /// <param name="LastName">Фамилия.</param>
-        /// <param name="TheTicket">Билет.</param>
-        public Passenger(int ID, string FirstName, string LastName, Ticket TheTicket)
-        {
-            this.ID         = ID;
-            this.FirstName  = FirstName;
-            this.LastName   = LastName;
-            this._tickets   = new List<Ticket>();
-            this._tickets.Add(TheTicket);
-            this.AddToAllPassengers();
-        }
-
-        /// <summary>
         /// Инициализирует пассажира по номеру паспорта, имени, фамилии.
         /// Добавляет пассажира в список всех пассажиров.
         /// </summary>
@@ -101,25 +83,6 @@ namespace Trains
         }
 
         /// <summary>
-        /// Возвращает истину, если пассажир с данным номером
-        /// паспорта уже содерижится в списке всех пассажиров
-        /// и ложь, если его там нет.
-        /// </summary>
-        /// <param name="ID"></param>
-        /// <returns></returns>
-        public static bool Contain(int ID)
-        {
-            if (Passenger.Search(ID) == null)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        /// <summary>
         /// Удаляет пассажира из списка всех пассажиров.
         /// </summary>
         public void RemoveFromAllPassengers()
@@ -137,17 +100,6 @@ namespace Trains
             this._tickets.Add(Ticket);
         }
 
-        /// <summary>
-        /// Добавляем новый билет к билетам пассажира,
-        /// номер паспорта которого введён.
-        /// </summary>
-        /// <param name="ID">Номер паспорта пассажира.</param>
-        /// <param name="Ticket">Новый добавляемый билет пассажира.</param>
-        public static void AddTicketToPassengerByID(int ID, Ticket Ticket)
-        {
-            Passenger Psg   = Search(ID);
-            Psg.AddTicket(Ticket);
-        }
 
         #region Поиск и связанные с ним методы
 
@@ -246,7 +198,7 @@ namespace Trains
             List<Passenger> ResultPsgs  = new List<Passenger>();
             foreach(Passenger Psg in Psgs)
             {
-                if (Passenger.ContainTypeOfTicket(Psg, TypeOfTicket))
+                if (Psg.ContainTypeOfTicket(TypeOfTicket))
                 {
                     ResultPsgs.Add(Psg);
                 }
@@ -258,12 +210,11 @@ namespace Trains
         /// Возвращает истину, если у пассажира имеется хотя бы
         /// один билет искомого типа.
         /// </summary>
-        /// <param name="Psg">Пассажир.</param>
         /// <param name="TypeOfTicket">Искомый тип билета.</param>
         /// <returns></returns>
-        private static bool ContainTypeOfTicket(Passenger Psg, string TypeOfTicket)
+        private bool ContainTypeOfTicket(string TypeOfTicket)
         {
-            List<Ticket> Tcks   = Psg.Tickets;
+            List<Ticket> Tcks   = this.Tickets;
             foreach (Ticket Tck in Tcks)
             {
                 if (Tck.Type == TypeOfTicket)
