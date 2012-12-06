@@ -82,8 +82,8 @@ namespace Trains
             XmlNodeList stations    = root.ChildNodes[0].ChildNodes;
             XmlNodeList trains      = root.ChildNodes[1].ChildNodes;
 
-            AddStations (stations);
-            AddTrains   (trains);
+            LoadStations (stations);
+            LoadTrains   (trains);
         }
 
 
@@ -91,7 +91,7 @@ namespace Trains
         /// Добавляет данные о местоположениях станций в программу.
         /// </summary>
         /// <param name="Stations">Список узлов типа Location.</param>
-        private static void AddStations(XmlNodeList Stations)
+        private static void LoadStations(XmlNodeList Stations)
         {
             foreach(XmlNode Stn in Stations)
             {
@@ -108,7 +108,7 @@ namespace Trains
         /// Добавляет данные о поездах в оперативную память.
         /// </summary>
         /// <param name="Trains">Список узлов типа Train.</param>
-        private static void AddTrains(XmlNodeList Trains)
+        private static void LoadTrains(XmlNodeList Trains)
         {
             foreach(XmlNode Trn in Trains)
             {
@@ -118,8 +118,8 @@ namespace Trains
 
                 Train Train = new Train(Number);
 
-                AddRouteNodes   (Train, RouteNodes);
-                AddPassengers   (Train, Passengers);
+                LoadRouteNodes   (Train, RouteNodes);
+                LoadPassengers   (Train, Passengers);
             }
         }
 
@@ -128,17 +128,17 @@ namespace Trains
         /// добавляет станции к маршруту поезда.
         /// </summary>
         /// <param name="NumberOfTrain">Номер поезда.</param>
-        /// <param name="Stations">Список узлов типа Station.</param>
-        private static void AddRouteNodes(Train Train, XmlNodeList Stations)
+        /// <param name="RouteNodes">Список узлов типа Station.</param>
+        private static void LoadRouteNodes(Train Train, XmlNodeList RouteNodes)
         {
-            foreach(XmlNode Stn in Stations)
+            foreach(XmlNode RouteNode in RouteNodes)
             {
-                string      name            = Stn.ChildNodes[0].InnerText;
-                string      timeOfDeparture = Stn.ChildNodes[1].InnerText;
-                string      timeOfArrival   = Stn.ChildNodes[2].InnerText;
+                string      name            = RouteNode.ChildNodes[0].InnerText;
+                string      timeOfDeparture = RouteNode.ChildNodes[1].InnerText;
+                string      timeOfArrival   = RouteNode.ChildNodes[2].InnerText;
                 Station     station         = Search(name);
                 RoteNode    routenode       = new RoteNode(station, timeOfDeparture, timeOfArrival);
-                Train.AddRouteNodeToTrain(routenode);     
+                Train.AddRouteNode(routenode);     
             }
         }
 
@@ -148,7 +148,7 @@ namespace Trains
         /// </summary>
         /// <param name="Train">Поезд, в который добавляюся пассажиры из списка узлов.</param>
         /// <param name="Passengers">Список узлов типа Passenger.</param>
-        private static void AddPassengers(Train Train, XmlNodeList Passengers)
+        private static void LoadPassengers(Train Train, XmlNodeList Passengers)
         {
             foreach(XmlNode Psg in Passengers)
             {

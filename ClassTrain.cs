@@ -92,7 +92,7 @@ namespace Trains
             this._tickets.Add(Ticket);
         }
 
-        public void AddRouteNodeToTrain(RoteNode RouteNode)
+        public void AddRouteNode(RoteNode RouteNode)
         {
             this._routenodes.Add(RouteNode);
         }

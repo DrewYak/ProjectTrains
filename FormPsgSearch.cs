@@ -54,17 +54,23 @@ namespace Trains
                 {
                     int             ID                  = Convert.ToInt32(MTextBoxID.Text);
                     Passenger       Psg                 = Passenger.Search(ID);
-
-                    PsgResultByID   FormResultPasByID   = new PsgResultByID();
-                    FillResultForm(FormResultPasByID, Psg);
-                    FormResultPasByID.ShowDialog(); 
+                    
+                    if (Psg == null)
+                    {
+                        FormMessage Message         = new FormMessage();
+                        Message.messageLabel.Text   = "Поиск не дал результатов.";
+                        Message.ShowDialog();
+                    }
+                    else
+                    {
+                        PsgResultByID   FormResultPasByID   = new PsgResultByID();
+                        FillResultForm(FormResultPasByID, Psg);
+                        FormResultPasByID.ShowDialog(); 
+                    }
                 }
 
                 catch (KeyNotFoundException)
                 {
-                    FormMessage Message         = new FormMessage();
-                    Message.messageLabel.Text   = "Поиск не дал результатов.";
-                    Message.ShowDialog();
                 }
             }
 

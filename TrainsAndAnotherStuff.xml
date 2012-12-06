@@ -18,12 +18,12 @@
       <Number>10</Number> 
       <Route>
         <RouteNode>
-          <Location>Москва</Location>
+          <Station>Москва</Station>
           <Arrive>05:50</Arrive>
           <Depart>06:00</Depart>
         </RouteNode>
         <RouteNode>
-          <Location>Санкт-Петербург</Location>
+          <Station>Санкт-Петербург</Station>
           <Arrive>16:00</Arrive>
           <Depart>16:10</Depart>
         </RouteNode>
@@ -31,26 +31,26 @@
       <Passengers>
         <Passenger>
           <ID>1000</ID>
-          <FName>Ксения</FName>
           <LName>Румянцева</LName>
+          <FName>Ксения</FName>
           <TypeOfTicket>Плацкарт</TypeOfTicket>
         </Passenger>
         <Passenger>
           <ID>1001</ID>
-          <FName>Дарья</FName>
           <LName>Трофименко</LName>
+          <FName>Дарья</FName>
           <TypeOfTicket>Плацкарт</TypeOfTicket>
         </Passenger>
         <Passenger>
           <ID>1002</ID>
-          <FName>Анастасия</FName>
           <LName>Алёшина</LName>
+          <FName>Анастасия</FName>
           <TypeOfTicket>Плацкарт</TypeOfTicket>
         </Passenger>
         <Passenger>
           <ID>1003</ID>
-          <FName>Андрей</FName>
           <LName>Яковличев</LName>
+          <FName>Андрей</FName>
           <TypeOfTicket>Плацкарт</TypeOfTicket>
         </Passenger>
       </Passengers>
