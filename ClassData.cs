@@ -7,67 +7,9 @@ using System.Xml;
 namespace Trains
 {
 
-    class Station
-    {
-        string   _name;
-        int      _x;
-        int      _y;
-
-        /// <summary>
-        /// инициализирует станцию по её названию и координатам на форме.
-        /// </summary>
-        /// <param name="Name">Название станции.</param>
-        /// <param name="X">Координата X на форме.</param>
-        /// <param name="Y">Координата Y на форме.</param>
-        public Station(string Name, int X, int Y)
-        {
-            _name    = Name;
-            _x       = X;
-            _y       = Y;
-        }
-
-        /// <summary>
-        /// Возвращает название станции.
-        /// </summary>
-        public string Name { get { return _name; } }     
-
-        /// <summary>
-        /// Возвращает координату X станции на форме.
-        /// </summary>
-        public int X { get { return _x; } }
-
-        /// <summary>
-        /// Возвращает координату Y станции на форме.
-        /// </summary>
-        public int Y { get { return _y; } }
-    }
 
     class Data
     {
-        static List<Station> _allStations = new List<Station>();
-        static List<Station> AllStations { get { return _allStations; } }
-
-        /// <summary>
-        /// Добавляет местоположение станции в оперативную память
-        /// для дальнейшей работы.
-        /// </summary>
-        /// <param name="Station">Местоположение станции.</param>
-        private static void AddToAllStations(Station Station)
-        {
-            _allStations.Add(Station);
-        }
-
-        public static Station Search(string Name)
-        {
-            foreach (Station Stn in AllStations)
-            {
-                if (Stn.Name == Name)
-                {
-                    return Stn;
-                }
-            }
-            return null;
-        }
 
         /// <summary>
         /// Загружает все данные из XML-документа в оперативную память для дальнейшей работы.
@@ -100,7 +42,7 @@ namespace Trains
                 int     y       = Convert.ToInt32(Stn.ChildNodes[2].InnerText);
 
                 Station Station = new Station(name, x, y);
-                AddToAllStations(Station);
+//                Station.AddToAllStations();
             }
         }
 
@@ -136,7 +78,7 @@ namespace Trains
                 string      name            = RouteNode.ChildNodes[0].InnerText;
                 string      timeOfDeparture = RouteNode.ChildNodes[1].InnerText;
                 string      timeOfArrival   = RouteNode.ChildNodes[2].InnerText;
-                Station     station         = Search(name);
+                Station     station         = Station.Search(name);
                 RoteNode    routenode       = new RoteNode(station, timeOfDeparture, timeOfArrival);
                 Train.AddRouteNode(routenode);     
             }
