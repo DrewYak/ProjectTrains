@@ -1,51 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!--Документ с примером данных-->
 <TrainsAndOtherStuff>
-  <Locations>
-    <Location>
+  <Stations>
+    <Station>
       <Name>Санкт-Петербург</Name>
       <X>39</X>
       <Y>23</Y>
-    </Location>
-    <Location>
+    </Station>
+    <Station>
       <Name>Москва</Name>
       <X>12</X>
       <Y>34</Y>
-    </Location>
-  </Locations>
+    </Station>
+  </Stations>
   <Trains>
     <Train>
       <Number>10</Number> 
-      <TimeOfDeparuture>06:00</TimeOfDeparuture> 
-      <TimeOfArrival>16:00</TimeOfArrival> 
-      <Routes>
-        <Route>
+      <Route>
+        <RouteNode>
           <Location>Москва</Location>
           <Arrive>05:50</Arrive>
           <Depart>06:00</Depart>
-        </Route> -<Route>
+        </RouteNode>
+        <RouteNode>
           <Location>Санкт-Петербург</Location>
           <Arrive>16:00</Arrive>
           <Depart>16:10</Depart>
-        </Route>
-      </Routes> 
+        </RouteNode>
+      </Route> 
       <Passengers>
         <Passenger>
           <ID>1000</ID>
           <FName>Ксения</FName>
           <LName>Румянцева</LName>
           <TypeOfTicket>Плацкарт</TypeOfTicket>
-        </Passenger> -<Passenger>
+        </Passenger>
+        <Passenger>
           <ID>1001</ID>
-          <FName>Трофименко</FName>
-          <LName>Дарья</LName>
+          <FName>Дарья</FName>
+          <LName>Трофименко</LName>
           <TypeOfTicket>Плацкарт</TypeOfTicket>
-        </Passenger> -<Passenger>
+        </Passenger>
+        <Passenger>
           <ID>1002</ID>
-          <FName>Алёшина</FName>
-          <LName>Анастасия</LName>
+          <FName>Анастасия</FName>
+          <LName>Алёшина</LName>
           <TypeOfTicket>Плацкарт</TypeOfTicket>
-        </Passenger> -<Passenger>
+        </Passenger>
+        <Passenger>
           <ID>1003</ID>
           <FName>Андрей</FName>
           <LName>Яковличев</LName>

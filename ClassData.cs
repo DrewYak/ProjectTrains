@@ -73,10 +73,10 @@ namespace Trains
             doc.Load(FileName);
             
             XmlNode     root        = doc.DocumentElement;
-            XmlNodeList locations   = root.ChildNodes[0].ChildNodes;
+            XmlNodeList stations    = root.ChildNodes[0].ChildNodes;
             XmlNodeList trains      = root.ChildNodes[1].ChildNodes;
 
-            AddLocations(locations);
+            AddStations (stations);
             AddTrains   (trains);
         }
 
@@ -84,10 +84,10 @@ namespace Trains
         /// <summary>
         /// Добавляет данные о местоположениях станций в программу.
         /// </summary>
-        /// <param name="Locations">Список узлов типа Location.</param>
-        private static void AddLocations(XmlNodeList Locations)
+        /// <param name="Stations">Список узлов типа Location.</param>
+        private static void AddStations(XmlNodeList Stations)
         {
-            foreach(XmlNode Loc in Locations)
+            foreach(XmlNode Loc in Stations)
             {
                 string  name    = Loc.ChildNodes[0].InnerText;
                 int     x       = Convert.ToInt32(Loc.ChildNodes[1].InnerText);
@@ -111,9 +111,8 @@ namespace Trains
                 XmlNodeList Passengers  = Trn.ChildNodes[2].ChildNodes;
 
                 Train TheTrain = new Train(Number);
-                TheTrain.AddToAllTrains();
 
-                AddStations     (Number, Stations);
+                AddRouteNodes   (Number, Stations);
                 AddPassengers   (Number, Passengers);
             }
         }
@@ -124,7 +123,7 @@ namespace Trains
         /// </summary>
         /// <param name="NumberOfTrain">Номер поезда.</param>
         /// <param name="Stations">Список узлов типа Station.</param>
-        private static void AddStations(int NumberOfTrain, XmlNodeList Stations)
+        private static void AddRouteNodes(int NumberOfTrain, XmlNodeList Stations)
         {
             foreach(XmlNode Stn in Stations)
             {
@@ -141,28 +140,29 @@ namespace Trains
         /// Добавляет данные о пассажирах в программу и устанавливает связь 
         /// между поездами и пассажирами.
         /// </summary>
-        /// <param name="TheTrain">Поезд, в который добавляюся пассажиры из списка узлов.</param>
+        /// <param name="Train">Поезд, в который добавляюся пассажиры из списка узлов.</param>
         /// <param name="Passengers">Список узлов типа Passenger.</param>
-        private static void AddPassengers(Train TheTrain, XmlNodeList Passengers)
+        private static void AddPassengers(Train Train, XmlNodeList Passengers)
         {
             foreach(XmlNode Psg in Passengers)
             {
                 int     ID              = Convert.ToInt32(Psg.ChildNodes[0].InnerText);
                 string  TypeOfTicket    = Psg.ChildNodes[3].InnerText;
-                Ticket  TheTicket       = new Ticket(TheTrain, TypeOfTicket);
+                Ticket  Ticket          = new Ticket(Train, TypeOfTicket);
+                Passenger PAS           = Passenger.Search(ID);
 
-                if (Passenger.Contain(ID))
+                if (PAS != null)
                 {
-                    Passenger.AddTicketToPassengerByID(ID, TheTicket); 
+                    Passenger.AddTicketToPassengerByID(ID, Ticket); 
                 }
                 else
                 {
-                    string  LName           = Psg.ChildNodes[1].InnerText;
-                    string  FName           = Psg.ChildNodes[2].InnerText;
-                    Passenger PAS           = new Passenger(ID, FName, LName, TheTicket);
+                    string  LName   = Psg.ChildNodes[1].InnerText;
+                    string  FName   = Psg.ChildNodes[2].InnerText;
+                    PAS             = new Passenger(ID, FName, LName, Ticket);
                 }
 
-                Train.AddPassengerToTrain(ID, NumberOfTrain);
+                Train.AddPassengerToTrain(PAS, Train);
             }
         }
     }

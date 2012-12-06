@@ -10,12 +10,12 @@ namespace Trains
         /// <summary>
         /// Поезд, в котором едет пассажир по данному билету.
         /// </summary>
-        public Train    train;
+        Train    _train;
      
         /// <summary>
         /// Тип вагона.
         /// </summary>
-        public string   type;
+        string   _type;
 
         /// <summary>
         /// Инициализирует билет по поезду, в котором едет пассажир и типу вагона.
@@ -24,9 +24,12 @@ namespace Trains
         /// <param name="Type">Тип вагона.</param>
         public Ticket(Train TheTrain, string TheType)
         {
-            train   = TheTrain;
-            type    = TheType;
+            _train   = TheTrain;
+            _type    = TheType;
         }
+
+        public Train    Train   { get { return _train; } }
+        public string   Type    { get { return _type ; } }
     }
 
     class Passenger
@@ -90,7 +93,7 @@ namespace Trains
         /// <summary>
         /// Удаляет пассажира из списка всех пассажиров.
         /// </summary>
-        public void Remove()
+        public void RemoveFromAllPassengers()
         {
             _allPassengers.Remove(this);
         }
@@ -127,7 +130,7 @@ namespace Trains
         /// <exception cref="KeyNotFoundException"></exception>
         public static Passenger Search(int ID)
         {
-            foreach(Passenger Psg in _allPassengers)
+            foreach(Passenger Psg in AllPassengers)
             {
                 if (Psg.ID == ID)
                 {
@@ -234,7 +237,7 @@ namespace Trains
             List<Ticket> Tcks   = Psg.Tickets;
             foreach (Ticket Tck in Tcks)
             {
-                if (Tck.type == TypeOfTicket)
+                if (Tck._type == TypeOfTicket)
                 {
                     return true;
                 }

@@ -8,7 +8,7 @@ namespace Trains
 
     struct RoteNode
     {
-        Station _theStation;
+        Station _station;
         string  _timeOfArrival;     
         string  _timeOfDeparture;   
 
@@ -16,12 +16,12 @@ namespace Trains
         /// Инициализирует узел маршрута по станции, времени прибытия
         /// на эту станцию и времени отправления с этой станции.
         /// </summary>
-        /// <param name="TheStation">Станция узла маршрута.</param>
+        /// <param name="Station">Станция узла маршрута.</param>
         /// <param name="TimeOfArrival">Время прибытия поезда на станцию.</param>
         /// <param name="TimeOfDeparture">Время отправления поезда со станции.</param>
-        public RoteNode(Station TheStation, string TimeOfArrival, string TimeOfDeparture)
+        public RoteNode(Station Station, string TimeOfArrival, string TimeOfDeparture)
         {
-            _theStation         = TheStation;     
+            _station            = Station;     
             _timeOfArrival      = TimeOfArrival;
             _timeOfDeparture    = TimeOfDeparture;
         }
@@ -29,7 +29,7 @@ namespace Trains
         /// <summary>
         /// Возвращает станцию узла маршрута.
         /// </summary>
-        public Station TheStation { get { return _theStation; } }
+        public Station Station { get { return _station; } }
 
         /// <summary>
         /// Возвращает время прибытия поезда на станцию.
@@ -70,7 +70,7 @@ namespace Trains
         /// </summary>
         private void AddToAllTrains()
         {
-                _allTrains.Add(this);
+            _allTrains.Add(this);
         }
 
         /// <summary>
@@ -86,41 +86,14 @@ namespace Trains
         /// </summary>
         /// <param name="ID">Номер паспорта пассажира.</param>
         /// <param name="NumberOfTrain">Номер поезда.</param>
-        public static void AddPassengerToTrain(int ID, int NumberOfTrain)
+        public static void AddPassengerToTrain(Passenger Passenger, Train Train)
         {
-            _allTrains[NumberOfTrain].ListOfPas.Add(ID);
+            Train._listOfPas.Add(Passenger);
         }
 
-        public static void AddStationToTrain(RoteNode station, int NumberOfTrain)
+        public static void AddStationToTrain(RoteNode station, Train Train)
         {
-            if (_allTrains[NumberOfTrain].Route == null)
-            {
-                _allTrains[NumberOfTrain].Route = new List<RoteNode>();
-            }
-            _allTrains[NumberOfTrain].Route.Add(station);
-        }
-
-        /// <summary>
-        /// Добавляет данные из XML-файла в статический словарь AllTrains класса Train.
-        /// </summary>
-        /// <param name="FileName">Путь к XML-файлу</param>
-        public static void AddDataFromFile(string FileName)
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(FileName);
-
-            XmlNodeList Trns = doc.GetElementsByTagName("Train");
-
-            for (int i = 0; i < Trns.Count; i++)
-            {
-                Train TheTrain = new Train();
-
-                TheTrain.Number = Convert.ToInt32(Trns[i].FirstChild.InnerText);
-                TheTrain.TimeOfDeparture = Trns[i].FirstChild.NextSibling.InnerText;
-                TheTrain.TimeOfArrival = Trns[i].FirstChild.NextSibling.NextSibling.InnerText;
-
-                TheTrain.AddToAllTrains();
-            }
+        // 
         }
 
         #region Поиск и связанные с ним методы
@@ -233,7 +206,7 @@ namespace Trains
         /// </summary>
         public string PointOfDeparture
         {
-            get { return Route[0].TheStation.Name; }
+            get { return Route[0].Station.Name; }
         }
 
         /// <summary>
@@ -244,7 +217,7 @@ namespace Trains
             get
             {
                 int lastIndex = Route.Count - 1;
-                return Route[lastIndex].TheStation.Name; 
+                return Route[lastIndex].Station.Name; 
             }
         }
 
