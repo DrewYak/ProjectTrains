@@ -13,8 +13,8 @@ namespace Trains
         string  _timeOfDeparture;   
 
         /// <summary>
-        /// Инициализирует узел маршрута по станции, времени прибытия
-        /// на эту станцию и времени отправления с этой станции.
+        /// Инициализирует узел маршрута по станции, времени прибытия поезда
+        /// на эту станцию и времени отправления поезда с этой станции.
         /// </summary>
         /// <param name="Station">Станция узла маршрута.</param>
         /// <param name="TimeOfArrival">Время прибытия поезда на станцию.</param>
@@ -91,9 +91,9 @@ namespace Trains
             Train._listOfPas.Add(Passenger);
         }
 
-        public static void AddStationToTrain(RoteNode station, Train Train)
+        public void AddRouteNodeToTrain(RoteNode RouteNode)
         {
-        // 
+            this._route.Add(RouteNode);
         }
 
         #region Поиск и связанные с ним методы

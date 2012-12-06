@@ -7,7 +7,7 @@ using System.Xml;
 namespace Trains
 {
 
-    struct Station
+    class Station
     {
         string   _name;
         int      _x;
@@ -29,7 +29,7 @@ namespace Trains
         /// <summary>
         /// Возвращает название станции.
         /// </summary>
-        public string Name { get { return _name; } }
+        public string Name { get { return _name; } }     
 
         /// <summary>
         /// Возвращает координату X станции на форме.
@@ -44,23 +44,29 @@ namespace Trains
 
     class Data
     {
-
-        public static Dictionary<int ,Station> Locations { get; set; }
+        static List<Station> _allStations;
+        static List<Station> AllStations { get { return _allStations; } }
 
         /// <summary>
         /// Добавляет местоположение станции в оперативную память
         /// для дальнейшей работы.
         /// </summary>
-        /// <param name="location">Местоположение станции.</param>
-        private static void AddLocationToData(Station location)
+        /// <param name="Station">Местоположение станции.</param>
+        private static void AddToAllStations(Station Station)
         {
-            if (Locations == null)
-            {
-                Locations = new Dictionary<int,Station>();
-            }
+            _allStations.Add(Station);
+        }
 
-            int HashCode    = location._name.GetHashCode();
-            Locations.Add(HashCode, location);
+        public static Station Search(string Name)
+        {
+            foreach (Station Stn in AllStations)
+            {
+                if (Stn.Name == Name)
+                {
+                    return Stn;
+                }
+            }
+            return null;
         }
 
         /// <summary>
@@ -87,14 +93,14 @@ namespace Trains
         /// <param name="Stations">Список узлов типа Location.</param>
         private static void AddStations(XmlNodeList Stations)
         {
-            foreach(XmlNode Loc in Stations)
+            foreach(XmlNode Stn in Stations)
             {
-                string  name    = Loc.ChildNodes[0].InnerText;
-                int     x       = Convert.ToInt32(Loc.ChildNodes[1].InnerText);
-                int     y       = Convert.ToInt32(Loc.ChildNodes[2].InnerText);
+                string  name    = Stn.ChildNodes[0].InnerText;
+                int     x       = Convert.ToInt32(Stn.ChildNodes[1].InnerText);
+                int     y       = Convert.ToInt32(Stn.ChildNodes[2].InnerText);
 
-                Station Lctn   = new Station(name, x, y);
-                AddLocationToData(Lctn);
+                Station Station = new Station(name, x, y);
+                AddToAllStations(Station);
             }
         }
 
@@ -107,13 +113,13 @@ namespace Trains
             foreach(XmlNode Trn in Trains)
             {
                 int         Number      = Convert.ToInt32(Trn.ChildNodes[0].InnerText);
-                XmlNodeList Stations    = Trn.ChildNodes[1].ChildNodes;
+                XmlNodeList RouteNodes  = Trn.ChildNodes[1].ChildNodes;
                 XmlNodeList Passengers  = Trn.ChildNodes[2].ChildNodes;
 
-                Train TheTrain = new Train(Number);
+                Train Train = new Train(Number);
 
-                AddRouteNodes   (Number, Stations);
-                AddPassengers   (Number, Passengers);
+                AddRouteNodes   (Train, RouteNodes);
+                AddPassengers   (Train, Passengers);
             }
         }
 
@@ -123,16 +129,16 @@ namespace Trains
         /// </summary>
         /// <param name="NumberOfTrain">Номер поезда.</param>
         /// <param name="Stations">Список узлов типа Station.</param>
-        private static void AddRouteNodes(int NumberOfTrain, XmlNodeList Stations)
+        private static void AddRouteNodes(Train Train, XmlNodeList Stations)
         {
             foreach(XmlNode Stn in Stations)
             {
-                string  name                = Stn.ChildNodes[0].InnerText;
-                string  timeOfDeparture     = Stn.ChildNodes[1].InnerText;
-                string  timeOfArrival       = Stn.ChildNodes[2].InnerText;
-
-                RoteNode station             = new RoteNode(name, timeOfDeparture, timeOfArrival);
-                Train.AddStationToTrain(station, NumberOfTrain);     
+                string      name            = Stn.ChildNodes[0].InnerText;
+                string      timeOfDeparture = Stn.ChildNodes[1].InnerText;
+                string      timeOfArrival   = Stn.ChildNodes[2].InnerText;
+                Station     station         = Search(name);
+                RoteNode    routenode       = new RoteNode(station, timeOfDeparture, timeOfArrival);
+                Train.AddRouteNodeToTrain(routenode);     
             }
         }
 

@@ -237,7 +237,7 @@ namespace Trains
             List<Ticket> Tcks   = Psg.Tickets;
             foreach (Ticket Tck in Tcks)
             {
-                if (Tck._type == TypeOfTicket)
+                if (Tck.Type == TypeOfTicket)
                 {
                     return true;
                 }
@@ -332,6 +332,4 @@ namespace Trains
         }
     }
     */
-
 #endregion
-}

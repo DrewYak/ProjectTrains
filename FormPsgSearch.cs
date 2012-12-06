@@ -43,7 +43,7 @@ namespace Trains
             ResultForm.ResultID        .Text    = Psg.ID.ToString();
             ResultForm.ResultLName     .Text    = Psg.LastName;
             ResultForm.ResultFName     .Text    = Psg.FirstName;
-            ResultForm.ResultTicketType.Text    = Psg.Tickets[0]._type;
+            ResultForm.ResultTicketType.Text    = Psg.Tickets[0].Type;
         }
 
         private void button2_Click(object sender, EventArgs e)
