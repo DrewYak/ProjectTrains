@@ -5,8 +5,7 @@ using System.Xml;
 
 namespace Trains
 {
-
-    struct RoteNode
+    class RoteNode
     {
         Station _station;
         string  _timeOfArrival;     
@@ -83,15 +82,19 @@ namespace Trains
         }
 
         /// <summary>
-        /// Добавляет пассажира к поезду.
+        /// Устанавливает ссылку на билет. Добавляет билет 
+        /// в список билетов поезда.
         /// </summary>
-        /// <param name="ID">Номер паспорта пассажира.</param>
-        /// <param name="NumberOfTrain">Номер поезда.</param>
+        /// <param name="Ticket"></param>
         public void AddTicket(Ticket Ticket)
         {
             this._tickets.Add(Ticket);
         }
 
+        /// <summary>
+        /// Добавляет узел маршрута в конец маршрута поезда.
+        /// </summary>
+        /// <param name="RouteNode"></param>
         public void AddRouteNode(RoteNode RouteNode)
         {
             this._routenodes.Add(RouteNode);
@@ -231,7 +234,7 @@ namespace Trains
         }
 
         /// <summary>
-        /// Возврашает время прибытия поезда.
+        /// Возврашает время прибытия поезда на конечную станцию.
         /// </summary>
         public string TimeOfArrival
         {
@@ -243,7 +246,7 @@ namespace Trains
         }
 
         /// <summary>
-        /// Возвращает список пассажиров в поезде.
+        /// Возвращает список билетов поезда.
         /// </summary>
         public List<Ticket>  Tickets   { get { return _tickets; } } 
 

@@ -102,7 +102,7 @@ namespace Trains
 
             foreach (Passenger Psg in Psgs)
             {
-                FormResultPasByParams.TablePas.Rows.Add(Psg.ID, Psg.LastName, Psg.FirstName, Psg.Tickets.Count);
+                FormResultPasByParams.TablePas.Rows.Add(Psg.ID, Psg.LastName, Psg.FirstName, Psg.CountOfTickets);
             }
 
             FormResultPasByParams.ShowDialog();

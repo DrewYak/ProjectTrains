@@ -5,47 +5,6 @@ using System.Xml;
 
 namespace Trains
 {
-    class Ticket
-    {
-        /// <summary>
-        /// Поезд, в котором едет пассажир по данному билету.
-        /// </summary>
-        Train    _train;
-     
-        /// <summary>
-        /// Тип вагона.
-        /// </summary>
-        string   _type;
-
-        /// <summary>
-        /// Пассажир, владелец билета.
-        /// </summary>
-        Passenger _passenger;
-
-        /// <summary>
-        /// Инициализирует билет по поезду, в котором едет пассажир и типу вагона.
-        /// </summary>
-        /// <param name="Train">Поезд, в котором едет пассажир.</param>
-        /// <param name="Type">Тип вагона.</param>
-        public Ticket(Train Train, string Type, Passenger Passenger)
-        {
-            _train      = Train;
-            _type       = Type;
-            _passenger  = Passenger;
-        }
-
-        public void Associate(Train Train, Passenger Passenger)
-        {
-            Train.      AddTicket(this);
-            Passenger.  AddTicket(this);
-        }
-
-
-        public Train        Train       { get { return _train;      } }
-        public string       Type        { get { return _type ;      } }
-        public Passenger    Passenger   { get { return _passenger;  } }
-    }
-
     class Passenger
     {
         int             _id;
@@ -60,7 +19,8 @@ namespace Trains
 
         /// <summary>
         /// Инициализирует пассажира по номеру паспорта, имени, фамилии.
-        /// Добавляет пассажира в список всех пассажиров.
+        /// Добавляет пассажира в список всех пассажиров. Создаёт пустой
+        /// список билетов.
         /// </summary>
         /// <param name="ID">Номер паспорта.</param>
         /// <param name="FirstName">Имя.</param>
@@ -105,7 +65,7 @@ namespace Trains
 
         /// <summary>
         /// Ищет пассажира по номеру паспорта. В случае успешного поиска возвращает
-        /// пассажира. В случае неуспешного поиска возвращает null.
+        /// пассажира. В случае провала возвращает null.
         /// </summary>
         /// <param name="ID">Номер паспорта.</param>
         /// <exception cref="KeyNotFoundException"></exception>
@@ -261,6 +221,11 @@ namespace Trains
         /// Возвращает список билетов, имеющихся у пассажира.
         /// </summary>
         public List<Ticket> Tickets { get {return _tickets;} }
+
+        /// <summary>
+        /// Возвращает количество билетов, имеющихся у пассажира.
+        /// </summary>
+        public int CountOfTickets { get { return Tickets.Count; } }
 
         /// <summary>
         /// Возвращает список всех пассажиров.

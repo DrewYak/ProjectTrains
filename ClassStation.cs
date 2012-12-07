@@ -8,6 +8,7 @@ namespace Trains
         string   _name;
         int      _x;
         int      _y;
+
         /// <summary>
         /// Список всех станций.
         /// </summary>

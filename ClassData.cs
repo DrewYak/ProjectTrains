@@ -101,7 +101,6 @@ namespace Trains
                 if (PAS != null)
                 {
                     Ticket  Ticket  = new Ticket(Train, TypeOfTicket, PAS);
-                    Ticket.Associate(Train, PAS);
                 }
                 else
                 {
@@ -109,7 +108,6 @@ namespace Trains
                     string  FName   = Psg.ChildNodes[2].InnerText;
                     PAS             = new Passenger(ID, FName, LName);
                     Ticket  Ticket  = new Ticket(Train, TypeOfTicket, PAS);
-                    Ticket.Associate(Train, PAS);
                 }
             }
         }
