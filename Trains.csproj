@@ -55,6 +55,12 @@
     <Compile Include="ClassStation.cs" />
     <Compile Include="ClassTest.cs" />
     <Compile Include="ClassTrain.cs" />
+    <Compile Include="FormAddRemove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddRemove.Designer.cs">
+      <DependentUpon>FormAddRemove.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Station.cs" />
+    <EmbeddedResource Include="FormAddRemove.resx">
+      <DependentUpon>FormAddRemove.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormData.resx">
       <DependentUpon>FormData.cs</DependentUpon>
     </EmbeddedResource>

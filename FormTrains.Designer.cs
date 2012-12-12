@@ -28,18 +28,12 @@ namespace Trains
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
-//        }
-
-//        #endregion
-
             this.ButSearchTrain = new System.Windows.Forms.Button();
             this.ButSearchPas = new System.Windows.Forms.Button();
             this.butData = new System.Windows.Forms.Button();
             this.butGraphic = new System.Windows.Forms.Button();
             this.tablePanelWithButtons = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tablePanelWithButtons.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +51,7 @@ namespace Trains
             this.ButSearchTrain.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.ButSearchTrain.Location = new System.Drawing.Point(3, 3);
             this.ButSearchTrain.Name = "ButSearchTrain";
-            this.ButSearchTrain.Size = new System.Drawing.Size(404, 211);
+            this.ButSearchTrain.Size = new System.Drawing.Size(264, 211);
             this.ButSearchTrain.TabIndex = 0;
             this.ButSearchTrain.Tag = "";
             this.ButSearchTrain.Text = "Поиск поезда";
@@ -79,7 +73,7 @@ namespace Trains
             this.ButSearchPas.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ButSearchPas.Location = new System.Drawing.Point(3, 220);
             this.ButSearchPas.Name = "ButSearchPas";
-            this.ButSearchPas.Size = new System.Drawing.Size(404, 212);
+            this.ButSearchPas.Size = new System.Drawing.Size(264, 212);
             this.ButSearchPas.TabIndex = 1;
             this.ButSearchPas.Text = "Поиск пассажира";
             this.ButSearchPas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -98,9 +92,9 @@ namespace Trains
             this.butData.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.butData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butData.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.butData.Location = new System.Drawing.Point(413, 3);
+            this.butData.Location = new System.Drawing.Point(273, 3);
             this.butData.Name = "butData";
-            this.butData.Size = new System.Drawing.Size(405, 211);
+            this.butData.Size = new System.Drawing.Size(273, 211);
             this.butData.TabIndex = 2;
             this.butData.Text = "Работа с данными";
             this.butData.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -118,9 +112,9 @@ namespace Trains
             this.butGraphic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.butGraphic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butGraphic.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.butGraphic.Location = new System.Drawing.Point(413, 220);
+            this.butGraphic.Location = new System.Drawing.Point(273, 220);
             this.butGraphic.Name = "butGraphic";
-            this.butGraphic.Size = new System.Drawing.Size(405, 212);
+            this.butGraphic.Size = new System.Drawing.Size(273, 212);
             this.butGraphic.TabIndex = 3;
             this.butGraphic.Text = "Просмотр движения поездов";
             this.butGraphic.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -130,13 +124,15 @@ namespace Trains
             // 
             // tablePanelWithButtons
             // 
-            this.tablePanelWithButtons.ColumnCount = 2;
-            this.tablePanelWithButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tablePanelWithButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tablePanelWithButtons.ColumnCount = 3;
+            this.tablePanelWithButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tablePanelWithButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34F));
+            this.tablePanelWithButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tablePanelWithButtons.Controls.Add(this.ButSearchTrain, 0, 0);
             this.tablePanelWithButtons.Controls.Add(this.butGraphic, 1, 1);
             this.tablePanelWithButtons.Controls.Add(this.butData, 1, 0);
             this.tablePanelWithButtons.Controls.Add(this.ButSearchPas, 0, 1);
+            this.tablePanelWithButtons.Controls.Add(this.button1, 2, 0);
             this.tablePanelWithButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablePanelWithButtons.Location = new System.Drawing.Point(0, 0);
             this.tablePanelWithButtons.Name = "tablePanelWithButtons";
@@ -146,14 +142,26 @@ namespace Trains
             this.tablePanelWithButtons.Size = new System.Drawing.Size(821, 435);
             this.tablePanelWithButtons.TabIndex = 4;
             // 
-            // TrainsForm
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(552, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(266, 211);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // FormTrains
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 435);
             this.Controls.Add(this.tablePanelWithButtons);
             this.MaximumSize = new System.Drawing.Size(837, 473);
-            this.Name = "TrainsForm";
+            this.Name = "FormTrains";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Программная система \"Поезда и пассажиры\"";
             this.tablePanelWithButtons.ResumeLayout(false);
@@ -168,5 +176,6 @@ namespace Trains
         public System.Windows.Forms.Button butData;
         public System.Windows.Forms.Button butGraphic;
         private System.Windows.Forms.TableLayoutPanel tablePanelWithButtons;
+        private System.Windows.Forms.Button button1;
     }
 }
