@@ -53,5 +53,11 @@ namespace Trains
             PsgSearchForm.Owner             = this;
             PsgSearchForm.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormAddRemove AddRemove = new FormAddRemove();
+            AddRemove.ShowDialog();
+        }
     }
 }
