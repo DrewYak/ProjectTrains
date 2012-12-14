@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Collections.Generic;
 using System.Xml;
 
 namespace Trains
@@ -87,7 +86,7 @@ namespace Trains
         {
             Train Trn = Train.Search(Number);
             List<Ticket> tkts = Trn.Tickets;
-            List<RoteNode> rtns = Trn.RouteNodes;
+            List<RouteNode> rtns = Trn.RouteNodes;
 
             treeView2.Nodes[0].Text = Trn.Number.ToString();
             treeView2.Nodes[0].Nodes[0].Text = "Пассажиры";
@@ -114,7 +113,7 @@ namespace Trains
             }
 
             treeView2.Nodes[0].Nodes[1].Nodes.Clear();
-            foreach (RoteNode rtn in rtns)
+            foreach (RouteNode rtn in rtns)
             {
                 treeView2.Nodes[0].Nodes[1].Nodes.Add(rtn.Station.Name.ToString());
             }
