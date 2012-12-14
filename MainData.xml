@@ -9,19 +9,19 @@
 
     <Location>
       <Name>Санкт-Петербург</Name>
-      <X>39</X>
-      <Y>23</Y>
+      <X>130</X>
+      <Y>400</Y>
     </Location>
     
     <Location>
       <Name>Нижний Новгород</Name>
-      <X>55</X>
-      <Y>34</Y>
+      <X>268</X>
+      <Y>234</Y>
     </Location>
 
     <Location>
       <Name>Казань</Name>
-      <X>49</X>
+      <X>349</X>
       <Y>13</Y>
     </Location>
   </Locations>
