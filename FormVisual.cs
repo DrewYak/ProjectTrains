@@ -16,6 +16,21 @@ namespace Trains
             InitializeComponent();
         }
 
+        private void DrawRoute(List<RouteNode> routenodes, PaintEventArgs e)
+        {
+            List<PointF> points = new List<PointF>();
+            foreach (RouteNode routenode in routenodes)
+            {
+                PointF point = new PointF(routenode.Station.X, routenode.Station.Y);
+                points.Add(point);
+            }
+            foreach (RouteNode routenode in routenodes)
+            {
+                e.Graphics.DrawLines(Pens.Black, points.ToArray());
+            }
+        }
+
+
         /// <summary>
         /// Рисует одну станцию.
         /// </summary>
@@ -25,7 +40,8 @@ namespace Trains
         private void DrawStation(Station station, int radius, PaintEventArgs e)
         {
             PointF p = new Point(station.X + radius, station.Y + radius);
-            e.Graphics.DrawEllipse(Pens.Indigo, station.X - radius, station.Y - radius, radius * 2, radius * 2);
+            e.Graphics.FillEllipse(Brushes.White, station.X - radius, station.Y - radius, radius * 2, radius * 2);
+            e.Graphics.DrawEllipse(new Pen(Color.Black, 1.5F), station.X - radius, station.Y - radius, radius * 2, radius * 2);
             e.Graphics.DrawString(station.Name, Font, SystemBrushes.WindowText, p);
         }
 
@@ -48,6 +64,8 @@ namespace Trains
         {
             int radius = 6;
             List<Station> stations  = Station.Search();
+            List<RouteNode> anyroutenode = Train.Search("", "")[0].RouteNodes;
+            DrawRoute(anyroutenode, e);
             DrawStations(stations, radius, e);
         }
     }

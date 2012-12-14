@@ -79,7 +79,7 @@ namespace Trains
                 string      timeOfDeparture = RouteNode.ChildNodes[1].InnerText;
                 string      timeOfArrival   = RouteNode.ChildNodes[2].InnerText;
                 Station     station         = Station.SearchByName(name);
-                RoteNode    routenode       = new RoteNode(station, timeOfDeparture, timeOfArrival);
+                RouteNode    routenode       = new RouteNode(station, timeOfDeparture, timeOfArrival);
                 Train.AddRouteNode(routenode);     
             }
         }

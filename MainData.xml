@@ -3,8 +3,8 @@
   <Locations>
     <Location>
       <Name>Москва</Name>
-      <X>14</X>
-      <Y>12</Y>
+      <X>40</X>
+      <Y>80</Y>
     </Location>
 
     <Location>
@@ -21,8 +21,8 @@
 
     <Location>
       <Name>Казань</Name>
-      <X>349</X>
-      <Y>13</Y>
+      <X>600</X>
+      <Y>400</Y>
     </Location>
   </Locations>
 

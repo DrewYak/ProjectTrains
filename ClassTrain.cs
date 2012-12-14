@@ -5,47 +5,12 @@ using System.Xml;
 
 namespace Trains
 {
-    class RoteNode
-    {
-        Station _station;
-        string  _timeOfArrival;     
-        string  _timeOfDeparture;   
-
-        /// <summary>
-        /// Инициализирует узел маршрута по станции, времени прибытия поезда
-        /// на эту станцию и времени отправления поезда с этой станции.
-        /// </summary>
-        /// <param name="Station">Станция узла маршрута.</param>
-        /// <param name="TimeOfArrival">Время прибытия поезда на станцию.</param>
-        /// <param name="TimeOfDeparture">Время отправления поезда со станции.</param>
-        public RoteNode(Station Station, string TimeOfArrival, string TimeOfDeparture)
-        {
-            _station            = Station;     
-            _timeOfArrival      = TimeOfArrival;
-            _timeOfDeparture    = TimeOfDeparture;
-        }
-
-        /// <summary>
-        /// Возвращает станцию узла маршрута.
-        /// </summary>
-        public Station Station { get { return _station; } }
-
-        /// <summary>
-        /// Возвращает время прибытия поезда на станцию.
-        /// </summary>
-        public string TimeOfArrival { get { return _timeOfArrival; } }
-
-        /// <summary>
-        /// Возвращает время отпрвления поезда со станции.
-        /// </summary>
-        public string TimeOfDeparture { get { return _timeOfDeparture; } }
-    }
 
     class Train
     {
         int             _number;
         List<Ticket>    _tickets;
-        List<RoteNode>  _routenodes;
+        List<RouteNode>  _routenodes;
 
         /// <summary>
         /// Статический список всех поездов.
@@ -61,7 +26,7 @@ namespace Trains
         {
             this.Number         = NumberOfTrain;
             this._tickets       = new List<Ticket>();
-            this._routenodes    = new List<RoteNode>();
+            this._routenodes    = new List<RouteNode>();
             AddToAllTrains();
         }
 
@@ -95,7 +60,7 @@ namespace Trains
         /// Добавляет узел маршрута в конец маршрута поезда.
         /// </summary>
         /// <param name="RouteNode"></param>
-        public void AddRouteNode(RoteNode RouteNode)
+        public void AddRouteNode(RouteNode RouteNode)
         {
             this._routenodes.Add(RouteNode);
         }
@@ -253,7 +218,7 @@ namespace Trains
         /// <summary>
         /// Возвращает список узлов маршрута, через которые проходит поезд.
         /// </summary>
-        public List<RoteNode>   RouteNodes    { get { return _routenodes; } }
+        public List<RouteNode>   RouteNodes    { get { return _routenodes; } }
 
         /// <summary>
         /// Возвращает список всех поездов.

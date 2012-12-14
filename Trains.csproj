@@ -50,8 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassData.cs" />
-    <Compile Include="ClassRoute.cs" />
     <Compile Include="ClassRouteNode.cs" />
+    <Compile Include="ClassTicket.cs" />
     <Compile Include="ClassStation.cs" />
     <Compile Include="ClassTest.cs" />
     <Compile Include="ClassTrain.cs" />
