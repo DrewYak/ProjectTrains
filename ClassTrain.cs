@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using System.Xml;
+using System.Drawing;
 
 namespace Trains
 {
@@ -64,6 +65,9 @@ namespace Trains
         {
             this._routenodes.Add(RouteNode);
         }
+
+        //public PointF Coordinate
+
 
         #region Поиск и связанные с ним методы
 

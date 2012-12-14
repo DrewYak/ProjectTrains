@@ -3,20 +3,80 @@
   <Locations>
     <Location>
       <Name>Москва</Name>
-      <X>40</X>
-      <Y>80</Y>
+      <X>307</X>
+      <Y>285</Y>
+    </Location>
+
+    <Location>
+      <Name>Тверь</Name>
+      <X>150</X>
+      <Y>129</Y>
+    </Location>
+
+    <Location>
+      <Name>Ржев</Name>
+      <X>55</X>
+      <Y>247</Y>
+    </Location>
+
+    <Location>
+      <Name>Калуга</Name>
+      <X>151</X>
+      <Y>457</Y>
+    </Location>
+
+    <Location>
+      <Name>Тула</Name>
+      <X>366</X>
+      <Y>493</Y>
+    </Location>
+
+    <Location>
+      <Name>Тамбов</Name>
+      <X>563</X>
+      <Y>526</Y>
+    </Location>
+
+    <Location>
+      <Name>Ярославль</Name>
+      <X>409</X>
+      <Y>50</Y>
+    </Location>
+
+    <Location>
+      <Name>Владимир</Name>
+      <X>503</X>
+      <Y>196</Y>
+    </Location>
+
+    <Location>
+      <Name>Саров</Name>
+      <X>804</X>
+      <Y>421</Y>
+    </Location>
+
+    <Location>
+      <Name>Саратов</Name>
+      <X>982</X>
+      <Y>566</Y>
+    </Location>
+
+    <Location>
+      <Name>Балаково</Name>
+      <X>1247</X>
+      <Y>442</Y>
     </Location>
 
     <Location>
       <Name>Санкт-Петербург</Name>
-      <X>130</X>
-      <Y>400</Y>
+      <X>50</X>
+      <Y>50</Y>
     </Location>
     
     <Location>
       <Name>Нижний Новгород</Name>
-      <X>268</X>
-      <Y>234</Y>
+      <X>723</X>
+      <Y>285</Y>
     </Location>
 
     <Location>
@@ -24,6 +84,13 @@
       <X>600</X>
       <Y>400</Y>
     </Location>
+
+    <Location>
+      <Name>Саратов</Name>
+      <X>1000</X>
+      <Y>650</Y>
+    </Location>
+
   </Locations>
 
   <Trains>
@@ -32,14 +99,26 @@
       <Stations>
         <Station>
           <Location>Москва</Location>
-          <Arrive>05:50</Arrive>
-          <Depart>06:00</Depart>
+          <Arrive>2012/12/22 06:37:00</Arrive>
+          <Depart>2012/12/22 06:40:00</Depart>
         </Station>
 
         <Station>
           <Location>Санкт-Петербург</Location>
-          <Arrive>16:00</Arrive>
-          <Depart>16:10</Depart>
+          <Arrive>2012/12/22 16:40:00</Arrive>
+          <Depart>2012/12/22 16:52:00</Depart>
+        </Station>
+        
+        <Station>
+          <Location>Казань</Location>
+          <Arrive>2012/12/22 20:52:00</Arrive>
+          <Depart>2012/12/22 21:02:00</Depart>
+        </Station>
+        
+        <Station>
+          <Location>Нижний Новгород</Location>
+          <Arrive>2012/12/23 01:52:00</Arrive>
+          <Depart>2012/12/23 02:01:00</Depart>
         </Station>
       </Stations>
       <Passengers>
@@ -302,15 +381,15 @@
       <Number>2</Number>
       <Stations>
         <Station>
-          <Location>Нижний Новгород</Location>
-          <Arrive>22:45</Arrive>
-          <Depart>22:55</Depart>
+          <Location>Казань</Location>
+          <Arrive>2012/12/22 07:25:00</Arrive>
+          <Depart>2012/12/22 07:31:00</Depart>
         </Station>
 
         <Station>
-          <Location>Казань</Location>
-          <Arrive>12:00</Arrive>
-          <Depart>12:10</Depart>
+          <Location>Саратов</Location>
+          <Arrive>2012/12/22 10:46:00</Arrive>
+          <Depart>2012/12/22 11:32:00</Depart>
         </Station>
       </Stations>
 

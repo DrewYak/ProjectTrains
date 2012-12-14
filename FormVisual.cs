@@ -16,6 +16,21 @@ namespace Trains
             InitializeComponent();
         }
 
+        private void DrawRoutes(List<Train> trains, PaintEventArgs e)
+        {
+            foreach (Train train in trains)
+            {
+                List<RouteNode> routenodes = train.RouteNodes;
+                DrawRoute(routenodes, e); 
+            }
+
+        }
+
+        /// <summary>
+        /// Рисует маршрут поезда.
+        /// </summary>
+        /// <param name="routenodes">Список узлов маршрута.</param>
+        /// <param name="e"></param>
         private void DrawRoute(List<RouteNode> routenodes, PaintEventArgs e)
         {
             List<PointF> points = new List<PointF>();
@@ -64,8 +79,8 @@ namespace Trains
         {
             int radius = 6;
             List<Station> stations  = Station.Search();
-            List<RouteNode> anyroutenode = Train.Search("", "")[0].RouteNodes;
-            DrawRoute(anyroutenode, e);
+            List<Train> trains = Train.Search("", "");
+            DrawRoutes(trains, e);
             DrawStations(stations, radius, e);
         }
     }

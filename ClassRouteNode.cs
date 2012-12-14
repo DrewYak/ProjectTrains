@@ -1,4 +1,6 @@
-﻿
+﻿using System;
+
+
 namespace Trains
 {
     class RouteNode
@@ -35,5 +37,15 @@ namespace Trains
         /// Возвращает время отпрвления поезда со станции.
         /// </summary>
         public string TimeOfDeparture { get { return _timeOfDeparture; } }
+
+        /// <summary>
+        /// Возвращает время прибытия поезда на станцию в форматe DateTime.
+        /// </summary>
+        public DateTime TimeOfArrivalFormat { get { return DateTime.Parse(_timeOfArrival); } }
+
+        /// <summary>
+        /// Возвращает время отпрвления поезда со станции в форматe DateTime.
+        /// </summary>
+        public DateTime TimeOfDepartureFormat { get { return DateTime.Parse(_timeOfDeparture); } }
     }
 }
