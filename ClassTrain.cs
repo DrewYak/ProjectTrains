@@ -2,50 +2,16 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using System.Xml;
+using System.Drawing;
 
 namespace Trains
 {
-    class RoteNode
-    {
-        Station _station;
-        string  _timeOfArrival;     
-        string  _timeOfDeparture;   
-
-        /// <summary>
-        /// Инициализирует узел маршрута по станции, времени прибытия поезда
-        /// на эту станцию и времени отправления поезда с этой станции.
-        /// </summary>
-        /// <param name="Station">Станция узла маршрута.</param>
-        /// <param name="TimeOfArrival">Время прибытия поезда на станцию.</param>
-        /// <param name="TimeOfDeparture">Время отправления поезда со станции.</param>
-        public RoteNode(Station Station, string TimeOfArrival, string TimeOfDeparture)
-        {
-            _station            = Station;     
-            _timeOfArrival      = TimeOfArrival;
-            _timeOfDeparture    = TimeOfDeparture;
-        }
-
-        /// <summary>
-        /// Возвращает станцию узла маршрута.
-        /// </summary>
-        public Station Station { get { return _station; } }
-
-        /// <summary>
-        /// Возвращает время прибытия поезда на станцию.
-        /// </summary>
-        public string TimeOfArrival { get { return _timeOfArrival; } }
-
-        /// <summary>
-        /// Возвращает время отпрвления поезда со станции.
-        /// </summary>
-        public string TimeOfDeparture { get { return _timeOfDeparture; } }
-    }
 
     class Train
     {
         int             _number;
         List<Ticket>    _tickets;
-        List<RoteNode>  _routenodes;
+        List<RouteNode>  _routenodes;
 
         /// <summary>
         /// Статический список всех поездов.
@@ -61,10 +27,9 @@ namespace Trains
         {
             this.Number         = NumberOfTrain;
             this._tickets       = new List<Ticket>();
-            this._routenodes    = new List<RoteNode>();
+            this._routenodes    = new List<RouteNode>();
             AddToAllTrains();
         }
-
         /// <summary>
         ///  Добавляет поезд в список всех поездов.
         /// </summary>
@@ -95,10 +60,32 @@ namespace Trains
         /// Добавляет узел маршрута в конец маршрута поезда.
         /// </summary>
         /// <param name="RouteNode"></param>
-        public void AddRouteNode(RoteNode RouteNode)
+        public void AddRouteNode(RouteNode RouteNode)
         {
             this._routenodes.Add(RouteNode);
+            RouteNodeComparer rnc = new RouteNodeComparer();
+            this._routenodes.Sort(rnc);
         }
+
+        /// <summary>
+        /// Возвращает местоположение поезда в заданнный момент времени.
+        /// </summary>
+        /// <param name="time">Заданный момент времени</param>
+        /// <returns></returns>
+        public PointF Location(DateTime time)
+        {
+            PointF point = new PointF(-100, -100);
+            int i = 0;
+            while (this.RouteNodes[i].TimeOfArrivalFormat < time)
+            {
+
+            }
+
+
+
+            return point;
+        }
+
 
         #region Поиск и связанные с ним методы
 
@@ -253,7 +240,7 @@ namespace Trains
         /// <summary>
         /// Возвращает список узлов маршрута, через которые проходит поезд.
         /// </summary>
-        public List<RoteNode>   RouteNodes    { get { return _routenodes; } }
+        public List<RouteNode>   RouteNodes    { get { return _routenodes; } }
 
         /// <summary>
         /// Возвращает список всех поездов.

@@ -50,8 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassData.cs" />
-    <Compile Include="ClassRoute.cs" />
     <Compile Include="ClassRouteNode.cs" />
+    <Compile Include="ClassTicket.cs" />
     <Compile Include="ClassStation.cs" />
     <Compile Include="ClassTest.cs" />
     <Compile Include="ClassTrain.cs" />
@@ -140,6 +140,12 @@
       <DependentUpon>FormTrains.cs</DependentUpon>
     </Compile>
     <Compile Include="ClassPassenger.cs" />
+    <Compile Include="FormVisual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVisual.Designer.cs">
+      <DependentUpon>FormVisual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Station.cs" />
@@ -169,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormResultTrnByParams.resx">
       <DependentUpon>FormResultTrnByParams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVisual.resx">
+      <DependentUpon>FormVisual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

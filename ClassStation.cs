@@ -44,7 +44,7 @@ namespace Trains
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public static Station Search(string Name)
+        public static Station SearchByName(string Name)
         {
             foreach (Station Stn in AllStations)
             {
@@ -55,6 +55,17 @@ namespace Trains
             }
             return null;
         }
+
+        /// <summary>
+        /// Возращает список всех станций.
+        /// </summary>
+        /// <returns></returns>
+        public static List<Station> Search()
+        {
+            return AllStations;
+        }
+
+
 
         /// <summary>
         /// Возвращает название станции.
