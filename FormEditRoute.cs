@@ -24,6 +24,10 @@ namespace Trains
         private void FormEditRoute_Activated(object sender, EventArgs e)
         {
             List<Station> stns = Station.Search();
+            foreach (Station stn in stns)
+            {
+                this.dataGridView1.Rows.Add(false, stn.Name, stn.X, stn.Y);
+            }
 
         }
     }
