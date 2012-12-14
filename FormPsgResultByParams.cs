@@ -32,12 +32,20 @@ namespace Trains
 
         private void FillTreeviewTicket(List<Ticket> tkts)
         {
+            treeView1.Nodes[0].Nodes[2].Nodes[0].Nodes.Clear();
+            treeView1.Nodes[0].Nodes[2].Nodes[1].Nodes.Clear();
             foreach (Ticket tkt in tkts)
             {
                 if (tkt.Type == "Плацкарт")
-                { treeView1.Nodes[0].Nodes[2].Nodes[0].Nodes.Add(tkt.Train.Number.ToString()); }
+                { treeView1.Nodes[0].Nodes[2].Nodes[0].Nodes.Add(tkt.Train.Number.ToString()
+                    +" "+ tkt.Train.PointOfArrival
+                    + " - " + tkt.Train.PointOfDeparture); }
                 if (tkt.Type == "Купе")
-                { treeView1.Nodes[0].Nodes[2].Nodes[1].Nodes.Add(tkt.Train.Number.ToString()); }
+                {
+                    treeView1.Nodes[0].Nodes[2].Nodes[1].Nodes.Add(tkt.Train.Number.ToString()
+                      + " " + tkt.Train.PointOfArrival
+                      + " - " + tkt.Train.PointOfDeparture);
+                }
             }
         }
 
@@ -54,11 +62,13 @@ namespace Trains
             treeView1.Nodes[0].Nodes[2].Nodes[0].Nodes.Clear();
             treeView1.Nodes[0].Nodes[2].Nodes[1].Nodes.Clear();
             int NumberRow  = e.RowIndex;
-            int ID         = Convert.ToInt32(TablePas.Rows[NumberRow].Cells[0].Value.ToString());
-            Passenger Pasg = Passenger.Search(ID);
-            FillTreeviewPsgs(Pasg);
-            treeView1.Visible = true;
-           
+            if (NumberRow != -1)
+            {
+                int ID = Convert.ToInt32(TablePas.Rows[NumberRow].Cells[0].Value.ToString());
+                Passenger Pasg = Passenger.Search(ID);
+                FillTreeviewPsgs(Pasg);
+                treeView1.Visible = true;
+            }
         }
 
         
@@ -73,12 +83,80 @@ namespace Trains
            
         }
 
+        private void FillInfoTrain(int Number)
+        {
+            Train Trn = Train.Search(Number);
+            List<Ticket> tkts = Trn.Tickets;
+            List<RoteNode> rtns = Trn.RouteNodes;
+
+            treeView2.Nodes[0].Text = Trn.Number.ToString();
+            treeView2.Nodes[0].Nodes[0].Text = "Пассажиры";
+            treeView2.Nodes[0].Nodes[1].Text = "Маршрут";
+            treeView2.Nodes[0].Nodes[0].Nodes[0].Text = "Плацкарт";
+            treeView2.Nodes[0].Nodes[0].Nodes[1].Text = "Купе";
+            treeView2.Nodes[0].Nodes[0].Nodes[0].Nodes.Clear();
+            treeView2.Nodes[0].Nodes[0].Nodes[1].Nodes.Clear();
+
+            foreach (Ticket tkt in tkts)
+            {
+                if (tkt.Type == "Плацкарт")
+                { treeView2.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(tkt.Passenger.ID.ToString() 
+                    + " " + tkt.Passenger.LastName
+                    + " " + tkt.Passenger.FirstName
+                    ); }
+                if (tkt.Type == "Купе")
+                {
+                    treeView2.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(tkt.Passenger.ID.ToString()
+                      + " " + tkt.Passenger.LastName
+                      + " " + tkt.Passenger.FirstName
+                      );
+                }
+            }
+
+            treeView2.Nodes[0].Nodes[1].Nodes.Clear();
+            foreach (RoteNode rtn in rtns)
+            {
+                treeView2.Nodes[0].Nodes[1].Nodes.Add(rtn.Station.Name.ToString());
+            }
+
+            treeView2.Visible = true;
+
+        }
+       
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Node.Level == 3)
             {
-                MessageBox.Show("YES");
+                int Number = Convert.ToInt32(e.Node.Text.Substring(0,2)) ;
+                FillInfoTrain(Number);
+            
             }
         }
+
+        private void treeView2_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Level == 3)
+            {
+                int ID = Convert.ToInt32(e.Node.Text.Substring(0, 4));
+                Passenger psg = Passenger.Search(ID);
+                FillTreeviewPsgs(psg);
+            }
+        }
+
+        private void Back_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ShowAllPas_Click(object sender, EventArgs e)
+        {
+            List<Passenger> Psgs= Passenger.Search("", "", "");
+            TablePas.Rows.Clear();
+            foreach (Passenger Psg in Psgs)
+            {
+                TablePas.Rows.Add(Psg.ID, Psg.LastName, Psg.FirstName, Psg.CountOfTickets);
+            }
+        }
+        
     }
 }
