@@ -30,7 +30,6 @@ namespace Trains
             this._routenodes    = new List<RouteNode>();
             AddToAllTrains();
         }
-
         /// <summary>
         ///  ƒобавл€ет поезд в список всех поездов.
         /// </summary>
@@ -64,9 +63,28 @@ namespace Trains
         public void AddRouteNode(RouteNode RouteNode)
         {
             this._routenodes.Add(RouteNode);
+            RouteNodeComparer rnc = new RouteNodeComparer();
+            this._routenodes.Sort(rnc);
         }
 
-        //public PointF Coordinate
+        /// <summary>
+        /// ¬озвращает местоположение поезда в заданнный момент времени.
+        /// </summary>
+        /// <param name="time">«аданный момент времени</param>
+        /// <returns></returns>
+        public PointF Location(DateTime time)
+        {
+            PointF point = new PointF(-100, -100);
+            int i = 0;
+            while (this.RouteNodes[i].TimeOfArrivalFormat < time)
+            {
+
+            }
+
+
+
+            return point;
+        }
 
 
         #region ѕоиск и св€занные с ним методы
