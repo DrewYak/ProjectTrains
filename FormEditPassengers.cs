@@ -15,5 +15,19 @@ namespace Trains
         {
             InitializeComponent();
         }
+
+        private void FormEditPassengers_Activated(object sender, EventArgs e)
+        {
+            List<Passenger> ResultPas = Passenger.Search("", "", "");
+            foreach (Passenger Psg in ResultPas)
+            {
+                this.dataGridView1.Rows.Add(false, Psg.LastName, Psg.FirstName, Psg.CountOfTickets);
+            }
+        }
+
+        private void FormEditPassengers_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

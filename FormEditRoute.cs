@@ -15,5 +15,16 @@ namespace Trains
         {
             InitializeComponent();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void FormEditRoute_Activated(object sender, EventArgs e)
+        {
+            List<Station> stns = Station.Search();
+
+        }
     }
 }

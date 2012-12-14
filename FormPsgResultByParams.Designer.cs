@@ -75,6 +75,7 @@
             this.TablePas.ReadOnly = true;
             this.TablePas.Size = new System.Drawing.Size(381, 355);
             this.TablePas.TabIndex = 0;
+            this.TablePas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablePas_CellContentClick);
             // 
             // ID
             // 

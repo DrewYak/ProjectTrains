@@ -15,5 +15,10 @@ namespace Trains
         {
             InitializeComponent();
         }
+
+        private void TablePas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

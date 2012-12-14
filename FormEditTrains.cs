@@ -15,5 +15,19 @@ namespace Trains
         {
             InitializeComponent();
         }
+
+        private void FormEditTrains_Activated(object sender, EventArgs e)
+        {
+            List<Train> ResultTrn = Train.Search("", "");
+            foreach (Train Trn in ResultTrn)
+            {
+                this.dataGridView1.Rows.Add(false, Trn.Number, Trn.PointOfArrival, Trn.PointOfDeparture);
+            }
+        }
+
+        private void FormEditTrains_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

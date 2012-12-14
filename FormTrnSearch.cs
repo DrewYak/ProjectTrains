@@ -87,5 +87,10 @@ namespace Trains
                 }
             }
         }
+
+        private void TrnSearch_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

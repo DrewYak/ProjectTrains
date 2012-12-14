@@ -183,6 +183,7 @@
             this.Name = "TrnSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Поиск поезда (-ов)";
+            this.Load += new System.EventHandler(this.TrnSearch_Load);
             this.gBByNumber.ResumeLayout(false);
             this.gBByNumber.PerformLayout();
             this.gBByParams.ResumeLayout(false);
