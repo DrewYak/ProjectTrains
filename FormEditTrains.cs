@@ -16,13 +16,19 @@ namespace Trains
             InitializeComponent();
         }
 
-        private void FormEditTrains_Activated(object sender, EventArgs e)
+        private void FillGridView(List<Train> ResultTrn)
         {
-            List<Train> ResultTrn = Train.Search("", "");
+            this.dataGridView1.Rows.Clear();
             foreach (Train Trn in ResultTrn)
             {
                 this.dataGridView1.Rows.Add(false, Trn.Number, Trn.PointOfArrival, Trn.PointOfDeparture);
             }
+        }
+
+        private void FormEditTrains_Activated(object sender, EventArgs e)
+        {
+            List<Train> ResultTrn = Train.Search("", "");
+            FillGridView(ResultTrn);
         }
 
         private void FormEditTrains_Load(object sender, EventArgs e)
