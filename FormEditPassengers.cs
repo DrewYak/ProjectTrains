@@ -34,7 +34,13 @@ namespace Trains
 
         private void FormEditPassengers_Load(object sender, EventArgs e)
         {
-
+            List<Train> Trns = Train.Search("","");
+            foreach(Train Trn in Trns)
+            {
+                comboBox1.Items.Add(Trn.Number);
+            }
+            comboBox2.Items.Add("Плацкарт");
+            comboBox2.Items.Add("Купе");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,37 +67,69 @@ namespace Trains
         {
             int Number = Convert.ToInt32(this.textBox1.Text);
             Passenger entPsg = Passenger.Search(Number);
+            Train Trn = Train.Search(Convert.ToInt32(comboBox1.Text));
             if (entPsg == null)
             {
                 string LName = this.textBox2.Text;
                 string FName = this.textBox3.Text;
                 Passenger Psg = new Passenger(Number, FName, LName);
+                Ticket Tck = new Ticket(Trn, comboBox2.Text, Psg);
             }
-            //List<Ticket>
+            else
+            {
+                Ticket Tck = new Ticket(Trn, comboBox2.Text, entPsg);  
+            }
+            FormEditPassengers_Activated(sender, e);
+            textBox1_TextChanged(sender, e);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            int Number = Convert.ToInt32(this.textBox1.Text);
-            Passenger entPsg = Passenger.Search(Number);
-            if (entPsg != null)
+            comboBox1_TextChanged(sender, e);
+            if (this.textBox1.Text != "")
             {
-                string LName = entPsg.LastName;
-                string FName = entPsg.FirstName;
-                this.textBox2.Text = LName;
-                this.textBox3.Text = FName;
-                this.textBox2.Enabled = false;
-                this.textBox3.Enabled = false;
+                int Number = Convert.ToInt32(this.textBox1.Text);
+                Passenger entPsg = Passenger.Search(Number);
+                if (entPsg != null)
+                {
+                    string LName = entPsg.LastName;
+                    string FName = entPsg.FirstName;
+                    this.textBox2.Text = LName;
+                    this.textBox3.Text = FName;
+                    this.textBox2.Enabled = false;
+                    this.textBox3.Enabled = false;
+                    this.button2.Text = "Изменить";
+
+                }
+                else
+                {
+                    this.textBox2.Enabled = true;
+                    this.textBox3.Enabled = true;
+                    this.button2.Text = "Добавить";
+
+                    this.textBox2.Clear();
+                    this.textBox3.Clear();
+                }
+            }
+
+
+        }
+
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+            if ((textBox1.MaskCompleted) &&
+                    (textBox2.Text != "") &&
+                    (textBox3.Text != "") &&
+                    (comboBox1.Text != "") &&
+                    (comboBox2.Text != "")
+                )
+            {
+                button2.Enabled = true;
             }
             else
             {
-                this.textBox2.Enabled = true;
-                this.textBox3.Enabled = true;
-                this.textBox2.Text = "";
-                this.textBox3.Text = "";
+                button2.Enabled = false;
             }
-
-
         }
     }
 }
