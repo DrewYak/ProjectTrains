@@ -83,5 +83,18 @@ namespace Trains
             DrawRoutes(trains, e);
             DrawStations(stations, radius, e);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DateTime time   = Convert.ToDateTime(maskedTextBox1.Text);
+            List<Train> anyTrains  = Train.Search("","");
+            PointF p    = anyTrains[0].Location(time);
+            MessageBox.Show(p.ToString());
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
     }
 }
