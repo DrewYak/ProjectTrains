@@ -39,14 +39,12 @@ namespace Trains
 
          private void button1_Click(object sender, EventArgs e)
          {
-             /* for (int i = 0; i < dataGridView1.RowCount; i++)
-                  if (Convert.ToBoolean(dataGridView1.Rows[i].Cells[0].Value))
-                  {
-                      int del = Convert.ToInt32(dataGridView1.Rows[i].Cells[1].Value);
-                      Station delete = Station.Search(del);
-                      delete.RemoveFromAllStation();
-                      FormEditRoute_Activated(sender, e);
-                  }*/
+             
+         }
+
+         private void button2_Click(object sender, EventArgs e)
+         {
+
          }
     }
 }

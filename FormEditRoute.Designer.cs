@@ -126,8 +126,9 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(342, 30);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Добавить/Изменить";
+            this.button2.Text = "Добавить";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 

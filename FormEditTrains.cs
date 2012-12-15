@@ -50,7 +50,21 @@ namespace Trains
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            int Number = Convert.ToInt32(this.textBox1.Text);
+            Train entTrn = Train.Search(Number);
+            Station Stn = Station.Search(Convert.ToInt32(comboBox1.Text));
+            if (entTrn == null)
+            {
+                Train Trn = new Train(Number);
+                Ticket Tck = new Ticket(Trn, comboBox2.Text, Psg);
+                RouteNode RtN = new RouteNode(Stn
+            }
+            else
+            {
+                Ticket Tck = new Ticket(Trn, comboBox2.Text, entPsg);
+            }
+            FormEditPassengers_Activated(sender, e);
+            textBox1_TextChanged(sender, e);
         }
     }
 }

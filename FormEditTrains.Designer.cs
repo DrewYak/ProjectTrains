@@ -37,14 +37,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
+            this.textBox1 = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -133,6 +135,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.maskedTextBox4);
+            this.panel1.Controls.Add(this.maskedTextBox3);
             this.panel1.Controls.Add(this.maskedTextBox2);
             this.panel1.Controls.Add(this.maskedTextBox1);
             this.panel1.Controls.Add(this.label4);
@@ -140,17 +145,34 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(485, 429);
             this.panel1.TabIndex = 3;
             // 
+            // maskedTextBox2
+            // 
+            this.maskedTextBox2.Location = new System.Drawing.Point(218, 101);
+            this.maskedTextBox2.Mask = "00/00/0000 90:00";
+            this.maskedTextBox2.Name = "maskedTextBox2";
+            this.maskedTextBox2.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox2.TabIndex = 27;
+            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(218, 64);
+            this.maskedTextBox1.Mask = "00/00/0000 90:00";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox1.TabIndex = 26;
+            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 143);
+            this.label4.Location = new System.Drawing.Point(9, 108);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 13);
             this.label4.TabIndex = 25;
@@ -159,7 +181,7 @@
             // comboBox5
             // 
             this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(115, 135);
+            this.comboBox5.Location = new System.Drawing.Point(115, 100);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(97, 21);
             this.comboBox5.TabIndex = 23;
@@ -167,7 +189,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 108);
+            this.label3.Location = new System.Drawing.Point(3, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 13);
             this.label3.TabIndex = 21;
@@ -176,7 +198,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(115, 100);
+            this.comboBox1.Location = new System.Drawing.Point(115, 63);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(97, 21);
             this.comboBox1.TabIndex = 18;
@@ -184,36 +206,37 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 35);
+            this.label1.Location = new System.Drawing.Point(29, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 15;
             this.label1.Text = "Номер поезда";
             // 
+            // maskedTextBox3
+            // 
+            this.maskedTextBox3.Location = new System.Drawing.Point(324, 64);
+            this.maskedTextBox3.Mask = "00/00/0000 90:00";
+            this.maskedTextBox3.Name = "maskedTextBox3";
+            this.maskedTextBox3.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox3.TabIndex = 28;
+            this.maskedTextBox3.ValidatingType = typeof(System.DateTime);
+            // 
+            // maskedTextBox4
+            // 
+            this.maskedTextBox4.Location = new System.Drawing.Point(324, 101);
+            this.maskedTextBox4.Mask = "00/00/0000 90:00";
+            this.maskedTextBox4.Name = "maskedTextBox4";
+            this.maskedTextBox4.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox4.TabIndex = 29;
+            this.maskedTextBox4.ValidatingType = typeof(System.DateTime);
+            // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(175, 28);
+            this.textBox1.Location = new System.Drawing.Point(115, 31);
+            this.textBox1.Mask = "00";
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(153, 20);
-            this.textBox1.TabIndex = 14;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(228, 100);
-            this.maskedTextBox1.Mask = "00/00/0000 90:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox1.TabIndex = 26;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
-            // 
-            // maskedTextBox2
-            // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(228, 135);
-            this.maskedTextBox2.Mask = "00/00/0000 90:00";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox2.TabIndex = 27;
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.textBox1.Size = new System.Drawing.Size(97, 20);
+            this.textBox1.TabIndex = 30;
             // 
             // FormEditTrains
             // 
@@ -249,8 +272,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox4;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
+        private System.Windows.Forms.MaskedTextBox textBox1;
     }
 }
