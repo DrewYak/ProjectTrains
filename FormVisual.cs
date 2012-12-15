@@ -94,6 +94,7 @@ namespace Trains
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            timer1.Interval = 1000;
 
         }
     }
