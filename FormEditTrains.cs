@@ -49,7 +49,7 @@ namespace Trains
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
+        {/*
             int Number = Convert.ToInt32(this.textBox1.Text);
             Train entTrn = Train.Search(Number);
             Station Stn = Station.Search(Convert.ToInt32(comboBox1.Text));
@@ -65,6 +65,6 @@ namespace Trains
             }
             FormEditPassengers_Activated(sender, e);
             textBox1_TextChanged(sender, e);
-        }
+       */ }
     }
 }
