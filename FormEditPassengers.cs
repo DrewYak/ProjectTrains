@@ -16,17 +16,81 @@ namespace Trains
             InitializeComponent();
         }
 
+        private void FillGridView(List<Passenger> ResultPas)
+        {
+            this.dataGridView1.Rows.Clear();
+            foreach (Passenger Psg in ResultPas)
+            {
+                this.dataGridView1.Rows.Add(false, Psg.ID, Psg.LastName, Psg.FirstName, Psg.CountOfTickets);
+            }
+
+        }
+
         private void FormEditPassengers_Activated(object sender, EventArgs e)
         {
             List<Passenger> ResultPas = Passenger.Search("", "", "");
-            foreach (Passenger Psg in ResultPas)
-            {
-                this.dataGridView1.Rows.Add(false, Psg.LastName, Psg.FirstName, Psg.CountOfTickets);
-            }
+            FillGridView(ResultPas);
         }
 
         private void FormEditPassengers_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<int> delPsgs = new List<int>();
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                if (Convert.ToBoolean(dataGridView1.Rows[i].Cells[0].Value))
+                {
+                    int del = Convert.ToInt32(dataGridView1.Rows[i].Cells[1].Value);
+                    delPsgs.Add(del);
+                }
+            }
+            foreach (int numPsg in delPsgs)
+            {
+                Passenger delete = Passenger.Search(numPsg);
+                delete.RemoveFromAllPassengers();
+ 
+            }
+            FormEditPassengers_Activated(sender, e);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int Number = Convert.ToInt32(this.textBox1.Text);
+            Passenger entPsg = Passenger.Search(Number);
+            if (entPsg == null)
+            {
+                string LName = this.textBox2.Text;
+                string FName = this.textBox3.Text;
+                Passenger Psg = new Passenger(Number, FName, LName);
+            }
+            //List<Ticket>
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            int Number = Convert.ToInt32(this.textBox1.Text);
+            Passenger entPsg = Passenger.Search(Number);
+            if (entPsg != null)
+            {
+                string LName = entPsg.LastName;
+                string FName = entPsg.FirstName;
+                this.textBox2.Text = LName;
+                this.textBox3.Text = FName;
+                this.textBox2.Enabled = false;
+                this.textBox3.Enabled = false;
+            }
+            else
+            {
+                this.textBox2.Enabled = true;
+                this.textBox3.Enabled = true;
+                this.textBox2.Text = "";
+                this.textBox3.Text = "";
+            }
+
 
         }
     }
