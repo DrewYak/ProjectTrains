@@ -45,7 +45,7 @@ namespace Trains
         /// <returns></returns>
         public static bool Contain(string StationName)
         {
-            List<Station> stns = new List<Station>()
+            List<Station> stns = Search();
             foreach(Station stn in stns)
             {
                 if (stn.Name == StationName)
