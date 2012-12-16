@@ -59,15 +59,28 @@ namespace Trains
         }
         private void TablePas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            treeView1.Nodes[0].Nodes[2].Nodes[0].Nodes.Clear();
-            treeView1.Nodes[0].Nodes[2].Nodes[1].Nodes.Clear();
-            int NumberRow  = e.RowIndex;
-            if (NumberRow != -1)
+            if (radioButton1.Checked)
             {
-                int ID = Convert.ToInt32(TablePas.Rows[NumberRow].Cells[0].Value.ToString());
-                Passenger Pasg = Passenger.Search(ID);
-                FillTreeviewPsgs(Pasg);
-                treeView1.Visible = true;
+                treeView1.Nodes[0].Nodes[2].Nodes[0].Nodes.Clear();
+                treeView1.Nodes[0].Nodes[2].Nodes[1].Nodes.Clear();
+                int NumberRow = e.RowIndex;
+                if (NumberRow != -1)
+                {
+                    int ID = Convert.ToInt32(TablePas.Rows[NumberRow].Cells[0].Value.ToString());
+                    Passenger Pasg = Passenger.Search(ID);
+                    FillTreeviewPsgs(Pasg);
+                    treeView1.Visible = true;
+                }
+            }
+            if (radioButton2.Checked)
+            {
+                int NumberRow = e.RowIndex;
+                if (NumberRow != -1)
+                {
+                    int Number = Convert.ToInt32(TablePas.Rows[NumberRow].Cells[0].Value.ToString());
+                    FillInfoTrain(Number);
+                    treeView1.Visible = true;
+                }
             }
         }
 
@@ -87,7 +100,7 @@ namespace Trains
         {
             Train Trn = Train.Search(Number);
             List<Ticket> tkts = Trn.Tickets;
-            List<RoteNode> rtns = Trn.RouteNodes;
+            List<RouteNode> rtns = Trn.RouteNodes;
 
             treeView2.Nodes[0].Text = Trn.Number.ToString();
             treeView2.Nodes[0].Nodes[0].Text = "Пассажиры";
@@ -114,7 +127,7 @@ namespace Trains
             }
 
             treeView2.Nodes[0].Nodes[1].Nodes.Clear();
-            foreach (RoteNode rtn in rtns)
+            foreach (RouteNode rtn in rtns)
             {
                 treeView2.Nodes[0].Nodes[1].Nodes.Add(rtn.Station.Name.ToString());
             }
@@ -156,6 +169,56 @@ namespace Trains
             {
                 TablePas.Rows.Add(Psg.ID, Psg.LastName, Psg.FirstName, Psg.CountOfTickets);
             }
+        }
+
+        private void TablePas_CellContentClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                ShowAllPas.Enabled = true;
+                List<Passenger> Psgs = Passenger.Search("", "", "");
+                TablePas.Rows.Clear();
+                if (TablePas.Columns.Contains("PointArr"))
+                {
+                    TablePas.Columns.Remove("PointArr");
+                }
+                TablePas.Columns[0].HeaderText = "Номер паспорта";
+                TablePas.Columns[1].HeaderText = "Фамилия";
+                TablePas.Columns[2].HeaderText = "Имя";
+                TablePas.Columns[3].HeaderText = "Билет";
+                foreach (Passenger Psg in Psgs)
+                {
+                    TablePas.Rows.Add(Psg.ID, Psg.LastName, Psg.FirstName, Psg.CountOfTickets);
+                }
+            }
+            if (radioButton2.Checked)
+            {
+                ShowAllPas.Enabled = false;
+                List<Train> Trns = Train.Search("", "");
+                TablePas.Rows.Clear();
+                if (!TablePas.Columns.Contains("PointArr"))
+                {
+                TablePas.Columns.Add("PointArr", "Пункт прибытия");
+                }
+                TablePas.Columns[0].HeaderText = "Номер поезда";
+                TablePas.Columns[1].HeaderText = "Время отправления";
+                TablePas.Columns[2].HeaderText = "Пункт отправления";
+                TablePas.Columns[3].HeaderText = "Время прибытия";
+                TablePas.Columns[4].HeaderText = "Пункт прибытия";
+                foreach (Train Trn in Trns)
+                {
+                    TablePas.Rows.Add(Trn.Number, Trn.TimeOfDeparture, Trn.PointOfDeparture, Trn.TimeOfArrival, Trn.PointOfArrival);
+                }
+            }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
         }
         
     }
