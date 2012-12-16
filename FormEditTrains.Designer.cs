@@ -37,16 +37,20 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
-            this.textBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox6 = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -135,13 +139,17 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.maskedTextBox6);
+            this.panel1.Controls.Add(this.maskedTextBox5);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.comboBox3);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.maskedTextBox4);
             this.panel1.Controls.Add(this.maskedTextBox3);
             this.panel1.Controls.Add(this.maskedTextBox2);
             this.panel1.Controls.Add(this.maskedTextBox1);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.comboBox5);
+            this.panel1.Controls.Add(this.comboBox2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.label1);
@@ -150,6 +158,32 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(485, 429);
             this.panel1.TabIndex = 3;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(115, 31);
+            this.textBox1.Mask = "00";
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(97, 20);
+            this.textBox1.TabIndex = 30;
+            // 
+            // maskedTextBox4
+            // 
+            this.maskedTextBox4.Location = new System.Drawing.Point(324, 101);
+            this.maskedTextBox4.Mask = "00/00/0000 90:00";
+            this.maskedTextBox4.Name = "maskedTextBox4";
+            this.maskedTextBox4.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox4.TabIndex = 29;
+            this.maskedTextBox4.ValidatingType = typeof(System.DateTime);
+            // 
+            // maskedTextBox3
+            // 
+            this.maskedTextBox3.Location = new System.Drawing.Point(324, 64);
+            this.maskedTextBox3.Mask = "00/00/0000 90:00";
+            this.maskedTextBox3.Name = "maskedTextBox3";
+            this.maskedTextBox3.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox3.TabIndex = 28;
+            this.maskedTextBox3.ValidatingType = typeof(System.DateTime);
             // 
             // maskedTextBox2
             // 
@@ -178,13 +212,13 @@
             this.label4.TabIndex = 25;
             this.label4.Text = "Конечная станция";
             // 
-            // comboBox5
+            // comboBox2
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(115, 100);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(97, 21);
-            this.comboBox5.TabIndex = 23;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(115, 100);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(97, 21);
+            this.comboBox2.TabIndex = 23;
             // 
             // label3
             // 
@@ -212,31 +246,40 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Номер поезда";
             // 
-            // maskedTextBox3
+            // comboBox3
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(324, 64);
-            this.maskedTextBox3.Mask = "00/00/0000 90:00";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox3.TabIndex = 28;
-            this.maskedTextBox3.ValidatingType = typeof(System.DateTime);
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(115, 137);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(97, 21);
+            this.comboBox3.TabIndex = 31;
             // 
-            // maskedTextBox4
+            // label2
             // 
-            this.maskedTextBox4.Location = new System.Drawing.Point(324, 101);
-            this.maskedTextBox4.Mask = "00/00/0000 90:00";
-            this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox4.TabIndex = 29;
-            this.maskedTextBox4.ValidatingType = typeof(System.DateTime);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 140);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 13);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Промежут. станция";
             // 
-            // textBox1
+            // maskedTextBox5
             // 
-            this.textBox1.Location = new System.Drawing.Point(115, 31);
-            this.textBox1.Mask = "00";
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(97, 20);
-            this.textBox1.TabIndex = 30;
+            this.maskedTextBox5.Location = new System.Drawing.Point(218, 138);
+            this.maskedTextBox5.Mask = "00/00/0000 90:00";
+            this.maskedTextBox5.Name = "maskedTextBox5";
+            this.maskedTextBox5.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox5.TabIndex = 33;
+            this.maskedTextBox5.ValidatingType = typeof(System.DateTime);
+            // 
+            // maskedTextBox6
+            // 
+            this.maskedTextBox6.Location = new System.Drawing.Point(324, 137);
+            this.maskedTextBox6.Mask = "00/00/0000 90:00";
+            this.maskedTextBox6.Name = "maskedTextBox6";
+            this.maskedTextBox6.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox6.TabIndex = 34;
+            this.maskedTextBox6.ValidatingType = typeof(System.DateTime);
             // 
             // FormEditTrains
             // 
@@ -268,7 +311,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
@@ -277,5 +320,9 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox4;
         private System.Windows.Forms.MaskedTextBox maskedTextBox3;
         private System.Windows.Forms.MaskedTextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox6;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox5;
     }
 }
