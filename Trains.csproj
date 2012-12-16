@@ -50,8 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassData.cs" />
-    <Compile Include="ClassRoute.cs" />
     <Compile Include="ClassRouteNode.cs" />
+    <Compile Include="ClassTicket.cs" />
     <Compile Include="ClassStation.cs" />
     <Compile Include="ClassTest.cs" />
     <Compile Include="ClassTrain.cs" />
@@ -66,6 +66,24 @@
     </Compile>
     <Compile Include="FormData.Designer.cs">
       <DependentUpon>FormData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditPassengers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditPassengers.Designer.cs">
+      <DependentUpon>FormEditPassengers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditRoute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditRoute.Designer.cs">
+      <DependentUpon>FormEditRoute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditTrains.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditTrains.Designer.cs">
+      <DependentUpon>FormEditTrains.cs</DependentUpon>
     </Compile>
     <Compile Include="FormErrorLoad.cs">
       <SubType>Form</SubType>
@@ -122,6 +140,12 @@
       <DependentUpon>FormTrains.cs</DependentUpon>
     </Compile>
     <Compile Include="ClassPassenger.cs" />
+    <Compile Include="FormVisual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVisual.Designer.cs">
+      <DependentUpon>FormVisual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Station.cs" />
@@ -130,6 +154,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormData.resx">
       <DependentUpon>FormData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditPassengers.resx">
+      <DependentUpon>FormEditPassengers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditRoute.resx">
+      <DependentUpon>FormEditRoute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditTrains.resx">
+      <DependentUpon>FormEditTrains.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormErrorLoad.resx">
       <DependentUpon>FormErrorLoad.cs</DependentUpon>
@@ -142,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormResultTrnByParams.resx">
       <DependentUpon>FormResultTrnByParams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVisual.resx">
+      <DependentUpon>FormVisual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

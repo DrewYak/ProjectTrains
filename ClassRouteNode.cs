@@ -1,61 +1,64 @@
-﻿namespace Trains
+﻿using System;
+using System.Collections.Generic;
+
+
+namespace Trains
 {
-    class Ticket
+    class RouteNodeComparer : IComparer<RouteNode>
     {
-        /// <summary>
-        /// Поезд, в котором едет пассажир по данному билету.
-        /// </summary>
-        Train    _train;
-     
-        /// <summary>
-        /// Тип вагона.
-        /// </summary>
-        string   _type;
-
-        /// <summary>
-        /// Пассажир, владелец билета.
-        /// </summary>
-        Passenger _passenger;
-
-        /// <summary>
-        /// Инициализирует билет по поезду, в котором едет пассажир, типу вагона и
-        /// пассажиру, который едет по этому билету. Устанавливает ссылки от себя 
-        /// на поезд и на пассажира, а также  ссылки от поезда и от пассажира на себя.
-        /// </summary>
-        /// <param name="Train">Поезд, в котором едет пассажир.</param>
-        /// <param name="Type">Тип вагона.</param>
-        public Ticket(Train Train, string Type, Passenger Passenger)
+        public int Compare(RouteNode RN1, RouteNode RN2)
         {
-            _train      = Train;
-            _type       = Type;
-            _passenger  = Passenger;
-            Associate(Train, Passenger);
+            if (RN1.TimeOfArrivalFormat == RN2.TimeOfArrivalFormat)
+            { return  0; }
+            if (RN1.TimeOfArrivalFormat > RN2.TimeOfArrivalFormat)
+            { return  1; }
+            else
+            { return -1; }
+        }
+    }
+    class RouteNode 
+    {
+        Station _station;
+        string  _timeOfArrival;     
+        string  _timeOfDeparture;   
+
+        /// <summary>
+        /// Инициализирует узел маршрута по станции, времени прибытия поезда
+        /// на эту станцию и времени отправления поезда с этой станции.
+        /// </summary>
+        /// <param name="Station">Станция узла маршрута.</param>
+        /// <param name="TimeOfArrival">Время прибытия поезда на станцию.</param>
+        /// <param name="TimeOfDeparture">Время отправления поезда со станции.</param>
+        public RouteNode(Station Station, string TimeOfArrival, string TimeOfDeparture)
+        {
+            _station            = Station;     
+            _timeOfArrival      = TimeOfArrival;
+            _timeOfDeparture    = TimeOfDeparture;
         }
 
         /// <summary>
-        /// Устанавливает ссылки от поезда и от пассажира на себя.
+        /// Возвращает станцию узла маршрута.
         /// </summary>
-        /// <param name="Train"></param>
-        /// <param name="Passenger"></param>
-        private void Associate(Train Train, Passenger Passenger)
-        {
-            Train.      AddTicket(this);
-            Passenger.  AddTicket(this);
-        }
+        public Station Station { get { return _station; } }
 
         /// <summary>
-        /// Поезд, в котором едет пассажир по данному билету.
+        /// Возвращает время прибытия поезда на станцию.
         /// </summary>
-        public Train        Train       { get { return _train;      } }
+        public string TimeOfArrival { get { return _timeOfArrival; } }
 
         /// <summary>
-        /// Тип вагона, в котором едет пассажир по данному билету.
+        /// Возвращает время отпрвления поезда со станции.
         /// </summary>
-        public string       Type        { get { return _type ;      } }
+        public string TimeOfDeparture { get { return _timeOfDeparture; } }
 
         /// <summary>
-        /// Пассажир, на которого оформлен данный билет.
+        /// Возвращает время прибытия поезда на станцию в форматe DateTime.
         /// </summary>
-        public Passenger    Passenger   { get { return _passenger;  } }
+        public DateTime TimeOfArrivalFormat { get { return DateTime.Parse(_timeOfArrival); } }
+
+        /// <summary>
+        /// Возвращает время отпрвления поезда со станции в форматe DateTime.
+        /// </summary>
+        public DateTime TimeOfDepartureFormat { get { return DateTime.Parse(_timeOfDeparture); } }
     }
 }
