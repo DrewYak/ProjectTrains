@@ -30,7 +30,6 @@ namespace Trains
             this._routenodes    = new List<RouteNode>();
             AddToAllTrains();
         }
-
         /// <summary>
         ///  Добавляет поезд в список всех поездов.
         /// </summary>
@@ -64,9 +63,70 @@ namespace Trains
         public void AddRouteNode(RouteNode RouteNode)
         {
             this._routenodes.Add(RouteNode);
+            RouteNodeComparer rnc = new RouteNodeComparer();
+            this._routenodes.Sort(rnc);
         }
 
-        //public PointF Coordinate
+        /// <summary>
+        /// Ищет станцию из маршрута поезда по времени отправления/прибытия.
+        /// </summary>
+        /// <param name="time">Время отправления или время прибытия.</param>
+        /// <returns></returns>
+        private Station SearchStationByTime(DateTime time)
+        {
+            List<RouteNode> rnds = this.RouteNodes;
+            foreach(RouteNode rnd in rnds)
+            {
+                if ((rnd.TimeOfArrivalFormat == time)||(rnd.TimeOfDepartureFormat == time))
+                {
+                    return rnd.Station;
+                }
+            }
+            return null;
+        }
+
+
+        /// <summary>
+        /// Возвращает местоположение поезда в заданнный момент времени.
+        /// </summary>
+        /// <param name="time">Заданный момент времени.</param>
+        /// <returns></returns>
+        public PointF Location(DateTime time)
+        {
+            List<RouteNode> rnds    = this.RouteNodes;
+            List<DateTime>  ldt     = new List<DateTime>();
+            foreach(RouteNode rnd in rnds)
+            {
+                ldt.Add(rnd.TimeOfDepartureFormat);
+                ldt.Add(rnd.TimeOfArrivalFormat);
+            }
+            ldt.Add(time);
+            ldt.Sort();
+            int i1  = ldt.IndexOf(time) - 1;
+            int i2  = i1 + 2;
+            if ( (i1 >= 0) && (i2 < rnds.Count) )
+            {
+                DateTime    t1  = ldt[i1];
+                DateTime    t2  = ldt[i2];
+                TimeSpan    dt  = t2 - t1;
+                TimeSpan    dt1 = time - t1;
+                double      mylbd = dt1.TotalSeconds / dt.TotalSeconds;
+                Station     st1 = this.SearchStationByTime(t1);
+                Station     st2 = this.SearchStationByTime(t2);
+                int         X1  = st1.X;
+                int         Y1  = st1.Y;
+                int         X2  = st2.X;
+                int         Y2  = st2.Y;
+                float       lbd = Convert.ToSingle(mylbd);
+                PointF      p   = new PointF(   (X1 + lbd * X2) / (1 + lbd),
+                                                (Y1 + lbd * Y2) / (1 + lbd));
+                return      p;
+            }
+            else
+            {
+                return (new PointF(-100, -100));
+            }
+        }
 
 
         #region Поиск и связанные с ним методы

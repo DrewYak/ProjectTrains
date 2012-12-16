@@ -1,9 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 
 
 namespace Trains
 {
-    class RouteNode
+    class RouteNodeComparer : IComparer<RouteNode>
+    {
+        public int Compare(RouteNode RN1, RouteNode RN2)
+        {
+            if (RN1.TimeOfArrivalFormat == RN2.TimeOfArrivalFormat)
+            { return  0; }
+            if (RN1.TimeOfArrivalFormat > RN2.TimeOfArrivalFormat)
+            { return  1; }
+            else
+            { return -1; }
+        }
+    }
+    class RouteNode 
     {
         Station _station;
         string  _timeOfArrival;     

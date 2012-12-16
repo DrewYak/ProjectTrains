@@ -38,6 +38,25 @@ namespace Trains
         }
 
         /// <summary>
+        /// Возвращает истину в случае, если станция с таким названием 
+        /// уже добалена к списку всех станций и ложь в противном случае.
+        /// </summary>
+        /// <param name="StationName"></param>
+        /// <returns></returns>
+        public static bool Contain(string StationName)
+        {
+            List<Station> stns = Search();
+            foreach(Station stn in stns)
+            {
+                if (stn.Name == StationName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Ищет станцию по её названию среди списка всех станций.
         /// В случае успеха возвращает (ссылку на) станцию из списка
         /// всех станций. В случае провала возвращает null.
@@ -63,6 +82,14 @@ namespace Trains
         public static List<Station> Search()
         {
             return AllStations;
+        }
+
+        /// <summary>
+        /// Удаляет себя из списка всех станций.
+        /// </summary>
+        public void RemoveFromAllStations()
+        {
+            _allStations.Remove(this);
         }
 
 

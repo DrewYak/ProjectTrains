@@ -47,5 +47,23 @@ namespace Trains
             FormAddRemove AddRemove = new FormAddRemove();
             AddRemove.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormEditRoute EditRoute = new FormEditRoute();
+            EditRoute.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FormEditTrains EditTrains = new FormEditTrains();
+            EditTrains.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FormEditPassengers EditPassenger = new FormEditPassengers();
+            EditPassenger.ShowDialog();
+        }
     }
 }
