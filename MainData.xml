@@ -567,5 +567,42 @@
         </Passenger>
       </Passengers>
     </Train>
+
+    <Train>
+      <Number>13</Number>
+      <Stations>
+        <Station>
+          <Location>Москва</Location>
+          <Arrive>2012/01/01 00:00:00</Arrive>
+          <Depart>2012/01/01 00:00:10</Depart>
+        </Station>
+
+        <Station>
+          <Location>Санкт-Петербург</Location>
+          <Arrive>2012/01/01 04:00:00</Arrive>
+          <Depart>2012/01/01 04:40:00</Depart>
+        </Station>
+
+        <Station>
+          <Location>Саратов</Location>
+          <Arrive>2012/01/01 16:40:00</Arrive>
+          <Depart>2012/01/01 16:52:00</Depart>
+        </Station>
+
+        <Station>
+          <Location>Балаково</Location>
+          <Arrive>2012/01/01 23:00:00</Arrive>
+          <Depart>2012/01/01 23:10:00</Depart>
+        </Station>
+      </Stations>
+      <Passengers>
+        <Passenger>
+          <ID>1047</ID>
+          <LName>Медунова</LName>
+          <FName>Евгения</FName>
+          <TypeOfTicket>Плацкарт</TypeOfTicket>
+        </Passenger>
+      </Passengers>
+    </Train>
   </Trains>
 </TrainsAndOtherStuff>

@@ -106,48 +106,73 @@ namespace Trains
         }
 
         /// <summary>
-        /// Возвращает ближайшую станцию, на которую приедет поезд.
-        /// В случае, когда введённое время превосходит время прибытия
-        /// поезда, возвращает null.
+        /// Возвращает ближайший узел маршрута, на который приедет поезд. 
+        /// В случае, когда введённое время меньше времени отправления 
+        /// поезда или больше времени прибытия поезда, возвращает null.
         /// </summary>
         /// <param name="Time">Время.</param>
         /// <returns></returns>
         private RouteNode NextRouteNode(DateTime Time)
-        {
-            List<RouteNode> rns = this.RouteNodes;
-            foreach(RouteNode rn in rns)
+        {            
+            // Возвращаем null, если введённое время меньше
+            // времени отправления поезда или больше времени прибытия поезда
+            if ((Time < this.TimeOfDepartureFormat)||(Time > this.TimeOfArrivalFormat))
             {
-                if (rn.TimeOfArrivalFormat >= Time)
-                {
-                    return rn;
-                }
+                return null;
             }
-            return null;
+            else
+            {
+                List<RouteNode> rns = this.RouteNodes;
+                foreach(RouteNode rn in rns)
+                {
+                    if (Time <= rn.TimeOfDepartureFormat)
+                    {
+                        return rn;
+                    }
+                }
+                return null;
+            }
         }
 
         /// <summary>
-        /// Возвращает ближайшую станцию, которую поезд уже покинул.
-        /// В случае, когда введённое время меньше времени отправления
-        /// поезда, возвращает null.
+        /// Возвращает ближайший узел маршрута, который поезд уже покинул.
+        /// В случае, когда введённое время меньше времени отправления 
+        /// поезда или больше времени прибытия поезда, возвращает null.
         /// </summary>
         /// <param name="Time">Время.</param>
         /// <returns></returns>
         private RouteNode PrevRouteNode(DateTime Time)
-        {
-            List<RouteNode> rns                 = this.RouteNodes;
-            String          StationName         = this.NextRouteNode(Time).Station.Name;
-            int             IndexPrevStation    = this.IndexStation(StationName) - 1;
-            if (IndexPrevStation >= 0)
-            {
-                return rns[IndexPrevStation];
-            }
-            else
+        {        
+            // Возвращаем null, если введённое время меньше
+            // времени отправления поезда или больше времени прибытия поезда
+            if ((Time < this.TimeOfDepartureFormat)||(Time > this.TimeOfArrivalFormat))
             {
                 return null;
             }
-
+            else
+            {
+                List<RouteNode> rns = this.RouteNodes;
+                foreach(RouteNode rn in rns)
+                {
+                    if (Time < rn.TimeOfArrivalFormat)
+                    {
+                        // Ушли на один узел вперёд, возращаемся к предыдущему - именно он нам нужен.
+                        int index = rns.IndexOf(rn) - 1;
+                        return rns[index];
+                    }
+                }
+                // Стоянка на конечной станции.
+                return rns[rns.Count - 1];
+            }
         }
 
+        /// <summary>
+        /// Возвращает следующий узел на форме, если введённое время находится
+        /// между временем отправления и прибытия. В противном случае возвращает
+        /// точку (-100, -100).
+        /// </summary>
+        /// <param name="Time">Время.</param>
+        /// <returns></returns>
         private PointF NextPoint(DateTime Time)
         {
             RouteNode rn = this.NextRouteNode(Time);
@@ -161,6 +186,13 @@ namespace Trains
             }
         }
 
+        /// <summary>
+        /// Возвращает предыдущий узел на форме, если введённое время находится
+        /// между временем отправления и прибытия. В противном случае возвращает
+        /// точку (-100, -100).
+        /// </summary>
+        /// <param name="Time">Время.</param>
+        /// <returns></returns>
         private PointF PrevPoint(DateTime Time)
         {
             RouteNode rn = this.PrevRouteNode(Time);
@@ -345,15 +377,24 @@ namespace Trains
         }
 
         /// <summary>
-        /// Возвращает время отправления поезда с начальной станции.
+        /// Возвращает время отправления поезда.
         /// </summary>
         public string TimeOfDeparture
         {
             get { return RouteNodes[0].TimeOfDeparture; }
         }
 
+        ///<summary>
+        /// Возвращает время отправления поезда в формате DateTime.
+        /// </summary>
+
+        public DateTime TimeOfDepartureFormat
+        {
+            get { return Convert.ToDateTime(TimeOfDeparture); }
+        }
+
         /// <summary>
-        /// Возврашает время прибытия поезда на конечную станцию.
+        /// Возврашает время прибытия поезда.
         /// </summary>
         public string TimeOfArrival
         {
@@ -362,6 +403,14 @@ namespace Trains
                 int lastIndex   = RouteNodes.Count - 1;
                 return RouteNodes[lastIndex].TimeOfArrival;
             }
+        }
+
+        /// <summary>
+        /// Возврашает время прибытия поезда в формате DateTime.
+        /// </summary>
+        public DateTime TimeOfArrivalFormat
+        {
+            get { return Convert.ToDateTime(TimeOfArrival); }
         }
 
         /// <summary>

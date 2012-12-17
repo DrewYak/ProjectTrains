@@ -41,7 +41,9 @@
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
             this.maskedTextBox1.TabIndex = 0;
+            this.maskedTextBox1.Text = "010120120000";
             this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBox1.TextChanged += new System.EventHandler(this.button1_Click);
             // 
             // button1
             // 

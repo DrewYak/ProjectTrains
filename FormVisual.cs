@@ -102,16 +102,20 @@ namespace Trains
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int         radius      = 3;
+            int         radius      = 8;
             DateTime    time        = Convert.ToDateTime(maskedTextBox1.Text);
             Train       trn         = Train.Search(13);
             PointF      p           = trn.Location(time);
             Graphics g = Graphics.FromHwnd(Handle);
             g.DrawEllipse(Pens.Red, p.X - radius, p.Y - radius, radius, radius);
+            timer1.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            timer1.Interval = 1000;
+            TimeSpan t = new TimeSpan(0, 1, 0);
+            maskedTextBox1.Text = (Convert.ToDateTime(maskedTextBox1.Text) + t).ToString();
         }
     }
 }
