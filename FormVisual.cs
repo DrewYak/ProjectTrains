@@ -75,8 +75,9 @@ namespace Trains
 
         }
 
-        private void DrawTrain(Train train, int radius, PaintEventArgs e)
+        private void DrawTrain(PointF p, PaintEventArgs e)
         {
+            
             /*
             DateTime    time        = Convert.ToDateTime(maskedTextBox1.Text);
             List<Train> trains      = Train.Search("", "");
@@ -97,15 +98,16 @@ namespace Trains
             List<Train>     trains      = Train.Search("", "");
             DrawRoutes(trains, e);
             DrawStations(stations, radius, e);
-            DrawTrain(trains[0],5,e);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int         radius      = 3;
             DateTime    time        = Convert.ToDateTime(maskedTextBox1.Text);
-            List<Train> anyTrains   = Train.Search("","");
-            PointF      p           = anyTrains[0].Location(time);
-            MessageBox.Show(p.ToString());
+            Train       trn         = Train.Search(13);
+            PointF      p           = trn.Location(time);
+            Graphics g = Graphics.FromHwnd(Handle);
+            g.DrawEllipse(Pens.Red, p.X - radius, p.Y - radius, radius, radius);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
