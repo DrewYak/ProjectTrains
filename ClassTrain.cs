@@ -85,6 +85,68 @@ namespace Trains
             return null;
         }
 
+        /// <summary>
+        /// Возвращает индекс станции в маршруте поезда (начиная с 0) по 
+        /// её названию. В случае, если такой станции нет в маршруте поезда,
+        /// возвращает -1.
+        /// </summary>
+        /// <param name="StationName"></param>
+        /// <returns></returns>
+        private int IndexStation(String StationName)
+        {
+            List<RouteNode> rns = this.RouteNodes;
+            foreach(RouteNode rn in rns)
+            {
+                if (rn.Station.Name == StationName)
+                {
+                    return rns.IndexOf(rn);
+                }
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Возвращает ближайшую станцию, на которую приедет поезд.
+        /// В случае, когда введённое время превосходит время прибытия
+        /// поезда, возвращает null.
+        /// </summary>
+        /// <param name="Time">Время.</param>
+        /// <returns></returns>
+        private Station NextStation(DateTime Time)
+        {
+            List<RouteNode> rns = this.RouteNodes;
+            foreach(RouteNode rn in rns)
+            {
+                if (rn.TimeOfArrivalFormat >= Time)
+                {
+                    return rn.Station;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Возвращает ближайшую станцию, которую поезд уже покинул.
+        /// В случае, когда введённое время меньше времени отправления
+        /// поезда, возвращает null.
+        /// </summary>
+        /// <param name="Time">Время.</param>
+        /// <returns></returns>
+        private Station PreviousStation(DateTime Time)
+        {
+            List<RouteNode> rns                 = this.RouteNodes;
+            String          StationName         = this.NextStation(Time).Name;
+            int             IndexPrevStation    = this.IndexStation(StationName) - 1;
+            if (IndexPrevStation >= 0)
+            {
+                return rns[IndexPrevStation].Station;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
 
         /// <summary>
         /// Возвращает местоположение поезда в заданнный момент времени.
@@ -151,7 +213,7 @@ namespace Trains
 
         /// <summary>
         /// Ищет поезда по начальной и конечной станциям. В случае успеха возвращает
-        /// список релевантных поездов. В случае провала возвращает null.
+        /// список ревалентных поездов. В случае провала возвращает null.
         /// </summary>
         /// <param name="PointOfDep">Искомая начальная станция.</param>
         /// <param name="PointOfArr">Искомая конечная станция.</param>
@@ -195,7 +257,7 @@ namespace Trains
 
         /// <summary>
         /// Ищет поезда по конечной станции. В случае успеха возвращает
-        /// список релевантных поездов. В случае провала возвращает null.
+        /// список ревалентных поездов. В случае провала возвращает null.
         /// </summary>
         /// <param name="PointOfArr">Конечная станция.</param>
         /// <param name="Trns">Список поездов, в котором проводится поиск.</param>

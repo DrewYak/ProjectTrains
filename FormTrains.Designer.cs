@@ -33,7 +33,6 @@ namespace Trains
             this.butData = new System.Windows.Forms.Button();
             this.butGraphic = new System.Windows.Forms.Button();
             this.tablePanelWithButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -58,7 +57,6 @@ namespace Trains
             this.ButSearchTrain.TabIndex = 0;
             this.ButSearchTrain.Tag = "";
             this.ButSearchTrain.Text = "Поиск поезда";
-            this.ButSearchTrain.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ButSearchTrain.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.ButSearchTrain.UseVisualStyleBackColor = false;
             this.ButSearchTrain.Click += new System.EventHandler(this.ButSearchTrain_Click);
@@ -78,8 +76,7 @@ namespace Trains
             this.ButSearchPas.Name = "ButSearchPas";
             this.ButSearchPas.Size = new System.Drawing.Size(235, 197);
             this.ButSearchPas.TabIndex = 1;
-            this.ButSearchPas.Text = "Поиск пассажира";
-            this.ButSearchPas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ButSearchPas.Text = "Поиск";
             this.ButSearchPas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.ButSearchPas.UseVisualStyleBackColor = false;
             this.ButSearchPas.Click += new System.EventHandler(this.ButSearchPas_Click);
@@ -100,7 +97,6 @@ namespace Trains
             this.butData.Size = new System.Drawing.Size(243, 197);
             this.butData.TabIndex = 2;
             this.butData.Text = "Работа с данными";
-            this.butData.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.butData.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.butData.UseVisualStyleBackColor = false;
             this.butData.Click += new System.EventHandler(this.butData_Click);
@@ -120,7 +116,6 @@ namespace Trains
             this.butGraphic.Size = new System.Drawing.Size(243, 197);
             this.butGraphic.TabIndex = 3;
             this.butGraphic.Text = "Просмотр движения поездов";
-            this.butGraphic.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.butGraphic.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.butGraphic.UseVisualStyleBackColor = false;
             this.butGraphic.Click += new System.EventHandler(this.butGraphic_Click);
@@ -135,7 +130,6 @@ namespace Trains
             this.tablePanelWithButtons.Controls.Add(this.butGraphic, 1, 1);
             this.tablePanelWithButtons.Controls.Add(this.butData, 1, 0);
             this.tablePanelWithButtons.Controls.Add(this.ButSearchPas, 0, 1);
-            this.tablePanelWithButtons.Controls.Add(this.button1, 2, 0);
             this.tablePanelWithButtons.Controls.Add(this.button2, 0, 2);
             this.tablePanelWithButtons.Controls.Add(this.button3, 1, 2);
             this.tablePanelWithButtons.Controls.Add(this.button4, 2, 2);
@@ -149,52 +143,52 @@ namespace Trains
             this.tablePanelWithButtons.Size = new System.Drawing.Size(733, 611);
             this.tablePanelWithButtons.TabIndex = 4;
             // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(493, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(237, 197);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.Location = new System.Drawing.Point(3, 409);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(235, 199);
             this.button2.TabIndex = 5;
             this.button2.Text = "Редактирование маршрутов";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.Location = new System.Drawing.Point(244, 409);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(243, 199);
             this.button3.TabIndex = 6;
             this.button3.Text = "Редактирование поездов";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Fuchsia;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.Location = new System.Drawing.Point(493, 409);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(237, 199);
             this.button4.TabIndex = 7;
             this.button4.Text = "Редактирование пассажиров";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // FormTrains
@@ -218,7 +212,6 @@ namespace Trains
         public System.Windows.Forms.Button butData;
         public System.Windows.Forms.Button butGraphic;
         private System.Windows.Forms.TableLayoutPanel tablePanelWithButtons;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;

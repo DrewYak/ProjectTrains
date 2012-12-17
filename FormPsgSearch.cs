@@ -26,10 +26,10 @@ namespace Trains
             gBByID.Enabled          = byID.Checked;
             gBByParams.Enabled      = byParams.Checked;
             buttonSearch.Enabled    = byParams.Checked;
-            if (MTextBoxID.MaskCompleted)
+            /*if (MTextBoxID.MaskCompleted)
             {
                 buttonSearch.Enabled    = true;    
-            }
+            }*/
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Trains
             {
                 try 
                 {
-                    int             ID                  = Convert.ToInt32(MTextBoxID.Text);
+                   /* int             ID                  = Convert.ToInt32(MTextBoxID.Text);
                     Passenger       Psg                 = Passenger.Search(ID);
                     
                     if (Psg == null)
@@ -66,7 +66,7 @@ namespace Trains
                         PsgResultByID   FormResultPasByID   = new PsgResultByID();
                         FillResultForm(FormResultPasByID, Psg);
                         FormResultPasByID.ShowDialog(); 
-                    }
+                    }*/
                 }
 
                 catch (KeyNotFoundException)
@@ -110,7 +110,7 @@ namespace Trains
 
         private void SearchID_KeyUp(object sender, KeyEventArgs e)
         {
-            buttonSearch.Enabled    = MTextBoxID.MaskCompleted;
+           // buttonSearch.Enabled    = MTextBoxID.MaskCompleted;
         }
     }
 }
