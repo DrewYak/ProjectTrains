@@ -75,19 +75,20 @@ namespace Trains
 
         }
 
-        private void DrawTrain(PointF p, PaintEventArgs e)
+        private void DrawTrain(PointF p, int radius)
         {
-            
-            /*
-            DateTime    time        = Convert.ToDateTime(maskedTextBox1.Text);
-            List<Train> trains      = Train.Search("", "");
-            TimeSpan    timeSpan    = new TimeSpan(0, 0, 1);
-            for (;;)
+            Graphics g = Graphics.FromHwnd(Handle);
+            g.DrawEllipse(Pens.Red,         p.X - radius, p.Y - radius, radius, radius);
+            g.FillEllipse(Brushes.Yellow,   p.X - radius, p.Y - radius, radius, radius);                    
+        }
+
+        private void DrawTrains(List<Train> trains, int radius, DateTime time)
+        {
+            foreach(Train train in trains)
             {
-                PointF p = trains[0].Location(time);
-                e.Graphics.DrawEllipse(new Pen(Color.Black, 1.5F),p.X, p.Y, 5,5);
+                PointF p = train.Location(time);
+                DrawTrain(p, radius);
             }
-             * */
         }
 
 
@@ -113,9 +114,11 @@ namespace Trains
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Interval = 1000;
-            TimeSpan t = new TimeSpan(0, 1, 0);
-            maskedTextBox1.Text = (Convert.ToDateTime(maskedTextBox1.Text) + t).ToString();
+            List<Train> trains = Train.Search("","");
+            DateTime time = Convert.ToDateTime(maskedTextBox1.Text);
+            DrawTrains(trains, 8, time);
+            time.AddHours(1);
+            maskedTextBox1.Text = Convert.ToString(time);
         }
     }
 }
