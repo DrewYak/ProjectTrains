@@ -112,14 +112,14 @@ namespace Trains
         /// </summary>
         /// <param name="Time">Время.</param>
         /// <returns></returns>
-        private Station NextStation(DateTime Time)
+        private RouteNode NextRouteNode(DateTime Time)
         {
             List<RouteNode> rns = this.RouteNodes;
             foreach(RouteNode rn in rns)
             {
                 if (rn.TimeOfArrivalFormat >= Time)
                 {
-                    return rn.Station;
+                    return rn;
                 }
             }
             return null;
@@ -132,14 +132,14 @@ namespace Trains
         /// </summary>
         /// <param name="Time">Время.</param>
         /// <returns></returns>
-        private Station PreviousStation(DateTime Time)
+        private RouteNode PrevRouteNode(DateTime Time)
         {
             List<RouteNode> rns                 = this.RouteNodes;
-            String          StationName         = this.NextStation(Time).Name;
+            String          StationName         = this.NextRouteNode(Time).Station.Name;
             int             IndexPrevStation    = this.IndexStation(StationName) - 1;
             if (IndexPrevStation >= 0)
             {
-                return rns[IndexPrevStation].Station;
+                return rns[IndexPrevStation];
             }
             else
             {
@@ -148,46 +148,74 @@ namespace Trains
 
         }
 
-        /// <summary>
-        /// Возвращает местоположение поезда в заданнный момент времени.
-        /// </summary>
-        /// <param name="time">Заданный момент времени.</param>
-        /// <returns></returns>
-        public PointF Location(DateTime time)
+        private PointF NextPoint(DateTime Time)
         {
-            List<RouteNode> rnds    = this.RouteNodes;
-            List<DateTime>  ldt     = new List<DateTime>();
-            foreach(RouteNode rnd in rnds)
+            RouteNode rn = this.NextRouteNode(Time);
+            if (rn == null)
             {
-                ldt.Add(rnd.TimeOfDepartureFormat);
-                ldt.Add(rnd.TimeOfArrivalFormat);
-            }
-            ldt.Add(time);
-            ldt.Sort();
-            int i1  = ldt.IndexOf(time) - 1;
-            int i2  = i1 + 2;
-            if ( (i1 >= 0) && (i2 < rnds.Count) )
-            {
-                DateTime    t1  = ldt[i1];
-                DateTime    t2  = ldt[i2];
-                TimeSpan    dt  = t2 - t1;
-                TimeSpan    dt1 = time - t1;
-                double      mylbd = dt1.TotalSeconds / dt.TotalSeconds;
-                Station     st1 = this.SearchStationByTime(t1);
-                Station     st2 = this.SearchStationByTime(t2);
-                int         X1  = st1.X;
-                int         Y1  = st1.Y;
-                int         X2  = st2.X;
-                int         Y2  = st2.Y;
-                float       lbd = Convert.ToSingle(mylbd);
-                PointF      p   = new PointF(   (X1 + lbd * X2) / (1 + lbd),
-                                                (Y1 + lbd * Y2) / (1 + lbd));
-                return      p;
+                return new PointF(-100, -100);
             }
             else
             {
-                return (new PointF(-100, -100));
+                return new PointF(rn.Station.X, rn.Station.Y);
             }
+        }
+
+        private PointF PrevPoint(DateTime Time)
+        {
+            RouteNode rn = this.PrevRouteNode(Time);
+            if (rn == null)
+            {
+                return new PointF(-100, -100);
+            }
+            else
+            {
+                return new PointF(rn.Station.X, rn.Station.Y);
+            }
+        }
+
+        private TimeSpan NextTime(DateTime Time)
+        {
+            RouteNode rn = this.NextRouteNode(Time);
+            if (rn == null)
+            {
+                return new TimeSpan();
+            }
+            else
+            {
+                return rn.TimeOfArrivalFormat - Time;
+            }
+        }
+
+        private TimeSpan PrevTime(DateTime Time)
+        {
+            RouteNode rn = this.PrevRouteNode(Time);
+            if (rn == null)
+            {
+                return new TimeSpan();
+            }
+            else
+            {
+                return Time - rn.TimeOfDepartureFormat;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает местоположение поезда в заданнный момент времени.
+        /// </summary>
+        /// <param name="Time">Заданный момент времени.</param>
+        /// <returns></returns>
+        public PointF Location(DateTime Time)
+        {
+            PointF      PrevP           = this.PrevPoint(Time);
+            PointF      NextP           = this.NextPoint(Time);
+            TimeSpan    PrevT           = this.PrevTime(Time);
+            TimeSpan    NextT           = this.NextTime(Time);
+            double      LambdaDouble    = PrevT.TotalSeconds / NextT.TotalSeconds;
+            float       LambdaFloat     = Convert.ToSingle(LambdaDouble);
+            PointF      Result          = new PointF(   (PrevP.X + LambdaFloat * NextP.X) / (1 + LambdaFloat),
+                                                        (PrevP.Y + LambdaFloat * NextP.Y) / (1 + LambdaFloat));
+            return Result;
         }
 
 
