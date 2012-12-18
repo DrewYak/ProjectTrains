@@ -35,16 +35,16 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.add = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.wayStation = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
+            this.timeArrWayS = new System.Windows.Forms.MaskedTextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.maskedTextBox6 = new System.Windows.Forms.MaskedTextBox();
+            this.timeDepWays = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.initialStation = new System.Windows.Forms.ComboBox();
@@ -58,7 +58,7 @@
             this.timeDepInit = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.timeDepTerm = new System.Windows.Forms.MaskedTextBox();
-            this.textBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.numberTrain = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -74,7 +74,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.add, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -140,24 +140,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // add
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(6, 508);
-            this.button2.Margin = new System.Windows.Forms.Padding(6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(588, 44);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Добавить/Изменить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.add.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.add.Enabled = false;
+            this.add.Location = new System.Drawing.Point(6, 508);
+            this.add.Margin = new System.Windows.Forms.Padding(6);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(588, 44);
+            this.add.TabIndex = 2;
+            this.add.Text = "Добавить/Изменить";
+            this.add.UseVisualStyleBackColor = true;
+            this.add.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.monthCalendar1);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.numberTrain);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(6, 6);
@@ -177,11 +178,12 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.comboBox3);
+            this.groupBox2.Controls.Add(this.wayStation);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.maskedTextBox5);
+            this.groupBox2.Controls.Add(this.timeArrWayS);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.maskedTextBox6);
+            this.groupBox2.Controls.Add(this.timeDepWays);
+            this.groupBox2.Enabled = false;
             this.groupBox2.Location = new System.Drawing.Point(6, 355);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(553, 101);
@@ -199,15 +201,16 @@
             this.label2.TabIndex = 32;
             this.label2.Text = "Промежут. станция";
             // 
-            // comboBox3
+            // wayStation
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(12, 55);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(6);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(175, 32);
-            this.comboBox3.TabIndex = 31;
+            this.wayStation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.wayStation.FormattingEnabled = true;
+            this.wayStation.Location = new System.Drawing.Point(12, 55);
+            this.wayStation.Margin = new System.Windows.Forms.Padding(6);
+            this.wayStation.Name = "wayStation";
+            this.wayStation.Size = new System.Drawing.Size(175, 32);
+            this.wayStation.TabIndex = 31;
+            this.wayStation.TextChanged += new System.EventHandler(this.timeArrWayS_TextChanged);
             // 
             // label10
             // 
@@ -218,15 +221,16 @@
             this.label10.TabIndex = 40;
             this.label10.Text = "Время отправления";
             // 
-            // maskedTextBox5
+            // timeArrWayS
             // 
-            this.maskedTextBox5.Location = new System.Drawing.Point(199, 55);
-            this.maskedTextBox5.Margin = new System.Windows.Forms.Padding(6);
-            this.maskedTextBox5.Mask = "00/00/0000 90:00";
-            this.maskedTextBox5.Name = "maskedTextBox5";
-            this.maskedTextBox5.Size = new System.Drawing.Size(154, 29);
-            this.maskedTextBox5.TabIndex = 33;
-            this.maskedTextBox5.ValidatingType = typeof(System.DateTime);
+            this.timeArrWayS.Location = new System.Drawing.Point(199, 55);
+            this.timeArrWayS.Margin = new System.Windows.Forms.Padding(6);
+            this.timeArrWayS.Mask = "00/00/0000 90:00";
+            this.timeArrWayS.Name = "timeArrWayS";
+            this.timeArrWayS.Size = new System.Drawing.Size(154, 29);
+            this.timeArrWayS.TabIndex = 33;
+            this.timeArrWayS.ValidatingType = typeof(System.DateTime);
+            this.timeArrWayS.TextChanged += new System.EventHandler(this.timeArrWayS_TextChanged);
             // 
             // label9
             // 
@@ -237,15 +241,16 @@
             this.label9.TabIndex = 39;
             this.label9.Text = "Время прибытия";
             // 
-            // maskedTextBox6
+            // timeDepWays
             // 
-            this.maskedTextBox6.Location = new System.Drawing.Point(362, 55);
-            this.maskedTextBox6.Margin = new System.Windows.Forms.Padding(6);
-            this.maskedTextBox6.Mask = "00/00/0000 90:00";
-            this.maskedTextBox6.Name = "maskedTextBox6";
-            this.maskedTextBox6.Size = new System.Drawing.Size(154, 29);
-            this.maskedTextBox6.TabIndex = 34;
-            this.maskedTextBox6.ValidatingType = typeof(System.DateTime);
+            this.timeDepWays.Location = new System.Drawing.Point(362, 55);
+            this.timeDepWays.Margin = new System.Windows.Forms.Padding(6);
+            this.timeDepWays.Mask = "00/00/0000 90:00";
+            this.timeDepWays.Name = "timeDepWays";
+            this.timeDepWays.Size = new System.Drawing.Size(154, 29);
+            this.timeDepWays.TabIndex = 34;
+            this.timeDepWays.ValidatingType = typeof(System.DateTime);
+            this.timeDepWays.TextChanged += new System.EventHandler(this.timeArrWayS_TextChanged);
             // 
             // groupBox1
             // 
@@ -287,6 +292,7 @@
             this.initialStation.Name = "initialStation";
             this.initialStation.Size = new System.Drawing.Size(175, 32);
             this.initialStation.TabIndex = 18;
+            this.initialStation.TextChanged += new System.EventHandler(this.timeArrInit_TextChanged);
             // 
             // terminalStation
             // 
@@ -297,6 +303,7 @@
             this.terminalStation.Name = "terminalStation";
             this.terminalStation.Size = new System.Drawing.Size(175, 32);
             this.terminalStation.TabIndex = 23;
+            this.terminalStation.TextChanged += new System.EventHandler(this.timeArrInit_TextChanged);
             // 
             // label4
             // 
@@ -326,6 +333,7 @@
             this.timeArrInit.Size = new System.Drawing.Size(154, 29);
             this.timeArrInit.TabIndex = 26;
             this.timeArrInit.ValidatingType = typeof(System.DateTime);
+            this.timeArrInit.TextChanged += new System.EventHandler(this.timeArrInit_TextChanged);
             // 
             // label7
             // 
@@ -345,6 +353,7 @@
             this.timeArrTerm.Size = new System.Drawing.Size(154, 29);
             this.timeArrTerm.TabIndex = 27;
             this.timeArrTerm.ValidatingType = typeof(System.DateTime);
+            this.timeArrTerm.TextChanged += new System.EventHandler(this.timeArrInit_TextChanged);
             // 
             // label6
             // 
@@ -364,6 +373,7 @@
             this.timeDepInit.Size = new System.Drawing.Size(154, 29);
             this.timeDepInit.TabIndex = 28;
             this.timeDepInit.ValidatingType = typeof(System.DateTime);
+            this.timeDepInit.TextChanged += new System.EventHandler(this.timeArrInit_TextChanged);
             // 
             // label5
             // 
@@ -383,16 +393,17 @@
             this.timeDepTerm.Size = new System.Drawing.Size(154, 29);
             this.timeDepTerm.TabIndex = 29;
             this.timeDepTerm.ValidatingType = typeof(System.DateTime);
+            this.timeDepTerm.TextChanged += new System.EventHandler(this.timeArrInit_TextChanged);
             // 
-            // textBox1
+            // numberTrain
             // 
-            this.textBox1.Location = new System.Drawing.Point(202, 78);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox1.Mask = "00";
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 29);
-            this.textBox1.TabIndex = 30;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.numberTrain.Location = new System.Drawing.Point(202, 78);
+            this.numberTrain.Margin = new System.Windows.Forms.Padding(6);
+            this.numberTrain.Mask = "00";
+            this.numberTrain.Name = "numberTrain";
+            this.numberTrain.Size = new System.Drawing.Size(154, 29);
+            this.numberTrain.TabIndex = 30;
+            this.numberTrain.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -439,7 +450,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button add;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox terminalStation;
@@ -450,11 +461,11 @@
         private System.Windows.Forms.MaskedTextBox timeArrInit;
         private System.Windows.Forms.MaskedTextBox timeDepTerm;
         private System.Windows.Forms.MaskedTextBox timeDepInit;
-        private System.Windows.Forms.MaskedTextBox textBox1;
+        private System.Windows.Forms.MaskedTextBox numberTrain;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox6;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox5;
+        private System.Windows.Forms.ComboBox wayStation;
+        private System.Windows.Forms.MaskedTextBox timeDepWays;
+        private System.Windows.Forms.MaskedTextBox timeArrWayS;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
