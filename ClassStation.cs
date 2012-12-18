@@ -30,6 +30,14 @@ namespace Trains
             AddToAllStations();
         }
 
+        /// <summary>
+        /// Очищает список всех станций.
+        /// </summary>
+        public static void Unload()
+        {
+            _allStations.Clear();
+        }
+
         public static void SaveAllStationsToFile(XmlTextWriter xmlOut)
         {
             xmlOut.WriteStartElement("Stations");

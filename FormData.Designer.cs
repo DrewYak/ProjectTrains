@@ -47,7 +47,7 @@
             this.buttonLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLoad.Location = new System.Drawing.Point(6, 6);
-            this.buttonLoad.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.buttonLoad.Margin = new System.Windows.Forms.Padding(6);
             this.buttonLoad.Name = "buttonLoad";
             this.buttonLoad.Size = new System.Drawing.Size(372, 91);
             this.buttonLoad.TabIndex = 0;
@@ -69,7 +69,7 @@
             this.tableLayoutPanel1.Controls.Add(this.buttonSave, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
@@ -82,28 +82,31 @@
             // 
             this.buttonUnload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.buttonUnload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonUnload.Enabled = false;
             this.buttonUnload.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Yellow;
             this.buttonUnload.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonUnload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUnload.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonUnload.Location = new System.Drawing.Point(6, 109);
-            this.buttonUnload.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.buttonUnload.Margin = new System.Windows.Forms.Padding(6);
             this.buttonUnload.Name = "buttonUnload";
             this.buttonUnload.Size = new System.Drawing.Size(372, 92);
             this.buttonUnload.TabIndex = 1;
             this.buttonUnload.Text = "Выгрузка";
             this.buttonUnload.UseVisualStyleBackColor = false;
+            this.buttonUnload.Click += new System.EventHandler(this.buttonUnload_Click);
             // 
             // buttonSave
             // 
             this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.buttonSave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSave.Enabled = false;
             this.buttonSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
             this.buttonSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonSave.Location = new System.Drawing.Point(6, 213);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(6);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(372, 93);
             this.buttonSave.TabIndex = 2;
@@ -118,11 +121,12 @@
             this.ClientSize = new System.Drawing.Size(384, 312);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MinimumSize = new System.Drawing.Size(400, 350);
             this.Name = "FormData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Работа с данными";
+            this.Activated += new System.EventHandler(this.FormData_Activated);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

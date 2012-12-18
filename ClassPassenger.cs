@@ -35,6 +35,14 @@ namespace Trains
             this.AddToAllPassengers();
         }
 
+        /// <summary>
+        /// Очищает список всех пассажиров.
+        /// </summary>
+        public static void Unload()
+        {
+            _allPassengers.Clear();
+        }
+
         public static void SavePassengersToFile(XmlTextWriter xmlOut, Train train)
         {
             xmlOut.WriteStartElement("Passengers");

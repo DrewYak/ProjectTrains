@@ -31,6 +31,15 @@ namespace Trains
             AddToAllTrains();
         }
 
+        /// <summary>
+        /// Очищает список всех поездов.
+        /// </summary>
+        public static void Unload()
+        {
+            _allTrains.Clear();
+        }
+
+
         public static void SaveAllTrainsToFile(XmlTextWriter xmlOut)
         {
             xmlOut.WriteStartElement("Trains");

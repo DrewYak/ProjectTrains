@@ -65,5 +65,12 @@ namespace Trains
             FormEditPassengers EditPassenger = new FormEditPassengers();
             EditPassenger.ShowDialog();
         }
+
+        private void FormTrains_Activated(object sender, EventArgs e)
+        {
+            this.butGraphic.Enabled     = Data.DataLoad;
+            this.ButSearchPas.Enabled   = Data.DataLoad;
+
+        }
     }
 }

@@ -11,6 +11,8 @@ namespace Trains
 
     class Data
     {
+        public static bool DataLoad = false;
+
         public static void SaveToFile(string fileName)
         {
             // Создание потока записи и объекта создания XML-документа.
@@ -31,6 +33,17 @@ namespace Trains
 
             xmlOut.Close();
             fs.Close();
+        }
+
+        /// <summary>
+        /// Удаляет все данные из программы.
+        /// </summary>
+        public static void Unload()
+        {
+            Passenger.  Unload();
+            Train.      Unload();
+            Station.    Unload();
+            Data.DataLoad = false;
         }
 
 
@@ -54,6 +67,8 @@ namespace Trains
 
             LoadStations (stations);
             LoadTrains   (trains);
+
+            Data.DataLoad = true;
         }
 
 

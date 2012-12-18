@@ -51,7 +51,31 @@ namespace Trains
         {
             saveFileDialog1.ShowDialog();
             string fileName = saveFileDialog1.FileName;
-            Data.SaveToFile(fileName);
+            try
+            {
+                Data.SaveToFile(fileName);
+            }
+            catch (ArgumentException)
+            {
+                FormMessage f       = new FormMessage();
+                f.messageLabel.Text = "Файлы не были сохранены! Введите имя файла для сохранения!";
+                f.ShowDialog();
+            }
+        }
+
+        private void buttonUnload_Click(object sender, EventArgs e)
+        {
+            Data.Unload();
+            FormMessage f       = new FormMessage();
+            f.messageLabel.Text = "Данные успешно выгружены из программы.";
+            f.ShowDialog();
+        }
+
+        private void FormData_Activated(object sender, EventArgs e)
+        {
+            this.buttonLoad.    Enabled = !Data.DataLoad;
+            this.buttonUnload.  Enabled =  Data.DataLoad;
+            this.buttonSave.    Enabled =  Data.DataLoad;
         }
     }
 }
