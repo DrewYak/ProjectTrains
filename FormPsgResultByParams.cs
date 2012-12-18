@@ -51,9 +51,9 @@ namespace Trains
         private void FillTreeviewPsgs(Passenger Pasg)
         {
             FillInfoWithoutTicket(Pasg);
-
             List<Ticket> tkts = Pasg.Tickets;
             FillTreeviewTicket(tkts);
+            treeView1.Visible = true;
             
         }
         private void TablePas_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -68,7 +68,6 @@ namespace Trains
                     int ID = Convert.ToInt32(TablePas.Rows[NumberRow].Cells[0].Value.ToString());
                     Passenger Pasg = Passenger.Search(ID);
                     FillTreeviewPsgs(Pasg);
-                    treeView1.Visible = true;
                 }
             }
             if (showTrains.Checked)
@@ -78,7 +77,6 @@ namespace Trains
                 {
                     int Number = Convert.ToInt32(TablePas.Rows[NumberRow].Cells[0].Value.ToString());
                     FillInfoTrain(Number);
-                    treeView1.Visible = true;
                 }
             }
         }
@@ -218,13 +216,11 @@ namespace Trains
         {
             if (showPassengers.Checked)
             {
-                ShowAllPas.Enabled = true;
                 List<Passenger> Psgs = Passenger.Search("", "", "");
                 FillTable(Psgs);
             }
             if (showTrains.Checked)
             {
-                ShowAllPas.Enabled = false;
                 List<Train> Trns = Train.Search("", "");
                 FillTable(Trns);
             }
