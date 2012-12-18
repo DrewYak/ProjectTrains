@@ -24,12 +24,7 @@ namespace Trains
             xmlOut.WriteStartElement("TrainsAndAnotherStuff");
 
             Station.SaveAllStationsToFile(xmlOut);
-
-            List<Train> trains = Train.Search("", "");
-            foreach(Train train in trains)
-            {
-                Passenger.SavePassengersToFile(xmlOut, train);
-            }
+            Train.SaveAllTrainsToFile(xmlOut);
 
             xmlOut.WriteEndElement();
             xmlOut.WriteEndDocument();

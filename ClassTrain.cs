@@ -30,6 +30,31 @@ namespace Trains
             this._routenodes    = new List<RouteNode>();
             AddToAllTrains();
         }
+
+        public static void SaveAllTrainsToFile(XmlTextWriter xmlOut)
+        {
+            xmlOut.WriteStartElement("Trains");
+
+            List<Train> trains = Train.Search("", "");
+            foreach(Train train in trains)
+            {
+                train.SaveToFile(xmlOut);
+            }
+
+            xmlOut.WriteEndElement();
+        }
+
+        public void SaveToFile(XmlTextWriter xmlOut)
+        {
+            xmlOut.WriteStartElement("Train");
+
+            xmlOut.WriteElementString("Number", this.Number.ToString());
+            RouteNode.SaveRouteNodesToFile(xmlOut, this);
+            Passenger.SavePassengersToFile(xmlOut, this);
+
+            xmlOut.WriteEndElement();
+        }
+
         /// <summary>
         ///  ƒобавл€ет поезд в список всех поездов.
         /// </summary>

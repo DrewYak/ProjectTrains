@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Xml;
 
 namespace Trains
 {
@@ -35,6 +35,31 @@ namespace Trains
             _timeOfArrival      = TimeOfArrival;
             _timeOfDeparture    = TimeOfDeparture;
         }
+
+        public static void SaveRouteNodesToFile(XmlTextWriter xmlOut, Train train)
+        {
+            xmlOut.WriteStartElement("RoteNodes");
+
+            List<RouteNode> routenodes = train.RouteNodes;
+            foreach(RouteNode routenode in routenodes)
+            {
+                routenode.SaveToFile(xmlOut);
+            }
+
+            xmlOut.WriteEndElement();
+        }
+
+        public void SaveToFile(XmlTextWriter xmlOut)
+        {
+            xmlOut.WriteStartElement("RouteNode");
+
+            xmlOut.WriteElementString("Station",    this.Station.Name);
+            xmlOut.WriteElementString("Arrive",     this.TimeOfArrival);
+            xmlOut.WriteElementString("Depart",     this.TimeOfDeparture);
+
+            xmlOut.WriteEndElement();
+        }
+
 
         /// <summary>
         /// Возвращает станцию узла маршрута.
