@@ -4,7 +4,7 @@ using System.Xml;
 
 namespace Trains
 {
-    class Station
+    public class Station
     {
         string   _name;
         int      _x;

@@ -4,7 +4,7 @@ using System.Xml;
 
 namespace Trains
 {
-    class RouteNodeComparer : IComparer<RouteNode>
+    public class RouteNodeComparer : IComparer<RouteNode>
     {
         public int Compare(RouteNode RN1, RouteNode RN2)
         {
@@ -16,7 +16,7 @@ namespace Trains
             { return -1; }
         }
     }
-    class RouteNode 
+    public class RouteNode 
     {
         Station _station;
         string  _timeOfArrival;     

@@ -28,28 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode89 = new System.Windows.Forms.TreeNode("Узел5");
-            System.Windows.Forms.TreeNode treeNode90 = new System.Windows.Forms.TreeNode("Узел6");
-            System.Windows.Forms.TreeNode treeNode91 = new System.Windows.Forms.TreeNode("Узел4", new System.Windows.Forms.TreeNode[] {
-            treeNode89,
-            treeNode90});
-            System.Windows.Forms.TreeNode treeNode92 = new System.Windows.Forms.TreeNode("Узел9");
-            System.Windows.Forms.TreeNode treeNode93 = new System.Windows.Forms.TreeNode("Узел3", new System.Windows.Forms.TreeNode[] {
-            treeNode91,
-            treeNode92});
-            System.Windows.Forms.TreeNode treeNode94 = new System.Windows.Forms.TreeNode("Узел1");
-            System.Windows.Forms.TreeNode treeNode95 = new System.Windows.Forms.TreeNode("Узел4");
-            System.Windows.Forms.TreeNode treeNode96 = new System.Windows.Forms.TreeNode("Узел6");
-            System.Windows.Forms.TreeNode treeNode97 = new System.Windows.Forms.TreeNode("Узел7");
-            System.Windows.Forms.TreeNode treeNode98 = new System.Windows.Forms.TreeNode("Узел5", new System.Windows.Forms.TreeNode[] {
-            treeNode96,
-            treeNode97});
-            System.Windows.Forms.TreeNode treeNode99 = new System.Windows.Forms.TreeNode("Узел0", new System.Windows.Forms.TreeNode[] {
-            treeNode94,
-            treeNode95,
-            treeNode98});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Узел5");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Узел6");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Узел4", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Узел9");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Узел3", new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Узел1");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Узел4");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Узел6");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Узел7");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Узел5", new System.Windows.Forms.TreeNode[] {
+            treeNode8,
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Узел0", new System.Windows.Forms.TreeNode[] {
+            treeNode6,
+            treeNode7,
+            treeNode10});
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.Back = new System.Windows.Forms.Button();
             this.ShowAllPas = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TablePas = new System.Windows.Forms.DataGridView();
@@ -59,9 +58,10 @@
             this.Tickets = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.treeView2 = new System.Windows.Forms.TreeView();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.Back = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.showTrains = new System.Windows.Forms.RadioButton();
+            this.showPassengers = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablePas)).BeginInit();
@@ -89,22 +89,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(973, 542);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // Back
-            // 
-            this.Back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Back.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Back.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Aqua;
-            this.Back.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Back.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Back.Location = new System.Drawing.Point(681, 3);
-            this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(289, 48);
-            this.Back.TabIndex = 1;
-            this.Back.Text = "Назад";
-            this.Back.UseVisualStyleBackColor = false;
-            this.Back.Click += new System.EventHandler(this.Back_Click);
             // 
             // ShowAllPas
             // 
@@ -192,18 +176,18 @@
             this.treeView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView2.Location = new System.Drawing.Point(681, 57);
             this.treeView2.Name = "treeView2";
-            treeNode89.Name = "Узел5";
-            treeNode89.Text = "Узел5";
-            treeNode90.Name = "Узел6";
-            treeNode90.Text = "Узел6";
-            treeNode91.Name = "Узел4";
-            treeNode91.Text = "Узел4";
-            treeNode92.Name = "Узел9";
-            treeNode92.Text = "Узел9";
-            treeNode93.Name = "Узел3";
-            treeNode93.Text = "Узел3";
+            treeNode1.Name = "Узел5";
+            treeNode1.Text = "Узел5";
+            treeNode2.Name = "Узел6";
+            treeNode2.Text = "Узел6";
+            treeNode3.Name = "Узел4";
+            treeNode3.Text = "Узел4";
+            treeNode4.Name = "Узел9";
+            treeNode4.Text = "Узел9";
+            treeNode5.Name = "Узел3";
+            treeNode5.Text = "Узел3";
             this.treeView2.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode93});
+            treeNode5});
             this.treeView2.Size = new System.Drawing.Size(289, 482);
             this.treeView2.TabIndex = 5;
             this.treeView2.Visible = false;
@@ -215,20 +199,20 @@
             this.treeView1.HotTracking = true;
             this.treeView1.Location = new System.Drawing.Point(370, 57);
             this.treeView1.Name = "treeView1";
-            treeNode94.Name = "Узел1";
-            treeNode94.Text = "Узел1";
-            treeNode95.Name = "Узел4";
-            treeNode95.Text = "Узел4";
-            treeNode96.Name = "Узел6";
-            treeNode96.Text = "Узел6";
-            treeNode97.Name = "Узел7";
-            treeNode97.Text = "Узел7";
-            treeNode98.Name = "Узел5";
-            treeNode98.Text = "Узел5";
-            treeNode99.Name = "Узел0";
-            treeNode99.Text = "Узел0";
+            treeNode6.Name = "Узел1";
+            treeNode6.Text = "Узел1";
+            treeNode7.Name = "Узел4";
+            treeNode7.Text = "Узел4";
+            treeNode8.Name = "Узел6";
+            treeNode8.Text = "Узел6";
+            treeNode9.Name = "Узел7";
+            treeNode9.Text = "Узел7";
+            treeNode10.Name = "Узел5";
+            treeNode10.Text = "Узел5";
+            treeNode11.Name = "Узел0";
+            treeNode11.Text = "Узел0";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode99});
+            treeNode11});
             this.treeView1.Size = new System.Drawing.Size(305, 482);
             this.treeView1.TabIndex = 4;
             this.treeView1.Visible = false;
@@ -236,38 +220,54 @@
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             this.treeView1.Click += new System.EventHandler(this.treeView1_Click);
             // 
+            // Back
+            // 
+            this.Back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Back.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Back.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Aqua;
+            this.Back.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Back.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Back.Location = new System.Drawing.Point(681, 3);
+            this.Back.Name = "Back";
+            this.Back.Size = new System.Drawing.Size(289, 48);
+            this.Back.TabIndex = 1;
+            this.Back.Text = "Назад";
+            this.Back.UseVisualStyleBackColor = false;
+            this.Back.Click += new System.EventHandler(this.Back_Click);
+            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.radioButton2);
-            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Controls.Add(this.showTrains);
+            this.panel1.Controls.Add(this.showPassengers);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(358, 48);
             this.panel1.TabIndex = 6;
             // 
-            // radioButton1
+            // showTrains
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(30, 17);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Пассажиры";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.showTrains.AutoSize = true;
+            this.showTrains.Location = new System.Drawing.Point(228, 17);
+            this.showTrains.Name = "showTrains";
+            this.showTrains.Size = new System.Drawing.Size(63, 17);
+            this.showTrains.TabIndex = 1;
+            this.showTrains.TabStop = true;
+            this.showTrains.Text = "Поезда";
+            this.showTrains.UseVisualStyleBackColor = true;
+            this.showTrains.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // radioButton2
+            // showPassengers
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(228, 17);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(63, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Поезда";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.showPassengers.AutoSize = true;
+            this.showPassengers.Location = new System.Drawing.Point(30, 17);
+            this.showPassengers.Name = "showPassengers";
+            this.showPassengers.Size = new System.Drawing.Size(85, 17);
+            this.showPassengers.TabIndex = 0;
+            this.showPassengers.TabStop = true;
+            this.showPassengers.Text = "Пассажиры";
+            this.showPassengers.UseVisualStyleBackColor = true;
+            this.showPassengers.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // PsgResultByParams
             // 
@@ -302,7 +302,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tickets;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        public System.Windows.Forms.RadioButton showTrains;
+        public System.Windows.Forms.RadioButton showPassengers;
     }
 }

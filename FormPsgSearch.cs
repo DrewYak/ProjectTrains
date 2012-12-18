@@ -21,17 +21,6 @@ namespace Trains
             this.Close();
         }
 
-        private void byID_CheckedChanged(object sender, EventArgs e)
-        {
-            gBByID.Enabled          = byID.Checked;
-            gBByParams.Enabled      = byParams.Checked;
-            buttonSearch.Enabled    = byParams.Checked;
-            /*if (MTextBoxID.MaskCompleted)
-            {
-                buttonSearch.Enabled    = true;    
-            }*/
-        }
-
         /// <summary>
         /// Метод, заполняющий форму данными о пассажире.
         /// </summary>
@@ -48,41 +37,11 @@ namespace Trains
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (byID.Checked)
+            if (searchTrains.Checked)
             {
-                try 
-                {
-                   /* int             ID                  = Convert.ToInt32(MTextBoxID.Text);
-                    Passenger       Psg                 = Passenger.Search(ID);
-                    
-                    if (Psg == null)
-                    {
-                        FormMessage Message         = new FormMessage();
-                        Message.messageLabel.Text   = "Поиск не дал результатов.";
-                        Message.ShowDialog();
-                    }
-                    else
-                    {
-                        PsgResultByID   FormResultPasByID   = new PsgResultByID();
-                        FillResultForm(FormResultPasByID, Psg);
-                        FormResultPasByID.ShowDialog(); 
-                    }*/
-                }
+                List<Train> trains = Train.Search(pointArrive.Text, pointDeparture.Text);
 
-                catch (KeyNotFoundException)
-                {
-                }
-            }
-
-            if (byParams.Checked)
-            {
-                string LName                            = ParamLastName.Text;
-                string FName                            = ParamFName.Text;
-                string TypeOfTicket                     = ParamTypeOfTicket.Text;
-
-                List<Passenger> ResultPas               = Passenger.Search(LName, FName, TypeOfTicket);
-
-                if (ResultPas.Count == 0)
+                if (trains.Count == 0)
                 {
                     FormMessage Message         = new FormMessage();
                     Message.messageLabel.Text   = "Поиск не дал результатов.";
@@ -90,7 +49,29 @@ namespace Trains
                 }
                 else
                 {
-                    FillResultFormAndShowIt(ResultPas);
+                    PsgResultByParams f     = new PsgResultByParams();
+                    f.showTrains.Checked    = true;
+                    f.FillTable(trains);
+                    f.ShowDialog();                
+                }
+            }
+
+            if (searchPassengers.Checked)
+            {
+                List<Passenger> passengers  = Passenger.Search(lastName.Text, firstName.Text, ticketType.Text);
+
+                if (passengers.Count == 0)
+                {
+                    FormMessage Message         = new FormMessage();
+                    Message.messageLabel.Text   = "Поиск не дал результатов.";
+                    Message.ShowDialog();
+                }
+                else
+                {
+                    PsgResultByParams f         = new PsgResultByParams();
+                    f.showPassengers.Checked    = true;
+                    f.FillTable(passengers);
+                    f.ShowDialog();
                 }
             }
         }
@@ -111,6 +92,12 @@ namespace Trains
         private void SearchID_KeyUp(object sender, KeyEventArgs e)
         {
            // buttonSearch.Enabled    = MTextBoxID.MaskCompleted;
+        }
+
+        private void searchTrains_CheckedChanged(object sender, EventArgs e)
+        {
+            gbSearchTrains.Enabled      = searchTrains.Checked;
+            gBSearchPassengers.Enabled  = searchPassengers.Checked;
         }
     }
 }

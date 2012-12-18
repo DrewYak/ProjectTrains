@@ -58,7 +58,7 @@ namespace Trains
         }
         private void TablePas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (radioButton1.Checked)
+            if (showPassengers.Checked)
             {
                 treeView1.Nodes[0].Nodes[2].Nodes[0].Nodes.Clear();
                 treeView1.Nodes[0].Nodes[2].Nodes[1].Nodes.Clear();
@@ -71,7 +71,7 @@ namespace Trains
                     treeView1.Visible = true;
                 }
             }
-            if (radioButton2.Checked)
+            if (showTrains.Checked)
             {
                 int NumberRow = e.RowIndex;
                 if (NumberRow != -1)
@@ -175,44 +175,56 @@ namespace Trains
 
         }
 
+        public void FillTable(List<Passenger> passengers)
+        {
+            TablePas.Rows.Clear();
+            if (TablePas.Columns.Contains("PointArr"))
+            {
+                TablePas.Columns.Remove("PointArr");
+            }
+            TablePas.Columns[0].HeaderText = "Номер паспорта";
+            TablePas.Columns[1].HeaderText = "Фамилия";
+            TablePas.Columns[2].HeaderText = "Имя";
+            TablePas.Columns[3].HeaderText = "Билет";
+            foreach (Passenger Psg in passengers)
+            {
+                TablePas.Rows.Add(Psg.ID, Psg.LastName, Psg.FirstName, Psg.CountOfTickets);
+            }
+        }
+
+        public void FillTable(List<Train> trains)
+        {
+            TablePas.Rows.Clear();
+            if (!TablePas.Columns.Contains("PointArr"))
+            {
+                TablePas.Columns.Add("PointArr", "Пункт прибытия");
+            }
+            TablePas.Columns[0].HeaderText = "Номер поезда";
+            TablePas.Columns[1].HeaderText = "Время отправления";
+            TablePas.Columns[2].HeaderText = "Пункт отправления";
+            TablePas.Columns[3].HeaderText = "Время прибытия";
+            TablePas.Columns[4].HeaderText = "Пункт прибытия";
+            foreach (Train Trn in trains)
+            {
+                TablePas.Rows.Add(Trn.Number, Trn.TimeOfDeparture, Trn.PointOfDeparture, Trn.TimeOfArrival, Trn.PointOfArrival);
+            }
+        }
+
+
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton1.Checked)
+            if (showPassengers.Checked)
             {
                 ShowAllPas.Enabled = true;
                 List<Passenger> Psgs = Passenger.Search("", "", "");
-                TablePas.Rows.Clear();
-                if (TablePas.Columns.Contains("PointArr"))
-                {
-                    TablePas.Columns.Remove("PointArr");
-                }
-                TablePas.Columns[0].HeaderText = "Номер паспорта";
-                TablePas.Columns[1].HeaderText = "Фамилия";
-                TablePas.Columns[2].HeaderText = "Имя";
-                TablePas.Columns[3].HeaderText = "Билет";
-                foreach (Passenger Psg in Psgs)
-                {
-                    TablePas.Rows.Add(Psg.ID, Psg.LastName, Psg.FirstName, Psg.CountOfTickets);
-                }
+                FillTable(Psgs);
             }
-            if (radioButton2.Checked)
+            if (showTrains.Checked)
             {
                 ShowAllPas.Enabled = false;
                 List<Train> Trns = Train.Search("", "");
-                TablePas.Rows.Clear();
-                if (!TablePas.Columns.Contains("PointArr"))
-                {
-                TablePas.Columns.Add("PointArr", "Пункт прибытия");
-                }
-                TablePas.Columns[0].HeaderText = "Номер поезда";
-                TablePas.Columns[1].HeaderText = "Время отправления";
-                TablePas.Columns[2].HeaderText = "Пункт отправления";
-                TablePas.Columns[3].HeaderText = "Время прибытия";
-                TablePas.Columns[4].HeaderText = "Пункт прибытия";
-                foreach (Train Trn in Trns)
-                {
-                    TablePas.Rows.Add(Trn.Number, Trn.TimeOfDeparture, Trn.PointOfDeparture, Trn.TimeOfArrival, Trn.PointOfArrival);
-                }
+                FillTable(Trns);
             }
         }
 

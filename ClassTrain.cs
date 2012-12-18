@@ -7,7 +7,7 @@ using System.Drawing;
 namespace Trains
 {
 
-    class Train
+    public class Train
     {
         int             _number;
         List<Ticket>    _tickets;

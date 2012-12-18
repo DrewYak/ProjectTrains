@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Trains
 {
-    class Passenger
+    public class Passenger
     {
         int             _id;
         string          _firstName;

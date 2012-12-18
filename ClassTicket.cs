@@ -1,6 +1,6 @@
 ﻿namespace Trains
 {
-    class Ticket
+    public class Ticket
     {
         /// <summary>
         /// Поезд, в котором едет пассажир по данному билету.
