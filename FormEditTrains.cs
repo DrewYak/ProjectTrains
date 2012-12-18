@@ -36,8 +36,8 @@ namespace Trains
             List<Station> Stns = Station.Search();
             foreach (Station Stn in Stns)
             {
-                comboBox1.Items.Add(Stn.Name);
-                comboBox2.Items.Add(Stn.Name);
+                initialStation.Items.Add(Stn.Name);
+                terminalStation.Items.Add(Stn.Name);
                 comboBox3.Items.Add(Stn.Name);
             }
             
@@ -67,12 +67,12 @@ namespace Trains
           {
              int Number = Convert.ToInt32(this.textBox1.Text);
              Train entTrn = Train.Search(Number);
-             string Time1Dep = maskedTextBox1.Text;
-             string Time1Arr = maskedTextBox3.Text;
-             string Time2Dep = maskedTextBox2.Text;
-             string Time2Arr = maskedTextBox4.Text;
-             Station Stn1 = Station.SearchByName(Convert.ToString(comboBox1.Text));
-             Station Stn2 = Station.SearchByName(Convert.ToString(comboBox2.Text));
+             string Time1Dep = timeArrInit.Text;
+             string Time1Arr = timeDepInit.Text;
+             string Time2Dep = timeArrTerm.Text;
+             string Time2Arr = timeDepTerm.Text;
+             Station Stn1 = Station.SearchByName(Convert.ToString(initialStation.Text));
+             Station Stn2 = Station.SearchByName(Convert.ToString(terminalStation.Text));
              if (entTrn == null)
              {
                 Train Trn = new Train(Number);
@@ -91,5 +91,45 @@ namespace Trains
              FormEditTrains_Activated(sender, e);
              //textBox1_TextChanged(sender, e);
          }
+
+        private void monthCalendar1_MouseDown(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            timeArrInit.Text = e.Start.ToString();
+            timeArrTerm.Text = e.Start.ToString();
+            timeDepInit.Text = e.Start.ToString();
+            timeDepTerm.Text = e.Start.ToString();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.MaskCompleted)
+            {
+                int     trainNumber = Convert.ToInt32(textBox1.Text);
+                Train   train       = Train.Search(trainNumber);
+                if (train != null)
+                {
+                    initialStation.Text     = train.PointOfDeparture;
+                    terminalStation.Text    = train.PointOfArrival;
+                    timeArrInit.Text        = train.RouteNodes.First().TimeOfArrival;
+                    timeDepInit.Text        = train.RouteNodes.First().TimeOfDeparture;
+                    timeArrTerm.Text        = train.RouteNodes.Last().TimeOfArrival;
+                    timeDepTerm.Text        = train.RouteNodes.Last().TimeOfDeparture;
+                    groupBox1.Enabled       = false;
+                }
+                else
+                {
+                    groupBox1.Enabled       = true;
+                }
+            }
+            else
+            {
+                groupBox1.Enabled   = true;
+            }
+        }
     }
 }

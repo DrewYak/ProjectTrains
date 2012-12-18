@@ -51,8 +51,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableStations, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.remove, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.add, 0, 1);
@@ -79,10 +79,10 @@
             this.Column2,
             this.Column3});
             this.tableStations.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableStations.Location = new System.Drawing.Point(498, 6);
+            this.tableStations.Location = new System.Drawing.Point(506, 6);
             this.tableStations.Margin = new System.Windows.Forms.Padding(6);
             this.tableStations.Name = "tableStations";
-            this.tableStations.Size = new System.Drawing.Size(480, 390);
+            this.tableStations.Size = new System.Drawing.Size(472, 390);
             this.tableStations.TabIndex = 0;
             this.tableStations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -115,10 +115,10 @@
             this.remove.Dock = System.Windows.Forms.DockStyle.Fill;
             this.remove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.remove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.remove.Location = new System.Drawing.Point(498, 408);
+            this.remove.Location = new System.Drawing.Point(506, 408);
             this.remove.Margin = new System.Windows.Forms.Padding(6);
             this.remove.Name = "remove";
-            this.remove.Size = new System.Drawing.Size(480, 48);
+            this.remove.Size = new System.Drawing.Size(472, 48);
             this.remove.TabIndex = 1;
             this.remove.Text = "Удалить";
             this.remove.UseVisualStyleBackColor = true;
@@ -133,7 +133,7 @@
             this.add.Location = new System.Drawing.Point(6, 408);
             this.add.Margin = new System.Windows.Forms.Padding(6);
             this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(480, 48);
+            this.add.Size = new System.Drawing.Size(488, 48);
             this.add.TabIndex = 2;
             this.add.Text = "Добавить";
             this.add.UseVisualStyleBackColor = true;
@@ -151,7 +151,7 @@
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Margin = new System.Windows.Forms.Padding(6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(480, 390);
+            this.panel1.Size = new System.Drawing.Size(488, 390);
             this.panel1.TabIndex = 3;
             // 
             // yStation

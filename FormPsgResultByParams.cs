@@ -128,7 +128,7 @@ namespace Trains
             treeView2.Nodes[0].Nodes[1].Nodes.Clear();
             foreach (RouteNode rtn in rtns)
             {
-                treeView2.Nodes[0].Nodes[1].Nodes.Add(rtn.Station.Name.ToString());
+                treeView2.Nodes[0].Nodes[1].Nodes.Add(rtn.TimeOfArrivalFormat.TimeOfDay.ToString() + " " + rtn.TimeOfDepartureFormat.TimeOfDay.ToString() + " " + rtn.Station.Name.ToString());
             }
 
             treeView2.Visible = true;

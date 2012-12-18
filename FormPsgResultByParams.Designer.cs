@@ -51,16 +51,15 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TablePas = new System.Windows.Forms.DataGridView();
-            this.treeView2 = new System.Windows.Forms.TreeView();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.Back = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.showTrains = new System.Windows.Forms.RadioButton();
-            this.showPassengers = new System.Windows.Forms.RadioButton();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tickets = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.treeView2 = new System.Windows.Forms.TreeView();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.showTrains = new System.Windows.Forms.RadioButton();
+            this.showPassengers = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablePas)).BeginInit();
@@ -77,10 +76,9 @@
             this.tableLayoutPanel1.Controls.Add(this.treeView2, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.treeView1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.Back, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
@@ -94,9 +92,9 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(6, 86);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
             this.groupBox1.Size = new System.Drawing.Size(772, 770);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
@@ -113,7 +111,7 @@
             this.Tickets});
             this.TablePas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TablePas.Location = new System.Drawing.Point(6, 25);
-            this.TablePas.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.TablePas.Margin = new System.Windows.Forms.Padding(6);
             this.TablePas.Name = "TablePas";
             this.TablePas.ReadOnly = true;
             this.TablePas.Size = new System.Drawing.Size(760, 739);
@@ -125,111 +123,6 @@
             this.TablePas.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TablePas_CellContentClick);
             this.TablePas.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TablePas_CellContentClick);
             this.TablePas.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TablePas_CellContentClick);
-            // 
-            // treeView2
-            // 
-            this.treeView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView2.Location = new System.Drawing.Point(1190, 86);
-            this.treeView2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.treeView2.Name = "treeView2";
-            treeNode1.Name = "Узел5";
-            treeNode1.Text = "Узел5";
-            treeNode2.Name = "Узел6";
-            treeNode2.Text = "Узел6";
-            treeNode3.Name = "Узел4";
-            treeNode3.Text = "Узел4";
-            treeNode4.Name = "Узел9";
-            treeNode4.Text = "Узел9";
-            treeNode5.Name = "Узел3";
-            treeNode5.Text = "Узел3";
-            this.treeView2.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5});
-            this.treeView2.Size = new System.Drawing.Size(388, 770);
-            this.treeView2.TabIndex = 5;
-            this.treeView2.Visible = false;
-            this.treeView2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView2_AfterSelect);
-            // 
-            // treeView1
-            // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.HotTracking = true;
-            this.treeView1.Location = new System.Drawing.Point(790, 86);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.treeView1.Name = "treeView1";
-            treeNode6.Name = "Узел1";
-            treeNode6.Text = "Узел1";
-            treeNode7.Name = "Узел4";
-            treeNode7.Text = "Узел4";
-            treeNode8.Name = "Узел6";
-            treeNode8.Text = "Узел6";
-            treeNode9.Name = "Узел7";
-            treeNode9.Text = "Узел7";
-            treeNode10.Name = "Узел5";
-            treeNode10.Text = "Узел5";
-            treeNode11.Name = "Узел0";
-            treeNode11.Text = "Узел0";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode11});
-            this.treeView1.Size = new System.Drawing.Size(388, 770);
-            this.treeView1.TabIndex = 4;
-            this.treeView1.Visible = false;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
-            this.treeView1.Click += new System.EventHandler(this.treeView1_Click);
-            // 
-            // Back
-            // 
-            this.Back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Back.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Back.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Aqua;
-            this.Back.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Back.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Back.Location = new System.Drawing.Point(790, 6);
-            this.Back.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(388, 68);
-            this.Back.TabIndex = 1;
-            this.Back.Text = "Назад";
-            this.Back.UseVisualStyleBackColor = false;
-            this.Back.Click += new System.EventHandler(this.Back_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.showTrains);
-            this.panel1.Controls.Add(this.showPassengers);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(6, 6);
-            this.panel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(772, 68);
-            this.panel1.TabIndex = 6;
-            // 
-            // showTrains
-            // 
-            this.showTrains.AutoSize = true;
-            this.showTrains.Location = new System.Drawing.Point(9, 34);
-            this.showTrains.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.showTrains.Name = "showTrains";
-            this.showTrains.Size = new System.Drawing.Size(95, 28);
-            this.showTrains.TabIndex = 1;
-            this.showTrains.TabStop = true;
-            this.showTrains.Text = "Поезда";
-            this.showTrains.UseVisualStyleBackColor = true;
-            this.showTrains.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // showPassengers
-            // 
-            this.showPassengers.AutoSize = true;
-            this.showPassengers.Location = new System.Drawing.Point(9, 6);
-            this.showPassengers.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.showPassengers.Name = "showPassengers";
-            this.showPassengers.Size = new System.Drawing.Size(130, 28);
-            this.showPassengers.TabIndex = 0;
-            this.showPassengers.TabStop = true;
-            this.showPassengers.Text = "Пассажиры";
-            this.showPassengers.UseVisualStyleBackColor = true;
-            this.showPassengers.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // ID
             // 
@@ -261,6 +154,95 @@
             this.Tickets.Name = "Tickets";
             this.Tickets.ReadOnly = true;
             // 
+            // treeView2
+            // 
+            this.treeView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView2.Location = new System.Drawing.Point(1190, 8);
+            this.treeView2.Margin = new System.Windows.Forms.Padding(6);
+            this.treeView2.Name = "treeView2";
+            treeNode1.Name = "Узел5";
+            treeNode1.Text = "Узел5";
+            treeNode2.Name = "Узел6";
+            treeNode2.Text = "Узел6";
+            treeNode3.Name = "Узел4";
+            treeNode3.Text = "Узел4";
+            treeNode4.Name = "Узел9";
+            treeNode4.Text = "Узел9";
+            treeNode5.Name = "Узел3";
+            treeNode5.Text = "Узел3";
+            this.treeView2.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode5});
+            this.tableLayoutPanel1.SetRowSpan(this.treeView2, 2);
+            this.treeView2.Size = new System.Drawing.Size(388, 848);
+            this.treeView2.TabIndex = 5;
+            this.treeView2.Visible = false;
+            this.treeView2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView2_AfterSelect);
+            // 
+            // treeView1
+            // 
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.Location = new System.Drawing.Point(790, 6);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(6);
+            this.treeView1.Name = "treeView1";
+            treeNode6.Name = "Узел1";
+            treeNode6.Text = "Узел1";
+            treeNode7.Name = "Узел4";
+            treeNode7.Text = "Узел4";
+            treeNode8.Name = "Узел6";
+            treeNode8.Text = "Узел6";
+            treeNode9.Name = "Узел7";
+            treeNode9.Text = "Узел7";
+            treeNode10.Name = "Узел5";
+            treeNode10.Text = "Узел5";
+            treeNode11.Name = "Узел0";
+            treeNode11.Text = "Узел0";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode11});
+            this.tableLayoutPanel1.SetRowSpan(this.treeView1, 2);
+            this.treeView1.Size = new System.Drawing.Size(388, 850);
+            this.treeView1.TabIndex = 4;
+            this.treeView1.Visible = false;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+            this.treeView1.Click += new System.EventHandler(this.treeView1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.showTrains);
+            this.panel1.Controls.Add(this.showPassengers);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(6, 6);
+            this.panel1.Margin = new System.Windows.Forms.Padding(6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(772, 68);
+            this.panel1.TabIndex = 6;
+            // 
+            // showTrains
+            // 
+            this.showTrains.AutoSize = true;
+            this.showTrains.Location = new System.Drawing.Point(9, 34);
+            this.showTrains.Margin = new System.Windows.Forms.Padding(6);
+            this.showTrains.Name = "showTrains";
+            this.showTrains.Size = new System.Drawing.Size(95, 28);
+            this.showTrains.TabIndex = 1;
+            this.showTrains.TabStop = true;
+            this.showTrains.Text = "Поезда";
+            this.showTrains.UseVisualStyleBackColor = true;
+            this.showTrains.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // showPassengers
+            // 
+            this.showPassengers.AutoSize = true;
+            this.showPassengers.Location = new System.Drawing.Point(9, 6);
+            this.showPassengers.Margin = new System.Windows.Forms.Padding(6);
+            this.showPassengers.Name = "showPassengers";
+            this.showPassengers.Size = new System.Drawing.Size(130, 28);
+            this.showPassengers.TabIndex = 0;
+            this.showPassengers.TabStop = true;
+            this.showPassengers.Text = "Пассажиры";
+            this.showPassengers.UseVisualStyleBackColor = true;
+            this.showPassengers.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
             // PsgResultByParams
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -268,7 +250,7 @@
             this.ClientSize = new System.Drawing.Size(1584, 862);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1100, 500);
             this.Name = "PsgResultByParams";
@@ -286,7 +268,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Back;
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         public System.Windows.Forms.DataGridView TablePas;
