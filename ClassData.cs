@@ -23,14 +23,12 @@ namespace Trains
             xmlOut.WriteComment("Документ сохранён " + DateTime.Now.ToString());
             xmlOut.WriteStartElement("TrainsAndAnotherStuff");
 
+            Station.SaveAllStationsToFile(xmlOut);
+
             List<Train> trains = Train.Search("", "");
             foreach(Train train in trains)
             {
-                List<Ticket> tickets = train.Tickets;
-                foreach(Ticket ticket in tickets)
-                {
-                    ticket.Passenger.SaveToFile(xmlOut, train.Number);
-                }
+                Passenger.SavePassengersToFile(xmlOut, train);
             }
 
             xmlOut.WriteEndElement();

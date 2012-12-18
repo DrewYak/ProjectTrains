@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrainsAndOtherStuff>
-  <Locations>
+  <Stations>
     <Station>
       <Name>Москва</Name>
       <X>307</X>
@@ -85,7 +85,7 @@
       <Y>400</Y>
     </Station>
 
-  </Locations>
+  </Stations>
 
   <Trains>
     <Train>

@@ -35,11 +35,24 @@ namespace Trains
             this.AddToAllPassengers();
         }
 
-        public void SaveToFile(XmlWriter xmlOut, int trainNumber)
+        public static void SavePassengersToFile(XmlTextWriter xmlOut, Train train)
+        {
+            xmlOut.WriteStartElement("Passengers");
+
+            List<Ticket> tickets = train.Tickets;
+            foreach(Ticket ticket in tickets)
+            {
+                ticket.Passenger.SaveToFile(xmlOut, train);
+            }
+
+            xmlOut.WriteEndElement();
+        }
+
+        public void SaveToFile(XmlWriter xmlOut, Train train)
         {
             xmlOut.WriteStartElement("Passenger");
             
-            Ticket ticket = this.SearchTicketByTrainNumber(trainNumber);
+            Ticket ticket = this.SearchTicketByTrain(train);
 
             xmlOut.WriteElementString("ID",             this.ID.ToString());
             xmlOut.WriteElementString("LName",          this.LastName);
