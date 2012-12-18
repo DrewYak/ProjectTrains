@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using System.IO;
 
 namespace Trains
 {
@@ -10,6 +11,40 @@ namespace Trains
 
     class Data
     {
+        public static void SaveToFile(string fileName)
+        {
+            // Создание потока записи и объекта создания XML-документа.
+            FileStream fs = new FileStream(fileName, FileMode.Create);
+            XmlTextWriter xmlOut = new XmlTextWriter(fs, Encoding.Unicode);
+
+            xmlOut.Formatting = Formatting.Indented;
+
+            xmlOut.WriteStartDocument();
+            xmlOut.WriteComment("Документ сохранён " + DateTime.Now.ToString());
+            xmlOut.WriteStartElement("TrainsAndAnotherStuff");
+
+            List<Train> trains = Train.Search("", "");
+            foreach(Train train in trains)
+            {
+                List<Ticket> tickets = train.Tickets;
+                foreach(Ticket ticket in tickets)
+                {
+                    ticket.Passenger.SaveToFile(xmlOut, train.Number);
+                }
+            }
+
+            xmlOut.WriteEndElement();
+            xmlOut.WriteEndDocument();
+
+            xmlOut.Close();
+            fs.Close();
+        }
+
+
+
+
+
+
 
         /// <summary>
         /// Загружает все данные из XML-документа в оперативную память для дальнейшей работы.

@@ -1,89 +1,89 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrainsAndOtherStuff>
   <Locations>
-    <Location>
+    <Station>
       <Name>Москва</Name>
       <X>307</X>
       <Y>285</Y>
-    </Location>
+    </Station>
 
-    <Location>
+    <Station>
       <Name>Тверь</Name>
       <X>150</X>
       <Y>129</Y>
-    </Location>
+    </Station>
 
-    <Location>
+    <Station>
       <Name>Ржев</Name>
       <X>55</X>
       <Y>247</Y>
-    </Location>
+    </Station>
 
-    <Location>
+    <Station>
       <Name>Калуга</Name>
       <X>151</X>
       <Y>457</Y>
-    </Location>
+    </Station>
 
-    <Location>
+    <Station>
       <Name>Тула</Name>
       <X>366</X>
       <Y>493</Y>
-    </Location>
+    </Station>
 
-    <Location>
+    <Station>
       <Name>Тамбов</Name>
       <X>563</X>
       <Y>526</Y>
-    </Location>
+    </Station>
 
-    <Location>
+    <Station>
       <Name>Ярославль</Name>
       <X>409</X>
       <Y>50</Y>
-    </Location>
+    </Station>
 
-    <Location>
+    <Station>
       <Name>Владимир</Name>
       <X>503</X>
       <Y>196</Y>
-    </Location>
+    </Station>
 
-    <Location>
+    <Station>
       <Name>Саров</Name>
       <X>804</X>
       <Y>421</Y>
-    </Location>
+    </Station>
 
-    <Location>
+    <Station>
       <Name>Саратов</Name>
       <X>982</X>
       <Y>566</Y>
-    </Location>
+    </Station>
 
-    <Location>
+    <Station>
       <Name>Балаково</Name>
       <X>1247</X>
       <Y>442</Y>
-    </Location>
+    </Station>
 
-    <Location>
+    <Station>
       <Name>Санкт-Петербург</Name>
       <X>50</X>
       <Y>50</Y>
-    </Location>
+    </Station>
     
-    <Location>
+    <Station>
       <Name>Нижний Новгород</Name>
       <X>723</X>
       <Y>285</Y>
-    </Location>
+    </Station>
 
-    <Location>
+    <Station>
       <Name>Казань</Name>
       <X>600</X>
       <Y>400</Y>
-    </Location>
+    </Station>
 
   </Locations>
 
@@ -92,25 +92,25 @@
       <Number>1</Number>
       <Stations>
         <Station>
-          <Location>Казань</Location>
+          <Station>Казань</Station>
           <Arrive>2012/12/22 20:52:00</Arrive>
           <Depart>2012/12/22 21:02:00</Depart>
         </Station>
 
         <Station>
-          <Location>Москва</Location>
+          <Station>Москва</Station>
           <Arrive>2012/12/22 06:37:00</Arrive>
           <Depart>2012/12/22 06:40:00</Depart>
         </Station>
 
         <Station>
-          <Location>Санкт-Петербург</Location>
+          <Station>Санкт-Петербург</Station>
           <Arrive>2012/12/22 16:40:00</Arrive>
           <Depart>2012/12/22 16:52:00</Depart>
         </Station>
         
         <Station>
-          <Location>Нижний Новгород</Location>
+          <Station>Нижний Новгород</Station>
           <Arrive>2012/12/23 01:52:00</Arrive>
           <Depart>2012/12/23 02:01:00</Depart>
         </Station>
@@ -375,13 +375,13 @@
       <Number>2</Number>
       <Stations>
         <Station>
-          <Location>Казань</Location>
+          <Station>Казань</Station>
           <Arrive>2012/12/22 07:25:00</Arrive>
           <Depart>2012/12/22 07:31:00</Depart>
         </Station>
 
         <Station>
-          <Location>Саратов</Location>
+          <Station>Саратов</Station>
           <Arrive>2012/12/22 10:46:00</Arrive>
           <Depart>2012/12/22 11:32:00</Depart>
         </Station>
@@ -572,25 +572,25 @@
       <Number>13</Number>
       <Stations>
         <Station>
-          <Location>Москва</Location>
+          <Station>Москва</Station>
           <Arrive>2012/01/01 00:00:00</Arrive>
           <Depart>2012/01/01 00:00:10</Depart>
         </Station>
 
         <Station>
-          <Location>Санкт-Петербург</Location>
+          <Station>Санкт-Петербург</Station>
           <Arrive>2012/01/01 14:00:00</Arrive>
           <Depart>2012/01/01 14:40:00</Depart>
         </Station>
 
         <Station>
-          <Location>Саратов</Location>
+          <Station>Саратов</Station>
           <Arrive>2012/01/01 23:40:00</Arrive>
           <Depart>2012/01/01 23:52:00</Depart>
         </Station>
 
         <Station>
-          <Location>Балаково</Location>
+          <Station>Балаково</Station>
           <Arrive>2012/01/02 06:00:00</Arrive>
           <Depart>2012/01/02 06:10:00</Depart>
         </Station>

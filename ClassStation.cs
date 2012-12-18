@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace Trains
 {
@@ -27,6 +28,30 @@ namespace Trains
             _x       = X;
             _y       = Y;
             AddToAllStations();
+        }
+
+        public static void SaveAllStationsToFile(XmlTextWriter xmlOut)
+        {
+            xmlOut.WriteStartElement("Stations");
+
+            List<Station> stations = Station.Search();
+            foreach(Station station in stations)
+            {
+                station.SaveToFile(xmlOut);
+            }
+
+            xmlOut.WriteEndElement();
+        }
+
+        public void SaveToFile(XmlTextWriter xmlOut)
+        {
+            xmlOut.WriteStartElement("Station");
+            
+            xmlOut.WriteElementString("Name",   this.Name);
+            xmlOut.WriteElementString("X",      this.X.ToString());
+            xmlOut.WriteElementString("Y",      this.Y.ToString());
+
+            xmlOut.WriteEndElement();
         }
 
         /// <summary>

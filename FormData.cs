@@ -46,5 +46,12 @@ namespace Trains
                 Message.ShowDialog();
             }
         }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+            string fileName = saveFileDialog1.FileName;
+            Data.SaveToFile(fileName);
+        }
     }
 }

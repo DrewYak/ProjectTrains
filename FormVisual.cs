@@ -117,7 +117,7 @@ namespace Trains
             List<Train> trains = Train.Search("","");
             DateTime time = Convert.ToDateTime(maskedTextBox1.Text);
             DrawTrains(trains, 8, time);
-            time.AddHours(1);
+            time = time.AddMinutes(5);
             maskedTextBox1.Text = Convert.ToString(time);
         }
     }

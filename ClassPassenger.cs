@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using System.Xml;
+using System.IO;
 
 namespace Trains
 {
@@ -32,6 +33,46 @@ namespace Trains
             this.LastName   = LastName;
             this._tickets   = new List<Ticket>();
             this.AddToAllPassengers();
+        }
+
+        public void SaveToFile(XmlWriter xmlOut, int trainNumber)
+        {
+            xmlOut.WriteStartElement("Passenger");
+            
+            Ticket ticket = this.SearchTicketByTrainNumber(trainNumber);
+
+            xmlOut.WriteElementString("ID",             this.ID.ToString());
+            xmlOut.WriteElementString("LName",          this.LastName);
+            xmlOut.WriteElementString("FName",          this.FirstName);
+            xmlOut.WriteElementString("TypeOfTicket",   ticket.Type);
+
+            xmlOut.WriteEndElement();
+        }
+
+        private Ticket SearchTicketByTrainNumber(int trainNumber)
+        {
+            List<Ticket> tickets = this.Tickets;
+            foreach(Ticket ticket in tickets)
+            {
+                if(ticket.Train.Number == trainNumber)
+                {
+                    return ticket;
+                }
+            }
+            return null;
+        }
+
+        private Ticket SearchTicketByTrain(Train train)
+        {
+            List<Ticket> tickets = this.Tickets;
+            foreach(Ticket ticket in tickets)
+            {
+                if(ticket.Train == train)
+                {
+                    return ticket;
+                }
+            }
+            return null;
         }
 
         /// <summary>
