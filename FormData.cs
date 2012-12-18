@@ -42,7 +42,7 @@ namespace Trains
             catch (FileNotFoundException)
             {
                 FormMessage Message         = new FormMessage();
-                Message.messageLabel.Text   = "Файлы не были загружены.";
+                Message.messageLabel.Text   = "Файлы не были загружены. Выберите нужный файл из списка и кликните \"Открыть\".";
                 Message.ShowDialog();
             }
         }
@@ -61,6 +61,10 @@ namespace Trains
                 f.messageLabel.Text = "Файлы не были сохранены! Введите имя файла для сохранения!";
                 f.ShowDialog();
             }
+            FormMessage fm          = new FormMessage();
+            fm.messageLabel.Text    = "Данные успешно сохранены " + DateTime.Now.ToString() + " в файле " + fileName;
+            fm.ShowDialog();
+
         }
 
         private void buttonUnload_Click(object sender, EventArgs e)
