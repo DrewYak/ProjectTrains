@@ -11,6 +11,9 @@ namespace Trains
 {
     public partial class FormEditRoute : Form
     {
+        bool    afterSearch;
+        string  lastX;
+        string  lastY;
         public FormEditRoute()
         {
             InitializeComponent();
@@ -23,10 +26,10 @@ namespace Trains
 
         private void FillGridView(List<Station> stns)
         {
-            this.dataGridView1.Rows.Clear();
+            this.tableStations.Rows.Clear();
             foreach (Station stn in stns)
             {
-                this.dataGridView1.Rows.Add(false, stn.Name, stn.X, stn.Y);
+                this.tableStations.Rows.Add(false, stn.Name, stn.X, stn.Y);
             }
         }
 
@@ -40,11 +43,11 @@ namespace Trains
          private void button1_Click(object sender, EventArgs e)
          {
              List<string> delStns = new List<string>();
-             for (int i = 0; i < dataGridView1.RowCount; i++)
+             for (int i = 0; i < tableStations.RowCount; i++)
              {
-                 if (Convert.ToBoolean(dataGridView1.Rows[i].Cells[0].Value))
+                 if (Convert.ToBoolean(tableStations.Rows[i].Cells[0].Value))
                  {
-                     string del = Convert.ToString(dataGridView1.Rows[i].Cells[1].Value);
+                     string del = Convert.ToString(tableStations.Rows[i].Cells[1].Value);
                      delStns.Add(del);
                  }
              }
@@ -59,59 +62,68 @@ namespace Trains
 
          private void button2_Click(object sender, EventArgs e)
          {
-             string Name = Convert.ToString(this.textBox1.Text);
+             string Name = Convert.ToString(this.nameStation.Text);
              Station entStn = Station.SearchByName(Name);
              if (entStn == null)
              {
-                 int X = Convert.ToInt32(this.textBox2.Text);
-                 int Y = Convert.ToInt32(this.textBox3.Text);
+                 int X = Convert.ToInt32(this.xStation.Text);
+                 int Y = Convert.ToInt32(this.yStation.Text);
                  Station Stn = new Station(Name, X, Y);
              }
              FormEditRoute_Activated(sender, e);
-             textBox1_TextChanged(sender, e);
+             nameStation_TextChanged(sender, e);
          }
 
-         private void textBox1_TextChanged(object sender, EventArgs e)
+         private void nameStation_TextChanged(object sender, EventArgs e)
          {
-             textBox2_TextChanged(sender, e);
-             if (this.textBox1.Text != "")
+             xStations_TextChanged(sender, e);
+             if (this.nameStation.Text != "")
              {
-                 string Name = Convert.ToString(this.textBox1.Text);
-                 Station entStn = Station.SearchByName(Name);
+                 string     Name    = Convert.ToString(this.nameStation.Text);
+                 Station    entStn  = Station.SearchByName(Name);
                  if (entStn != null)
                  {
-                     int X = entStn.X;
-                     int Y = entStn.Y;
-                     this.textBox2.Text = Convert.ToString(X);
-                     this.textBox3.Text = Convert.ToString(Y);
-                     this.textBox2.Enabled = false;
-                     this.textBox3.Enabled = false;
-                     button2.Enabled = false;
+                     if (!afterSearch)
+                     {
+                         lastX                  = xStation.Text;                     
+                         lastY                  = yStation.Text;
+                     }
+                     this.xStation.Text     = Convert.ToString(entStn.X);
+                     this.yStation.Text     = Convert.ToString(entStn.Y);
+                     this.xStation.Enabled  = false;
+                     this.yStation.Enabled  = false;
+                     add.Enabled            = false;
+                     afterSearch            = true;
                  }
                  else
                  {
-                     this.textBox2.Enabled = true;
-                     this.textBox3.Enabled = true;
-                     button2.Enabled = true;
-
-                     this.textBox2.Clear();
-                     this.textBox3.Clear();
+                     this.xStation.Enabled  = true;
+                     this.yStation.Enabled  = true;
+                     
+                     if (afterSearch == true)
+                     {
+                         this.xStation.Clear();
+                         this.yStation.Clear();
+                         this.xStation.Text     = lastX;
+                         this.yStation.Text     = lastY;
+                         afterSearch            = false;
+                     }
                  }
              }
          }
 
-         private void textBox2_TextChanged(object sender, EventArgs e)
+         private void xStations_TextChanged(object sender, EventArgs e)
          {
-             if ((textBox1.Text != "") &&
-                    (textBox2.Text != "") &&
-                    (textBox3.Text != "")
+             if ((nameStation.Text != "") &&
+                    (xStation.Text != "") &&
+                    (yStation.Text != "")
                 )
              {
-                 button2.Enabled = true;
+                 add.Enabled = true;
              }
              else
              {
-                 button2.Enabled = false;
+                 add.Enabled = false;
              }
          }
     }
