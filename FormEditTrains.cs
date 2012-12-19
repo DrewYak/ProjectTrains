@@ -21,7 +21,7 @@ namespace Trains
             this.dataGridView1.Rows.Clear();
             foreach (Train Trn in ResultTrn)
             {
-                this.dataGridView1.Rows.Add(false, Trn.Number, Trn.PointOfArrival, Trn.PointOfDeparture);
+                this.dataGridView1.Rows.Add(false, Trn.Number, Trn.PointOfDeparture, Trn.PointOfArrival);
             }
         }
 
