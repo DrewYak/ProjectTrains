@@ -37,13 +37,13 @@ namespace Trains
             {
                 if (tkt.Type == "Плацкарт")
                 { treeView1.Nodes[0].Nodes[2].Nodes[0].Nodes.Add(tkt.Train.Number.ToString()
-                    +" "+ tkt.Train.PointOfArrival
-                    + " - " + tkt.Train.PointOfDeparture); }
+                    +" "+ tkt.Train.PointOfDeparture
+                    + " - " + tkt.Train.PointOfArrival); }
                 if (tkt.Type == "Купе")
                 {
                     treeView1.Nodes[0].Nodes[2].Nodes[1].Nodes.Add(tkt.Train.Number.ToString()
-                      + " " + tkt.Train.PointOfArrival
-                      + " - " + tkt.Train.PointOfDeparture);
+                      + " " + tkt.Train.PointOfDeparture
+                      + " - " + tkt.Train.PointOfArrival);
                 }
             }
         }

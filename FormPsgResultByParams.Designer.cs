@@ -83,6 +83,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1584, 862);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -95,7 +96,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox1.Size = new System.Drawing.Size(772, 770);
+            this.groupBox1.Size = new System.Drawing.Size(772, 750);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Данные о пассажире";
@@ -114,7 +115,7 @@
             this.TablePas.Margin = new System.Windows.Forms.Padding(6);
             this.TablePas.Name = "TablePas";
             this.TablePas.ReadOnly = true;
-            this.TablePas.Size = new System.Drawing.Size(760, 739);
+            this.TablePas.Size = new System.Drawing.Size(760, 719);
             this.TablePas.TabIndex = 0;
             this.TablePas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablePas_CellContentClick);
             this.TablePas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablePas_CellContentClick);
@@ -157,7 +158,7 @@
             // treeView2
             // 
             this.treeView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView2.Location = new System.Drawing.Point(1190, 8);
+            this.treeView2.Location = new System.Drawing.Point(1190, 86);
             this.treeView2.Margin = new System.Windows.Forms.Padding(6);
             this.treeView2.Name = "treeView2";
             treeNode1.Name = "Узел5";
@@ -173,7 +174,7 @@
             this.treeView2.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode5});
             this.tableLayoutPanel1.SetRowSpan(this.treeView2, 2);
-            this.treeView2.Size = new System.Drawing.Size(388, 848);
+            this.treeView2.Size = new System.Drawing.Size(388, 770);
             this.treeView2.TabIndex = 5;
             this.treeView2.Visible = false;
             this.treeView2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView2_AfterSelect);
@@ -181,7 +182,7 @@
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(790, 6);
+            this.treeView1.Location = new System.Drawing.Point(790, 86);
             this.treeView1.Margin = new System.Windows.Forms.Padding(6);
             this.treeView1.Name = "treeView1";
             treeNode6.Name = "Узел1";
@@ -199,7 +200,7 @@
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode11});
             this.tableLayoutPanel1.SetRowSpan(this.treeView1, 2);
-            this.treeView1.Size = new System.Drawing.Size(388, 850);
+            this.treeView1.Size = new System.Drawing.Size(388, 770);
             this.treeView1.TabIndex = 4;
             this.treeView1.Visible = false;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
