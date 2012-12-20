@@ -18,7 +18,7 @@ namespace Trains
         public static int       minradiusStation    = 3;
         public static int       radiusStation       = 8;
         public static int       maxradiusStation    = 15;
-        public static Brush     brushStation        = Brushes.Yellow;
+        public static Brush     brushStation        = Brushes.Green;
         public static Pen       penStation          = new Pen(Color.Black, 2);
 
         public static int       radiusTrain         = 6;
@@ -26,6 +26,8 @@ namespace Trains
         public static Pen       penTrain            = new Pen(Color.Red, 2);
         public static DateTime  time                = DateTime.Now;
 
+        static List<Station>    allstations    = Station.Search();
+        static List<Train>      alltrains      = Train.Search("", "");
 
 
         public FormVisual()
@@ -122,17 +124,14 @@ namespace Trains
         /// <param name="g"></param>
         private void DrawAll(Graphics g)
         {
-            List<Station>   stations    = Station.Search();
-            List<Train>     trains      = Train.Search("", "");
-            g.Clear(this.BackColor);
-            DrawRoutes  (trains,    g);
-            DrawStations(stations,  g);
-            DrawTrains  (trains,    g);
+            DrawRoutes  (alltrains,    g);
+            DrawStations(allstations,  g);
+            DrawTrains  (alltrains,    g);
         }
 
         private void FormVisual_Paint(object sender, PaintEventArgs e)
         {
-            DrawAll(panel2.CreateGraphics());
+            DrawAll(e.Graphics);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -187,7 +186,8 @@ namespace Trains
 
         private void FormVisual_Load(object sender, EventArgs e)
         {
-            textBox1.Text = radiusStation.ToString();
+            textBox1.Text = radiusStation.ToString();    
+            DrawAll(panel2.CreateGraphics());
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -198,6 +198,11 @@ namespace Trains
         private void timer1_Tick(object sender, EventArgs e)
         {
             time = time.AddMinutes(5);
+            panel2.Invalidate();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
             DrawAll(panel2.CreateGraphics());
         }
     }
