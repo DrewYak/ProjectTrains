@@ -18,12 +18,12 @@ namespace Trains
         public static int       minradiusStation    = 3;
         public static int       radiusStation       = 8;
         public static int       maxradiusStation    = 15;
-        public static Brush     brushStation        = Brushes.White;
-        public static Pen       penStation          = new Pen(Color.Black, 1.5F);
+        public static Brush     brushStation        = Brushes.Yellow;
+        public static Pen       penStation          = new Pen(Color.Black, 2);
 
         public static int       radiusTrain         = 6;
-        public static Brush     brushTrain          = Brushes.Snow;
-        public static Pen       penTrain            = new Pen(Color.Black, 1.5F);
+        public static Brush     brushTrain          = Brushes.Yellow;
+        public static Pen       penTrain            = new Pen(Color.Red, 2);
         public static DateTime  time                = DateTime.Now;
 
 
@@ -34,50 +34,17 @@ namespace Trains
         }
 
         /// <summary>
-        /// Рисует маршруты всех указанных поездов.
-        /// </summary>
-        /// <param name="trains">Список поездов, маршруты которых следует отрисовать.</param>
-        /// <param name="e"></param>
-        private void DrawRoutes(List<Train> trains, PaintEventArgs e)
-        {
-            foreach (Train train in trains)
-            {
-                List<RouteNode> routenodes = train.RouteNodes;
-                DrawRoute(routenodes, e); 
-            }
-        }
-
-        /// <summary>
-        /// Рисует маршрут поезда.
-        /// </summary>
-        /// <param name="routenodes">Список узлов маршрута.</param>
-        /// <param name="e"></param>
-        private void DrawRoute(List<RouteNode> routenodes, PaintEventArgs e)
-        {
-            List<PointF> points = new List<PointF>();
-            foreach (RouteNode routenode in routenodes)
-            {
-                PointF point = new PointF(routenode.Station.X + radiusStation, routenode.Station.Y + radiusStation);
-                points.Add(point);
-            }
-            foreach (RouteNode routenode in routenodes)
-            {
-                e.Graphics.DrawLines(Pens.Black, points.ToArray());
-            }
-        }
-
-
-        /// <summary>
         /// Рисует одну станцию.
         /// </summary>
         /// <param name="station">Станция, которую нужно нарисовать.</param>
         /// <param name="e"></param>
-        private void DrawStation(Station station, PaintEventArgs e)
+        private void DrawStation(Station station, Graphics g)
         {
+            g.FillEllipse(brushStation, station.X, station.Y, radiusStation * 2, radiusStation * 2);
+            g.DrawEllipse(penStation,   station.X, station.Y, radiusStation * 2, radiusStation * 2);
+
             PointF p = new Point(station.X + radiusStation * 2, station.Y + radiusStation*2);
-            e.Graphics.FillEllipse(brushStation, station.X, station.Y, radiusStation * 2, radiusStation * 2);
-            e.Graphics.DrawEllipse(penStation, station.X, station.Y, radiusStation * 2, radiusStation * 2);
-            e.Graphics.DrawString(station.Name, Font, SystemBrushes.WindowText, p);
+            g.DrawString(station.Name, Font, SystemBrushes.WindowText, p);
         }
 
         /// <summary>
@@ -85,47 +52,87 @@ namespace Trains
         /// </summary>
         /// <param name="stations">Список станций, которые нужно нарисовать.</param>
         /// <param name="e"></param>
-        private void DrawStations(List<Station> stations, PaintEventArgs e)
+        private void DrawStations(List<Station> stations, Graphics g)
         {
             foreach (Station station in stations)
             {
-                DrawStation(station, e);
+                DrawStation(station, g);
             }
 
         }
 
         /// <summary>
-        /// Рисует поезд по его текущим координатам.
+        /// Рисует маршрут поезда.
         /// </summary>
-        /// <param name="p">Местоположение поезда.</param>
-        private void DrawTrain(PointF p)
+        /// <param name="routenodes">Список узлов маршрута.</param>
+        /// <param name="e"></param>
+        private void DrawRoute(List<RouteNode> routenodes, Graphics g)
         {
-            Graphics g = Graphics.FromHwnd(Handle);
-            g.DrawEllipse(Pens.Red,         p.X, p.Y, radiusTrain, radiusTrain);
-            g.FillEllipse(Brushes.Yellow,   p.X, p.Y, radiusTrain, radiusTrain);                    
+            List<PointF> points = new List<PointF>();
+            foreach (RouteNode routenode in routenodes)
+            {
+                PointF point = new PointF(routenode.Station.X + radiusStation, routenode.Station.Y + radiusStation);
+                points.Add(point);
+            }
+            g.DrawLines(new Pen (Brushes.Black, 2), points.ToArray());
         }
 
         /// <summary>
-        /// Рисует список укзазанных поездов.
+        /// Рисует маршруты всех указанных поездов.
         /// </summary>
-        /// <param name="trains">Список поездов, котоые седует отрисовать.</param>
-        /// <param name="time"></param>
-        private void DrawTrains(List<Train> trains, DateTime time)
+        /// <param name="trains">Список поездов, маршруты которых следует отрисовать.</param>
+        /// <param name="e"></param>
+        private void DrawRoutes(List<Train> trains, Graphics g)
+        {
+            foreach (Train train in trains)
+            {
+                List<RouteNode> routenodes = train.RouteNodes;
+                DrawRoute(routenodes, g); 
+            }
+        }
+
+        /// <summary>
+        /// Рисует поезд.
+        /// </summary>
+        /// <param name="train"></param>
+        /// <param name="g"></param>
+        private void DrawTrain(Train train, Graphics g)
+        {
+            PointF p = train.Location(time);
+            g.DrawEllipse(penTrain,     p.X + radiusStation - radiusTrain, p.Y + radiusStation - radiusTrain, radiusTrain * 2, radiusTrain * 2);
+            g.FillEllipse(brushTrain,   p.X + radiusStation - radiusTrain, p.Y + radiusStation - radiusTrain, radiusTrain * 2, radiusTrain * 2);
+        }
+
+        /// <summary>
+        /// Рисует список поездов.
+        /// </summary>
+        /// <param name="trains"></param>
+        /// <param name="g"></param>
+        private void DrawTrains(List<Train> trains, Graphics g)
         {
             foreach(Train train in trains)
             {
-                PointF p = train.Location(time);
-                DrawTrain(p);
+                DrawTrain(train, g);
             }
         }
 
-
-        private void FormVisual_Paint(object sender, PaintEventArgs e)
+        /// <summary>
+        /// Рисует все объекты, предварительно очищая поверхность для рисования.
+        /// </summary>
+        /// <param name="g"></param>
+        private void DrawAll(Graphics g)
         {
             List<Station>   stations    = Station.Search();
             List<Train>     trains      = Train.Search("", "");
-            DrawRoutes(trains, e);
-            DrawStations(stations, e);
+            g.Clear(this.BackColor);
+            DrawRoutes  (trains,    g);
+            DrawStations(stations,  g);
+            DrawTrains  (trains,    g);
+        }
+
+        private void FormVisual_Paint(object sender, PaintEventArgs e)
+        {
+            DrawAll(e.Graphics);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -134,41 +141,18 @@ namespace Trains
             {
                 if (maskedTextBox1.MaskCompleted)
                 {
-                    time = Convert.ToDateTime(maskedTextBox1.Text);
-                    List<Train> trains = Train.Search("", "");
-                    foreach(Train train in trains)
-                    {
-                        PointF p = train.Location(time);
-                        Graphics g = Graphics.FromHwnd(Handle);
-                        g.DrawEllipse(penTrain,p.X, p.Y, radiusTrain, radiusTrain);
-                    }
+                    time        = Convert.ToDateTime(maskedTextBox1.Text);
+
+                    Graphics g  = Graphics.FromHwnd(Handle);
+                    DrawAll(g);
                 }
             }
             catch (FormatException)
             {
                 FormMessage Message         = new FormMessage();
-                Message.messageLabel.Text   = "Введён неверный формат даты.";
+                Message.messageLabel.Text   = "Введённая дата или время имели неверный формат! Введите дату и время в формате ММ.ДД.ГГГГ ЧЧ:ММ:СС";
                 Message.ShowDialog();
             }
-
-
-
-            //int         radius      = 8;
-            //DateTime    time        = Convert.ToDateTime(maskedTextBox1.Text);
-            //Train       trn         = Train.Search(13);
-            //PointF      p           = trn.Location(time);
-            //Graphics g = Graphics.FromHwnd(Handle);
-            //g.DrawEllipse(Pens.Red, p.X - radius, p.Y - radius, radius, radius);
-            //timer1.Start();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            //List<Train> trains = Train.Search("","");
-            //DateTime time = Convert.ToDateTime(maskedTextBox1.Text);
-            //DrawTrains(trains, time);
-            //time = time.AddMinutes(5);
-            //maskedTextBox1.Text = Convert.ToString(time);
         }
 
         private void button2_Click(object sender, EventArgs e)
