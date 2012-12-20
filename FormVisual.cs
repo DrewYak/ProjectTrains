@@ -24,6 +24,7 @@ namespace Trains
         public static int       radiusTrain         = 6;
         public static Brush     brushTrain          = Brushes.Snow;
         public static Pen       penTrain            = new Pen(Color.Black, 1.5F);
+        public static DateTime  time                = DateTime.Now;
 
 
 
@@ -129,22 +130,45 @@ namespace Trains
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int         radius      = 8;
-            DateTime    time        = Convert.ToDateTime(maskedTextBox1.Text);
-            Train       trn         = Train.Search(13);
-            PointF      p           = trn.Location(time);
-            Graphics g = Graphics.FromHwnd(Handle);
-            g.DrawEllipse(Pens.Red, p.X - radius, p.Y - radius, radius, radius);
-            timer1.Start();
+            try
+            {
+                if (maskedTextBox1.MaskCompleted)
+                {
+                    time = Convert.ToDateTime(maskedTextBox1.Text);
+                    List<Train> trains = Train.Search("", "");
+                    foreach(Train train in trains)
+                    {
+                        PointF p = train.Location(time);
+                        Graphics g = Graphics.FromHwnd(Handle);
+                        g.DrawEllipse(penTrain,p.X, p.Y, radiusTrain, radiusTrain);
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                FormMessage Message         = new FormMessage();
+                Message.messageLabel.Text   = "Введён неверный формат даты.";
+                Message.ShowDialog();
+            }
+
+
+
+            //int         radius      = 8;
+            //DateTime    time        = Convert.ToDateTime(maskedTextBox1.Text);
+            //Train       trn         = Train.Search(13);
+            //PointF      p           = trn.Location(time);
+            //Graphics g = Graphics.FromHwnd(Handle);
+            //g.DrawEllipse(Pens.Red, p.X - radius, p.Y - radius, radius, radius);
+            //timer1.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            List<Train> trains = Train.Search("","");
-            DateTime time = Convert.ToDateTime(maskedTextBox1.Text);
-            DrawTrains(trains, time);
-            time = time.AddMinutes(5);
-            maskedTextBox1.Text = Convert.ToString(time);
+            //List<Train> trains = Train.Search("","");
+            //DateTime time = Convert.ToDateTime(maskedTextBox1.Text);
+            //DrawTrains(trains, time);
+            //time = time.AddMinutes(5);
+            //maskedTextBox1.Text = Convert.ToString(time);
         }
 
         private void button2_Click(object sender, EventArgs e)
