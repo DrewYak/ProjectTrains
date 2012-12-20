@@ -85,7 +85,6 @@ namespace Trains
                 int     y       = Convert.ToInt32(Stn.ChildNodes[2].InnerText);
 
                 Station Station = new Station(name, x, y);
-//                Station.AddToAllStations();
             }
         }
 

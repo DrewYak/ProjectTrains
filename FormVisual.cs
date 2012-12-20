@@ -131,7 +131,7 @@ namespace Trains
 
         private void FormVisual_Paint(object sender, PaintEventArgs e)
         {
-            DrawAll(e.Graphics);
+            DrawAll(panel2.CreateGraphics());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -192,13 +192,16 @@ namespace Trains
 
         private void button4_Click(object sender, EventArgs e)
         {
+            time = Convert.ToDateTime(maskedTextBox1.Text);
             timer1.Start();
+            this.DoubleBuffered = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            time = time.AddMinutes(5);
+            time = time.AddMinutes(12);
             panel2.Invalidate();
+            maskedTextBox1.Text = time.ToString();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
