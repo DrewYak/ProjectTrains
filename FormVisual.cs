@@ -132,7 +132,7 @@ namespace Trains
 
         private void FormVisual_Paint(object sender, PaintEventArgs e)
         {
-            DrawAll(e.Graphics);
+            DrawAll(panel2.CreateGraphics());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -143,14 +143,14 @@ namespace Trains
                 {
                     time        = Convert.ToDateTime(maskedTextBox1.Text);
 
-                    Graphics g  = Graphics.FromHwnd(Handle);
+                    Graphics g  = panel2.CreateGraphics();
                     DrawAll(g);
                 }
             }
             catch (FormatException)
             {
                 FormMessage Message         = new FormMessage();
-                Message.messageLabel.Text   = "Введённая дата или время имели неверный формат! Введите дату и время в формате ММ.ДД.ГГГГ ЧЧ:ММ:СС";
+                Message.messageLabel.Text   = "Введённая дата или время имели неверный формат! Введите дату и время в формате ДД.MM.ГГГГ ЧЧ:ММ:СС";
                 Message.ShowDialog();
             }
         }
@@ -188,6 +188,17 @@ namespace Trains
         private void FormVisual_Load(object sender, EventArgs e)
         {
             textBox1.Text = radiusStation.ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            time = time.AddMinutes(5);
+            DrawAll(panel2.CreateGraphics());
         }
     }
 }
