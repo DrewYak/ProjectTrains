@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.viewStatic = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.sizeIncSt = new System.Windows.Forms.Button();
             this.sizeDecSt = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.viewDynamicStart = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,14 +54,16 @@
             this.colorSt2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.viewStat = new System.Windows.Forms.RadioButton();
+            this.viewDyn = new System.Windows.Forms.RadioButton();
+            this.viewDynamicStop = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(4, 5);
+            this.maskedTextBox1.Location = new System.Drawing.Point(709, 5);
             this.maskedTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.maskedTextBox1.Mask = "00/00/0000 90:00";
             this.maskedTextBox1.Name = "maskedTextBox1";
@@ -70,20 +72,20 @@
             this.maskedTextBox1.Text = "010120120000";
             this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
             // 
-            // button1
+            // viewStatic
             // 
-            this.button1.Location = new System.Drawing.Point(40, 52);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 35);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.viewStatic.Location = new System.Drawing.Point(1086, 3);
+            this.viewStatic.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.viewStatic.Name = "viewStatic";
+            this.viewStatic.Size = new System.Drawing.Size(30, 30);
+            this.viewStatic.TabIndex = 1;
+            this.viewStatic.Text = ">";
+            this.viewStatic.UseVisualStyleBackColor = true;
+            this.viewStatic.Click += new System.EventHandler(this.button1_Click);
             // 
             // timer1
             // 
-            this.timer1.Interval = 150;
+            this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // sizeIncSt
@@ -127,24 +129,22 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.maskedTextBox1);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(1428, 83);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(153, 776);
             this.panel1.TabIndex = 0;
             // 
-            // button4
+            // viewDynamicStart
             // 
-            this.button4.Location = new System.Drawing.Point(40, 320);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.viewDynamicStart.Enabled = false;
+            this.viewDynamicStart.Location = new System.Drawing.Point(1086, 39);
+            this.viewDynamicStart.Name = "viewDynamicStart";
+            this.viewDynamicStart.Size = new System.Drawing.Size(30, 30);
+            this.viewDynamicStart.TabIndex = 5;
+            this.viewDynamicStart.Text = ">";
+            this.viewDynamicStart.UseVisualStyleBackColor = true;
+            this.viewDynamicStart.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel2
             // 
@@ -157,7 +157,13 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.viewDynamicStop);
+            this.panel3.Controls.Add(this.viewDyn);
+            this.panel3.Controls.Add(this.viewStat);
+            this.panel3.Controls.Add(this.viewDynamicStart);
             this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.viewStatic);
+            this.panel3.Controls.Add(this.maskedTextBox1);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.sizeIncTr);
             this.panel3.Controls.Add(this.sizeDecTr);
@@ -313,6 +319,40 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Цвет станций 2";
             // 
+            // viewStat
+            // 
+            this.viewStat.AutoSize = true;
+            this.viewStat.Checked = true;
+            this.viewStat.Location = new System.Drawing.Point(865, 6);
+            this.viewStat.Name = "viewStat";
+            this.viewStat.Size = new System.Drawing.Size(203, 24);
+            this.viewStat.TabIndex = 11;
+            this.viewStat.TabStop = true;
+            this.viewStat.Text = "Статический просмотр";
+            this.viewStat.UseVisualStyleBackColor = true;
+            this.viewStat.CheckedChanged += new System.EventHandler(this.viewStat_CheckedChanged);
+            // 
+            // viewDyn
+            // 
+            this.viewDyn.AutoSize = true;
+            this.viewDyn.Location = new System.Drawing.Point(865, 40);
+            this.viewDyn.Name = "viewDyn";
+            this.viewDyn.Size = new System.Drawing.Size(215, 24);
+            this.viewDyn.TabIndex = 12;
+            this.viewDyn.Text = "Динамический просмотр";
+            this.viewDyn.UseVisualStyleBackColor = true;
+            // 
+            // viewDynamicStop
+            // 
+            this.viewDynamicStop.Enabled = false;
+            this.viewDynamicStop.Location = new System.Drawing.Point(1122, 39);
+            this.viewDynamicStop.Name = "viewDynamicStop";
+            this.viewDynamicStop.Size = new System.Drawing.Size(30, 30);
+            this.viewDynamicStop.TabIndex = 13;
+            this.viewDynamicStop.Text = "||";
+            this.viewDynamicStop.UseVisualStyleBackColor = true;
+            this.viewDynamicStop.Click += new System.EventHandler(this.viewDynamicStop_Click);
+            // 
             // FormVisual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -331,8 +371,6 @@
             this.Load += new System.EventHandler(this.FormVisual_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormVisual_Paint);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -342,14 +380,14 @@
         #endregion
 
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button viewStatic;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button sizeIncSt;
         private System.Windows.Forms.Button sizeDecSt;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button viewDynamicStart;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button colorTr2;
         private System.Windows.Forms.Button colorTr1;
@@ -366,6 +404,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button sizeIncTr;
         private System.Windows.Forms.Button sizeDecTr;
+        private System.Windows.Forms.Button viewDynamicStop;
+        private System.Windows.Forms.RadioButton viewDyn;
+        private System.Windows.Forms.RadioButton viewStat;
 
     }
 }

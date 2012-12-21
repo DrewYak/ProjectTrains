@@ -147,9 +147,7 @@ namespace Trains
                 if (maskedTextBox1.MaskCompleted)
                 {
                     time        = Convert.ToDateTime(maskedTextBox1.Text);
-
-                    Graphics g  = panel2.CreateGraphics();
-                    DrawAll(g);
+                    panel2.Invalidate();
                 }
             }
             catch (FormatException)
@@ -176,14 +174,24 @@ namespace Trains
 
         private void button4_Click(object sender, EventArgs e)
         {
-            time = Convert.ToDateTime(maskedTextBox1.Text);
-            timer1.Start();
-            this.DoubleBuffered = true;
+            try
+            {
+                time = Convert.ToDateTime(maskedTextBox1.Text);
+                timer1.Start();
+                this.DoubleBuffered = true;
+            }
+            catch (FormatException)
+            {
+                FormMessage Message         = new FormMessage();
+                Message.messageLabel.Text   = "Введённая дата или время имели неверный формат! Введите дату и время в формате ДД.MM.ГГГГ ЧЧ:ММ:СС";
+                Message.ShowDialog();
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             time = time.AddMinutes(5);
+            this.DoubleBuffered = true;
             panel2.Invalidate();
             maskedTextBox1.Text = time.ToString();
         }
@@ -309,5 +317,26 @@ namespace Trains
             radiusTr.Text   = radiusTrain.ToString();
         }
 #endregion
+
+        private void viewStat_CheckedChanged(object sender, EventArgs e)
+        {
+            if (viewStat.Checked)
+            {
+                viewStatic.Enabled          = true;
+                viewDynamicStart.Enabled    = false;
+                viewDynamicStop.Enabled     = false;
+            }
+            if (viewDyn.Checked)
+            {
+                viewStatic.Enabled          = false;
+                viewDynamicStart.Enabled    = true;
+                viewDynamicStop.Enabled     = true;
+            }
+        }
+
+        private void viewDynamicStop_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+        }
     }
 }
