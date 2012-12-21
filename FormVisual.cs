@@ -18,12 +18,16 @@ namespace Trains
         public static int       minradiusStation    = 3;
         public static int       radiusStation       = 8;
         public static int       maxradiusStation    = 15;
-        public static Brush     brushStation        = Brushes.Green;
-        public static Pen       penStation          = new Pen(Color.Black, 2);
+        public static Color     colorStation1       = Color.Green;
+        public static Color     colorStation2       = Color.Black;
+        public static Brush     brushStation        = new SolidBrush(colorStation1);
+        public static Pen       penStation          = new Pen(colorStation2, 2);
 
         public static int       radiusTrain         = 6;
-        public static Brush     brushTrain          = Brushes.Yellow;
-        public static Pen       penTrain            = new Pen(Color.Red, 2);
+        public static Color     colorTrain1         = Color.Yellow;
+        public static Color     colorTrain2         = Color.Red;
+        public static Brush     brushTrain          = new SolidBrush(colorTrain1);
+        public static Pen       penTrain            = new Pen(colorTrain2, 2);
         public static DateTime  time                = DateTime.Now;
 
         static List<Station>    allstations    = Station.Search();
@@ -157,7 +161,7 @@ namespace Trains
         private void button2_Click(object sender, EventArgs e)
         {
             radiusStation++;
-            Invalidate();
+            panel2.Invalidate();
             if (radiusStation >= maxradiusStation)
             {
                 button2.Enabled = false;
@@ -172,7 +176,7 @@ namespace Trains
         private void button3_Click(object sender, EventArgs e)
         {
             radiusStation--;
-            Invalidate();
+            panel2.Invalidate();
             if (radiusStation <= minradiusStation)
             {
                 button3.Enabled = false;
@@ -188,6 +192,11 @@ namespace Trains
         {
             textBox1.Text = radiusStation.ToString();    
             DrawAll(panel2.CreateGraphics());
+
+            colorSt1.BackColor  = colorStation1;
+            colorSt2.BackColor  = colorStation2;
+            colorTr1.BackColor  = colorTrain1;
+            colorTr2.BackColor  = colorTrain2;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -199,7 +208,7 @@ namespace Trains
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            time = time.AddMinutes(12);
+            time = time.AddMinutes(5);
             panel2.Invalidate();
             maskedTextBox1.Text = time.ToString();
         }
@@ -208,5 +217,60 @@ namespace Trains
         {
             DrawAll(panel2.CreateGraphics());
         }
+
+        #region Выбор цветов
+        private void colorSt1_Click(object sender, EventArgs e)
+        {
+            colorDialog1.Color = colorSt1.BackColor;
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                colorSt1.BackColor  = colorDialog1.Color;
+                colorStation1       = colorDialog1.Color;
+                brushStation        = new SolidBrush(colorStation1);
+
+                panel2.Invalidate();
+            }
+        }
+
+        private void colorSt2_Click(object sender, EventArgs e)
+        {
+            colorDialog1.Color  = colorSt2.BackColor;
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                colorSt2.BackColor  = colorDialog1.Color;
+                colorStation2       = colorDialog1.Color;
+                penStation          = new Pen(colorStation2, 2);
+
+                panel2.Invalidate();
+            }
+        }
+
+        private void colorTr1_Click(object sender, EventArgs e)
+        {
+            colorDialog1.Color = colorTr1.BackColor;
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                colorTr1.BackColor  = colorDialog1.Color;
+                colorTrain1         = colorDialog1.Color;
+                brushTrain          = new SolidBrush(colorTrain1);
+
+                panel2.Invalidate();
+            }
+
+        }
+
+        private void ColorTr2_Click(object sender, EventArgs e)
+        {
+            colorDialog1.Color  = colorTr2.BackColor;
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                colorTr2.BackColor  = colorDialog1.Color;
+                colorTrain2         = colorDialog1.Color;
+                penTrain            = new Pen(colorTrain2, 2);
+
+                panel2.Invalidate();
+            }
+        }
+        #endregion
     }
 }
