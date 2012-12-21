@@ -23,7 +23,9 @@ namespace Trains
         public static Brush     brushStation        = new SolidBrush(colorStation1);
         public static Pen       penStation          = new Pen(colorStation2, 2);
 
+        public static int       minradiusTrain      = 3;
         public static int       radiusTrain         = 6;
+        public static int       maxradiusTrain      = 15;
         public static Color     colorTrain1         = Color.Yellow;
         public static Color     colorTrain2         = Color.Red;
         public static Brush     brushTrain          = new SolidBrush(colorTrain1);
@@ -158,45 +160,18 @@ namespace Trains
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            radiusStation++;
-            panel2.Invalidate();
-            if (radiusStation >= maxradiusStation)
-            {
-                button2.Enabled = false;
-            }
-            if (radiusStation > minradiusStation)
-            {
-                button3.Enabled = true;
-            }
-            textBox1.Text = radiusStation.ToString();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            radiusStation--;
-            panel2.Invalidate();
-            if (radiusStation <= minradiusStation)
-            {
-                button3.Enabled = false;
-            }
-            if (radiusStation < maxradiusStation)
-            {
-                button2.Enabled = true;
-            }
-            textBox1.Text = radiusStation.ToString();
-        }
 
         private void FormVisual_Load(object sender, EventArgs e)
         {
-            textBox1.Text = radiusStation.ToString();    
             DrawAll(panel2.CreateGraphics());
 
             colorSt1.BackColor  = colorStation1;
             colorSt2.BackColor  = colorStation2;
             colorTr1.BackColor  = colorTrain1;
             colorTr2.BackColor  = colorTrain2;
+
+            radiusSt.Text       = radiusStation.ToString();
+            radiusTr.Text       = radiusTrain.ToString();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -272,5 +247,67 @@ namespace Trains
             }
         }
         #endregion
+
+        #region Изменение размеров
+        private void sizeDecSt_Click(object sender, EventArgs e)
+        {
+            radiusStation--;
+            panel2.Invalidate();
+            if (radiusStation <= minradiusStation)
+            {
+                sizeDecSt.Enabled = false;
+            }
+            if (radiusStation < maxradiusStation)
+            {
+                sizeIncSt.Enabled = true;
+            }
+            radiusSt.Text   = radiusStation.ToString();
+        }
+
+        private void sizeIncSt_Click(object sender, EventArgs e)
+        {
+            radiusStation++;
+            panel2.Invalidate();
+            if (radiusStation >= maxradiusStation)
+            {
+                sizeIncSt.Enabled = false;
+            }
+            if (radiusStation > minradiusStation)
+            {
+                sizeDecSt.Enabled = true;
+            }
+            radiusSt.Text   = radiusStation.ToString();
+        }
+
+        private void sizeDecTr_Click(object sender, EventArgs e)
+        {
+            radiusTrain--;
+            panel2.Invalidate();
+            if (radiusTrain <= minradiusTrain)
+            {
+                sizeDecTr.Enabled = false;
+            }
+            if (radiusTrain < maxradiusStation)
+            {
+                sizeIncTr.Enabled = true;
+            }
+            radiusTr.Text   = radiusTrain.ToString();
+        }
+
+        private void sizeIncTr_Click(object sender, EventArgs e)
+        {
+            radiusTrain++;
+            panel2.Invalidate();
+            if (radiusTrain >= maxradiusTrain)
+            {
+                sizeIncTr.Enabled = false;
+            }
+            if (radiusTrain > minradiusTrain)
+            {
+                sizeDecTr.Enabled = true;
+            }
+            radiusTr.Text   = radiusTrain.ToString();
+        }
+#endregion
     }
 }
