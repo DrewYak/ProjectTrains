@@ -13,7 +13,8 @@ namespace Trains
         /// <summary>
         /// Список всех станций.
         /// </summary>
-        static List<Station> _allStations = new List<Station>();
+        static  List<Station>   _allStations    = new List<Station>();
+                List<RouteNode> _routeNodes     = new List<RouteNode>();         
 
         /// <summary>
         /// Инициализирует станцию по её названию и координатам на форме, 
@@ -28,6 +29,33 @@ namespace Trains
             _x       = X;
             _y       = Y;
             AddToAllStations();
+        }
+
+        /// <summary>
+        /// Добавляет узел маршрута к списку узлов маршрута станции.
+        /// </summary>
+        /// <param name="RouteNode"></param>
+        public void AddRouteNode(RouteNode RouteNode)
+        {
+            this._routeNodes.Add(RouteNode);
+        }
+        
+        public void DEL()
+        {
+            List<RouteNode> rnds    = this._routeNodes;   
+            foreach(RouteNode rnd in rnds)
+            {
+                rnd.RemoveRNFronTrain();
+            }
+        }
+
+        /// <summary>
+        /// Удаляет узел маршрута из списка узлов маршрута станции.
+        /// </summary>
+        /// <param name="RouteNode"></param>
+        public void RemoveRouteNode(RouteNode RouteNode)
+        {
+
         }
 
         /// <summary>
@@ -122,6 +150,11 @@ namespace Trains
         /// </summary>
         public void RemoveFromAllStations()
         {
+            List<RouteNode> rnds = this.RouteNodes;
+            foreach (RouteNode rnd in rnds)
+            {
+                rnd.RemoveRNFronTrain();
+            }
             _allStations.Remove(this);
         }
 
@@ -146,5 +179,10 @@ namespace Trains
         /// Возвращает список всех станций.
         /// </summary>
         static List<Station> AllStations { get { return _allStations; } }
+
+        /// <summary>
+        /// Список узлов маршрута, пркреплённых к данной станции.
+        /// </summary>
+        private List<RouteNode> RouteNodes { get { return _routeNodes; } }
     }
 }

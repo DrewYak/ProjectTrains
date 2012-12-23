@@ -11,9 +11,9 @@ namespace Trains
         [Test]
         public void TestSearch()
         {
-            try
-            {
-                string FileName = @"C:\TRAINS\ProjectTrains\TrainsAndAnotherStuff.xml";
+            //try
+            //{
+                string FileName = @"E:\Trains\Project\Trains_2\ProjectTrains\TrainsAndAnotherStuff.xml";
                 Data.LoadFromFile(FileName);
 
                 Passenger Psg0 = Passenger.Search(1000);
@@ -58,11 +58,11 @@ namespace Trains
                 List<Passenger> LPas1 = Passenger.Search("", "", "Купе");
                 Assert.IsEmpty(LPas1);
 
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка!");
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Ошибка!");
+            //}
         }
     }
 
@@ -72,9 +72,9 @@ namespace Trains
     [Test]
     public void TestSearch1()
     {
-       try
-       {
-            string FileName = @"C:\TRAINS\ProjectTrains\TrainsAndAnotherStuff.xml";
+       //try
+       //{
+            string FileName = @"E:\Trains\Project\Trains_2\ProjectTrains\TrainsAndAnotherStuff.xml";
             Data.LoadFromFile(FileName);
 
             
@@ -101,11 +101,11 @@ namespace Trains
             Assert.IsEmpty(Stn3);
 
 
-        }
-        catch
-        {
-            MessageBox.Show("Ошибка!");
-        }
+        //}
+        //catch
+        //{
+        //    MessageBox.Show("Ошибка!");
+        //}
     }
   }
 }

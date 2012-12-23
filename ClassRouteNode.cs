@@ -19,8 +19,9 @@ namespace Trains
     public class RouteNode 
     {
         Station _station;
+        Train   _train;
         string  _timeOfArrival;     
-        string  _timeOfDeparture;   
+        string  _timeOfDeparture;  
 
         /// <summary>
         /// Инициализирует узел маршрута по станции, времени прибытия поезда
@@ -29,11 +30,26 @@ namespace Trains
         /// <param name="Station">Станция узла маршрута.</param>
         /// <param name="TimeOfArrival">Время прибытия поезда на станцию.</param>
         /// <param name="TimeOfDeparture">Время отправления поезда со станции.</param>
-        public RouteNode(Station Station, string TimeOfArrival, string TimeOfDeparture)
+        public RouteNode(Station Station, string TimeOfArrival, string TimeOfDeparture, Train Train)
         {
-            _station            = Station;     
+            // Устанавливаем ссылку от RouteNode к Station.
+            _station            = Station;
+            // Устанавливаем ссылку от RouteNode к Train.
+            _train              = Train;
             _timeOfArrival      = TimeOfArrival;
             _timeOfDeparture    = TimeOfDeparture;
+            // Устанавливаем ссылку от Station к RouteNode.
+            Station.AddRouteNode(this);
+            // Устанавливаем ссылку от Train к RouteNode.
+            Train.  AddRouteNode(this);
+        }
+
+        /// <summary>
+        /// Удаляет узел маршрута из маршрута поезда.
+        /// </summary>
+        public void RemoveRNFronTrain()
+        {
+            _train.RouteNodes.Remove(this);
         }
 
         public static void SaveRouteNodesToFile(XmlTextWriter xmlOut, Train train)

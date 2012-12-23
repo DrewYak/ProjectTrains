@@ -91,7 +91,7 @@ namespace Trains
         }
 
         /// <summary>
-        /// Добавляет узел маршрута в конец маршрута поезда.
+        /// Добавляет узел маршрута и производит сортировку.
         /// </summary>
         /// <param name="RouteNode"></param>
         public void AddRouteNode(RouteNode RouteNode)
@@ -99,6 +99,15 @@ namespace Trains
             this._routenodes.Add(RouteNode);
             RouteNodeComparer rnc = new RouteNodeComparer();
             this._routenodes.Sort(rnc);
+        }
+
+        /// <summary>
+        /// Удаляет узел маршрута из маршрута поезда.
+        /// </summary>
+        /// <param name="RouteNode"></param>
+        public void RemoveRouteNode(RouteNode RouteNode)
+        {
+            this.RouteNodes.Remove(RouteNode);
         }
 
         /// <summary>
@@ -304,6 +313,8 @@ namespace Trains
             }
             return null;
         }
+
+
 
         /// <summary>
         /// Ищет поезда по начальной и конечной станциям. В случае успеха возвращает

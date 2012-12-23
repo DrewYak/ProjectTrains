@@ -138,6 +138,7 @@ namespace Trains
         private void FormVisual_Paint(object sender, PaintEventArgs e)
         {
             DrawAll(panel2.CreateGraphics());
+            //e.Graphics.CopyFromScreen(new Point(0,0),new Point(400, 400), new Size(300,300));
         }
 
         private void button1_Click(object sender, EventArgs e)

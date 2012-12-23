@@ -47,15 +47,15 @@ namespace Trains
              {
                  if (Convert.ToBoolean(tableStations.Rows[i].Cells[0].Value))
                  {
-                     string del = Convert.ToString(tableStations.Rows[i].Cells[1].Value);
-                     delStns.Add(del);
+                     string stn = Convert.ToString(tableStations.Rows[i].Cells[1].Value);
+                     delStns.Add(stn);
                  }
              }
              foreach (string numStn in delStns)
              {
                  Station delete = Station.SearchByName(numStn);
+                 delete.DEL();
                  delete.RemoveFromAllStations();
-
              }
              FormEditRoute_Activated(sender, e);
          }

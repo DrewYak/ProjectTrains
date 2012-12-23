@@ -76,8 +76,8 @@ namespace Trains
              if (entTrn == null)
              {
                 Train Trn = new Train(Number);
-                RouteNode  RN1 = new RouteNode(Stn1, Time1Arr, Time1Dep);
-                RouteNode  RN2 = new RouteNode(Stn2, Time2Arr, Time2Dep);  
+                RouteNode  RN1 = new RouteNode(Stn1, Time1Arr, Time1Dep, Trn);
+                RouteNode  RN2 = new RouteNode(Stn2, Time2Arr, Time2Dep, Trn);  
                 Trn.AddRouteNode(RN1);
                 Trn.AddRouteNode(RN2);
              }
@@ -86,7 +86,7 @@ namespace Trains
                  Station    Stn = Station.SearchByName(Convert.ToString(wayStation.Text));
                  string timeArr = timeArrWayS.Text;
                  string timeDep = timeDepWays.Text;                 
-                 RouteNode  RN  = new RouteNode(Stn, timeArr, timeDep);
+                 RouteNode  RN  = new RouteNode(Stn, timeArr, timeDep, entTrn);
                  entTrn.AddRouteNode(RN);
              }
              FormEditTrains_Activated(sender, e);

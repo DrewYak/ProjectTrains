@@ -36,9 +36,12 @@
             this.sizeDecSt = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.viewDynamicStart = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.viewDynamicStop = new System.Windows.Forms.Button();
+            this.viewDyn = new System.Windows.Forms.RadioButton();
+            this.viewStat = new System.Windows.Forms.RadioButton();
+            this.viewDynamicStart = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.sizeIncTr = new System.Windows.Forms.Button();
@@ -54,9 +57,6 @@
             this.colorSt2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.viewStat = new System.Windows.Forms.RadioButton();
-            this.viewDyn = new System.Windows.Forms.RadioButton();
-            this.viewDynamicStop = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -135,17 +135,6 @@
             this.panel1.Size = new System.Drawing.Size(153, 776);
             this.panel1.TabIndex = 0;
             // 
-            // viewDynamicStart
-            // 
-            this.viewDynamicStart.Enabled = false;
-            this.viewDynamicStart.Location = new System.Drawing.Point(1086, 39);
-            this.viewDynamicStart.Name = "viewDynamicStart";
-            this.viewDynamicStart.Size = new System.Drawing.Size(30, 30);
-            this.viewDynamicStart.TabIndex = 5;
-            this.viewDynamicStart.Text = ">";
-            this.viewDynamicStart.UseVisualStyleBackColor = true;
-            this.viewDynamicStart.Click += new System.EventHandler(this.button4_Click);
-            // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -184,6 +173,51 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1419, 74);
             this.panel3.TabIndex = 2;
+            // 
+            // viewDynamicStop
+            // 
+            this.viewDynamicStop.Enabled = false;
+            this.viewDynamicStop.Location = new System.Drawing.Point(1122, 39);
+            this.viewDynamicStop.Name = "viewDynamicStop";
+            this.viewDynamicStop.Size = new System.Drawing.Size(30, 30);
+            this.viewDynamicStop.TabIndex = 13;
+            this.viewDynamicStop.Text = "||";
+            this.viewDynamicStop.UseVisualStyleBackColor = true;
+            this.viewDynamicStop.Click += new System.EventHandler(this.viewDynamicStop_Click);
+            // 
+            // viewDyn
+            // 
+            this.viewDyn.AutoSize = true;
+            this.viewDyn.Location = new System.Drawing.Point(865, 40);
+            this.viewDyn.Name = "viewDyn";
+            this.viewDyn.Size = new System.Drawing.Size(215, 24);
+            this.viewDyn.TabIndex = 12;
+            this.viewDyn.Text = "Динамический просмотр";
+            this.viewDyn.UseVisualStyleBackColor = true;
+            // 
+            // viewStat
+            // 
+            this.viewStat.AutoSize = true;
+            this.viewStat.Checked = true;
+            this.viewStat.Location = new System.Drawing.Point(865, 6);
+            this.viewStat.Name = "viewStat";
+            this.viewStat.Size = new System.Drawing.Size(203, 24);
+            this.viewStat.TabIndex = 11;
+            this.viewStat.TabStop = true;
+            this.viewStat.Text = "Статический просмотр";
+            this.viewStat.UseVisualStyleBackColor = true;
+            this.viewStat.CheckedChanged += new System.EventHandler(this.viewStat_CheckedChanged);
+            // 
+            // viewDynamicStart
+            // 
+            this.viewDynamicStart.Enabled = false;
+            this.viewDynamicStart.Location = new System.Drawing.Point(1086, 39);
+            this.viewDynamicStart.Name = "viewDynamicStart";
+            this.viewDynamicStart.Size = new System.Drawing.Size(30, 30);
+            this.viewDynamicStart.TabIndex = 5;
+            this.viewDynamicStart.Text = ">";
+            this.viewDynamicStart.UseVisualStyleBackColor = true;
+            this.viewDynamicStart.Click += new System.EventHandler(this.button4_Click);
             // 
             // label6
             // 
@@ -318,40 +352,6 @@
             this.label2.Size = new System.Drawing.Size(127, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Цвет станций 2";
-            // 
-            // viewStat
-            // 
-            this.viewStat.AutoSize = true;
-            this.viewStat.Checked = true;
-            this.viewStat.Location = new System.Drawing.Point(865, 6);
-            this.viewStat.Name = "viewStat";
-            this.viewStat.Size = new System.Drawing.Size(203, 24);
-            this.viewStat.TabIndex = 11;
-            this.viewStat.TabStop = true;
-            this.viewStat.Text = "Статический просмотр";
-            this.viewStat.UseVisualStyleBackColor = true;
-            this.viewStat.CheckedChanged += new System.EventHandler(this.viewStat_CheckedChanged);
-            // 
-            // viewDyn
-            // 
-            this.viewDyn.AutoSize = true;
-            this.viewDyn.Location = new System.Drawing.Point(865, 40);
-            this.viewDyn.Name = "viewDyn";
-            this.viewDyn.Size = new System.Drawing.Size(215, 24);
-            this.viewDyn.TabIndex = 12;
-            this.viewDyn.Text = "Динамический просмотр";
-            this.viewDyn.UseVisualStyleBackColor = true;
-            // 
-            // viewDynamicStop
-            // 
-            this.viewDynamicStop.Enabled = false;
-            this.viewDynamicStop.Location = new System.Drawing.Point(1122, 39);
-            this.viewDynamicStop.Name = "viewDynamicStop";
-            this.viewDynamicStop.Size = new System.Drawing.Size(30, 30);
-            this.viewDynamicStop.TabIndex = 13;
-            this.viewDynamicStop.Text = "||";
-            this.viewDynamicStop.UseVisualStyleBackColor = true;
-            this.viewDynamicStop.Click += new System.EventHandler(this.viewDynamicStop_Click);
             // 
             // FormVisual
             // 
