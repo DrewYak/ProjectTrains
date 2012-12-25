@@ -43,6 +43,11 @@ namespace Trains
             _allPassengers.Clear();
         }
 
+        /// <summary>
+        /// Создает XML-элемент "Passengers" с пассажирами, которые едут в данном поезде.
+        /// </summary>
+        /// <param name="xmlOut"></param>
+        /// <param name="train"></param>
         public static void SavePassengersToFile(XmlTextWriter xmlOut, Train train)
         {
             xmlOut.WriteStartElement("Passengers");
@@ -56,6 +61,11 @@ namespace Trains
             xmlOut.WriteEndElement();
         }
 
+        /// <summary>
+        /// Создает XML-элемент "Passenger" с данными о пасажире в нужном формате.
+        /// </summary>
+        /// <param name="xmlOut"></param>
+        /// <param name="train"></param>
         public void SaveToFile(XmlWriter xmlOut, Train train)
         {
             xmlOut.WriteStartElement("Passenger");
@@ -83,6 +93,11 @@ namespace Trains
             return null;
         }
 
+        /// <summary>
+        /// Возвращает ссылку на билет по данному поезду.
+        /// </summary>
+        /// <param name="train"></param>
+        /// <returns></returns>
         private Ticket SearchTicketByTrain(Train train)
         {
             List<Ticket> tickets = this.Tickets;
@@ -115,7 +130,6 @@ namespace Trains
         /// <summary>
         /// Добавляет новый билет к уже имеющимся билетам пассажира.
         /// </summary>
-        /// <param name="Passenger">Пассажир, к билетам которого добавляем ещё один новый билет.</param>
         /// <param name="Ticket">Новый добавляемый билет.</param>
         public void AddTicket(Ticket Ticket)
         {

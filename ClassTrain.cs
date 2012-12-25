@@ -39,7 +39,10 @@ namespace Trains
             _allTrains.Clear();
         }
 
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="xmlOut"></param>
         public static void SaveAllTrainsToFile(XmlTextWriter xmlOut)
         {
             xmlOut.WriteStartElement("Trains");
@@ -49,7 +52,6 @@ namespace Trains
             {
                 train.SaveToFile(xmlOut);
             }
-
             xmlOut.WriteEndElement();
         }
 
