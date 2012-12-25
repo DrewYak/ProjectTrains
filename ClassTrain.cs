@@ -111,44 +111,6 @@ namespace Trains
         }
 
         /// <summary>
-        /// Ищет станцию из маршрута поезда по времени отправления/прибытия.
-        /// </summary>
-        /// <param name="time">Время отправления или время прибытия.</param>
-        /// <returns></returns>
-        private Station SearchStationByTime(DateTime time)
-        {
-            List<RouteNode> rnds = this.RouteNodes;
-            foreach(RouteNode rnd in rnds)
-            {
-                if ((rnd.TimeOfArrivalFormat == time)||(rnd.TimeOfDepartureFormat == time))
-                {
-                    return rnd.Station;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Возвращает индекс станции в маршруте поезда (начиная с 0) по 
-        /// её названию. В случае, если такой станции нет в маршруте поезда,
-        /// возвращает -1.
-        /// </summary>
-        /// <param name="StationName"></param>
-        /// <returns></returns>
-        private int IndexStation(String StationName)
-        {
-            List<RouteNode> rns = this.RouteNodes;
-            foreach(RouteNode rn in rns)
-            {
-                if (rn.Station.Name == StationName)
-                {
-                    return rns.IndexOf(rn);
-                }
-            }
-            return -1;
-        }
-
-        /// <summary>
         /// Возвращает ближайший узел маршрута, на который приедет поезд. 
         /// В случае, когда введённое время меньше времени отправления 
         /// поезда или больше времени прибытия поезда, возвращает null.

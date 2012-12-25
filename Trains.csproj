@@ -216,6 +216,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\3416_devushka-ili-starukha.jpg" />
+    <Content Include="Example.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="MainData.xml">
       <SubType>Designer</SubType>
     </Content>
