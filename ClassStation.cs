@@ -45,14 +45,6 @@ namespace Trains
             this._routeNodes.Add(RouteNode);
         }
         
-        public void DEL()
-        {
-            List<RouteNode> rnds    = this._routeNodes;   
-            foreach(RouteNode rnd in rnds)
-            {
-                rnd.RemoveRNFronTrain();
-            }
-        }
 
         /// <summary>
         /// Очищает список всех станций.

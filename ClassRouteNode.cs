@@ -44,14 +44,6 @@ namespace Trains
             Train.  AddRouteNode(this);
         }
 
-        /// <summary>
-        /// Удаляет узел маршрута из маршрута поезда.
-        /// </summary>
-        public void RemoveRNFronTrain()
-        {
-            _train.RouteNodes.Remove(this);
-        }
-
         public static void SaveRouteNodesToFile(XmlTextWriter xmlOut, Train train)
         {
             xmlOut.WriteStartElement("RoteNodes");
