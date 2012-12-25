@@ -39,6 +39,11 @@ namespace Trains
             _allTrains.Clear();
         }
 
+        public void RemoveTicket(Ticket ticket)
+        {
+            this._tickets.Remove(ticket);
+        }
+
 /// <summary>
 /// 
 /// </summary>
@@ -79,6 +84,26 @@ namespace Trains
         /// </summary>
         public void RemoveFromAllTrains()
         {
+            List<RouteNode> rns = this._routenodes;
+            foreach (RouteNode rn in rns)
+            {
+                // Удалить 1
+                rn.Station.RemoveRouteNode(rn);
+            }
+
+            // Удалить 2
+            this._routenodes.Clear();
+
+            List<Ticket> tkts = this._tickets;
+            foreach (Ticket tkt in tkts)
+            {
+                // Удалить 3
+                tkt.Passenger.RemoveTicket(tkt);
+            }
+            // Удалить 4
+            this._tickets.Clear();
+          
+            // Удалить 5
             _allTrains.Remove(this);
         }
 
@@ -107,9 +132,9 @@ namespace Trains
         /// Удаляет узел маршрута из маршрута поезда.
         /// </summary>
         /// <param name="RouteNode"></param>
-        public void RemoveRouteNode(RouteNode RouteNode)
+        public void RemoveRouteNode(RouteNode routeNode)
         {
-            this.RouteNodes.Remove(RouteNode);
+            this._routenodes.Remove(routeNode);
         }
 
         /// <summary>

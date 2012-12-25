@@ -170,5 +170,10 @@ namespace Trains
         {
             add.Enabled = ConditionForEdit();
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

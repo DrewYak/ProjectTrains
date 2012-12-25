@@ -101,5 +101,7 @@ namespace Trains
         /// Возвращает время отпрвления поезда со станции в форматe DateTime.
         /// </summary>
         public DateTime TimeOfDepartureFormat { get { return DateTime.Parse(_timeOfDeparture); } }
+
+        public Train Train { get { return _train; } }
     }
 }

@@ -35,6 +35,11 @@ namespace Trains
             this.AddToAllPassengers();
         }
 
+        public void RemoveTicket(Ticket ticket)
+        {
+            this._tickets.Remove(ticket);
+        }
+
         /// <summary>
         /// Очищает список всех пассажиров.
         /// </summary>
@@ -124,6 +129,15 @@ namespace Trains
         /// </summary>
         public void RemoveFromAllPassengers()
         {
+            List<Ticket> tkts = this._tickets;
+            foreach (Ticket tkt in tkts)
+            {
+                // Удалить 1
+                tkt.Train.RemoveTicket(tkt);
+            }
+            // Удалить 2
+            this._tickets.Clear();
+            // Удалить 3
             _allPassengers.Remove(this);
         }
 
