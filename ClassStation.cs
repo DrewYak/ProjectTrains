@@ -31,6 +31,11 @@ namespace Trains
             AddToAllStations();
         }
 
+        public void RemoveRouteNode(RouteNode routeNode)
+        {
+            this._routeNodes.Remove(routeNode);
+        }
+
         /// <summary>
         /// Добавляет узел маршрута к списку узлов маршрута станции.
         /// </summary>
@@ -40,23 +45,6 @@ namespace Trains
             this._routeNodes.Add(RouteNode);
         }
         
-        public void DEL()
-        {
-            List<RouteNode> rnds    = this._routeNodes;   
-            foreach(RouteNode rnd in rnds)
-            {
-                rnd.RemoveRNFronTrain();
-            }
-        }
-
-        /// <summary>
-        /// Удаляет узел маршрута из списка узлов маршрута станции.
-        /// </summary>
-        /// <param name="RouteNode"></param>
-        public void RemoveRouteNode(RouteNode RouteNode)
-        {
-
-        }
 
         /// <summary>
         /// Очищает список всех станций.
@@ -150,11 +138,15 @@ namespace Trains
         /// </summary>
         public void RemoveFromAllStations()
         {
-            List<RouteNode> rnds = this.RouteNodes;
-            foreach (RouteNode rnd in rnds)
+            List<RouteNode> rns = this._routeNodes;
+            foreach (RouteNode rn in rns)
             {
-                rnd.RemoveRNFronTrain();
+                // Удалить 1
+                rn.Train.RemoveRouteNode(rn);
             }
+            // Удалить 2
+            this._routeNodes.Clear();
+            // Удалить 3
             _allStations.Remove(this);
         }
 

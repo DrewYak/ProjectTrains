@@ -44,14 +44,6 @@ namespace Trains
             Train.  AddRouteNode(this);
         }
 
-        /// <summary>
-        /// Удаляет узел маршрута из маршрута поезда.
-        /// </summary>
-        public void RemoveRNFronTrain()
-        {
-            _train.RouteNodes.Remove(this);
-        }
-
         public static void SaveRouteNodesToFile(XmlTextWriter xmlOut, Train train)
         {
             xmlOut.WriteStartElement("RoteNodes");
@@ -101,5 +93,7 @@ namespace Trains
         /// Возвращает время отпрвления поезда со станции в форматe DateTime.
         /// </summary>
         public DateTime TimeOfDepartureFormat { get { return DateTime.Parse(_timeOfDeparture); } }
+
+        public Train Train { get { return _train; } }
     }
 }

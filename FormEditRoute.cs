@@ -54,7 +54,6 @@ namespace Trains
              foreach (string numStn in delStns)
              {
                  Station delete = Station.SearchByName(numStn);
-                 delete.DEL();
                  delete.RemoveFromAllStations();
              }
              FormEditRoute_Activated(sender, e);
