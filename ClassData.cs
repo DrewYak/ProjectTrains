@@ -40,7 +40,7 @@ namespace Trains
         /// </summary>
         public static void Unload()
         {
-            Passenger.  Unload();
+            List.       Unload();
             Train.      Unload();
             Station.    Unload();
             Data.DataLoad = false;

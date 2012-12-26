@@ -57,8 +57,7 @@ namespace Trains
             foreach (int numPsg in delPsgs)
             {
                 Passenger delete = Passenger.Search(numPsg);
-                delete.RemoveFromAllPassengers();
- 
+                List.RemoveFromAllPassengers(delete);
             }
             FormEditPassengers_Activated(sender, e);
         }

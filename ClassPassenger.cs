@@ -11,12 +11,12 @@ namespace Trains
         int             _id;
         string          _firstName;
         string          _lastName;
-        List<Ticket>    _tickets;
+        public List<Ticket>    _tickets;
 
         /// <summary>
         /// Статический список всех пассажиров.
         /// </summary>
-        static List<Passenger> _allPassengers = new List<Passenger>();
+        //static List<Passenger> _allPassengers = new List<Passenger>();
 
         /// <summary>
         /// Инициализирует пассажира по номеру паспорта, имени, фамилии.
@@ -32,20 +32,12 @@ namespace Trains
             this.FirstName  = FirstName;
             this.LastName   = LastName;
             this._tickets   = new List<Ticket>();
-            this.AddToAllPassengers();
+            List.AddToAllPassengers(this);
         }
 
         public void RemoveTicket(Ticket ticket)
         {
             this._tickets.Remove(ticket);
-        }
-
-        /// <summary>
-        /// Очищает список всех пассажиров.
-        /// </summary>
-        public static void Unload()
-        {
-            _allPassengers.Clear();
         }
 
         /// <summary>
@@ -116,30 +108,6 @@ namespace Trains
             return null;
         }
 
-        /// <summary>
-        /// Добавляет пассажира в список всех пассажиров.
-        /// </summary>
-        private void AddToAllPassengers()
-        {
-            _allPassengers.Add(this);
-        }
-
-        /// <summary>
-        /// Удаляет пассажира из списка всех пассажиров.
-        /// </summary>
-        public void RemoveFromAllPassengers()
-        {
-            List<Ticket> tkts = this._tickets;
-            foreach (Ticket tkt in tkts)
-            {
-                // Удалить 1
-                tkt.Train.RemoveTicket(tkt);
-            }
-            // Удалить 2
-            this._tickets.Clear();
-            // Удалить 3
-            _allPassengers.Remove(this);
-        }
 
         /// <summary>
         /// Добавляет новый билет к уже имеющимся билетам пассажира.
@@ -161,7 +129,7 @@ namespace Trains
         /// <exception cref="KeyNotFoundException"></exception>
         public static Passenger Search(int ID)
         {
-            foreach(Passenger Psg in AllPassengers)
+            foreach(Passenger Psg in List._allPassengers)
             {
                 if (Psg.ID == ID)
                 {
@@ -182,7 +150,7 @@ namespace Trains
         /// <returns>Список объектов класса Passenger.</returns>
         public static List<Passenger> Search(string LName, string FName, string TypeOfTicket)
         {
-            List <Passenger> Psgs   = AllPassengers;
+            List <Passenger> Psgs   = List._allPassengers;
             
             if (LName != "")
             {
@@ -320,7 +288,7 @@ namespace Trains
         /// <summary>
         /// Возвращает список всех пассажиров.
         /// </summary>
-        static List<Passenger> AllPassengers { get { return _allPassengers; } } 
+        //static List<Passenger> AllPassengers { get { return _allPassengers; } } 
     }
 
         #endregion
